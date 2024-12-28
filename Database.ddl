@@ -56,7 +56,7 @@ CREATE TABLE Prodotti (
     prezzo DECIMAL(10, 2) NOT NULL,
     id_sottocategoria INT NOT NULL,
     stock INT NOT NULL,
-    FOREIGN KEY (id_sottocategoria) REFERENCES SottoCategorie(id_sottocategoria) ON DELETE SET NULL
+    FOREIGN KEY (id_sottocategoria) REFERENCES SottoCategorie(id_sottocategoria)
 );
 
 -- Tabella carrello
@@ -86,7 +86,7 @@ CREATE TABLE DettagliOrdini (
     quantita INT NOT NULL,
     prezzo_unitario DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_ordine) REFERENCES Ordini(id_ordine) ON DELETE CASCADE,
-    FOREIGN KEY (id_prodotto) REFERENCES Prodotti(id_prodotto) ON DELETE SET NULL
+    FOREIGN KEY (id_prodotto) REFERENCES Prodotti(id_prodotto)
 );
 
 -- Tabella notifiche
