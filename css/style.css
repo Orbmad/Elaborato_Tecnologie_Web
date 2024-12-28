@@ -1,0 +1,13 @@
+input[type="image"]{
+    width: 20px;
+    height: 20px;
+}
+
+input[type="text"]{
+    background-color: #F0F2EF;
+    border : none;
+}
+
+form{
+    background-color: #F0F2EF;
+}

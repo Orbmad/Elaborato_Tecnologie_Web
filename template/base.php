@@ -10,6 +10,12 @@
             <h1>Plantatio</h1>
         </header>
         <nav>
+            <form action="#" method="GET">
+                <label for="fastsearch">Ricerca rapida</label>
+                    <input type="text" id="fastsearch"/>
+                    <input type="image" src="upload/search-icon.png" alt="Submit">
+                    <input type="image" src="upload/cancel-icon.png" alt="Reset">
+            </form>
         </nav>
         <main>
 
