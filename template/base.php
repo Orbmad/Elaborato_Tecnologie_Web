@@ -16,8 +16,8 @@
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta.."/>
-                    <input type="image" src="upload/cancel-icon.png" alt="Reset">
-                    <input type="image" src="upload/search-icon.png" alt="Submit">
+                    <input class="reset" type="image" src="upload/cancel-icon.png" alt="Reset">
+                    <input class="submit" type="image" src="upload/search-icon.png" alt="Submit">
             </form>
 
             

@@ -4,7 +4,7 @@ input[type="text"], input[type="image"], form, body{
 }
 
 input[type="image"]{
-    width: 5%;
+    width: 20px;
     padding-left: 10px;
 }
 
@@ -39,8 +39,8 @@ nav{
 }
 
 .menu-icon{
-    width: 15%;
-    margin-left: 10%;
+    width: 65px;
+    margin-left: auto;
 }
 
 @media (min-width: 768px){
