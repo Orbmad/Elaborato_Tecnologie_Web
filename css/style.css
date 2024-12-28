@@ -59,4 +59,40 @@ nav .categories{
     .menu-icon{
         display: none;
     }
+
+    nav{
+        display: flex;
+    }
+
+    nav .categories{
+        display: unset;
+    }
+
+    nav ul .categories{
+        list-style: none;
+        display: flex;
+        overflow: hidden;
+    }
+
+    nav .categories li{
+        flex-direction: column;
+        overflow: hidden;
+        display: inline-block;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    nav .categories li a{
+        text-decoration: none;
+        color: #F0F2EF;
+        font-family: 'Josefin', sans-serif;
+        font-size: 16px;
+    }
+
+    nav .categories li a:hover{
+        background-color: #F0F2EF;
+        color: #082D0F;
+    }
 }
