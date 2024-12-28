@@ -12,23 +12,36 @@
         <header>
             <h1>Plantatio</h1>
         </header>
-        <nav>
+        <nav class="closed-nav">
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta.."/>
-                    <input type="image" src="upload/cancel-icon.png" alt="Reset">
-                    <input type="image" src="upload/search-icon.png" alt="Submit">
+                    <input class="reset" type="image" src="upload/cancel-icon.png" alt="Reset">
+                    <input class="submit" type="image" src="upload/search-icon.png" alt="Submit">
             </form>
 
+            
             <img class="menu-icon" src="upload/menu-icon.png" alt="Menu icon">
         </nav>
         <main>
 
         </main>
+
         <footer>
             <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by O.moonstd - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Taufik - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect - Flaticon</a>
         </footer>
+
+        <!-Inserimento javascript->
+        <?php
+            if(isset($templateParams["js"])):
+                foreach($templateParams["js"] as $script):
+            ?>
+                <script src="<?php echo $script; ?>"></script>
+            <?php
+                endforeach;
+            endif;
+        ?>
     </body>
 </html>
