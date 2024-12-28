@@ -10,7 +10,6 @@
             <h1>Plantatio</h1>
         </header>
         <nav>
-        
         </nav>
         <main>
 

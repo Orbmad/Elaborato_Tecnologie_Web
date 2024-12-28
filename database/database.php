@@ -8,5 +8,5 @@ class DatabaseHelper{
             die("Connection failed: " . $db->connect_error);
         }        
     }
-
+}
 ?>
