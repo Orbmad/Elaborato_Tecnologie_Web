@@ -20,6 +20,13 @@
                     <input class="submit" type="image" src="upload/search-icon.png" alt="Submit">
             </form>
 
+            <ul class="categories">
+                <?php foreach($templateParams["categorie"] as $categoria): ?>
+                    <li>
+                        <a href=# onclick=""><?php echo $categoria["nome_categoria"]; ?></a>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
             
             <img class="menu-icon" src="upload/menu-icon.png" alt="Menu icon">
         </nav>

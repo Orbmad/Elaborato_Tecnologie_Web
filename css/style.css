@@ -42,16 +42,20 @@ nav{
     padding-right: 12px;
 }
 
-.menu-icon{
+nav .menu-icon{
     width: 65px;
     margin-left: auto;
+}
+
+nav .categories{
+    display: none;
 }
 
 @media (min-width: 768px){
     form{
         width: 20%;
     }
-    
+
     .menu-icon{
         display: none;
     }
