@@ -18,6 +18,12 @@ input[type="text"]{
     width: 85%;
 }
 
+
+input[type="text"]:focus {
+    border: none;
+    outline: none
+}
+
 form{
     background-color: #F0F2EF;
     width: 75%;
