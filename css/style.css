@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     margin: 0;
 }
@@ -10,3 +11,18 @@ body {
     background-color: #333;
     color: white;
   }
+=======
+input[type="image"]{
+    width: 20px;
+    height: 20px;
+}
+
+input[type="text"]{
+    background-color: #F0F2EF;
+    border : none;
+}
+
+form{
+    background-color: #F0F2EF;
+}
+>>>>>>> 3ce8058e83ed2d81c893ec1be698df7589d8ad97
