@@ -47,4 +47,8 @@ nav{
     form{
         width: 20%;
     }
+    
+    .menu-icon{
+        display: none;
+    }
 }
