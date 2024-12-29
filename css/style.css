@@ -1,4 +1,4 @@
-input[type="text"], input[type="image"], form, body{
+input[type="text"], form, body{
     margin: 0;
     padding: 0;
 }
@@ -7,15 +7,29 @@ body{
     background-color: #F0F2EF;
 }
 
-input[type="image"]{
-    width: 20px;
+.searchbar-icon{
     padding-left: 10px;
+}
+
+.search-button{
+    width: 20px;
+}
+
+.cancel-button{
+    width: 15px;
+    opacity: 0.5;
 }
 
 input[type="text"]{
     background-color: #F0F2EF;
     border : none;
     width: 85%;
+}
+
+
+input[type="text"]:focus {
+    border: none;
+    outline: none
 }
 
 form{
@@ -104,4 +118,207 @@ nav .categories{
         color: #082D0F;
         border-radius: 3px;
     }
+}
+/*Reset rule*/
+header, ul, li, a, h1{
+    padding: 0%;
+    margin: 0%;
+}
+
+ul{
+    list-style: none;
+}
+
+header{
+    margin: 20px 5% 0px;
+}
+
+header > h1{
+    display: inline-block;
+    width: 30%;/*definizione delle dimensione dei tag nella linea*/
+    text-align: center;
+    color: #FF7D00;
+    font-weight: bold;
+}
+header > ul{
+    display: inline-block;
+    width: 70%;/*definizione delle dimensione dei tag nella linea*/
+    text-align: right;
+    /*tolgo i pallini*/
+    list-style: none;
+    /*background-color: red;*/
+    /*margin-left: 20%;*/
+}
+img{
+    width: 70px;
+}
+/*essendo elementi di blocco gli elementi sono tra loro separati con andata a capo*/
+header > ul > li{
+    /*width: 40%;
+    rende gli elementi inline
+    display: inline-block;*/
+    position: relative;
+    float: right;
+    /*text-align: center;
+    margin: 10px 0;*/
+    /*il padding va messo sul contenitore perchè se lo mettessi sul link -> si aumenterebbe l'area cliccabile*/
+    padding: 0 5%;
+}
+
+header ul li ul{
+    position: absolute;
+    left: -10px;/*posizionamento rispetto al nodo padre, ovvero al list item che contiene la lista con sottomenù*/
+    text-align: center;
+    width: 200px;
+    margin: 70px 0 0;
+    background: #3F413E;
+    display: none;
+}
+
+header ul li ul li{
+    padding: 5px 0 0;
+}
+
+
+header ul li ul a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/*quando si passa con il cursore sull'icona si apre vede il menù*/
+header ul li#icon:hover > ul{
+    display: initial;
+}
+
+article{
+    background-color: #082D0F;
+    display: block;
+}
+
+.main-articles{
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+article img{
+    width: 100%;
+    border-bottom: 10px solid #F0F2EF;
+}
+
+article h3{
+    width: 100%;
+    color: #F0F2EF;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+article p{
+    box-sizing: border-box;
+    width: 100%;
+    color: #F0F2EF;
+    text-align: left;
+    padding: 15px;
+    margin: 0;
+}
+
+article footer > input[type=button] {
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    color: #082D0F;
+    width: 150px;
+    font-weight: bold;
+}
+
+article footer{
+    display: flex;
+    justify-content: flex-end; /* Pushes content to the right */
+    align-items: center; /* Vertically aligns the button if needed */
+}
+
+.hidden{
+    visibility: hidden;
+    display: none;
+}
+
+.right-arrow-icon{
+    position: absolute;
+    right: 4px;
+    top: 60%;
+    width: 40px;
+}
+
+.left-arrow-icon{
+    position: absolute;
+    left: 4px;
+    top: 60%;
+    width: 40px;
+}
+
+@media (min-width: 768px){
+    article{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .main-articles{
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+        justify-content: center;
+    }
+
+    article > img{
+        width: 50%;
+        border-bottom: 10px solid #F0F2EF;
+        display: inline-block;
+    }
+
+    .hidden{
+        width:24%;
+        display: inline-block;
+        visibility: visible;
+        opacity: 45%;
+    }
+
+    .focused-article{
+        padding-left: 1%;
+        padding-right: 1%;
+        width:50%;
+        display: inline-block;
+        visibility: visible;
+        opacity: 100%;
+    }
+
+    .hidden p, .hidden input[type=button]{
+        visibility: hidden;
+        display: none;
+    }
+
+    article > .article-body{
+        width: 40%;
+        display: inline-block;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .right-arrow-icon{
+        position: absolute;
+        right: 23%;
+        top:50%;
+        width: 90px;
+        z-index: 2;
+    }
+    
+    .left-arrow-icon{
+        position: absolute;
+        left: 23%;
+        top:50%;
+        width: 90px;
+        z-index: 2;
+    }
+    
 }
