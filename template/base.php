@@ -44,13 +44,49 @@
             <img class="menu-icon" src="upload/menu-icon.png" alt="Menu icon">
         </nav>
         <main>
-
+            <section class="main-articles">
+                <!-- <img src="upload/left-article-icon.png" class="left-arrow"/> -->
+                <img src="uplodd/right-article-icon.png" class="right-icon-arrow"/>
+                <ul>
+                    <li class="hidden">
+                        <article>
+                            <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
+                            <h2>PLANTUS FICUS</h2>
+                            <p>Immagina di entrare in una stanza e sentire immediatamente un senso di calma e benessere. Le piante da interno non sono solo un semplice complemento d’arredo, ma un vero e proprio tocco di natura che trasforma ogni ambiente, rendendolo più accogliente, armonico e salutare.</p>
+                            <footer>
+                                <input type="button" value="SCOPRI ARTICOLO"></input>
+                            </footer>
+                        </article>
+                    </li>
+                    <li>
+                        <article>
+                            <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
+                            <h2>PLANTUS FICUS</h2>
+                            <p>Immagina di entrare in una stanza e sentire immediatamente un senso di calma e benessere. Le piante da interno non sono solo un semplice complemento d’arredo, ma un vero e proprio tocco di natura che trasforma ogni ambiente, rendendolo più accogliente, armonico e salutare.</p>
+                            <footer>
+                                <input type="button" value="SCOPRI ARTICOLO"></input>
+                            </footer>
+                        </article>
+                    </li>
+                    <li class="hidden">
+                        <article>
+                            <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
+                            <h2>PLANTUS FICUS</h2>
+                            <p>Immagina di entrare in una stanza e sentire immediatamente un senso di calma e benessere. Le piante da interno non sono solo un semplice complemento d’arredo, ma un vero e proprio tocco di natura che trasforma ogni ambiente, rendendolo più accogliente, armonico e salutare.</p>
+                            <footer>
+                                <input type="button" value="SCOPRI ARTICOLO"></input>
+                            </footer>
+                        </article>
+                    </li>
+                </ul>
+            </section>
         </main>
 
         <footer>
             <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by O.moonstd - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Taufik - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect - Flaticon</a>
+            <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by deemakdaksina - Flaticon</a>
         </footer>
 
         <!-Inserimento javascript->
