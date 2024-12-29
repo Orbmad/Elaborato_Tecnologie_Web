@@ -52,13 +52,92 @@ nav{
     padding-right: 12px;
 }
 
-.menu-icon{
+nav .menu-icon{
     width: 65px;
     margin-left: auto;
+}
+
+nav .categories{
+    display: none;
 }
 
 @media (min-width: 768px){
     form{
         width: 20%;
     }
+
+    .menu-icon{
+        display: none;
+    }
+}
+/*Reset rule*/
+header, ul, li, a, h1{
+    padding: 0%;
+    margin: 0%;
+}
+
+ul{
+    list-style: none;
+}
+
+header{
+    margin: 20px 5% 0px;
+}
+
+header > h1{
+    display: inline-block;
+    width: 30%;/*definizione delle dimensione dei tag nella linea*/
+    text-align: center;
+    color: #FF7D00;
+    font-weight: bold;
+}
+header > ul{
+    display: inline-block;
+    width: 70%;/*definizione delle dimensione dei tag nella linea*/
+    text-align: right;
+    /*tolgo i pallini*/
+    list-style: none;
+    /*background-color: red;*/
+    /*margin-left: 20%;*/
+}
+img{
+    width: 70px;
+}
+/*essendo elementi di blocco gli elementi sono tra loro separati con andata a capo*/
+header > ul > li{
+    /*width: 40%;
+    rende gli elementi inline
+    display: inline-block;*/
+    position: relative;
+    float: right;
+    /*text-align: center;
+    margin: 10px 0;*/
+    /*il padding va messo sul contenitore perchè se lo mettessi sul link -> si aumenterebbe l'area cliccabile*/
+    padding: 0 5%;
+}
+
+header ul li ul{
+    position: absolute;
+    left: -10px;/*posizionamento rispetto al nodo padre, ovvero al list item che contiene la lista con sottomenù*/
+    text-align: center;
+    width: 200px;
+    margin: 70px 0 0;
+    background: #3F413E;
+    display: none;
+}
+
+header ul li ul li{
+    padding: 5px 0 0;
+}
+
+
+header ul li ul a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/*quando si passa con il cursore sull'icona si apre vede il menù*/
+header ul li#icon:hover > ul{
+    display: initial;
 }
