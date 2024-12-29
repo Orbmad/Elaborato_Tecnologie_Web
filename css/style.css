@@ -1,3 +1,65 @@
+input[type="text"], input[type="image"], form, body{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #F0F2EF;
+}
+
+input[type="image"]{
+    width: 20px;
+    padding-left: 10px;
+}
+
+input[type="text"]{
+    background-color: #F0F2EF;
+    border : none;
+    width: 85%;
+}
+
+form{
+    background-color: #F0F2EF;
+    width: 75%;
+    height: 60%;
+    border-radius: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+    align-items: center;    /* Allinea verticalmente */
+}
+
+label{
+    display: none;
+}
+
+nav{
+    background-color: #082D0F;
+    height: 75px;
+    display: flex;
+    align-items: center;    /* Allinea verticalmente */
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+nav .menu-icon{
+    width: 65px;
+    margin-left: auto;
+}
+
+nav .categories{
+    display: none;
+}
+
+@media (min-width: 768px){
+    form{
+        width: 20%;
+    }
+
+    .menu-icon{
+        display: none;
+    }
+}
 /*Reset rule*/
 header, ul, li, a, h1{
     padding: 0%;
