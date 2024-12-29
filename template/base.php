@@ -29,7 +29,7 @@
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta.."/>
-                    <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="clearText(fastsearch)"/>
+                    <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="resetText('fastsearch')"/>
                     <input class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search">
             </form>
 
