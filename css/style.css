@@ -198,3 +198,17 @@ article > footer{
     visibility: hidden;
     display: none;
 }
+
+.right-arrow-icon{
+    position: absolute;
+    right: 4px;
+    top: 60%;
+    width: 40px;
+}
+
+.left-arrow-icon{
+    position: absolute;
+    left: 4px;
+    top: 60%;
+    width: 40px;
+}

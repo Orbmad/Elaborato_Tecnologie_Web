@@ -45,8 +45,8 @@
         </nav>
         <main>
             <section class="main-articles">
-                <!-- <img src="upload/left-article-icon.png" class="left-arrow"/> -->
-                <img src="uplodd/right-article-icon.png" class="right-icon-arrow"/>
+                <img src="upload/left-arrow-icon.png" class="left-arrow-icon"/>
+                <img src="upload/right-arrow-icon.png" class="right-arrow-icon"/>
                 <ul>
                     <li class="hidden">
                         <article>
