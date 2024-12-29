@@ -1,4 +1,4 @@
-input[type="text"], input[type="image"], form, body{
+input[type="text"], form, body{
     margin: 0;
     padding: 0;
 }
@@ -7,13 +7,17 @@ body{
     background-color: #F0F2EF;
 }
 
-input[type="image"]{
-    width: 20px;
+.searchbar-icon{
     padding-left: 10px;
 }
 
-input[alt="submit"]{
+.search-button{
+    width: 20px;
+}
+
+.cancel-button{
     width: 15px;
+    opacity: 0.5;
 }
 
 input[type="text"]{
