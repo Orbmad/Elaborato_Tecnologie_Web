@@ -212,3 +212,68 @@ article > footer{
     top: 60%;
     width: 40px;
 }
+
+@media (min-width: 768px){
+
+    article{
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .main-articles{
+        margin-top: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
+        justify-content: center;
+    }
+
+    article > img{
+        width: 50%;
+        border-bottom: 10px solid #F0F2EF;
+        display: inline-block;
+    }
+
+    .hidden{
+        width:24%;
+        display: inline-block;
+        visibility: visible;
+        opacity: 45%;
+    }
+
+    .focused-article{
+        padding-left: 1%;
+        padding-right: 1%;
+        width:50%;
+        display: inline-block;
+        visibility: visible;
+        opacity: 100%;
+    }
+
+    .hidden p, .hidden input[type=button]{
+        visibility: hidden;
+        display: none;
+    }
+
+    article > .article-body{
+        width: 40%;
+        display: inline-block;
+        text-align: left;
+        color: #F0F2EF;
+        vertical-align: top;
+    }
+
+    .right-arrow-icon{
+        position: absolute;
+        right: 23%;
+        top: 40%;
+        width: 90px;
+    }
+    
+    .left-arrow-icon{
+        position: absolute;
+        left: 23%;
+        top: 40%;
+        width: 90px;
+    }
+    
+}
