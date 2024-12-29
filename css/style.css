@@ -158,19 +158,19 @@ article{
 }
 
 
-article > img{
+article img{
     width: 100%;
     border-bottom: 10px solid #F0F2EF;
 }
 
-article > h2{
+article h3{
     width: 100%;
     color: #F0F2EF;
     text-align: center;
     margin-bottom: 0px;
 }
 
-article > p{
+article p{
     box-sizing: border-box;
     width: 100%;
     color: #F0F2EF;
@@ -179,7 +179,7 @@ article > p{
     margin: 0;
 }
 
-article > footer > input[type=button] {
+article footer > input[type=button] {
     height: 40px;
     margin: 10px;
     border-radius: 5px;
@@ -188,7 +188,7 @@ article > footer > input[type=button] {
     font-weight: bold;
 }
 
-article > footer{
+article footer{
     display: flex;
     justify-content: flex-end; /* Pushes content to the right */
     align-items: center; /* Vertically aligns the button if needed */
@@ -214,7 +214,6 @@ article > footer{
 }
 
 @media (min-width: 768px){
-
     article{
         display: inline-block;
         vertical-align: middle;
@@ -258,22 +257,23 @@ article > footer{
         width: 40%;
         display: inline-block;
         text-align: left;
-        color: #F0F2EF;
         vertical-align: top;
     }
 
     .right-arrow-icon{
         position: absolute;
         right: 23%;
-        top: 40%;
+        top:50%;
         width: 90px;
+        z-index: 2;
     }
     
     .left-arrow-icon{
         position: absolute;
         left: 23%;
-        top: 40%;
+        top:50%;
         width: 90px;
+        z-index: 2;
     }
     
 }
