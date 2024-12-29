@@ -27,6 +27,9 @@ form{
     padding-right: 15px;
     display: flex;
     align-items: center;    /* Allinea verticalmente */
+
+    flex-shrink: 0;
+    flex-grow: 1;
 }
 
 label{
@@ -40,6 +43,9 @@ nav{
     align-items: center;    /* Allinea verticalmente */
     padding-left: 12px;
     padding-right: 12px;
+    /*In prova*/
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 nav .menu-icon{
@@ -68,31 +74,34 @@ nav .categories{
         display: unset;
     }
 
-    nav ul .categories{
+    nav > ul.categories{
         list-style: none;
         display: flex;
+        margin-left: auto;
+        margin-right: auto;
+
+        flex-shrink: 1;
         overflow: hidden;
     }
 
-    nav .categories li{
-        flex-direction: column;
-        overflow: hidden;
+    nav > ul.categories > li{
+        overflow: auto;
         display: inline-block;
-        margin-left: 15px;
-        margin-right: 15px;
-        margin-top: 30px;
-        margin-bottom: 30px;
+        padding-right: 20px;
     }
 
-    nav .categories li a{
+    nav > ul.categories > li > a{
+        display: block;
         text-decoration: none;
         color: #F0F2EF;
         font-family: 'Josefin', sans-serif;
         font-size: 16px;
+        transition: all 0.3s ease;
     }
 
-    nav .categories li a:hover{
+    nav > ul.categories > li > a:hover{
         background-color: #F0F2EF;
         color: #082D0F;
+        border-radius: 3px;
     }
 }
