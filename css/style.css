@@ -12,6 +12,10 @@ input[type="image"]{
     padding-left: 10px;
 }
 
+input[alt="submit"]{
+    width: 15px;
+}
+
 input[type="text"]{
     background-color: #F0F2EF;
     border : none;
