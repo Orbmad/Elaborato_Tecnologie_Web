@@ -11,7 +11,7 @@
     <body>
         <header>
         <header>
-            <h1>Platatio
+            <h1>Plantatio
             </h1><ul>
                 <li class="user_icon">
                     <a href="#"><img class="user_icon" src=".\img\Icona-Utente.png" alt="user-icon"/><img src="img/cerchio.png" alt="notifiche"/><p>1</p></a>

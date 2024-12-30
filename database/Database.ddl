@@ -69,6 +69,23 @@ CREATE TABLE Carrello (
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(id_prodotto) ON DELETE CASCADE
 );
 
+--Tabella gruppi di prodotti
+CREATE TABLE Gruppi (
+    id_gruppo INT AUTO_INCREMENT PRIMARY KEY,
+    nomeGruppo VARCHAR(50) NOT NULL,
+    descrizioneGruppo TEXT,
+)
+
+--Tabella appartenenza gruppo
+CREATE TABLE Appartenenze (
+    id_gruppo INT NOT NULL,
+    id_prodotto INT NOT NULL,
+    PRIMARY KEY (id_gruppo, id_prodotto),
+    FOREIGN KEY (id_gruppo) REFERENCES Gruppi(id_gruppo) ON DELETE CASCADE,
+    FOREIGN KEY (id_prodotto) REFERENCES Prodotti(id_prodotto) ON DELETE CASCADE
+)
+
+
 -- Tabella ordini
 CREATE TABLE Ordini (
     id_ordine INT AUTO_INCREMENT PRIMARY KEY,
