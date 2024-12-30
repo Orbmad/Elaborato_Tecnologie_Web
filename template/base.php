@@ -10,12 +10,12 @@
     </head>
     <body>
         <header>
-        <h1>Platatio
+        <header>
+            <h1>Platatio
             </h1><ul>
-            <!--Creazione di una lista per gestire con css il fatto che la lista si trova a dx della pagina-->
-                <li  id="icon">
-                    <a href="#"><img src=".\img\Icona-Utente.png" alt="user-icon"/></a>
-                    <ul>
+                <li class="user_icon">
+                    <a href="#"><img class="user_icon" src=".\img\Icona-Utente.png" alt="user-icon"/><img src="img/cerchio.png" alt="notifiche"/><p>1</p></a>
+                    <ul id="submenu_user">
                         <li><a href="#">Esci</a></li>
                         <li><a href="#">Lista dei desideri</a></li>
                         <li><a href="#">Notifiche</a></li>
@@ -28,7 +28,7 @@
         <nav class="closed-nav">
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
-                    <input type="text" id="fastsearch" placeholder="Cerca la tua pianta.."/>
+                    <input type="text" id="fastsearch" placeholder="Cerca la tua pianta..."/>
                     <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="resetText('fastsearch')"/>
                     <input class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search">
             </form>

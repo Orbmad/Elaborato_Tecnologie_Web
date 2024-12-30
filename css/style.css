@@ -1,3 +1,13 @@
+/*Reset rule*/
+header, ul, li, a, h1{
+    padding: 0%;
+    margin: 0%;
+}
+
+ul{
+    list-style: none;
+}
+
 input[type="text"], form, body{
     margin: 0;
     padding: 0;
@@ -121,65 +131,83 @@ nav .categories{
     }
 }
 
-
-/*Reset rule*/
-header, ul, li, a, h1{
-    padding: 0%;
-    margin: 0%;
-}
-
-ul{
-    list-style: none;
-}
-
 header{
     margin: 20px 5% 0px;
 }
 
 header > h1{
     display: inline-block;
-    width: 30%;/*definizione delle dimensione dei tag nella linea*/
+    width: 30%;
     text-align: center;
     color: #FF7D00;
     font-weight: bold;
+    font-size: 50px;
 }
 header > ul{
     display: inline-block;
-    width: 70%;/*definizione delle dimensione dei tag nella linea*/
+    width: 70%;
     text-align: right;
-    /*tolgo i pallini*/
     list-style: none;
-    /*background-color: red;*/
-    /*margin-left: 20%;*/
 }
 img{
     width: 70px;
 }
-/*essendo elementi di blocco gli elementi sono tra loro separati con andata a capo*/
+
+header > h1, header > ul{
+    vertical-align: bottom;
+}
+
 header > ul > li{
-    /*width: 40%;
-    rende gli elementi inline
-    display: inline-block;*/
     position: relative;
     float: right;
-    /*text-align: center;
-    margin: 10px 0;*/
-    /*il padding va messo sul contenitore perchè se lo mettessi sul link -> si aumenterebbe l'area cliccabile*/
     padding: 0 5%;
+}
+
+
+header > ul > li > a{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    text-decoration: none;
+}
+
+header > ul > li.user_icon > a > img{
+    grid-area: 1/1;
+}
+
+header > ul > li:nth-child(2) > a > img{
+    position: relative;
+    top: 15px;
+}
+
+header > ul > li.user_icon > a > img:nth-child(2){
+    padding-bottom: 60%;
+    padding-left: 50%;
+    width: 30px;
+    grid-area: 1/1;
+}
+
+/*inserimento del numero di notifiche che l'utente deve visualizzare estraendo info da DB*/
+header > ul > li.user_icon > a > p{
+    grid-area: 1/1;
+    color: #fff;
+    padding-bottom: 60%;
+    padding-left: 50%;
 }
 
 header ul li ul{
     position: absolute;
-    left: -10px;/*posizionamento rispetto al nodo padre, ovvero al list item che contiene la lista con sottomenù*/
+    left: -30px;
     text-align: center;
     width: 200px;
-    margin: 70px 0 0;
-    background: #3F413E;
     display: none;
 }
 
 header ul li ul li{
-    padding: 5px 0 0;
+    padding: 5px 0 ;
+    background: #3F413E;
+    border: solid #FF7D00 1px;
 }
 
 
@@ -189,8 +217,9 @@ header ul li ul a{
     font-size: 20px;
 }
 
-/*quando si passa con il cursore sull'icona si apre vede il menù*/
-header ul li#icon:hover > ul{
+/*quando si passa con il cursore sull'icona si apre vede il menù.
+Questo accade solo se l'utente non ha cliccato sull'icona*/
+header ul li.user_icon:hover > ul{
     display: initial;
 }
 
