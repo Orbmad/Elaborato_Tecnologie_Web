@@ -45,6 +45,7 @@ CREATE TABLE SottoCategorie (
     id_sottocategoria INT AUTO_INCREMENT PRIMARY KEY,
     id_categoria INT NOT NULL,
     nome_sottocategoria VARCHAR(100) UNIQUE NOT NULL,
+    descrizione TEXT,
     FOREIGN KEY (id_categoria) REFERENCES Categorie(id_categoria) ON DELETE CASCADE
 );
 
@@ -52,7 +53,6 @@ CREATE TABLE SottoCategorie (
 CREATE TABLE Prodotti (
     id_prodotto INT AUTO_INCREMENT PRIMARY KEY,
     nome_prodotto VARCHAR(150) NOT NULL,
-    descrizione TEXT,
     prezzo DECIMAL(10, 2) NOT NULL,
     id_sottocategoria INT NOT NULL,
     stock INT NOT NULL,
@@ -68,6 +68,8 @@ CREATE TABLE Prodotti (
     profumo VARCHAR(30),
     tipologia_foglia VARCHAR(30),
     colore_foglia VARCHAR(30),
+    ------------------------------------------------
+    descrizione TEXT,
     FOREIGN KEY (id_sottocategoria) REFERENCES SottoCategorie(id_sottocategoria)
 );
 
