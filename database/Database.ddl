@@ -56,6 +56,18 @@ CREATE TABLE Prodotti (
     prezzo DECIMAL(10, 2) NOT NULL,
     id_sottocategoria INT NOT NULL,
     stock INT NOT NULL,
+    --Tassonomia Pianta-----------------------------
+    nome_volgare VARCHAR(50),
+    nome_scientifico VARCHAR(50),
+    famiglia VARCHAR(50),
+    genere VARCHAR(50),
+    specie VARCHAR(50),
+    --Caratteristiche di vendita--------------------
+    dimensioni VARCHAR(30),
+    --Caratteri botanici----------------------------
+    profumo VARCHAR(30),
+    tipologia_foglia VARCHAR(30),
+    colore_foglia VARCHAR(30),
     FOREIGN KEY (id_sottocategoria) REFERENCES SottoCategorie(id_sottocategoria)
 );
 
