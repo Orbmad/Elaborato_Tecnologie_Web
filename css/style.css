@@ -1,5 +1,5 @@
 /*Reset rule*/
-header, ul, li, a, h1{
+body, header, ul, li, a, h1{
     padding: 0%;
     margin: 0%;
 }
@@ -15,6 +15,7 @@ input[type="text"], form, body{
 
 body{
     background-color: #F0F2EF;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .searchbar-icon{
@@ -276,6 +277,17 @@ article footer{
     display: none;
 }
 
+.focused-article{
+    animation-name: article-appearing;
+    animation-duration: 1.5s;
+    z-index: 1;
+}
+
+@keyframes article-appearing {
+    0%   {opacity: 45%;}
+    100% {opacity: 100%}
+}
+
 .right-arrow-icon{
     right: 4px;
 }
@@ -288,13 +300,22 @@ article footer{
     position: absolute;
     width: 40px;
     top: 60%;
+    z-index: 2;
 }
 
 /* Ingrandire l'icona quando riceve il focus */
 .arrow-icon:hover {
-    transform: scale(1.2);  /* Ingrandisce l'icona del 20% */
-    transition: transform 0.2s ease;  /* Animazione di transizione */
+    transform: scale(1.2); 
+    transition: 0.3s ease; 
 }
+
+/* Effetto al clic */
+.arrow-icon:active {
+    transform: scale(0.9); 
+    filter: brightness(1.3);
+    transition: 0.1s ease; 
+  }
+
 
 @media (min-width: 768px){
     .main-articles ul{
@@ -317,7 +338,7 @@ article footer{
 
     article > img{
         width: 50%;
-        border-bottom: 10px solid #F0F2EF;
+        border: none;
     }
 
     .hidden{
@@ -325,6 +346,14 @@ article footer{
         visibility: visible;
         opacity: 45%;
         display: inline-block;
+
+        animation-name: article-disappearing;
+        animation-duration: 1.5s;
+    }
+
+    @keyframes article-disappearing {
+        0%   {opacity: 100%;}
+        100% {opacity: 45%}
     }
 
     .main-articles ul li.left{

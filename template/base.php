@@ -50,7 +50,7 @@
                 <ul>
                     <li class="hidden left">
                         <article>
-                            <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
+                            <img src="upload/pianta1.jpg" alt="Immagine dell'articolo"/>
                             <section class ="article-body">
                                 <h3>ARTICOLO 1</h3>
                                 <p>Immagina di entrare in una stanza e sentire immediatamente un senso di calma e benessere. Le piante da interno non sono solo un semplice complemento d’arredo, ma un vero e proprio tocco di natura che trasforma ogni ambiente, rendendolo più accogliente, armonico e salutare.</p>
