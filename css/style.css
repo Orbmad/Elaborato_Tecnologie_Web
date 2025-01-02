@@ -424,11 +424,10 @@ article .button-sec{
 }
     
 /*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
-
-main{
+/* main{
     margin-top: 70px;
     padding: 0 15%;
-}
+} */
 
 main > article > header > img{
     width: 600px;
