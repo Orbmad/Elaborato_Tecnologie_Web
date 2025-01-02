@@ -1,4 +1,4 @@
-async function resetText(inputId){      
+function resetText(inputId){      
     const inputField = document.getElementById(inputId);
     
     if (inputField) {
@@ -18,3 +18,23 @@ document.addEventListener("click", function(event) {
         document.getElementById("submenu_user").style.display = "none";
     }
 });
+
+function focusLeftArticle() {
+    const focusedArticle = document.querySelector(".focused-article");
+    const newFocused = focusedArticle.previousElementSibling || focusedArticle.parentElement.lastElementChild;
+    focusedArticle.classList.remove("focused-article");
+    focusedArticle.classList.add("hidden");
+
+    newFocused.classList.remove("hidden");
+    newFocused.classList.add("focused-article");
+}
+
+function focusRightArticle() {
+    const focusedArticle = document.querySelector(".focused-article");
+    const newFocused = focusedArticle.nextElementSibling || focusedArticle.parentElement.firstElementChild;
+    focusedArticle.classList.remove("focused-article");
+    focusedArticle.classList.add("hidden");
+
+    newFocused.classList.remove("hidden");
+    newFocused.classList.add("focused-article");
+}
