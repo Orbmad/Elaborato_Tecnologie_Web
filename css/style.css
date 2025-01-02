@@ -424,3 +424,80 @@ article .button-sec{
     }
     
 }
+
+/*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
+
+main{
+    margin-top: 70px;
+    padding: 0 15%;
+}
+
+main > article > header > img{
+    width: 600px;
+}
+
+main > article > div.wrapper{
+    display: inline-block;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+main > article > div.wrapper > span{
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    border: black solid 2px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+main > article > div.wrapper > span.number{
+    cursor: auto;
+}
+
+main > article > button{
+    border: none;
+    color: #ffff;
+    font-size: 35px;
+    text-align: center;
+    background-color: #082D0F;
+    padding: 20px 25px;
+    cursor: pointer; /*per il computer*/
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 50px;
+    float: right;
+}
+
+main > article > header > h2{
+    font-size: 50px;
+    padding: 8px 0;
+    margin: 4px 0;
+    /*inserimento del font-family*/
+}
+
+main > article > header > h3{
+    font-size: 40px;
+    padding: 8px 0;
+    color: #082D0F;
+    /*inserimento del font-family*/
+}
+
+main > article > section > h3{
+    font-size: 40px;
+    margin-top: 50px;
+    /*inserimento del font-family*/
+}
+
+main > article > section > p{
+    font-size: 20px;
+    padding: 10px 0;
+    /*inserimento del font-family*/
+}
+/*regole per lo stile della pagina per il singolo prodotto fine*/

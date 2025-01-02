@@ -48,3 +48,32 @@ function focusRightArticle() {
     leftArticle.classList.remove("left");
     leftArticle.classList.add("right")
 }
+
+
+function addQuantity(maxValue){
+    const plus = document.querySelector("main > article > div.wrapper > span.plus");
+    const num = document.querySelector("main > article > div.wrapper > span.number");
+    let a = num.innerHTML;
+    if(a < maxValue){
+        a++;
+        num.innerHTML = "";
+        if(a < 10){
+            num.innerHTML += "0";
+        }
+    num.innerHTML += a;
+    }
+}
+
+function reduceQuantity(){
+    const minus = document.querySelector("main > article > div.wrapper > span.minus");
+    const num = document.querySelector("main > article > div.wrapper > span.number");
+    let a = num.innerHTML;
+    if(a > 1){
+        a--;
+        num.innerHTML = "";
+        if(a < 10){
+            num.innerHTML += "0";
+        }
+        num.innerHTML += a;
+    }
+}
