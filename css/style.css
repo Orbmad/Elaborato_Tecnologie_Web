@@ -1,5 +1,5 @@
 /*Reset rule*/
-header, ul, li, a, h1{
+body, header, ul, li, a, h1{
     padding: 0%;
     margin: 0%;
 }
@@ -15,6 +15,7 @@ input[type="text"], form, body{
 
 body{
     background-color: #F0F2EF;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .searchbar-icon{
@@ -240,7 +241,7 @@ article img{
     border-bottom: 10px solid #F0F2EF;
 }
 
-article h3{
+article h2{
     width: 100%;
     color: #F0F2EF;
     text-align: center;
@@ -256,41 +257,88 @@ article p{
     margin: 0;
 }
 
-article footer > input[type=button] {
+article .button-sec > input[type=button] {
     height: 40px;
     margin: 10px;
     border-radius: 5px;
     color: #082D0F;
     width: 150px;
     font-weight: bold;
+    transition: transform 0.2s ease;
+    border-color: #fff;
 }
 
-article footer{
+article .button-sec > input[type=button]:hover {
+    transform: scale(1.1);
+}
+
+article .button-sec > input[type=button]:active{
+    transform: scale(0.9);
+    color: white;
+    background-color: #082D0F;
+}
+
+article .button-sec{
     display: flex;
-    justify-content: flex-end; /* Pushes content to the right */
-    align-items: center; /* Vertically aligns the button if needed */
+    justify-content: flex-end;
+    align-items: center; 
 }
 
 .hidden{
     visibility: hidden;
     display: none;
+    font-size: small;
+}
+
+.focused-article{
+    animation-name: article-appearing;
+    animation-duration: 1.5s;
+    z-index: 1;
+}
+
+@keyframes article-appearing {
+    0%   {opacity: 45%;}
+    100% {opacity: 100%}
 }
 
 .right-arrow-icon{
-    position: absolute;
     right: 4px;
-    top: 60%;
-    width: 40px;
 }
 
 .left-arrow-icon{
-    position: absolute;
     left: 4px;
-    top: 60%;
-    width: 40px;
 }
 
+.arrow-icon{
+    position: absolute;
+    width: 40px;
+    top: 60%;
+    z-index: 2;
+}
+
+/* Ingrandire l'icona quando riceve il focus */
+.arrow-icon:hover {
+    transform: scale(1.2); 
+    transition: 0.3s ease; 
+}
+
+/* Effetto al clic */
+.arrow-icon:active {
+    transform: scale(0.9); 
+    filter: brightness(1.3);
+    transition: 0.1s ease; 
+  }
+
+
 @media (min-width: 768px){
+
+
+    .main-articles ul{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     article{
         display: inline-block;
         vertical-align: middle;
@@ -305,24 +353,41 @@ article footer{
 
     article > img{
         width: 50%;
-        border-bottom: 10px solid #F0F2EF;
-        display: inline-block;
+        border: none;
     }
 
     .hidden{
         width:24%;
-        display: inline-block;
         visibility: visible;
         opacity: 45%;
+        display: inline-block;
+
+        animation-name: article-disappearing;
+        animation-duration: 1.5s;
     }
+
+    @keyframes article-disappearing {
+        0%   {opacity: 100%;}
+        100% {opacity: 45%}
+    }
+
+    .main-articles ul li.left{
+        order: 0;
+    }
+
+    .main-articles ul li.right{
+        order: 2;
+    }
+
 
     .focused-article{
         padding-left: 1%;
         padding-right: 1%;
         width:50%;
-        display: inline-block;
+        order: 1;
         visibility: visible;
         opacity: 100%;
+        display: inline-block;
     }
 
     .hidden p, .hidden input[type=button]{
@@ -351,6 +416,11 @@ article footer{
         top:50%;
         width: 90px;
         z-index: 2;
+    }
+
+    li.focused-article:hover{
+        transform: scale(1.05); 
+        transition: 3s ease; 
     }
     
 }

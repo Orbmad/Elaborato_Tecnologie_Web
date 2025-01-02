@@ -1,4 +1,4 @@
-async function resetText(inputId){      
+function resetText(inputId){      
     const inputField = document.getElementById(inputId);
     
     if (inputField) {
@@ -18,3 +18,33 @@ document.addEventListener("click", function(event) {
         document.getElementById("submenu_user").style.display = "none";
     }
 });
+
+function focusLeftArticle() {
+    const focusedArticle = document.querySelector(".main-articles ul li.focused-article");
+    const leftArticle = document.querySelector(".main-articles ul li.hidden.left");
+    const rightArticle = document.querySelector(".main-articles ul li.hidden.right");
+
+    focusedArticle.classList.remove("focused-article");
+    focusedArticle.classList.add("hidden","right");
+
+    leftArticle.classList.remove("hidden","left");
+    leftArticle.classList.add("focused-article");
+
+    rightArticle.classList.remove("right");
+    rightArticle.classList.add("left")
+}
+
+function focusRightArticle() {
+    const focusedArticle = document.querySelector(".main-articles ul li.focused-article");
+    const leftArticle = document.querySelector(".main-articles ul li.hidden.left");
+    const rightArticle = document.querySelector(".main-articles ul li.hidden.right");
+
+    focusedArticle.classList.remove("focused-article");
+    focusedArticle.classList.add("hidden","left");
+
+    rightArticle.classList.remove("hidden","right");
+    rightArticle.classList.add("focused-article");
+
+    leftArticle.classList.remove("left");
+    leftArticle.classList.add("right")
+}
