@@ -277,17 +277,23 @@ article footer{
 }
 
 .right-arrow-icon{
-    position: absolute;
     right: 4px;
-    top: 60%;
-    width: 40px;
 }
 
 .left-arrow-icon{
-    position: absolute;
     left: 4px;
-    top: 60%;
+}
+
+.arrow-icon{
+    position: absolute;
     width: 40px;
+    top: 60%;
+}
+
+/* Ingrandire l'icona quando riceve il focus */
+.arrow-icon:hover {
+    transform: scale(1.2);  /* Ingrandisce l'icona del 20% */
+    transition: transform 0.2s ease;  /* Animazione di transizione */
 }
 
 @media (min-width: 768px){
