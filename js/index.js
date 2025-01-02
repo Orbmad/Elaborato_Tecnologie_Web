@@ -20,21 +20,31 @@ document.addEventListener("click", function(event) {
 });
 
 function focusLeftArticle() {
-    const focusedArticle = document.querySelector(".focused-article");
-    const newFocused = focusedArticle.previousElementSibling || focusedArticle.parentElement.lastElementChild;
-    focusedArticle.classList.remove("focused-article");
-    focusedArticle.classList.add("hidden");
+    const focusedArticle = document.querySelector(".main-articles ul li.focused-article");
+    const leftArticle = document.querySelector(".main-articles ul li.hidden.left");
+    const rightArticle = document.querySelector(".main-articles ul li.hidden.right");
 
-    newFocused.classList.remove("hidden");
-    newFocused.classList.add("focused-article");
+    focusedArticle.classList.remove("focused-article");
+    focusedArticle.classList.add("hidden","right");
+
+    leftArticle.classList.remove("hidden","left");
+    leftArticle.classList.add("focused-article");
+
+    rightArticle.classList.remove("right");
+    rightArticle.classList.add("left")
 }
 
 function focusRightArticle() {
-    const focusedArticle = document.querySelector(".focused-article");
-    const newFocused = focusedArticle.nextElementSibling || focusedArticle.parentElement.firstElementChild;
-    focusedArticle.classList.remove("focused-article");
-    focusedArticle.classList.add("hidden");
+    const focusedArticle = document.querySelector(".main-articles ul li.focused-article");
+    const leftArticle = document.querySelector(".main-articles ul li.hidden.left");
+    const rightArticle = document.querySelector(".main-articles ul li.hidden.right");
 
-    newFocused.classList.remove("hidden");
-    newFocused.classList.add("focused-article");
+    focusedArticle.classList.remove("focused-article");
+    focusedArticle.classList.add("hidden","left");
+
+    rightArticle.classList.remove("hidden","right");
+    rightArticle.classList.add("focused-article");
+
+    leftArticle.classList.remove("left");
+    leftArticle.classList.add("right")
 }

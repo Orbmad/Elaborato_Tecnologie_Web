@@ -48,7 +48,7 @@
                 <img src="upload/left-arrow-icon.png" class="left-arrow-icon" onclick="focusLeftArticle()"/>
                 <img src="upload/right-arrow-icon.png" class="right-arrow-icon" onclick="focusRightArticle()"/>
                 <ul>
-                    <li class="hidden">
+                    <li class="hidden left">
                         <article>
                             <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
                             <section class ="article-body">
@@ -70,7 +70,7 @@
                                 </footer>
                             </section>
                         </article>
-                    </li><li class="hidden">
+                    </li><li class="hidden right">
                         <article>
                             <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
                             <section class ="article-body">
