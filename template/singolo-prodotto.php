@@ -22,7 +22,8 @@
         <p><?php echo $prodotto["descrizione"] ?></p>
         <ul>
             <li><p>Codice:id_<?php echo $prodotto["id_prodotto"]?></p></li>
-            <li><p>Categoria: <a href="#">piantedainterno</a></p></li>
+        <!--caratteristiche della singola pianta-->
+            <li><p>Categoria: <a href="#"><?php echo $prodotto["categoria"]?></a></p></li>
         </ul>
     </section>
 </article>
