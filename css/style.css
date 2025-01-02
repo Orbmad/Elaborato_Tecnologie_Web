@@ -241,7 +241,7 @@ article img{
     border-bottom: 10px solid #F0F2EF;
 }
 
-article h3{
+article h2{
     width: 100%;
     color: #F0F2EF;
     text-align: center;
@@ -257,24 +257,37 @@ article p{
     margin: 0;
 }
 
-article footer > input[type=button] {
+article .button-sec > input[type=button] {
     height: 40px;
     margin: 10px;
     border-radius: 5px;
     color: #082D0F;
     width: 150px;
     font-weight: bold;
+    transition: transform 0.2s ease;
+    border-color: #fff;
 }
 
-article footer{
+article .button-sec > input[type=button]:hover {
+    transform: scale(1.1);
+}
+
+article .button-sec > input[type=button]:active{
+    transform: scale(0.9);
+    color: white;
+    background-color: #082D0F;
+}
+
+article .button-sec{
     display: flex;
-    justify-content: flex-end; /* Pushes content to the right */
-    align-items: center; /* Vertically aligns the button if needed */
+    justify-content: flex-end;
+    align-items: center; 
 }
 
 .hidden{
     visibility: hidden;
     display: none;
+    font-size: small;
 }
 
 .focused-article{
@@ -318,6 +331,8 @@ article footer{
 
 
 @media (min-width: 768px){
+
+
     .main-articles ul{
         display: flex;
         justify-content: center;
@@ -401,6 +416,11 @@ article footer{
         top:50%;
         width: 90px;
         z-index: 2;
+    }
+
+    li.focused-article:hover{
+        transform: scale(1.05); 
+        transition: 3s ease; 
     }
     
 }
