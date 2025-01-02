@@ -56,19 +56,15 @@ CREATE TABLE Prodotti (
     prezzo DECIMAL(10, 2) NOT NULL,
     id_sottocategoria INT NOT NULL,
     stock INT NOT NULL,
-    --Tassonomia Pianta-----------------------------
-    nome_volgare VARCHAR(50),
+    nome_volgare VARCHAR(50), -- Tassonomia Pianta-----------------------------
     nome_scientifico VARCHAR(50),
     famiglia VARCHAR(50),
     genere VARCHAR(50),
     specie VARCHAR(50),
-    --Caratteristiche di vendita--------------------
-    dimensioni VARCHAR(30),
-    --Caratteri botanici----------------------------
-    profumo VARCHAR(30),
+    dimensioni VARCHAR(30), -- Caratteristiche di vendita--------------------
+    profumo VARCHAR(30), -- Caratteri botanici----------------------------
     tipologia_foglia VARCHAR(30),
-    colore_foglia VARCHAR(30),
-    ------------------------------------------------
+    colore_foglia VARCHAR(30), 
     descrizione TEXT,
     FOREIGN KEY (id_sottocategoria) REFERENCES SottoCategorie(id_sottocategoria)
 );
@@ -83,21 +79,21 @@ CREATE TABLE Carrello (
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(id_prodotto) ON DELETE CASCADE
 );
 
---Tabella gruppi di prodotti
+-- Tabella gruppi di prodotti
 CREATE TABLE Gruppi (
     id_gruppo INT AUTO_INCREMENT PRIMARY KEY,
-    nomeGruppo VARCHAR(50) NOT NULL,
-    descrizioneGruppo TEXT,
-)
+    nomeGruppo VARCHAR(50) UNIQUE NOT NULL,
+    descrizioneGruppo TEXT
+);
 
---Tabella appartenenza gruppo
+-- Tabella appartenenza gruppo
 CREATE TABLE Appartenenze (
     id_gruppo INT NOT NULL,
     id_prodotto INT NOT NULL,
     PRIMARY KEY (id_gruppo, id_prodotto),
     FOREIGN KEY (id_gruppo) REFERENCES Gruppi(id_gruppo) ON DELETE CASCADE,
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(id_prodotto) ON DELETE CASCADE
-)
+);
 
 
 -- Tabella ordini
