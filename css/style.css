@@ -332,7 +332,6 @@ article .button-sec{
 
 @media (min-width: 768px){
 
-
     .main-articles ul{
         display: flex;
         justify-content: center;
@@ -387,7 +386,6 @@ article .button-sec{
         order: 1;
         visibility: visible;
         opacity: 100%;
-        display: inline-block;
     }
 
     .hidden p, .hidden input[type=button]{
@@ -397,11 +395,12 @@ article .button-sec{
 
     article > .article-body{
         width: 40%;
+        height: 100%;
         display: inline-block;
         text-align: left;
         vertical-align: top;
     }
-
+    
     .right-arrow-icon{
         position: absolute;
         right: 23%;
@@ -422,5 +421,4 @@ article .button-sec{
         transform: scale(1.05); 
         transition: 3s ease; 
     }
-    
 }
