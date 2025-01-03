@@ -10,7 +10,6 @@
     </head>
     <body>
         <header>
-        <header>
             <h1>Plantatio
             </h1><ul>
                 <li class="user_icon">
