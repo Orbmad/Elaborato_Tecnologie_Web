@@ -34,7 +34,7 @@
                 </li>
             </ul>
         </header>
-        <nav class="closed-nav">
+        <nav class="nav">
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                 <section class="search-text">
