@@ -59,6 +59,20 @@ async function showSuggestions() {
     const text = document.querySelector("#fastsearch").value;
     if(text.length>2){
         document.querySelector(".suggestions").classList.remove("not-showing");
+        const url = `api-suggestions.php?text=${encodeURIComponent(text)}&n=${n}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+            const json = await response.json();
+            console.log(json);
+            // const articoli = generaArticoli(json);
+            // const main = document.querySelector("main");
+            // main.innerHTML = articoli;
+        } catch (error) {
+            console.log(error.message);
+        }
     }else{
         document.querySelector(".suggestions").classList.add("not-showing");
     }
