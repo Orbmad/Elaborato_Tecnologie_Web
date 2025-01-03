@@ -57,7 +57,7 @@ function focusRightArticle() {
 async function showSuggestions() {
     const text = document.querySelector("#fastsearch").value;
     if(text.length>2){
-        document.querySelector(".suggestions").classList.remove(".not-showing");
+        document.querySelector(".suggestions").classList.remove("not-showing");
     }
 }
 

@@ -13,6 +13,10 @@ input[type="text"], form, body{
     padding: 0;
 }
 
+.search-text{
+    width: 85%;
+}
+
 body{
     background-color: #F0F2EF;
     font-family: 'Josefin Sans', sans-serif;
@@ -506,5 +510,18 @@ ul.not-showing.suggestions {
 }
 
 ul.suggestions{
+    position: absolute;
+
+    margin-top: 10px;
+    width: 260px;
+    background-color: orange ;
+    z-index: 3;
+}
+
+@media (min-width: 768px){
+
+    ul.suggestions{
+        width: 310px;
+    }
     
 }

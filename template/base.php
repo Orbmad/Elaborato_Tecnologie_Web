@@ -28,9 +28,8 @@
         <nav class="closed-nav">
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
+                <section class="search-text">
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()"/>
-                    <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="resetText('fastsearch')"/>
-                    <input class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search">
                     <ul class="suggestions not-showing">
                         <li class="product-suggested">
                             <a href="#">
@@ -44,6 +43,9 @@
                             </a>
                         </li>
                     </ul>
+                </section>
+                <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="resetText('fastsearch')"/>
+                <input class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search">
             </form>
 
             <ul class="categories">
