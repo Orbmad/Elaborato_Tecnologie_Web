@@ -420,19 +420,18 @@ article .button-sec{
     
     
     .right-arrow-icon{
-        position: absolute;
-        right: 20%;
-        top:50%;
-        width: 90px;
-        z-index: 2;
+        margin-left: 670px;
     }
     
     .left-arrow-icon{
-        position: absolute;
-        left: 20%;
-        top:50%;
+        margin-right: 670px;
+    }
+
+    .arrow-icon{
+        margin-top: 130px;
         width: 90px;
         z-index: 2;
+        justify-self: center;
     }
 
     li.focused-article:hover{
