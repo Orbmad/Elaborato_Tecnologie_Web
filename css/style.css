@@ -28,13 +28,29 @@ body{
     padding-left: 10px;
 }
 
+.searchbar-icon:hover{
+    transform: scale(1.2);
+}
+
+.searchbar-icon:active{
+    transform: scale(0.9);
+}
+
 .search-button{
     width: 20px;
+}
+
+.search-button:active{
+    opacity: 70%;
 }
 
 .cancel-button{
     width: 15px;
     opacity: 0.5;
+}
+
+.cancel-button:active{
+    opacity: 0.3;
 }
 
 input[type="text"]{
