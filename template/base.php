@@ -7,6 +7,16 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet"> <!-Inserimento font->
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <!-Inserimento javascript->
+        <?php
+            if(isset($templateParams["js"])):
+                foreach($templateParams["js"] as $script):
+            ?>
+                <script src="<?php echo $script; ?>"></script>
+            <?php
+                endforeach;
+            endif;
+        ?>
     </head>
     <body>
         <header>
@@ -71,16 +81,5 @@
             <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect - Flaticon</a>
             <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by deemakdaksina - Flaticon</a>
         </footer>
-
-        <!-Inserimento javascript->
-        <?php
-            if(isset($templateParams["js"])):
-                foreach($templateParams["js"] as $script):
-            ?>
-                <script src="<?php echo $script; ?>"></script>
-            <?php
-                endforeach;
-            endif;
-        ?>
     </body>
 </html>
