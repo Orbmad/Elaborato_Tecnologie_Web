@@ -639,7 +639,7 @@ ul.suggestions >li img{
 
 ul.suggestions >li p{
     display: inline-block;
-    margin: 15px 0px 0px 5px; 
+    margin: 15px 0px 0px 10px; 
     color: #082D0F;
     text-decoration: none;
 }

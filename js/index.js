@@ -6,6 +6,7 @@ function resetText(inputId){
     } else {
         console.error("Input field not found!");
     }
+    showSuggestions();
 }
 
 document.addEventListener("click", function(event) { 
@@ -31,7 +32,7 @@ function focusLeftArticle() {
     leftArticle.classList.add("focused-article");
 
     rightArticle.classList.remove("right");
-    rightArticle.classList.add("left")
+    rightArticle.classList.add("left");
 }
 
 function focusRightArticle() {
@@ -46,7 +47,7 @@ function focusRightArticle() {
     rightArticle.classList.add("focused-article");
 
     leftArticle.classList.remove("left");
-    leftArticle.classList.add("right")
+    leftArticle.classList.add("right");
 }
 
 /**
@@ -58,6 +59,8 @@ async function showSuggestions() {
     const text = document.querySelector("#fastsearch").value;
     if(text.length>2){
         document.querySelector(".suggestions").classList.remove("not-showing");
+    }else{
+        document.querySelector(".suggestions").classList.add("not-showing");
     }
 }
 

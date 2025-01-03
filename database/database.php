@@ -47,5 +47,15 @@ class DatabaseHelper{
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function getSuggestions($n,$text){
+        $text = "%" . $text . "%";
+        $stmt = $this->db->prepare("SELECT nome_prodotto FROM prodotti WHERE Nome LIKE ? ORDER BY RAND() LIMIT ?");
+        $stmt->bind_param('si',$text,$n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>
