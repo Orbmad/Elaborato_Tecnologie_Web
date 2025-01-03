@@ -42,13 +42,11 @@
                     <ul class="suggestions not-showing">
                         <li class="product-suggested">
                             <a href="#">
-                                <img src="#" alt="Product image">
-                                <p>Prodotto 1</p>
+                                <img src="upload/pianta1.jpg" alt="Product image"><p>Prodotto 1</p>
                             </a>
                         </li><li class="product-suggested">
                             <a href="#">
-                                <img src="#" alt="Product image">
-                                <p>Prodotto 1</p>
+                                <img src="upload/pianta.jpg" alt="Product image"><p>Prodotto 1</p>
                             </a>
                         </li>
                     </ul>
