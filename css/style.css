@@ -275,6 +275,13 @@ article{
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.main-articles ul{ 
+    grid-area: 1/1;
 }
 
 
@@ -344,18 +351,18 @@ article .button-sec{
 }
 
 .right-arrow-icon{
-    right: 4px;
+    justify-self: right;
 }
 
 .left-arrow-icon{
-    left: 4px;
+    justify-self: left;
 }
 
 .arrow-icon{
-    position: absolute;
-    width: 40px;
-    top: 60%;
+    width: 50px;
+    margin-top: 200px;
     z-index: 2;
+    grid-area: 1/1;
 }
 
 /* Ingrandire l'icona quando riceve il focus */
@@ -438,25 +445,31 @@ article .button-sec{
     article > .article-body{
         width: 40%;
         height: 100%;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: column;
         text-align: left;
         vertical-align: top;
     }
+
+    article > .article-body h2{
+       text-align: left;
+       padding-left: 15px;
+    }
+    
     
     .right-arrow-icon{
-        position: absolute;
-        right: 23%;
-        top:50%;
-        width: 90px;
-        z-index: 2;
+        margin-left: 670px;
     }
     
     .left-arrow-icon{
-        position: absolute;
-        left: 23%;
-        top:50%;
+        margin-right: 670px;
+    }
+
+    .arrow-icon{
+        margin-top: 130px;
         width: 90px;
         z-index: 2;
+        justify-self: center;
     }
 
     li.focused-article:hover{
@@ -541,7 +554,7 @@ main > article > section > p{
 }
 /*regole per lo stile della pagina per il singolo prodotto fine*/
 
-/*Regole per la visualizzazione dei suggerimenti di ricerca*/
+/*INIZIO Regole per la visualizzazione dei suggerimenti di ricerca*/
 ul.not-showing.suggestions {
     display: none;
     visibility: hidden;
@@ -549,12 +562,41 @@ ul.not-showing.suggestions {
 
 ul.suggestions{
     position: absolute;
-
     margin-top: 10px;
     width: 260px;
-    background-color: orange ;
+    background-color: #F0F2EF ;
+    border: 1px solid #082D0F;
     z-index: 3;
 }
+
+ul.suggestions >li{
+    margin: 0px;
+    height: 40px;
+    background-color: #F0F2EF ;
+    border: 1px solid #082D0F;
+    z-index: 3;
+}
+
+ul.suggestions >li img{
+    height: 36px;
+    width: 36px;
+    display: inline-block;
+    padding: 2px;
+}
+
+ul.suggestions >li p{
+    display: inline-block;
+    margin: 15px 0px 0px 5px; 
+    color: #082D0F;
+    text-decoration: none;
+}
+
+ul.suggestions >li a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
 
 @media (min-width: 768px){
 
@@ -563,3 +605,5 @@ ul.suggestions{
     }
     
 }
+
+/*FINE Regole per la visualizzazione dei suggerimenti di ricerca*/
