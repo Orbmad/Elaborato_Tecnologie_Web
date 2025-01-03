@@ -237,6 +237,13 @@ article{
     margin-top: 15px;
     margin-left: 10px;
     margin-right: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.main-articles ul{ 
+    grid-area: 1/1;
 }
 
 
@@ -306,18 +313,18 @@ article .button-sec{
 }
 
 .right-arrow-icon{
-    right: 4px;
+    justify-self: right;
 }
 
 .left-arrow-icon{
-    left: 4px;
+    justify-self: left;
 }
 
 .arrow-icon{
-    position: absolute;
-    width: 40px;
-    top: 60%;
+    width: 50px;
+    margin-top: 200px;
     z-index: 2;
+    grid-area: 1/1;
 }
 
 /* Ingrandire l'icona quando riceve il focus */
