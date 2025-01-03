@@ -8,6 +8,8 @@ ul{
     list-style: none;
 }
 
+/* INIZIO NAV VERSIONE MOBILE */
+
 input[type="text"], form, body{
     margin: 0;
     padding: 0;
@@ -77,16 +79,40 @@ nav{
     white-space: nowrap;
 }
 
-nav .menu-icon{
+nav button.menu-icon{
+    padding: 0%;
+    border: none;
     width: 65px;
     margin-left: auto;
+    background-color: #082D0F;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav button.menu-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav button.menu-icon:active{
+    transition: all 0.03s ease;
+    padding: 6px;
 }
 
 nav .categories{
     display: none;
 }
 
+/* FINE NAV VERSIONE MOBILE */
+
 @media (min-width: 768px){
+
+    /* INIZIO NAV VERSIONE DESKTOP */
+
     form{
         width: 20%;
     }
@@ -99,41 +125,51 @@ nav .categories{
         display: flex;
     }
 
-    nav .categories{
-        display: unset;
-    }
-
     nav > ul.categories{
+        height: 100%;
+        align-items: center;
         list-style: none;
         display: flex;
-        padding-left: 25px;
-        margin-left: auto;
-        margin-right: auto;
+        margin-left: 5px;
 
         flex-shrink: 1;
-        overflow: hidden;
+        overflow: auto;
     }
 
     nav > ul.categories > li{
-        overflow: auto;
-        display: inline-block;
-        padding-right: 20px;
+        height: 96%;
+        display: flex;
+        padding-right: 5px;
+        padding-left: 5px;
+
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
     }
 
     nav > ul.categories > li > a{
-        display: block;
+        height: 100%;
+        display: flex;
         text-decoration: none;
         color: #F0F2EF;
         font-family: 'Josefin', sans-serif;
         font-size: 16px;
         transition: all 0.3s ease;
+
+        padding-left: 3px;
+        padding-right: 3px;
+
+        align-items: center;
+        vertical-align: center;
     }
 
     nav > ul.categories > li > a:hover{
         background-color: #F0F2EF;
         color: #082D0F;
-        border-radius: 3px;
     }
+
+    /* FINE NAV VERSIONE DESKTOP */
+
 }
 
 header{
