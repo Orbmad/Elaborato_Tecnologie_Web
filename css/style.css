@@ -498,3 +498,13 @@ main > article > section > p{
     /*inserimento del font-family*/
 }
 /*regole per lo stile della pagina per il singolo prodotto fine*/
+
+/*Regole per la visualizzazione dei suggerimenti di ricerca*/
+ul.not-showing.suggestions {
+    display: none;
+    visibility: hidden;
+}
+
+ul.suggestions{
+    
+}

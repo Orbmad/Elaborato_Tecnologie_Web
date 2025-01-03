@@ -49,6 +49,18 @@ function focusRightArticle() {
     leftArticle.classList.add("right")
 }
 
+/**
+ * Function used to show suggestions for the searchbar while the user is typing.
+ * The suggestions list is updated at each letter typed by the user, starting after
+ * the first two letters are typed.
+ */
+async function showSuggestions() {
+    const text = document.querySelector("#fastsearch").value;
+    if(text.length>2){
+        document.querySelector(".suggestions").classList.remove(".not-showing");
+    }
+}
+
 
 function addQuantity(maxValue){
     const plus = document.querySelector("main > article > div.wrapper > span.plus");
