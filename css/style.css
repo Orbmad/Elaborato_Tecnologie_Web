@@ -79,14 +79,28 @@ nav{
     white-space: nowrap;
 }
 
-nav .nav .menu-icon{
+nav button.menu-icon{
+    padding: 0%;
+    border: none;
     width: 65px;
     margin-left: auto;
+    background-color: #082D0F;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav .nav .menu-icon:active{
-    transition: all 0.3s ease;
-    width: 55px;
+nav button.menu-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav button.menu-icon:active{
+    transition: all 0.03s ease;
+    padding: 6px;
 }
 
 nav .categories{

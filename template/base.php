@@ -65,8 +65,12 @@
                 <?php endforeach; ?>
             </ul>
             
-            <img class="menu-icon" src="upload/menu-icon.png" alt="Menu icon">
+            <button class="menu-icon">
+                <img src="upload/menu-icon.png" alt="Menu icon">
+            </button>        
+
         </nav>
+
         <main>
         <?php
         if(isset($templateParams["slideShow"])){
