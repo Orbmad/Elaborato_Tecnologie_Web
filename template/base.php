@@ -34,7 +34,7 @@
                 </li>
             </ul>
         </header>
-        <nav class="nav">
+        <nav class="main-nav">
             <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                 <section class="search-text">
@@ -60,7 +60,7 @@
             <ul class="categories">
                 <?php foreach($templateParams["categorie"] as $categoria): ?>
                     <li>
-                        <a href=# onclick=""><?php echo $categoria["nome_categoria"]; ?></a>
+                        <button class="category-button" onclick=""><?php echo $categoria["nome_categoria"]; ?></button>
                     </li>
                 <?php endforeach; ?>
             </ul>

@@ -147,11 +147,13 @@ nav .categories{
         flex-grow: 1;
     }
 
-    nav > ul.categories > li > a{
+    nav > ul.categories > li > .category-button{
         height: 100%;
+        border: none;
         display: flex;
         text-decoration: none;
         color: #F0F2EF;
+        background-color: #082D0F
         font-family: 'Josefin', sans-serif;
         font-size: 16px;
         transition: all 0.3s ease;
@@ -163,7 +165,7 @@ nav .categories{
         vertical-align: center;
     }
 
-    nav > ul.categories > li > a:hover{
+    nav > ul.categories > li > .category-button:hover{
         background-color: #F0F2EF;
         color: #082D0F;
     }
