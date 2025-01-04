@@ -11,7 +11,7 @@ $templateParams["family"] = $dbh->getProductsAttributeValues("famiglia");
 $templateParams["genre"] = $dbh->getProductsAttributeValues("genere");
 $templateParams["spiece"] = $dbh->getProductsAttributeValues("specie");
 $templateParams["dimensions"] = $dbh->getProductsAttributeValues("dimensioni");
-$templateParams["perfume"] = $dbh->getProductsAttributeValues("perfume");
+$templateParams["perfume"] = $dbh->getProductsAttributeValues("profumo");
 $templateParams["leafType"] = $dbh->getProductsAttributeValues("tipologia_foglia");
 $templateParams["leafColors"] = $dbh->getProductsAttributeValues("colore_foglia");
 

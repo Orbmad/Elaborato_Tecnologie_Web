@@ -69,8 +69,7 @@ class DatabaseHelper{
     }
 
     public function getProductsAttributeValues($attribute_name){
-        $stmt = $this->db->prepare("SELECT ? as attributo FROM prodotti");
-        $stmt->bind_param('s',$attribute_name);
+        $stmt = $this->db->prepare("SELECT DISTINCT `$attribute_name` as attributo FROM prodotti");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
