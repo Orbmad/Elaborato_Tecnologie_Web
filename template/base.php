@@ -66,6 +66,13 @@
         }
         ?>
         </main>
+        <aside>
+            <?php
+            if(isset($templateParams["asideContent"])){
+                require($templateParams["asideContent"]);
+            }
+            ?>
+        </aside>
 
         <footer>
             <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by O.moonstd - Flaticon</a>
