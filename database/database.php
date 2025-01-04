@@ -48,13 +48,16 @@ class DatabaseHelper{
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Returns a specified n number of articles names from the tb cotaing in their name a string 
+     * specified as the text paramete
+     */
     public function getSuggestions($n,$text){
         $text = "%" . $text . "%";
-        $stmt = $this->db->prepare("SELECT nome_prodotto FROM prodotti WHERE Nome LIKE ? ORDER BY RAND() LIMIT ?");
+        $stmt = $this->db->prepare("SELECT nome_prodotto FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND() LIMIT ?");
         $stmt->bind_param('si',$text,$n);
         $stmt->execute();
         $result = $stmt->get_result();
-
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

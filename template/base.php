@@ -39,17 +39,7 @@
                 <label for="fastsearch">Ricerca rapida</label>
                 <section class="search-text">
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()"/>
-                    <ul class="suggestions not-showing">
-                        <li class="product-suggested">
-                            <a href="#">
-                                <img src="upload/pianta1.jpg" alt="Product image"><p>Prodotto 1</p>
-                            </a>
-                        </li><li class="product-suggested">
-                            <a href="#">
-                                <img src="upload/pianta.jpg" alt="Product image"><p>Prodotto 1</p>
-                            </a>
-                        </li>
-                    </ul>
+                    <ul class="suggestions not-showing"></ul>
                 </section>
                 <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="resetText('fastsearch')"/>
                 <input class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search">
