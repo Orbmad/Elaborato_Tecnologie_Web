@@ -48,6 +48,8 @@ function focusRightArticle() {
 
     leftArticle.classList.remove("left");
     leftArticle.classList.add("right");
+
+    resetSlidesTimer();
 }
 
 /**
@@ -81,8 +83,30 @@ async function showSuggestions() {
     }else{
         document.querySelector(".suggestions").classList.add("not-showing");
     }
+
+    resetSlidesTimer();
 }
 
+let interval; //Interval variable
+
+/**
+ * Resets the slideshow auto-scroll timer
+ */
+function resetSlidesTimer() {
+    if (interval) {
+        clearInterval(interval);
+    }
+    interval = setInterval(focusRightArticle, 10000);
+}
+
+/**
+ * Starts the slideshow autoscroll
+ */
+function startRepeatingFunction() {
+    resetSlidesTimer();
+}
+
+startRepeatingFunction();
 /**
  * Creates suggestions as list items from a json containing their names
  */
