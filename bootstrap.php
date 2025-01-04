@@ -3,6 +3,9 @@ session_start();
 require_once("utils/functions.php");
 require_once("database/database.php");
 
+//JS scripts
+array_push($templateParams["js"], "js/nav.js");
+
 /*Provvisorio per i test*/
 require_once("dummyTemplateParams.php");
 
