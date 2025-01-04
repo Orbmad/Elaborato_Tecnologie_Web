@@ -153,6 +153,10 @@ nav.main-nav.closed-nav button.menu-icon{
     justify-content: center;
 }
 
+nav.main-nav.closed-nav button.menu-icon img.close-icon {
+    display: none;
+}
+
 nav.main-nav.closed-nav button.menu-icon img{
     width: 100%;
     height: 100%;
@@ -167,6 +171,28 @@ nav.main-nav.closed-nav button.menu-icon:active{
 nav.main-nav.closed-nav .categories{
     display: none;
 }
+
+nav.main-nav.closed-nav > ul.categories > li > ul.subcategories {
+    display: none;
+}
+
+
+/* Inizio toggle menu versione mobile 
+nav.main-nav.opened-nav.mobile-nav {
+    height: auto;
+}
+
+nav.main-nav.opened-nav.mobile-nav form{
+    display: none;
+}
+
+nav.main-nav.opened-nav.mobile-nav .categories{
+    display: none;
+}
+*/
+
+
+/* Fine toggle menu versione mobile */
 
 /*Fine menu categorie versione mobile*/
 /*FINE NAV MOBILE*/

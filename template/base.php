@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="it">
     <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.75" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title><?php echo $templateParams["titolo"]; ?></title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,13 +34,23 @@
                 </li>
             </ul>
         </header>
-        
-        <nav class="main-nav closed-nav">
-            <form action="search.php" method="GET">
+
+        <nav class="main-nav">
+            <form action="#" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                 <section class="search-text">
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()"/>
-                    <ul class="suggestions not-showing"></ul>
+                    <ul class="suggestions not-showing">
+                        <li class="product-suggested">
+                            <a href="#">
+                                <img src="upload/pianta1.jpg" alt="Product image"><p>Prodotto 1</p>
+                            </a>
+                        </li><li class="product-suggested">
+                            <a href="#">
+                                <img src="upload/pianta.jpg" alt="Product image"><p>Prodotto 1</p>
+                            </a>
+                        </li>
+                    </ul>
                 </section>
                 <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button" onclick="resetText('fastsearch')"/>
                 <input class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search">
@@ -53,7 +63,6 @@
                         <ul class="subcategories <?php echo $categoria["nome_categoria"]; ?>">
                             <?php foreach($categoria["sottocategorie"] as $sottocategoria): ?>
                                 <li>
-                                <!--onclick deve contenere una funzione che utilizza il nome della sottocategoria-->
                                     <button class="subcategory-button" onclick=""><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
                                 </li>
                             <?php endforeach; ?>
@@ -62,8 +71,10 @@
                 <?php endforeach; ?>
             </ul>
             
-            <button class="menu-icon">
-                <img src="upload/menu-icon.png" alt="Menu icon">
+            <!--MENU ICON-->
+            <button class="menu-icon" onclick="mobileToggleMenu()">
+                <img class="open-icon" src="upload/menu-icon.png" alt="Menu icon">
+                <img class="close-icon" src="upload/close-menu-icon.png" alt="Close menu"/>
             </button>        
 
         </nav>

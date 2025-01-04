@@ -3,13 +3,7 @@ const menuIcon = document.querySelector("nav button.menu-icon");
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    /*Quando viene cliccato menu-icon il nav ottiene la classe
-    'mobile-open', se questa e' gia' presente viene rimossa.*/
-    menuIcon.addEventListener("click", function() {
-        nav.classList.remove("closed-nav");
-        nav.classList.add("opened-nav");
-        nav.classList.toggle("mobile-open");
-    });
+    
 
     /*Quando il nav e' 'mobile-open' e la finestra viene ingrandita
     il nav perde tale proprieta' */
@@ -21,6 +15,21 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 })
+
+/*Quando viene cliccato menu-icon il nav ottiene la classe
+    'mobile-open', se questa e' gia' presente viene rimossa.*/
+function mobileToggleMenu() {
+    //A ogni click la classe 'opened-nav' fa switch con la classe 'closed-nav'
+    if (nav.classList.contains("closed-nav")) {
+        nav.classList.remove("closed-nav");
+        nav.classList.add("opened-nav");
+    } else if (nav.classList.contains("opened-nav")) {
+        nav.classList.remove("opened-nav");
+        nav.classList.add("closed-nav");
+    }
+
+    nav.classList.toggle("mobile-open");
+}
 
 /*
 function openSubcategories(categoryName) {
