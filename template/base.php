@@ -34,7 +34,8 @@
                 </li>
             </ul>
         </header>
-        <nav class="main-nav">
+        
+        <nav class="main-nav closed-nav">
             <form action="search.php" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                 <section class="search-text">
@@ -46,9 +47,17 @@
             </form>
 
             <ul class="categories">
-                <?php foreach($templateParams["categorie"] as $categoria): ?>
+                <?php foreach($categories as $categoria): ?>
                     <li>
                         <button class="category-button" onclick=""><?php echo $categoria["nome_categoria"]; ?></button>
+                        <ul class="subcategories">
+                            <?php foreach($categoria["sottocategorie"] as $sottocategoria): ?>
+                                <li>
+                                <!--onclick deve contenere una funzione che utilizza il nome della sottocategoria-->
+                                    <button class="subcategory-button" onclick=""><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
                     </li>
                 <?php endforeach; ?>
             </ul>

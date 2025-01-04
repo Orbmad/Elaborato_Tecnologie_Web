@@ -139,7 +139,7 @@ ul.suggestions >li a{
 /*FINE Regole per la visualizzazione dei suggerimenti di ricerca Mobile*/
 
 /*Inizio menu categorie versione mobile*/
-nav.main-nav button.menu-icon{
+nav.main-nav.closed-nav button.menu-icon{
     padding: 0%;
     border: none;
     width: 65px;
@@ -152,18 +152,18 @@ nav.main-nav button.menu-icon{
     justify-content: center;
 }
 
-nav.main-nav button.menu-icon img{
+nav.main-nav.closed-nav button.menu-icon img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-nav.main-nav button.menu-icon:active{
+nav.main-nav.closed-nav button.menu-icon:active{
     transition: all 0.03s ease;
     padding: 6px;
 }
 
-nav.main-nav .categories{
+nav.main-nav.closed-nav .categories{
     display: none;
 }
 
@@ -178,7 +178,7 @@ nav.main-nav .categories{
     }
 
     /*Inizio barra di ricerca desktop*/
-    nav.main-nav form{
+    nav.main-nav.closed-nav form{
         width: 20%;
     }
 
@@ -191,11 +191,11 @@ nav.main-nav .categories{
     /*Fine regole lista suggerimenti desktop*/
 
     /*Inizio menu categorie desktop*/
-    nav.main-nav button.menu-icon{
+    nav.main-nav.closed-nav button.menu-icon{
         display: none;
     }
 
-    nav.main-nav > ul.categories{
+    nav.main-nav.closed-nav ul.categories{
         height: 100%;
         align-items: center;
         list-style: none;
@@ -206,7 +206,7 @@ nav.main-nav .categories{
         overflow: auto;
     }
 
-    nav.main-nav > ul.categories > li{
+    nav.main-nav.closed-nav ul.categories > li{
         height: 96%;
         display: flex;
         padding-right: 5px;
@@ -217,7 +217,7 @@ nav.main-nav .categories{
         flex-grow: 1;
     }
 
-    nav.main-nav > ul.categories > li button.category-button{
+    nav.main-nav.closed-nav > ul.categories > li button.category-button{
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
@@ -226,9 +226,13 @@ nav.main-nav .categories{
         height: 100%;
     }
 
-    nav.main-nav > ul.categories > li button.category-button:hover{
+    nav.main-nav.closed-nav > ul.categories > li button.category-button:hover{
         background-color: #F0F2EF;
         color: #082D0F;
+    }
+
+    nav.main-nav.closed-nav > ul.categories > li > ul.subcategories{
+        display: none;
     }
 
     /*Fine menu categorie desktop*/
