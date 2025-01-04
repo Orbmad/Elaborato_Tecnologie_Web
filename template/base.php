@@ -35,7 +35,7 @@
             </ul>
         </header>
         <nav class="main-nav">
-            <form action="#" method="GET">
+            <form action="search.php" method="GET">
                 <label for="fastsearch">Ricerca rapida</label>
                 <section class="search-text">
                     <input type="text" id="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()"/>
