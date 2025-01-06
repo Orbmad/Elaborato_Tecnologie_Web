@@ -59,8 +59,8 @@
             <ul class="categories">
                 <?php foreach($categories as $categoria): ?>
                     <li>
-                        <button class="category-button" onclick=""><?php echo $categoria["nome_categoria"]; ?></button>
-                        <ul class="subcategories">
+                        <button class="category-button" onclick="openSubcategories('<?php echo $categoria['nome_categoria']; ?>')"><?php echo $categoria["nome_categoria"]; ?></button>
+                        <ul class="subcategories <?php echo $categoria["nome_categoria"]; ?>">
                             <?php foreach($categoria["sottocategorie"] as $sottocategoria): ?>
                                 <li>
                                     <!--onclick deve contenere una funzione che utilizza il nome della sottocategoria-->

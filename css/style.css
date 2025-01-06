@@ -1,8 +1,9 @@
 /*Inizio regole di base della pagina*/
 /*Reset rule*/
-body, header, ul, li, a, h1,input[type="text"], form{
+body, nav, header, ul, li, a, h1,input[type="text"], form{
     padding: 0%;
     margin: 0%;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 ul{
@@ -11,7 +12,6 @@ ul{
 
 body{
     background-color: #F0F2EF;
-    font-family: 'Josefin Sans', sans-serif;
 }
 
 label{
@@ -179,12 +179,59 @@ nav.main-nav.closed-nav > ul.categories > li > ul.subcategories {
 
 /* Inizio toggle menu versione mobile */
 
-nav.main-nav.opened-nav form{
+nav.main-nav.opened-nav {
+    height: auto;
+    display: flex;
+    flex-direction: column-reverse; /*Soluzione temporanea (forse)*/
+    padding-bottom: 30px;
+}
+
+nav.main-nav.opened-nav form {
     display: none;
 }
 
 nav.main-nav.opened-nav button.menu-icon img.open-icon {
     display: none;
+}
+
+nav.main-nav.opened-nav ul.categories {
+    margin-left: 20px;
+    margin-right: auto;
+}
+
+nav.main-nav.opened-nav ul.categories {
+    display: flex;
+    flex-direction: column;
+}
+
+nav.main-nav.opened-nav ul.categories li button.category-button {
+    background-color: #082D0F;
+    color: #F0F2EF;
+    border: none;
+
+    padding: 4px;
+    font-size: 22px;
+}
+
+nav.main-nav.opened-nav ul.categories li button.subcategory-button {
+    background-color: #082D0F;
+    color: #F0F2EF;
+    border: none;
+
+    padding: 3px;
+    font-size: 20px;
+}
+
+nav.main-nav.opened-nav ul.categories ul.subcategories { /*Prima dell'apertura del sotto menu*/
+    display: none;
+}
+
+nav.main-nav.opened-nav ul.categories ul.subcategories.opened-subcategories{
+    display: inline;
+}
+
+nav.main-nav.opened-nav ul.categories button.subcategory-button.opened-subcategories {
+    padding-left: 30px;
 }
 
 nav.main-nav.opened-nav button.menu-icon {
@@ -203,7 +250,7 @@ nav.main-nav.opened-nav button.menu-icon:active{
 }
 
 nav.main-nav.opened-nav ul.categories{
-    display: none;
+    display: list-item;
 }
 
 

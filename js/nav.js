@@ -1,5 +1,5 @@
 const nav = document.querySelector("nav.main-nav");
-const menuIcon = document.querySelector("nav button.menu-icon");
+const menuIcon = document.querySelector("nav.main-nav button.menu-icon");
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -33,14 +33,14 @@ function mobileToggleMenu() {
     nav.classList.toggle("mobile-open");
 }
 
-/*
+
 function openSubcategories(categoryName) {
-    const subcategoriesList = document.querySelector("nav.main-nav .categories ul.subcategories.${categoryName}")
+    const subcategoryList = document.querySelector("nav.main-nav ul.subcategories." + categoryName);
+    const subcategoryButtons = document.querySelectorAll("nav.main-nav ul.subcategories." + categoryName + " button.subcategory-button");
 
-    nav.classList.remove("closed-nav");
-    nav.classList.add("opened-nav");
-    nav.classList.toggle("desktop-open");
-
-
+    subcategoryList.classList.toggle("opened-subcategories");
+    
+    subcategoryButtons.forEach(function (item) {
+        item.classList.toggle("opened-subcategories");
+    })
 }
-*/
