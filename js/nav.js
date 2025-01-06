@@ -20,13 +20,15 @@ document.addEventListener("DOMContentLoaded", function() {
     'mobile-open', se questa e' gia' presente viene rimossa.*/
 function mobileToggleMenu() {
     //A ogni click la classe 'opened-nav' fa switch con la classe 'closed-nav'
-    if (nav.classList.contains("closed-nav")) {
-        nav.classList.remove("closed-nav");
-        nav.classList.add("opened-nav");
-    } else if (nav.classList.contains("opened-nav")) {
-        nav.classList.remove("opened-nav");
-        nav.classList.add("closed-nav");
-    }
+    setTimeout(function () {
+        if (nav.classList.contains("closed-nav")) {
+            nav.classList.remove("closed-nav");
+            nav.classList.add("opened-nav");
+        } else if (nav.classList.contains("opened-nav")) {
+            nav.classList.remove("opened-nav");
+            nav.classList.add("closed-nav");
+        }
+    }, 150);
 
     nav.classList.toggle("mobile-open");
 }

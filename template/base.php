@@ -74,6 +74,8 @@
 
             
             <!--MENU ICON-->
+            <script src="./js/nav.js"></script><!--Temporaneo perche non funziona ???????-->
+
             <button class="menu-icon" onclick="mobileToggleMenu()">
                 <img class="open-icon" src="upload/menu-icon.png" alt="Menu icon">
                 <img class="close-icon" src="upload/close-menu-icon.png" alt="Close menu"/>

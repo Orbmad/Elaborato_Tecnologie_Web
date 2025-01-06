@@ -140,8 +140,8 @@ ul.suggestions >li a{
 /*FINE Regole per la visualizzazione dei suggerimenti di ricerca Mobile*/
 
 /*Inizio menu categorie versione mobile*/
-nav.main-nav.closed-nav button.menu-icon{
-    padding: 0%;
+nav.main-nav button.menu-icon{
+    padding: 0;
     border: none;
     width: 65px;
     margin-left: auto;
@@ -157,18 +157,18 @@ nav.main-nav.closed-nav button.menu-icon img.close-icon {
     display: none;
 }
 
-nav.main-nav.closed-nav button.menu-icon img{
+nav button.menu-icon img{
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
 nav.main-nav.closed-nav button.menu-icon:active{
-    transition: all 0.03s ease;
-    padding: 6px;
+    transition: all 0.15s ease;
+    padding: 10px;
 }
 
-nav.main-nav.closed-nav .categories{
+nav.main-nav.closed-nav ul.categories{
     display: none;
 }
 
@@ -177,19 +177,34 @@ nav.main-nav.closed-nav > ul.categories > li > ul.subcategories {
 }
 
 
-/* Inizio toggle menu versione mobile 
-nav.main-nav.opened-nav.mobile-nav {
-    height: auto;
-}
+/* Inizio toggle menu versione mobile */
 
-nav.main-nav.opened-nav.mobile-nav form{
+nav.main-nav.opened-nav form{
     display: none;
 }
 
-nav.main-nav.opened-nav.mobile-nav .categories{
+nav.main-nav.opened-nav button.menu-icon img.open-icon {
     display: none;
 }
-*/
+
+nav.main-nav.opened-nav button.menu-icon {
+    padding: 15px;
+}
+
+nav.main-nav.opened-nav button.menu-icon img.close-icon {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+nav.main-nav.opened-nav button.menu-icon:active{
+    transition: all 0.15s ease;
+    padding: 22px;
+}
+
+nav.main-nav.opened-nav ul.categories{
+    display: none;
+}
 
 
 /* Fine toggle menu versione mobile */
