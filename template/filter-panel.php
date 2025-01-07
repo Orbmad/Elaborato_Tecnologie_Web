@@ -32,10 +32,20 @@
                 <h3>Categoria</h3>
                 <ul>
                     <?php foreach ($templateParams["categorie"] as $category) {
-                        $category = $category["nome_categoria"];
+                        $nomecategoria = $category["nome_categoria"];
+                        $sottocategorie = $category["sottocategorie"];
                         echo "<li>";
-                        echo '<input type="checkbox" id="' . $category . '" name="' . $category . '" value="' . $category . '">';
-                        echo '<label for="' . $category . '">' . $category . '</label>';
+                        echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" >';
+                        echo '<label for="' . $nomecategoria . '">' . $nomecategoria . '</label>';
+                        echo "<ul class='hidden " .  $nomecategoria . "-sub'>";
+                        foreach ($sottocategorie as $sottocategoria) {
+                            $nomesottocategoria = $sottocategoria["nome_sottocategoria"];
+                            echo "<li>";
+                            echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="' . $nomesottocategoria . '" value="' . $nomesottocategoria . '">';
+                            echo '<label for="' . $nomesottocategoria . '">' . $nomesottocategoria . '</label>';
+                            echo "</li>";
+                        }
+                        echo "</ul>";
                         echo "</li>";
                     } ?>
                 </ul>

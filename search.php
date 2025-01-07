@@ -14,7 +14,8 @@ $templateParams["dimensioni"] = $dbh->getProductsAttributeValues("dimensioni");
 $templateParams["profumo"] = $dbh->getProductsAttributeValues("profumo");
 $templateParams["tipo di foglia"] = $dbh->getProductsAttributeValues("tipologia_foglia");
 $templateParams["colore delle foglie"] = $dbh->getProductsAttributeValues("colore_foglia");
-$templateParams["categoria"] = $dbh->getCategories();
+$templateParams["categorie"] = $categories;
+// $templateParams["categorie"] = $dbh->getCategories();
 
 require 'template/base.php';
 ?>

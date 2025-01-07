@@ -583,17 +583,33 @@ aside > form > ul > li.filter-checkbox input[type="checkbox"]{
     margin-right: 3px;
 }
 
-aside > form > ul > li:nth-of-type(2) input[type="checkbox"]{ 
+aside > form > ul > li:nth-of-type(2) > ul > li > input[type="checkbox"]{ 
     accent-color: #082D0F;
 }
 
-aside > form > ul > li:nth-of-type(2) label{ 
+aside > form > ul > li:nth-of-type(2) > ul > li > label{ 
     text-transform: uppercase;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 aside > form > ul > li {
     margin-left: 10px;
 }
+
+aside > form > ul > li:nth-of-type(2) > ul > li > ul  label{
+    text-transform: capitalize;
+}
+
+aside > form > ul > li:nth-of-type(2) > ul > li > ul  input[type=checkbox]{
+    margin-left: 20px;
+}
+
+aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden{
+    display: none;
+    visibility: hidden;
+}
+
 /*FINE SEARCH ASIDE MOBILE*/
 
 

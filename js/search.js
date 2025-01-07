@@ -36,3 +36,22 @@ moreFiltersButton.addEventListener('click', function() {
     });
 })
 
+const categoryOptions = document.querySelectorAll('.category-selection');  
+categoryOptions.forEach(function(categoryOption) {
+    categoryOption.addEventListener('click', function() {
+        const categorySelected = categoryOption.id;
+        const subClass = "." + categorySelected + "-sub";
+        const subCategoriesList=document.querySelector(subClass);
+        subCategoriesList.classList.toggle("hidden");
+        if (subCategoriesList.classList.contains("hidden")) {
+            document.querySelectorAll(`${subClass} > li > input`).forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        } else {
+            document.querySelectorAll(`${subClass} > li > input`).forEach(function(checkbox) {
+                checkbox.checked = true;
+            });
+        }
+    });
+});
+
