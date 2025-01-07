@@ -34,10 +34,10 @@
     </header>
 
     <nav class="main-nav closed-nav">
-        <form action="#" method="GET">
+        <form action="search.php" method="GET">
             <label for="fastsearch">Ricerca rapida</label>
             <section class="search-text">
-                <input type="text" id="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" />
+                <input type="text" id="fastsearch" name="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" />
                 <ul class="suggestions not-showing">
                     <li class="product-suggested">
                         <a href="#">
@@ -96,6 +96,12 @@
         <?php
         if (isset($templateParams["slideShow"])) {
             require($templateParams["slideShow"]);
+        }
+        ?>
+        <?php
+        var_dump($templateParams["searchResults"]);
+        if (isset($templateParams["searchResults"])) {
+            require($templateParams["searchResults"]);
         }
         ?>
     </main>

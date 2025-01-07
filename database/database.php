@@ -74,5 +74,14 @@ class DatabaseHelper{
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    public function searchProductByName($name){
+        $text = "%" . $name . "%";
+        $stmt = $this->db->prepare("SELECT nome_prodotto FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
+        $stmt->bind_param('s',$name);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

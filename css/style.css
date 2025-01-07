@@ -830,6 +830,7 @@ main > article > section > p{
         justify-content: center;
         height: 350px;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     section.main-articles > ul > li.focused-article  img{
