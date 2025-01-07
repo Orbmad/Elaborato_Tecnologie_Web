@@ -111,22 +111,61 @@
     ?>
 
     <footer>
-        <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by
-            O.moonstd - Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Taufik -
-            Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect -
-            Flaticon</a>
-        <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by deemakdaksina -
-            Flaticon</a>
+
+        <div class="contacts">
+            <p>Contatti</p>
+            <ul>
+                <li>
+                    <img src="./upload/email.png" alt="email icon">
+                    <span>plantatio@gmail.com</span>
+                </li>
+                <li>
+                    <img src="./upload/facebook.png" alt="facebook icon">
+                    <span>Facebook</span>
+                </li>
+                <li>
+                    <img src="./upload/instagram.png" alt="instagram icon">
+                    <span>Instagram</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="credits">
+            <p>Crediti</p>
+            <ul>
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by
+                        O.moonstd - Flaticon</a>
+                </li>
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/search" title="search icons">Search icons created by Taufik -
+                        Flaticon</a>
+                </li>
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/close" title="close icons">Close icons created by Pixel perfect -
+                        Flaticon</a>
+                </li>
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/next" title="next icons">Next icons created by deemakdaksina -
+                        Flaticon</a>
+                </li>
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/arrow" title="arrow icons">Arrow icons created by Freepik - Flaticon</a>
+                </li>
+                <li>
+                    <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by IYAHICON - Flaticon</a>
+                </li>
+            </ul>
+        </div>
+
     </footer>
     <!-Inserimento javascript->
         <?php
         if (isset($templateParams["js"])):
             foreach ($templateParams["js"] as $script):
-                ?>
+        ?>
                 <script src="<?php echo $script; ?>"></script>
-                <?php
+        <?php
             endforeach;
         endif;
         ?>
