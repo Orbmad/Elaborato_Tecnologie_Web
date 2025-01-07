@@ -141,7 +141,6 @@ ul.suggestions >li a{
 
 /*Inizio menu categorie versione mobile*/
 nav.main-nav button.menu-icon{
-    padding: 0;
     border: none;
     width: 65px;
     margin-left: auto;
@@ -352,7 +351,7 @@ nav.main-nav.opened-nav ul.categories{
     /*Inizio nav aperto desktop*/
 
     nav.main-nav.opened-subcategories {
-        height: auto;
+        height: 75px;
     }
 
     nav.main-nav.opened-subcategories ul.categories {
@@ -360,8 +359,25 @@ nav.main-nav.opened-nav ul.categories{
     }
 
     nav.main-nav.opened-subcategories ul.categories button.category-button {
-        margin-top: 40%;
-        margin-bottom: 35px;
+        background-color: #082D0F;
+        color: #F0F2EF;
+        border: none;
+        font-size: 18px;
+
+        padding: 0%;
+        height: 73px;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories ul.subcategories { /*Posizionamento del submenu*/
+        background-color: #082D0F;
+        border: 1px solid #F0F2EF;
+        border-top: none;
+        width: inherit;
+        padding: 12px;
+
+        position: absolute;
+        margin-top: 191px;
+        z-index: 3;
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button {

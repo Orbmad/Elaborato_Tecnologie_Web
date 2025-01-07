@@ -1,5 +1,4 @@
 const nav = document.querySelector("nav.main-nav");
-const menuIcon = document.querySelector("nav.main-nav button.menu-icon");
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -8,10 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
     /*Quando il nav e' 'mobile-open' e la finestra viene ingrandita
     il nav perde tale proprieta' */
     window.addEventListener("resize", function () {
-        if (window.innerWidth > 768) {
-            nav.classList.remove("mobile-open");
-        } else {
-            nav.classList.remove("desktop-open");
+        if (window.innerWidth > 768 && nav.classList.contains("opened-nav")) {
+            nav.classList.remove("opened-nav");
+            nav.classList.add("closed-nav");
         }
     });
 })
@@ -29,41 +27,46 @@ function mobileToggleMenu() {
             nav.classList.add("closed-nav");
         }
     }, 150);
-
-    nav.classList.toggle("mobile-open");
 }
 
 
 function openSubcategories(categoryName) {
+    const AllSubcategoryList = document.querySelectorAll("nav.main-nav ul.subcategories");
     const subcategoryList = document.querySelector("nav.main-nav ul.subcategories." + categoryName);
-    const allSubcategoryLists = document.querySelectorAll("nav.main-nav ul.subcategories");
-    const subcategoryButtons = document.querySelectorAll("nav.main-nav ul.subcategories." + categoryName + " button.subcategory-button");
-    const allSubcategoryButtons = document.querySelectorAll("nav.main-nav ul.subcategories button.subcategory-button");
+
     const menuArrowSide = document.querySelector("nav.main-nav img.toggleArrow.side." + categoryName);
     const menuArrowDown = document.querySelector("nav.main-nav img.toggleArrow.down." + categoryName);
+    const allArrowSide = document.querySelectorAll("nav.main-nav img.toggleArrow.side");
+    const allArrowDown = document.querySelectorAll("nav.main-nav img.toggleArrow.down");
 
+    if (!nav.classList.contains("opened-subcategories") /*Il sottomenu è chiuso*/) {
+        nav.classList.add("opened-subcategories");
+        subcategoryList.classList.add("opened-subcategories");
 
-    //Viene rimosso 'opened-subcategories' nel caso ci fossero sottocategorie già aperte
-    allSubcategoryLists.forEach(function (item) {
-        item.classList.remove("opened-subcategories");
-    })
-    subcategoryList.classList.add("opened-subcategories");
+        menuArrowSide.classList.add("hidden");
+        menuArrowDown.classList.remove("hidden");
+    } else if (nav.classList.contains("opened-subcategories") && !menuArrowSide.classList.contains("hidden")) {
+        AllSubcategoryList.forEach(function (item) { //All'apertura di una categoria si chiudono le altre
+            item.classList.remove("opened-subcategories");
+        })
+        subcategoryList.classList.add("opened-subcategories");
 
-    nav.classList.add("opened-subcategories");//DA MODIFICARE
+        //Tutte le altre frecce tornano chiuse
+        allArrowSide.forEach(function (item) {
+            item.classList.remove("hidden")
+        })
+        menuArrowSide.classList.add("hidden");
 
-    allSubcategoryButtons.forEach(function (item) {
-        item.classList.remove("opened-subcategories");
-    })
-    
-    subcategoryButtons.forEach(function (item) {
-        item.classList.add("opened-subcategories");
-    })
-
-
-    if(menuArrowSide.classList.contains("hidden")) {
+        //Le frecce aperte vengono nascoste tranne quella attuale che viene aperta
+        allArrowDown.forEach(function (item) {
+            item.classList.add("hidden")
+        })
+        menuArrowDown.classList.remove("hidden");
+    } else if (nav.classList.contains("opened-subcategories") && menuArrowSide.classList.contains("hidden")) {
         nav.classList.remove("opened-subcategories");
-    }
-    //Rotazione della freccia nel toggle menu versione mobile
-    menuArrowSide.classList.toggle("hidden");
-    menuArrowDown.classList.toggle("hidden");
+        subcategoryList.classList.remove("opened-subcategories");
+
+        menuArrowSide.classList.remove("hidden");
+        menuArrowDown.classList.add("hidden");
+    } 
 }

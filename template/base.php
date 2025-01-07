@@ -57,6 +57,7 @@
             </form>
 
             <ul class="categories">
+                <!--DA MODIFICARE: $categories = $templateParams['categorie']-->
                 <?php foreach($categories as $categoria): ?>
                     <li>
                         <button class="category-button" onclick="openSubcategories('<?php echo $categoria['nome_categoria']; ?>')"><?php echo $categoria["nome_categoria"]; ?>
