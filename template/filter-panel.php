@@ -25,6 +25,18 @@
                 <input type="text" id="max-price-selected" value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" readonly />
             </section>
         </li>
+        <li class="filter-checkbox hidden">
+            <h3>Categoria</h3>
+            <ul>
+                <?php foreach($templateParams["categorie"] as $category){
+                    $category = $category["nome_categoria"];
+                    echo "<li>";
+                    echo '<input type="checkbox" id="' . $category . '" name="' . $category . '" value="'. $category .'">';
+                    echo '<label for="' . $category . '">' . $category . '</label>';
+                    echo "</li>";
+                }?>
+            </ul>
+        </li>
         <?php $filterAttributes = array("famiglia", "genere", "specie", "dimensioni","profumo","tipo di foglia","colore delle foglie");
             foreach ($filterAttributes as $filterAttribute):
         ?>
