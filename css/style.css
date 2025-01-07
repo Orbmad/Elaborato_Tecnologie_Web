@@ -176,6 +176,10 @@ nav.main-nav.closed-nav > ul.categories > li > ul.subcategories {
     display: none;
 }
 
+nav.main-nav.closed-nav img.toggleMenu-icon {
+    display: none;
+}
+
 
 /* Inizio toggle menu versione mobile */
 
@@ -197,9 +201,7 @@ nav.main-nav.opened-nav button.menu-icon img.open-icon {
 nav.main-nav.opened-nav ul.categories {
     margin-left: 20px;
     margin-right: auto;
-}
 
-nav.main-nav.opened-nav ul.categories {
     display: flex;
     flex-direction: column;
 }
@@ -208,9 +210,23 @@ nav.main-nav.opened-nav ul.categories li button.category-button {
     background-color: #082D0F;
     color: #F0F2EF;
     border: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 
     padding: 4px;
     font-size: 22px;
+}
+
+nav.main-nav.opened-nav ul.categories button.category-button img.toggleArrow {
+    display: inline;
+    width: 16px;
+    margin-left: auto;
+    padding-left: 50px;
+}
+
+nav.main-nav.opened-nav ul.categories button.category-button img.toggleArrow.hidden {
+    display: none;
 }
 
 nav.main-nav.opened-nav ul.categories li button.subcategory-button {
@@ -220,6 +236,7 @@ nav.main-nav.opened-nav ul.categories li button.subcategory-button {
 
     padding: 3px;
     font-size: 20px;
+    padding-left: 30px;
 }
 
 nav.main-nav.opened-nav ul.categories ul.subcategories { /*Prima dell'apertura del sotto menu*/
@@ -228,10 +245,6 @@ nav.main-nav.opened-nav ul.categories ul.subcategories { /*Prima dell'apertura d
 
 nav.main-nav.opened-nav ul.categories ul.subcategories.opened-subcategories{
     display: inline;
-}
-
-nav.main-nav.opened-nav ul.categories button.subcategory-button.opened-subcategories {
-    padding-left: 30px;
 }
 
 nav.main-nav.opened-nav button.menu-icon {
@@ -281,6 +294,10 @@ nav.main-nav.opened-nav ul.categories{
 
     /*Inizio menu categorie desktop*/
     nav.main-nav.closed-nav button.menu-icon{
+        display: none;
+    }
+
+    nav.main-nav img.toggleMenu-icon {
         display: none;
     }
 

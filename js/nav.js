@@ -37,8 +37,14 @@ function mobileToggleMenu() {
 function openSubcategories(categoryName) {
     const subcategoryList = document.querySelector("nav.main-nav ul.subcategories." + categoryName);
     const subcategoryButtons = document.querySelectorAll("nav.main-nav ul.subcategories." + categoryName + " button.subcategory-button");
+    const menuArrowSide = document.querySelector("nav.main-nav img.toggleArrow.side." + categoryName);
+    const menuArrowDown = document.querySelector("nav.main-nav img.toggleArrow.down." + categoryName);
 
     subcategoryList.classList.toggle("opened-subcategories");
+
+    menuArrowSide.classList.toggle("hidden");
+    menuArrowDown.classList.toggle("hidden");
+
     
     subcategoryButtons.forEach(function (item) {
         item.classList.toggle("opened-subcategories");

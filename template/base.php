@@ -59,7 +59,10 @@
             <ul class="categories">
                 <?php foreach($categories as $categoria): ?>
                     <li>
-                        <button class="category-button" onclick="openSubcategories('<?php echo $categoria['nome_categoria']; ?>')"><?php echo $categoria["nome_categoria"]; ?></button>
+                        <button class="category-button" onclick="openSubcategories('<?php echo $categoria['nome_categoria']; ?>')"><?php echo $categoria["nome_categoria"]; ?>
+                            <img class="toggleArrow side <?php echo $categoria['nome_categoria']; ?>" src="upload/toggleArrow-side.png" alt="Toggle arrow open">
+                            <img class="toggleArrow down hidden <?php echo $categoria['nome_categoria']; ?>" src="upload/toggleArrow-down.png" alt="Toggle arrow open">
+                        </button>
                         <ul class="subcategories <?php echo $categoria["nome_categoria"]; ?>">
                             <?php foreach($categoria["sottocategorie"] as $sottocategoria): ?>
                                 <li>
