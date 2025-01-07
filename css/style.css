@@ -80,7 +80,7 @@ nav{
 
 .search-text input[type="text"]:focus {
     border: none;
-    outline: none
+    outline: none;
 }
 
 nav form{
@@ -389,12 +389,15 @@ section.main-articles > img.arrow-icon:active {
 
 /*INIZIO SEARCH ASIDE*/
 aside{
-    background-color: #082d0f98;
+    /* background-color: #082d0f98; */
+    background-color: #F0F2EF;
+    border-bottom: 3px solid #082D0F;
     width: 100%;
     height: 60px;
     display: flex;
     align-items: center;
     font-family: 'Josefin Sans', sans-serif;
+    color: #FF7D00;
 }
 
 aside form input[type="button"]{
@@ -409,10 +412,51 @@ aside form input[type="button"]{
     text-transform: uppercase;
 }
 
+aside > form > section.filter-price input[type="range"]{
+    accent-color: #FF7D00;
+    display: inline-block;
+    width: 60px;
+    align-self: center;
+}   
+
+aside > form > section.filter-price input[type="text"]{
+    width: 40px;
+    background-color: #F0F2EF;
+    border: 0px;
+    margin-left: 7px;
+} 
+
+aside > form > section.filter-price input[type="text"]:focus{
+    border: none;
+    outline: none;
+} 
+
+aside > form > section.filter-price > section{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+} 
+
+aside > form > section.filter-price label:nth-of-type(1){
+    width: 80px;
+    justify-content: center;
+    color: #082D0F;
+    visibility: visible;
+    display: block;
+}
+
+aside > form > section > h3{
+    font-weight: bold;
+}
+  
+
 @media (min-width:768px){
     aside{
-        width: 20%;
+        width: 200px;
         height: 100%;
+        border-right: 3px solid #082D0F;
+        padding-left: 10px;
     }
 
     aside form input[type="button"]:first-of-type{

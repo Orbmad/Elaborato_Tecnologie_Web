@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 //Base Template
 $templateParams["titolo"] = "Plantatio";
-$templateParams["js"] = array("js/index.js");
+$templateParams["js"] = array("js/search.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
 $templateParams["priceRange"] = $dbh->getProductsPrinceRange();
