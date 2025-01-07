@@ -698,6 +698,7 @@ main > article > section > p{
     /*Inizio barra di ricerca desktop*/
     nav.main-nav.closed-nav form{
         width: 30%;
+        min-width: 100px;
     }
 
     /*Fine barra di ricerca desktop*/
@@ -729,8 +730,8 @@ main > article > section > p{
         margin-left: auto;
         margin-right: auto;
 
-        flex-shrink: 1;
-        overflow: auto;
+        /*flex-shrink: 1;
+        /* overflow: auto; */
     }
 
     nav.main-nav.closed-nav ul.categories > li{
@@ -741,7 +742,7 @@ main > article > section > p{
 
         align-items: center;
         justify-content: center;
-        flex-grow: 1;
+
     }
 
     nav.main-nav.closed-nav > ul.categories button.category-button{

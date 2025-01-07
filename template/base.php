@@ -99,7 +99,6 @@
         }
         ?>
         <?php
-        var_dump($templateParams["searchResults"]);
         if (isset($templateParams["searchResults"])) {
             require($templateParams["searchResults"]);
         }
