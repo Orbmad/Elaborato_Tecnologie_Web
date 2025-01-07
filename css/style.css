@@ -85,12 +85,12 @@ nav{
 nav form{
     background-color: #F0F2EF;
     width: 75%;
-    height: 60%;
+    height: 40px;
     border-radius: 20px;
     padding-left: 15px;
     padding-right: 15px;
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 /*Fine Barra di ricerca versione mobile*/
 
@@ -281,7 +281,7 @@ nav.main-nav.opened-nav ul.categories{
 
     /*Inizio barra di ricerca desktop*/
     nav.main-nav.closed-nav form{
-        width: 20%;
+        width: 30%;
     }
 
     /*Fine barra di ricerca desktop*/
@@ -301,12 +301,17 @@ nav.main-nav.opened-nav ul.categories{
         display: none;
     }
 
+    nav.main-nav img.toggleArrow {
+        display: none;
+    }
+
     nav.main-nav.closed-nav ul.categories{
         height: 100%;
         align-items: center;
         list-style: none;
         display: flex;
-        margin-left: 5px;
+        margin-left: auto;
+        margin-right: auto;
 
         flex-shrink: 1;
         overflow: auto;
@@ -315,18 +320,19 @@ nav.main-nav.opened-nav ul.categories{
     nav.main-nav.closed-nav ul.categories > li{
         height: 96%;
         display: flex;
-        padding-right: 5px;
-        padding-left: 5px;
+        padding-right: 12px;
+        padding-left: 12px;
 
         align-items: center;
         justify-content: center;
         flex-grow: 1;
     }
 
-    nav.main-nav.closed-nav > ul.categories > li button.category-button{
+    nav.main-nav.closed-nav > ul.categories button.category-button{
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
+        font-size: 18px;
 
         padding: 0%;
         height: 100%;
@@ -335,11 +341,54 @@ nav.main-nav.opened-nav ul.categories{
     nav.main-nav.closed-nav > ul.categories > li button.category-button:hover{
         background-color: #F0F2EF;
         color: #082D0F;
+
+        cursor: pointer;
     }
 
     nav.main-nav.closed-nav > ul.categories > li > ul.subcategories{
         display: none;
     }
+
+    /*Inizio nav aperto desktop*/
+
+    nav.main-nav.opened-subcategories {
+        height: auto;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories {
+        height: auto;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories button.category-button {
+        margin-top: 40%;
+        margin-bottom: 35px;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button {
+        background-color: #082D0F;
+        color: #F0F2EF;
+        border: none;
+        font-size: 15px;
+
+        margin-bottom: 12px;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button:hover {
+        cursor: pointer;
+        background-color: #F0F2EF;
+        color: #082D0F;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories > li {
+        display: flex;
+        flex-direction: column;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories ul.subcategories.opened-subcategories{
+        display: inline;
+    }
+
+    /*Fine nav aperto desktop*/
 
     /*Fine menu categorie desktop*/
 

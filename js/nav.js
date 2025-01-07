@@ -36,17 +36,34 @@ function mobileToggleMenu() {
 
 function openSubcategories(categoryName) {
     const subcategoryList = document.querySelector("nav.main-nav ul.subcategories." + categoryName);
+    const allSubcategoryLists = document.querySelectorAll("nav.main-nav ul.subcategories");
     const subcategoryButtons = document.querySelectorAll("nav.main-nav ul.subcategories." + categoryName + " button.subcategory-button");
+    const allSubcategoryButtons = document.querySelectorAll("nav.main-nav ul.subcategories button.subcategory-button");
     const menuArrowSide = document.querySelector("nav.main-nav img.toggleArrow.side." + categoryName);
     const menuArrowDown = document.querySelector("nav.main-nav img.toggleArrow.down." + categoryName);
 
-    subcategoryList.classList.toggle("opened-subcategories");
 
-    menuArrowSide.classList.toggle("hidden");
-    menuArrowDown.classList.toggle("hidden");
+    //Viene rimosso 'opened-subcategories' nel caso ci fossero sottocategorie già aperte
+    allSubcategoryLists.forEach(function (item) {
+        item.classList.remove("opened-subcategories");
+    })
+    subcategoryList.classList.add("opened-subcategories");
 
+    nav.classList.add("opened-subcategories");//DA MODIFICARE
+
+    allSubcategoryButtons.forEach(function (item) {
+        item.classList.remove("opened-subcategories");
+    })
     
     subcategoryButtons.forEach(function (item) {
-        item.classList.toggle("opened-subcategories");
+        item.classList.add("opened-subcategories");
     })
+
+
+    if(menuArrowSide.classList.contains("hidden")) {
+        nav.classList.remove("opened-subcategories");
+    }
+    //Rotazione della freccia nel toggle menu versione mobile
+    menuArrowSide.classList.toggle("hidden");
+    menuArrowDown.classList.toggle("hidden");
 }
