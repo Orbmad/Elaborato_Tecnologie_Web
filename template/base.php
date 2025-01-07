@@ -37,7 +37,7 @@
         <form action="search.php" method="GET">
             <label for="fastsearch">Ricerca rapida</label>
             <section class="search-text">
-                <input type="text" id="fastsearch" name="fastsearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" />
+                <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" />
                 <ul class="suggestions not-showing">
                     <li class="product-suggested">
                         <a href="#">
@@ -91,6 +91,11 @@
         </button>
 
     </nav>
+    <?php
+    if (isset($templateParams["asideContent"])) {
+        require($templateParams["asideContent"]);
+    }
+    ?>
 
     <main>
         <?php
@@ -99,17 +104,11 @@
         }
         ?>
         <?php
-        var_dump($templateParams["searchResults"]);
-        if (isset($templateParams["searchResults"])) {
-            require($templateParams["searchResults"]);
+        if (isset($templateParams["mainContent"])) {
+            require($templateParams["mainContent"]);
         }
         ?>
     </main>
-    <?php
-    if (isset($templateParams["asideContent"])) {
-        require($templateParams["asideContent"]);
-    }
-    ?>
 
     <footer>
         <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by
