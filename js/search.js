@@ -22,3 +22,17 @@ function updateMaxText() {
 
 updateMinText();
 updateMaxText();
+
+const moreFiltersButton = document.getElementById('more-filters-btn');
+moreFiltersButton.addEventListener('click', function() {
+    const hideableSections = document.querySelectorAll("aside > form > ul > li");
+    hideableSections.forEach(function(section) {
+        section.classList.toggle('hidden');
+        if(section.classList.contains('hidden')){
+            moreFiltersButton.setAttribute("value","Mostra filtri");
+        }else{
+            moreFiltersButton.setAttribute("value","Nascondi filtri");
+        }
+    });
+})
+

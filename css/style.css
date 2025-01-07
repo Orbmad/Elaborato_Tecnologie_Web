@@ -393,34 +393,42 @@ aside{
     background-color: #F0F2EF;
     border-bottom: 3px solid #082D0F;
     width: 100%;
-    height: 60px;
     display: flex;
     align-items: center;
     font-family: 'Josefin Sans', sans-serif;
     color: #FF7D00;
-    padding-bottom: 20px;
 }
 
-aside form input[type="button"]{
+aside > form input[type="button"], aside > form input[type="reset"]{
     height: 40px;
     margin: 10px;
     border-radius: 5px;
     color: #082D0F;
-    width: 130px;
     font-weight: bold;
     border-color: #082D0F;
     font-size: large ;
     text-transform: uppercase;
+    padding: 10px;
 }
 
-aside > form > section.filter-price input[type="range"]{
+aside > form input[type="button"]:active, aside > form input[type="reset"]:active{
+    color: #F0F2EF;
+    background-color: #082D0F;
+}
+
+aside > form > ul> li.hidden{
+    visibility: hidden;
+    display: none;
+}
+
+aside > form > ul > li.filter-price input[type="range"]{
     accent-color: #FF7D00;
     display: inline-block;
     width: 60px;
     align-self: center;
 }   
 
-aside > form > section.filter-price input[type="text"]{
+aside > form > ul > li.filter-price input[type="text"]{
     width: 40px;
     background-color: #F0F2EF;
     color: #082D0F;
@@ -430,40 +438,36 @@ aside > form > section.filter-price input[type="text"]{
     font-style: italic;
 } 
 
-aside > form > section.filter-price input[type="text"]:focus{
+aside > form > ul > li.filter-price input[type="text"]:focus{
     border: none;
     outline: none;
 } 
 
-aside > form > section.filter-price > section{
-    display: flex;
-    height: 35px;
-    width: 100%;
-    align-items: center;
-    margin-left: 10px;
-} 
-
-aside > form > section.filter-price label:nth-of-type(1){
+aside > form > ul > li.filter-price label:nth-of-type(1){
     width: 80px;
     justify-content: center;
     color: #082D0F;
     visibility: visible;
-    display: block;
+    display: inline-block;
 }
 
-aside > form > section > h3{
+aside > form > ul > li.filter-price section{
+    margin-top: 10px;
+}
+
+aside > form > ul > li > h3{
     font-weight: bold;
     text-transform: capitalize;
     margin-bottom: 5px
 }
 
-aside > form > section.filter-checkbox label{
+aside > form > ul > li.filter-checkbox label{
     visibility: visible;
     display: inline-block;
     color: #082D0F;
 }
 
-aside > form > section.filter-checkbox input[type="checkbox"]{
+aside > form > ul > li.filter-checkbox input[type="checkbox"]{
     visibility: visible;
     display: inline-block;
     color: #082D0F;
@@ -473,13 +477,9 @@ aside > form > section.filter-checkbox input[type="checkbox"]{
     margin-right: 3px;
 }
 
-aside > form > section.filter-checkbox > section{
-    display: inline-flex;
-    align-items: center;
-    height: 20px;
+aside > form > ul > li {
     margin-left: 10px;
 }
-  
 
 @media (min-width:768px){
     aside{
@@ -489,11 +489,26 @@ aside > form > section.filter-checkbox > section{
         border-right: 3px solid #082D0F;
         padding-left: 12px;
         padding-right: 12px;
+        padding-bottom: 20px;
     }
 
-    aside form input[type="button"]:first-of-type{
+    aside > form > ul > li.hidden{
+        visibility: visible;
+        display:block
+    }
+
+    aside > form input[type="button"]:first-of-type{
         display: none;
     }
+
+    aside > form > ul >li.filter-price > ul > li{
+        display: flex;
+        height: 35px;
+        width: 100%;
+        align-items: center;
+        margin-left: 10px;
+    } 
+    
 }
 /*FINE SEARCH ASIDE*/
 
