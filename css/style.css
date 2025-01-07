@@ -6,6 +6,10 @@ body, nav, header, ul, li, a, h1,input[type="text"], form{
     font-family: 'Josefin Sans', sans-serif;
 }
 
+input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon{
+    cursor: pointer;
+}
+
 ul{
     list-style: none;
 }
@@ -71,6 +75,7 @@ nav{
 }
 
 .search-text input[type="text"]{
+    font-size: 17px;
     background-color: #F0F2EF;
     border : none;
     width: 100%;
@@ -79,7 +84,7 @@ nav{
 
 .search-text input[type="text"]:focus {
     border: none;
-    outline: none
+    outline: none;
 }
 
 nav form{
@@ -272,6 +277,402 @@ nav.main-nav.opened-nav ul.categories{
 /*Fine menu categorie versione mobile*/
 /*FINE NAV MOBILE*/
 
+/*INIZIO HEADER VERSIONE MOBILE*/
+header{
+    margin: 20px 5% 0px;
+}
+
+header > h1{
+    display: inline-block;
+    width: 30%;
+    text-align: center;
+    color: #FF7D00;
+    font-weight: bold;
+    font-size: 50px;
+}
+header > ul{
+    display: inline-block;
+    width: 70%;
+    text-align: right;
+    list-style: none;
+}
+header img{
+    width: 70px;
+}
+
+header > h1, header > ul{
+    vertical-align: bottom;
+}
+
+header > ul > li{
+    position: relative;
+    float: right;
+    padding: 0 5%;
+}
+
+
+header > ul > li > a{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    text-decoration: none;
+}
+
+header > ul > li.user_icon > a > img{
+    grid-area: 1/1;
+}
+
+header > ul > li:nth-child(2) > a > img{
+    position: relative;
+    top: 15px;
+}
+
+header > ul > li.user_icon > a > img:nth-child(2){
+    padding-bottom: 60%;
+    padding-left: 50%;
+    width: 30px;
+    grid-area: 1/1;
+}
+
+/*inserimento del numero di notifiche che l'utente deve visualizzare estraendo info da DB*/
+header > ul > li.user_icon > a > p{
+    grid-area: 1/1;
+    color: #fff;
+    padding-bottom: 60%;
+    padding-left: 50%;
+}
+
+header ul li ul{
+    position: absolute;
+    left: -30px;
+    text-align: center;
+    width: 200px;
+    display: none;
+}
+
+header ul li ul li{
+    padding: 5px 0 ;
+    background: #3F413E;
+    border: solid #FF7D00 1px;
+}
+
+
+header ul li ul a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+/*quando si passa con il cursore sull'icona si apre vede il menù.
+Questo accade solo se l'utente non ha cliccato sull'icona*/
+header ul li.user_icon:hover > ul{
+    display: initial;
+}
+
+/*FINE HEADER VERSIONE MOBILE*/
+
+/*INIZIO INIDEX MAIN MOBILE*/
+/*Inizio regole carosello versione mobile*/
+.main-articles article{
+    background-color: #082D0F;
+    display: block;
+}
+
+section.main-articles{
+    margin-top: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+section.main-articles ul{ 
+    grid-area: 1/1;
+}
+
+
+section.main-articles > ul > li > article img{
+    width: 100%;
+    border-bottom: 10px solid #F0F2EF;
+}
+
+section.main-articles > ul > li > article h2{
+    width: 100%;
+    color: #F0F2EF;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+section.main-articles > ul > li > article p{
+    box-sizing: border-box;
+    width: 100%;
+    color: #F0F2EF;
+    text-align: left;
+    padding: 15px;
+    margin: 0;
+}
+
+section.main-articles > ul > li > article .button-sec > input[type=button] {
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    color: #082D0F;
+    width: 150px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+    border-color: #fff;
+}
+
+section.main-articles > ul > li > article .button-sec > input[type=button]:hover {
+    transform: scale(1.1);
+}
+
+section.main-articles > ul > li > article .button-sec > input[type=button]:active{
+    transform: scale(0.9);
+    color: white;
+    background-color: #082D0F;
+}
+
+section.main-articles > ul > li > article .button-sec{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; 
+}
+
+section.main-articles > ul > li.hidden{
+    display: none;
+    visibility: hidden;
+    font-size: small;
+}
+
+section.main-articles > ul > li.focused-article{
+    animation-name: article-appearing;
+    animation-duration: 1.5s;
+    z-index: 1;
+}
+
+@keyframes article-appearing {
+    0%   {opacity: 45%;}
+    100% {opacity: 100%}
+}
+
+section.main-articles > .right-arrow-icon{
+    justify-self: right;
+    margin-right: -7px;
+}
+
+section.main-articles > .left-arrow-icon{
+    justify-self: left;
+    margin-left: -7px;
+}
+
+section.main-articles > .arrow-icon{
+    width: 70px;
+    margin-top: 200px;
+    z-index: 2;
+    grid-area: 1/1;
+    cursor: pointer;
+}
+
+/* Ingrandire l'icona quando riceve il focus */
+section.main-articles > img.arrow-icon:hover {
+    transform: scale(1.2); 
+    transition: 0.3s ease; 
+}
+
+/* Effetto al clic */
+section.main-articles > img.arrow-icon:active {
+    transform: scale(0.9); 
+    filter: brightness(1.3);
+    transition: 0.1s ease; 
+  }
+
+/*Fine regole carosello versione mobile*/
+
+/*FINE INDEX MAIN MOBILE*/
+
+/*INIZIO SEARCH ASIDE MOBILE*/
+aside{
+    /* background-color: #082d0f98; */
+    background-color: #F0F2EF;
+    border-bottom: 3px solid #082D0F;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #FF7D00;
+}
+
+aside > form input[type="button"], aside > form input[type="reset"]{
+    height: 40px;
+    margin: 10px;
+    border-radius: 5px;
+    color: #082D0F;
+    font-weight: bold;
+    border-color: #082D0F;
+    font-size: large ;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+aside > form input[type="button"]:active, aside > form input[type="reset"]:active{
+    color: #F0F2EF;
+    background-color: #082D0F;
+}
+
+aside > form > ul> li.hidden{
+    visibility: hidden;
+    display: none;
+}
+
+aside > form > ul > li.filter-price input[type="range"]{
+    accent-color: #FF7D00;
+    display: inline-block;
+    width: 60px;
+    align-self: center;
+}   
+
+aside > form > ul > li.filter-price input[type="text"]{
+    width: 40px;
+    background-color: #F0F2EF;
+    color: #082D0F;
+    border: 0px;
+    margin-left: 7px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-style: italic;
+} 
+
+aside > form > ul > li.filter-price input[type="text"]:focus{
+    border: none;
+    outline: none;
+} 
+
+aside > form > ul > li.filter-price label:nth-of-type(1){
+    width: 80px;
+    justify-content: center;
+    color: #082D0F;
+    visibility: visible;
+    display: inline-block;
+}
+
+aside > form > ul > li.filter-price section{
+    margin-top: 10px;
+}
+
+aside > form > ul > li > h3{
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 5px
+}
+
+aside > form > ul > li.filter-checkbox label{
+    visibility: visible;
+    display: inline-block;
+    color: #082D0F;
+}
+
+aside > form > ul > li.filter-checkbox input[type="checkbox"]{
+    visibility: visible;
+    display: inline-block;
+    color: #082D0F;
+    margin: 0px;
+    accent-color: #FF7D00;
+    margin-bottom: 2px;
+    margin-right: 3px;
+}
+
+aside > form > ul > li:nth-of-type(2) input[type="checkbox"]{ 
+    accent-color: #082D0F;
+}
+
+aside > form > ul > li:nth-of-type(2) label{ 
+    text-transform: uppercase;
+}
+
+aside > form > ul > li {
+    margin-left: 10px;
+}
+/*FINE SEARCH ASIDE MOBILE*/
+
+
+/*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
+/* main{
+    margin-top: 70px;
+    padding: 0 15%;
+} */
+
+main > article > header > img{
+    width: 600px;
+}
+
+main > article > div.wrapper{
+    display: inline-block;
+    width: 30%;
+    border-radius: 10px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+main > article > div.wrapper > span{
+    display: inline-block;
+    width: 25%;
+    text-align: center;
+    font-size: 45px;
+    font-weight: bold;
+    border: black solid 2px;
+    padding: 2%;
+    cursor: pointer;
+}
+
+main > article > div.wrapper > span.number{
+    cursor: auto;
+}
+
+main > article > button{
+    border: none;
+    color: #ffff;
+    font-size: 35px;
+    text-align: center;
+    background-color: #082D0F;
+    padding: 20px 25px;
+    cursor: pointer; /*per il computer*/
+    border-radius: 50px;
+    display: inline-block;
+    margin-top: 50px;
+    float: right;
+}
+
+main > article > header > h2{
+    font-size: 50px;
+    padding: 8px 0;
+    margin: 4px 0;
+    /*inserimento del font-family*/
+}
+
+main > article > header > h3{
+    font-size: 40px;
+    padding: 8px 0;
+    color: #082D0F;
+    /*inserimento del font-family*/
+}
+
+main > article > section > h3{
+    font-size: 40px;
+    margin-top: 50px;
+    /*inserimento del font-family*/
+}
+
+main > article > section > p{
+    font-size: 20px;
+    padding: 10px 0;
+    /*inserimento del font-family*/
+}
+/*regole per lo stile della pagina per il singolo prodotto fine*/
+
 @media (min-width: 768px){
 
     /* INIZIO NAV VERSIONE DESKTOP */
@@ -395,18 +796,18 @@ nav.main-nav.opened-nav ul.categories{
     /* FINE NAV VERSIONE DESKTOP */
 
     /*Inizio regole carosello versione desktop*/
-    .main-articles ul{
+    section.main-articles > ul{
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .main-articles .focused-article article{
+    section.main-articles > ul > li.focused-article article{
         display: flex;
         vertical-align: middle;
     }
 
-    .main-articles{
+    section.main-articles{
         margin-top: 15px;
         margin-left: 10px;
         margin-right: 10px;
@@ -415,35 +816,35 @@ nav.main-nav.opened-nav ul.categories{
         box-sizing: border-box;
     }
 
-    .main-articles .focused-article  img{
+    section.main-articles > ul > li.focused-article  img{
         height: 350px;
         width: 350px;
         border: none;
         display: block;
     }
 
-    .main-articles .hidden{
+    section.main-articles > ul > li.hidden{
+        display: inline-block;
         visibility: visible;
         opacity: 45%;
-        display: inline-block;
         height: 300px;
         width: 250px;
         animation-name: article-disappearing;
         animation-duration: 1.5s;
     }
 
-    .main-articles .hidden img{
+    section.main-articles > ul > li.hidden img{
         width: 250px;
         height:250px;
         border: 0px;
     }
 
-    .main-articles .hidden .article-body{
+    section.main-articles > ul > li.hidden .article-body{
         width: 250px;
         height: 50px;
     }
 
-    .main-articles .hidden h2{
+    section.main-articles > ul > li.hidden h2{
         margin-top: 0px;
         padding-top: 10px;
         text-align: center;
@@ -475,7 +876,7 @@ nav.main-nav.opened-nav ul.categories{
         opacity: 100%;
     }
 
-    .main-articles .hidden p,.main-articles .hidden input[type=button]{
+    section.main-articles > ul > li.hidden p, section.main-articles > ul > li.hidden input[type=button]{
         visibility: hidden;
         display: none;
     }
@@ -504,15 +905,15 @@ nav.main-nav.opened-nav ul.categories{
      }
     
     
-     .main-articles .right-arrow-icon{
+    section.main-articles > img.right-arrow-icon{
         margin-left: 735px;
     }
     
-    .main-articles .left-arrow-icon{
+    section.main-articles > img.left-arrow-icon{
         margin-right: 735px;
     }
 
-    .main-articles .arrow-icon{
+    section.main-articles > img.arrow-icon{
         margin-top: 130px;
         width: 90px;
         z-index: 2;
@@ -530,296 +931,34 @@ nav.main-nav.opened-nav ul.categories{
         padding-bottom: 20px;
     }
     /*Fine regole carosello versione desktop*/
-
     /* FINE NAV VERSIONE DESKTOP */
 
+    /*INIZIO ASIDE DESKTOP*/
+    aside{
+            min-width: 200px;
+            width: 30%;
+            height: 100%;
+            border-right: 3px solid #082D0F;
+            padding-left: 12px;
+            padding-right: 12px;
+            padding-bottom: 20px;
+        }
+
+        aside > form > ul > li.hidden{
+            visibility: visible;
+            display:block
+        }
+
+        aside > form input[type="button"]:first-of-type{
+            display: none;
+        }
+
+        aside > form > ul >li.filter-price > ul > li{
+            display: flex;
+            height: 35px;
+            width: 100%;
+            align-items: center;
+            margin-left: 10px;
+        } 
+    /*FINE ASIDE DESKTOP*/
 }
-
-/*INIZIO HEADER VERSIONE MOBILE*/
-header{
-    margin: 20px 5% 0px;
-}
-
-header > h1{
-    display: inline-block;
-    width: 30%;
-    text-align: center;
-    color: #FF7D00;
-    font-weight: bold;
-    font-size: 50px;
-}
-header > ul{
-    display: inline-block;
-    width: 70%;
-    text-align: right;
-    list-style: none;
-}
-header img{
-    width: 70px;
-}
-
-header > h1, header > ul{
-    vertical-align: bottom;
-}
-
-header > ul > li{
-    position: relative;
-    float: right;
-    padding: 0 5%;
-}
-
-
-header > ul > li > a{
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    place-items: center;
-    text-decoration: none;
-}
-
-header > ul > li.user_icon > a > img{
-    grid-area: 1/1;
-}
-
-header > ul > li:nth-child(2) > a > img{
-    position: relative;
-    top: 15px;
-}
-
-header > ul > li.user_icon > a > img:nth-child(2){
-    padding-bottom: 60%;
-    padding-left: 50%;
-    width: 30px;
-    grid-area: 1/1;
-}
-
-/*inserimento del numero di notifiche che l'utente deve visualizzare estraendo info da DB*/
-header > ul > li.user_icon > a > p{
-    grid-area: 1/1;
-    color: #fff;
-    padding-bottom: 60%;
-    padding-left: 50%;
-}
-
-header ul li ul{
-    position: absolute;
-    left: -30px;
-    text-align: center;
-    width: 200px;
-    display: none;
-}
-
-header ul li ul li{
-    padding: 5px 0 ;
-    background: #3F413E;
-    border: solid #FF7D00 1px;
-}
-
-
-header ul li ul a{
-    color: #fff;
-    text-decoration: none;
-    font-size: 20px;
-}
-
-/*quando si passa con il cursore sull'icona si apre vede il menù.
-Questo accade solo se l'utente non ha cliccato sull'icona*/
-header ul li.user_icon:hover > ul{
-    display: initial;
-}
-
-/*FINE HEADER VERSIONE MOBILE*/
-
-/*INIZIO INIDEX MAIN MOBILE*/
-/*Inizio regole carosello versione mobile*/
-.main-articles article{
-    background-color: #082D0F;
-    display: block;
-}
-
-.main-articles{
-    margin-top: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-}
-
-.main-articles ul{ 
-    grid-area: 1/1;
-}
-
-
-.main-articles article img{
-    width: 100%;
-    border-bottom: 10px solid #F0F2EF;
-}
-
-.main-articles article h2{
-    width: 100%;
-    color: #F0F2EF;
-    text-align: center;
-    margin-bottom: 0px;
-}
-
-.main-articles article p{
-    box-sizing: border-box;
-    width: 100%;
-    color: #F0F2EF;
-    text-align: left;
-    padding: 15px;
-    margin: 0;
-}
-
-.main-articles article .button-sec > input[type=button] {
-    height: 40px;
-    margin: 10px;
-    border-radius: 5px;
-    color: #082D0F;
-    width: 150px;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-    border-color: #fff;
-}
-
-.main-articles article .button-sec > input[type=button]:hover {
-    transform: scale(1.1);
-}
-
-.main-articles article .button-sec > input[type=button]:active{
-    transform: scale(0.9);
-    color: white;
-    background-color: #082D0F;
-}
-
-.main-articles article .button-sec{
-    display: flex;
-    justify-content: flex-end;
-    align-items: center; 
-}
-
-.main-articles .hidden{
-    visibility: hidden;
-    display: none;
-    font-size: small;
-}
-
-.main-articles .focused-article{
-    animation-name: article-appearing;
-    animation-duration: 1.5s;
-    z-index: 1;
-}
-
-@keyframes article-appearing {
-    0%   {opacity: 45%;}
-    100% {opacity: 100%}
-}
-
-.main-articles .right-arrow-icon{
-    justify-self: right;
-}
-
-.main-articles .left-arrow-icon{
-    justify-self: left;
-}
-
-.main-articles .arrow-icon{
-    width: 50px;
-    margin-top: 200px;
-    z-index: 2;
-    grid-area: 1/1;
-}
-
-/* Ingrandire l'icona quando riceve il focus */
-.main-articles .arrow-icon:hover {
-    transform: scale(1.2); 
-    transition: 0.3s ease; 
-}
-
-/* Effetto al clic */
-.main-articles .arrow-icon:active {
-    transform: scale(0.9); 
-    filter: brightness(1.3);
-    transition: 0.1s ease; 
-  }
-
-/*Fine regole carosello versione mobile*/
-
-/*FINE INDEX MAIN MOBILE*/
-
-/*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
-/* main{
-    margin-top: 70px;
-    padding: 0 15%;
-} */
-
-main > article > header > img{
-    width: 600px;
-}
-
-main > article > div.wrapper{
-    display: inline-block;
-    width: 30%;
-    border-radius: 10px;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    margin-top: 60px;
-}
-
-main > article > div.wrapper > span{
-    display: inline-block;
-    width: 25%;
-    text-align: center;
-    font-size: 45px;
-    font-weight: bold;
-    border: black solid 2px;
-    padding: 2%;
-    cursor: pointer;
-}
-
-main > article > div.wrapper > span.number{
-    cursor: auto;
-}
-
-main > article > button{
-    border: none;
-    color: #ffff;
-    font-size: 35px;
-    text-align: center;
-    background-color: #082D0F;
-    padding: 20px 25px;
-    cursor: pointer; /*per il computer*/
-    border-radius: 50px;
-    display: inline-block;
-    margin-top: 50px;
-    float: right;
-}
-
-main > article > header > h2{
-    font-size: 50px;
-    padding: 8px 0;
-    margin: 4px 0;
-    /*inserimento del font-family*/
-}
-
-main > article > header > h3{
-    font-size: 40px;
-    padding: 8px 0;
-    color: #082D0F;
-    /*inserimento del font-family*/
-}
-
-main > article > section > h3{
-    font-size: 40px;
-    margin-top: 50px;
-    /*inserimento del font-family*/
-}
-
-main > article > section > p{
-    font-size: 20px;
-    padding: 10px 0;
-    /*inserimento del font-family*/
-}
-/*regole per lo stile della pagina per il singolo prodotto fine*/
