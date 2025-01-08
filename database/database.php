@@ -35,6 +35,14 @@ class DatabaseHelper{
         return $categories;
     }
 
+    public function getRandomCategories($n){
+        $stmt = $this->db->prepare("SELECT * FROM Categorie ORDER BY RAND() LIMIT ? ");
+        $stmt->bind_param('i', $n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Returns a product using its id (nome_prodotto).
      */

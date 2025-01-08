@@ -7,7 +7,8 @@ $templateParams["js"] = array("js/index.js");
 
 //Index template
 $templateParams["randomArticles"] = $dbh->getArticles(3);
-$templateParams["mainContent"] = "articles-slides.php";
+$templateParams["mainContent"] = "main-index.php";
+$templateParams["randomCategories"] = $dbh->getRandomCategories(2);
 
 require 'template/base.php';
 ?>

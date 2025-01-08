@@ -559,6 +559,49 @@ section.main-articles > img.arrow-icon:active {
   }
 
 /*Fine regole carosello versione mobile*/
+/*Inizio regole categorie nel main */
+main > section.main-categories-blocks > ul > li > img{
+    width: 80%;
+}
+
+main > section.main-categories-blocks > ul > li > section{
+    position: absolute; /* Positioning relative to the container */
+    top: 70%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Correct centering */
+    width: 80%;
+    height: 30%;
+    background-color: #F0F2EF;
+    color: #082D0F;
+    padding: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+main > section.main-categories-blocks > ul > li > a > input{
+
+
+}
+
+main > section.main-categories-blocks > ul > li > a > h2{
+    font-size: small;
+}
+
+
+main > section.main-categories-blocks > ul {
+    width: 100%;
+    margin-top: 20px;
+}
+
+main > section.main-categories-blocks > ul > li{
+    text-align: center;
+    position: relative;
+}
+
+
+/*Fine regole categorie nel main */
 
 /*FINE INDEX MAIN MOBILE*/
 
@@ -819,7 +862,6 @@ main > ul.search-results-list{
     display: block;
     width:100%;
 }
-
 /*Fine regole main pagine search mobile*/
 
 @media (min-width: 768px){

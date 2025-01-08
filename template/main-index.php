@@ -38,4 +38,17 @@
             </li>
         </ul>
     </section>
+    <section class="main-categories-blocks">
+        <ul>
+            <?php foreach($templateParams["randomCategories"] as $category): ?>
+            <li>
+                <img src="upload/pianta.jpg" alt="group image"/>
+                <section>
+                    <h2><?php echo $category["nome_categoria"]?></h2>
+                    <input type="button" value="Scopri"/>
+                </section>
+            </li>
+            <?php endforeach; ?>
+        </ul>
+    </section>
 <main>
