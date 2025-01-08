@@ -7,8 +7,8 @@
                 <article>
                     <img src="upload/pianta1.jpg" alt="Immagine dell'articolo"/>
                     <section class ="article-body">
-                        <h2><?php echo $templateParams["randomArticles"][0]["nomegruppo"]?></h2>
-                        <p><?php echo $templateParams["randomArticles"][0]["descrizionegruppo"]?></p>
+                        <h2><?php echo $templateParams["randomArticles"][0]["nome_gruppo"]?></h2>
+                        <p><?php echo $templateParams["randomArticles"][0]["descrizione_gruppo"]?></p>
                         <section class="button-sec">
                         <input type="button" value="SCOPRI ARTICOLO"></input>
                         </section class="button-sec">
@@ -18,8 +18,8 @@
                 <article>
                     <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
                     <section class ="article-body">
-                        <h2><?php echo $templateParams["randomArticles"][1]["nomegruppo"]?></h2>
-                        <p><?php echo $templateParams["randomArticles"][1]["descrizionegruppo"]?></p><section class="button-sec">
+                        <h2><?php echo $templateParams["randomArticles"][1]["nome_gruppo"]?></h2>
+                        <p><?php echo $templateParams["randomArticles"][1]["descrizione_gruppo"]?></p><section class="button-sec">
                         <input type="button" value="SCOPRI ARTICOLO"></input>
                         </section class="button-sec">
                     </section>
@@ -28,8 +28,8 @@
                 <article>
                     <img src="upload/pianta.jpg" alt="Immagine dell'articolo"/>
                     <section class ="article-body">
-                        <h2><?php echo $templateParams["randomArticles"][2]["nomegruppo"]?></h2>
-                        <p><?php echo $templateParams["randomArticles"][2]["descrizionegruppo"]?></p>
+                        <h2><?php echo $templateParams["randomArticles"][2]["nome_gruppo"]?></h2>
+                        <p><?php echo $templateParams["randomArticles"][2]["descrizione_gruppo"]?></p>
                         <section class="button-sec">
                         <input type="button" value="SCOPRI ARTICOLO"></input>
                         </section class="button-sec">

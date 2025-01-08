@@ -16,36 +16,36 @@ VALUES
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
-    (1, 'Alberi e cespugli'), -- ID_sc = 1,
-    (1, 'Piante perenni e Graminacee'), -- ID_sc = 2,
-    (1, 'Piante acquatiche'), -- ID_sc = 3,
-    (1, 'Fiori annuali'); -- ID_sc = 4;
+    ('Piante da esterno', 'Alberi e cespugli'), -- ID_sc = 1,
+    ('Piante da esterno', 'Piante perenni e Graminacee'), -- ID_sc = 2,
+    ('Piante da esterno', 'Piante acquatiche'), -- ID_sc = 3,
+    ('Piante da esterno', 'Fiori annuali'); -- ID_sc = 4;
 
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
-    (3, 'Piante da frutto'), -- ID_sc = 5,
-    (3, 'Piante da orto'), -- ID_sc = 6,
-    (3, 'Piante aromatiche'); -- ID_sc = 7;
+    ('Piante da orto, frutteto e cucina', 'Piante da frutto'), -- ID_sc = 5,
+    ('Piante da orto, frutteto e cucina', 'Piante da orto'), -- ID_sc = 6,
+    ('Piante da orto, frutteto e cucina', 'Piante aromatiche'); -- ID_sc = 7;
 
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
-    (4, 'Sementi'), -- ID_sc = 8,
-    (4, 'Bulbi'); -- ID_sc = 9;
+    ('Bulbi e sementi', 'Sementi'), -- ID_sc = 8,
+    ('Bulbi e sementi', 'Bulbi'); -- ID_sc = 9;
 
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
-    (5, 'Vasi e fioriere'), -- ID_sc = 10,
-    (5, 'Supporti di coltivazione'), -- ID_sc = 11,
-    (5, 'Arredo giardino'); -- ID_sc = 12;
+    ('Vasi e arredo', 'Vasi e fioriere'), -- ID_sc = 10,
+    ('Vasi e arredo', 'Supporti di coltivazione'), -- ID_sc = 11,
+    ('Vasi e arredo', 'Arredo giardino'); -- ID_sc = 12;
 
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
-    (2, 'Piante Pet Friendly'), -- ID_sc = 13,
-    (2, 'Piante non Pet Friendly'); -- ID_sc = 14;
+    ('Piante da interno', 'Piante Pet Friendly'), -- ID_sc = 13,
+    ('Piante da interno', 'Piante non Pet Friendly'); -- ID_sc = 14;
 
 
 -- Inserimento prodotti
@@ -73,7 +73,7 @@ VALUES
 
 
 -- Inserimento gruppi --
-INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo)
+INSERT INTO Gruppi (nome_gruppo, descrizione_gruppo)
 VALUES
 ('Cactus Lovers', 'Un gruppo dedicato agli amanti dei cactus e delle piante grasse. Condividiamo consigli su cura, propagazione e specie rare.'),
 ('Orchidee Passione', 'Per chi è appassionato di orchidee! Qui discutiamo di varietà, fertilizzazione e tecniche di coltivazione per fiori spettacolari.'),
