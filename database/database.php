@@ -77,7 +77,7 @@ class DatabaseHelper{
 
     public function searchProductByName($name){
         $text = "%" . $name . "%";
-        $stmt = $this->db->prepare("SELECT nome_prodotto, prezzo FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
+        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
         $stmt->bind_param('s',$text);
         $stmt->execute();
         $result = $stmt->get_result();

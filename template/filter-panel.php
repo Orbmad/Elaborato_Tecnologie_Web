@@ -2,8 +2,6 @@
     <form id="filtered-search" action="search.php" method="GET">
         <label for="#more-filters-btn">Visualizza più filtri</label>
         <input type="button" id="more-filters-btn" value="Più filtri" />
-        <label for="#reset-filters-btn">Resetta i filtri</label>
-        <input type="reset" id="reset-filters-btn" value="Reset" />
         <ul>
             <li class="filter-price hidden">
                 <h3>Prezzo:</h3>
@@ -40,8 +38,9 @@
                         echo "<ul class='hidden " .  $nomecategoria . "-sub'>";
                         foreach ($sottocategorie as $sottocategoria) {
                             $nomesottocategoria = $sottocategoria["nome_sottocategoria"];
+                            $id_sottocategoria = $sottocategoria["id_sottocategoria"];
                             echo "<li>";
-                            echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="' . $nomesottocategoria . '" value="' . $nomesottocategoria . '">';
+                            echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $id_sottocategoria . '" value="' . $nomesottocategoria . '">';
                             echo '<label for="' . $nomesottocategoria . '">' . $nomesottocategoria . '</label>';
                             echo "</li>";
                         }
@@ -68,5 +67,9 @@
                 </li>
             <?php endforeach; ?>
         </ul>
+        <label for="#apply-filters-btn">Applica i filtri</label>
+        <input type="button" id="apply-filters-btn" class="hidden" value="Applica Filtri" />
+        <label for="#reset-filters-btn">Resetta i filtri</label>
+        <input type="reset" id="reset-filters-btn" class="hidden" value="Reset" />
     </form>
 </aside>
