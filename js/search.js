@@ -25,7 +25,7 @@ updateMaxText();
 
 const moreFiltersButton = document.getElementById('more-filters-btn');
 moreFiltersButton.addEventListener('click', function() {
-    const hideableSections = document.querySelectorAll("aside > form > ul > li");
+    const hideableSections = document.querySelectorAll("aside > form > ul > li, aside > form > input");
     hideableSections.forEach(function(section) {
         section.classList.toggle('hidden');
         if(section.classList.contains('hidden')){
