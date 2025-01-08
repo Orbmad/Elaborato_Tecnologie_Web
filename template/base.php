@@ -14,11 +14,11 @@
 <body>
     <header>
         <h1>Plantatio
-        </h1>
-        <ul>
+        </h1><ul>
             <li class="user_icon">
                 <a href="#"><img class="user_icon" src=".\img\Icona-Utente.png" alt="user-icon" /><img
                         src="img/cerchio.png" alt="notifiche" />
+<!--Inserire numero di notifiche dell'utente-->
                     <p>1</p>
                 </a>
                 <ul id="submenu_user">
