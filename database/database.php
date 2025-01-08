@@ -12,7 +12,7 @@ class DatabaseHelper{
     //Ottiene le sottocategorie di una categoria
     private function getSubCategoriesFromCategory($Category) {
         $stmt = $this->db->prepare("SELECT * FROM SottoCategorie WHERE id_categoria = ?");
-        $stmt->bind_param('i', $Category);
+        $stmt->bind_param('s', $Category);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -28,6 +28,7 @@ class DatabaseHelper{
         $result = $stmt->get_result();
 
         $categories = $result->fetch_all(MYSQLI_ASSOC);
+        
         foreach($categories as $category):
             $category["sottocategorie"] = $this->getSubCategoriesFromCategory($category["nome_categoria"]);
         endforeach;
@@ -103,6 +104,15 @@ class DatabaseHelper{
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Insert a new user in the database
+     */
+    public function newUser($email, $nome, $cognome, $password){
+        $stmt = $this->db->prepare("INSERT INTO Utenti (email, nome, cognome, password_hash) VALUES (?, ?, ?, SHA2(?, 256))");
+        $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
+        $stmt->execute();
     }
 }
 ?>

@@ -1,7 +1,7 @@
 -- CREAZIONE UTENTI --------------------------------
 -- Inserimento utenti
 INSERT INTO
-    Utenti (nome, cognome, email, password_hash, admin)
+    Utenti (nome, cognome, email, password_hash, admin_flag)
 VALUES
     (
         'Mario',
