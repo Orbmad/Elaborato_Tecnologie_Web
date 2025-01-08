@@ -278,40 +278,40 @@ nav.main-nav.opened-nav ul.categories{
 /*FINE NAV MOBILE*/
 
 /*INIZIO HEADER VERSIONE MOBILE*/
-header{
+body > header{
     margin: 20px 5% 0px;
 }
 
-header > h1{
+body > header > h1{
     display: inline-block;
     width: 30%;
     text-align: center;
     color: #FF7D00;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 30px;
 }
-header > ul{
+body > header > ul{
     display: inline-block;
     width: 70%;
     text-align: right;
     list-style: none;
 }
-header img{
-    width: 70px;
+body > header > ul > li > a > img{
+    width: 40px;
 }
 
-header > h1, header > ul{
+body > header > h1, body > header > ul{
     vertical-align: bottom;
 }
 
-header > ul > li{
+
+body > header > ul > li{
     position: relative;
     float: right;
     padding: 0 5%;
 }
 
-
-header > ul > li > a{
+body > header > ul > li > a{
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr;
@@ -319,54 +319,53 @@ header > ul > li > a{
     text-decoration: none;
 }
 
-header > ul > li.user_icon > a > img{
+body > header > ul > li.user_icon > a > img{
     grid-area: 1/1;
 }
 
-header > ul > li:nth-child(2) > a > img{
+body > header > ul > li:nth-child(2) > a > img{
     position: relative;
-    top: 15px;
+    top: 7px;
 }
 
-header > ul > li.user_icon > a > img:nth-child(2){
+body > header > ul > li.user_icon > a > img:nth-child(2){
     padding-bottom: 60%;
     padding-left: 50%;
-    width: 30px;
+    width: 20px;
     grid-area: 1/1;
 }
-
-/*inserimento del numero di notifiche che l'utente deve visualizzare estraendo info da DB*/
-header > ul > li.user_icon > a > p{
+/*DA MOD NEL CODICE inserimento del numero di notifiche che l'utente deve visualizzare*/
+body > header > ul > li.user_icon > a > p{
     grid-area: 1/1;
     color: #fff;
     padding-bottom: 60%;
     padding-left: 50%;
+    font-size: 11px;
 }
 
-header ul li ul{
+body > header > ul > li > ul{
     position: absolute;
-    left: -30px;
+    left: -35px;
     text-align: center;
     width: 200px;
     display: none;
 }
 
-header ul li ul li{
+body > header > ul > li > ul > li{
     padding: 5px 0 ;
     background: #3F413E;
     border: solid #FF7D00 1px;
 }
 
 
-header ul li ul a{
+body > header > ul > li > ul > li > a{
     color: #fff;
     text-decoration: none;
     font-size: 20px;
 }
 
-/*quando si passa con il cursore sull'icona si apre vede il menù.
-Questo accade solo se l'utente non ha cliccato sull'icona*/
-header ul li.user_icon:hover > ul{
+/*quando si passa con il cursore sull'icona si apre vede il menù*/
+body > header > ul > li.user_icon:hover > ul{
     display: initial;
 }
 
@@ -961,4 +960,26 @@ main > article > section > p{
             margin-left: 10px;
         } 
     /*FINE ASIDE DESKTOP*/
+
+    /*INIZIO HEADER versione DESKTOP*/
+    body > header > h1{
+        font-size: 50px;
+    }
+
+    body > header > ul > li > a > img{
+        width: 70px;
+    }
+    /*fix del carrello allineato all'icona utente*/
+    body > header > ul > li:nth-child(2) > a > img{
+        top: 3px;
+    }
+    /*ingrandimento immagine pallina*/
+    body > header > ul > li.user_icon > a > img:nth-child(2){
+        width: 30px;
+    }
+
+    body > header > ul > li.user_icon > a > p{
+        font-size: 17px;
+    }
+    /*FINE HEADER versione DESKTOP*/
 }
