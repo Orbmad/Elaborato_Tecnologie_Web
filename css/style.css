@@ -580,13 +580,26 @@ main > section.main-categories-blocks > ul > li > section{
     padding: 0px;
 }
 
-main > section.main-categories-blocks > ul > li > a > input{
-
-
+main > section.main-categories-blocks > ul > li > section > input{
+    height: 30%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #082D0F;
+    color: #F0F2EF;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
 }
 
-main > section.main-categories-blocks > ul > li > a > h2{
-    font-size: small;
+main > section.main-categories-blocks > ul > li > section > h2{
+    height: 70%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin: 0; 
+    text-transform: uppercase;
+    font-size: large;
 }
 
 
