@@ -104,9 +104,6 @@ nav{
     align-items: center;    /* Allinea verticalmente */
     padding-left: 12px;
     padding-right: 12px;
-    /*In prova*/
-    overflow-x: auto;
-    white-space: nowrap;
 }
 
 /*Inizio Barra di ricerca versione mobile*/
@@ -806,23 +803,27 @@ main > article > section > p{
         height: 100%;
         align-items: center;
         list-style: none;
-        display: flex;
         margin-left: auto;
         margin-right: auto;
 
-        /*flex-shrink: 1;
-        /* overflow: auto; */
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: hidden;
     }
 
     nav.main-nav.closed-nav ul.categories > li{
         height: 96%;
-        display: flex;
         padding-right: 12px;
         padding-left: 12px;
 
         align-items: center;
         justify-content: center;
 
+        flex: 1 1 auto;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        min-width: 40px;
     }
 
     nav.main-nav.closed-nav > ul.categories button.category-button{
@@ -833,6 +834,10 @@ main > article > section > p{
 
         padding: 0%;
         height: 100%;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     nav.main-nav.closed-nav > ul.categories > li button.category-button:hover{
