@@ -696,6 +696,7 @@ main.login-form label {
     display: inline;
     color: #F0F2EF;
     font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
     margin-left: 6px;
 }
 
@@ -708,7 +709,6 @@ main.login-form h1 {
 main.login-form > section {
     background-color: #082D0F;
     padding: 20px;
-    padding-bottom: 10px;
     border-radius: 10px;
     border: solid 2px #3F413E;
 }
@@ -738,9 +738,9 @@ main.login-form > section > form > ul > li > input {
 }
 
 main.login-form > section > form > ul > li > input[type="submit"],
-main.login-form > section > form > ul > li > button {
+main.login-form > button {
     height: 100%;
-    width: 22%;
+    width: 26%;
     margin-right: 0px;
     padding: 0px;
     border-radius: 15px;
@@ -752,8 +752,16 @@ main.login-form > section > form > ul > li > button {
 
 /*inizio sezione signup*/
 
-main.login-form > section.signup {
+main.login-form > section.hidden {
     display: none;
+}
+
+main.login-form > section.signup > form > ul > li > input {
+    width: 40%;
+}
+
+main.login-form > section.signup > form > ul > li > input[type="submit"] {
+    width: 60%;
 }
 
 /*fine sezione signup*/
