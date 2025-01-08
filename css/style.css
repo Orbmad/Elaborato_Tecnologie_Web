@@ -33,7 +33,7 @@ footer {
     margin-top: 35px;
 }
 
-footer > div.contacts, footer > div.credits {
+footer > section.contacts, footer > section.credits {
     background-color: #082D0F;
     width: 100%;
     padding: 0px;
@@ -41,11 +41,11 @@ footer > div.contacts, footer > div.credits {
     flex-direction: column;
 }
 
-footer div.credits ul {
+footer section.credits ul {
     list-style: none;
 }
 
-footer > div.credits  p, footer > div.contacts p{
+footer > section.credits  p, footer > section.contacts p{
     font-family: 'Josefin Sans', sans-serif;
     font-size: 14px;
     color: #F0F2EF;
@@ -53,16 +53,16 @@ footer > div.credits  p, footer > div.contacts p{
     margin-left: 0px;
 }
 
-footer > div.contacts {
+footer > section.contacts {
     margin-bottom: 10px;
 }
 
-footer > div.contacts ul {
+footer > section.contacts ul {
     display: flex;
     flex-direction: column;
 }
 
-footer > div.contacts ul li {
+footer > section.contacts ul li {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 10px;
     color: #F0F2EF;
@@ -71,25 +71,25 @@ footer > div.contacts ul li {
     margin-bottom: 6px;
 }
 
-footer > div.contacts ul li > img {
+footer > section.contacts ul li > img {
     display: inline-block;
     height: 10px;
     margin-right: 8px;
     vertical-align: middle;
 }
 
-footer > div.credits ul li {
+footer > section.credits ul li {
     padding: 0px;
     margin: 0px;
 }
 
-footer > div.credits  a {
+footer > section.credits  a {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 6px;
     color: #F0F2EF;
 }
 
-footer > div.credits  a:hover{
+footer > section.credits a:hover{
     cursor: pointer;
 }
 

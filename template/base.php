@@ -112,7 +112,7 @@
 
     <footer>
 
-        <div class="contacts">
+        <section class="contacts">
             <p>Contatti</p>
             <ul>
                 <li>
@@ -128,9 +128,9 @@
                     <span>Instagram</span>
                 </li>
             </ul>
-        </div>
+        </section>
 
-        <div class="credits">
+        <section class="credits">
             <p>Crediti</p>
             <ul>
                 <li>
@@ -156,7 +156,7 @@
                     <a href="https://www.flaticon.com/free-icons/left-arrow" title="left arrow icons">Left arrow icons created by IYAHICON - Flaticon</a>
                 </li>
             </ul>
-        </div>
+        </section>
 
     </footer>
     <!-Inserimento javascript->
