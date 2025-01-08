@@ -73,7 +73,7 @@ VALUES
 
 
 -- Inserimento gruppi --
-INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo)
+INSERT INTO Gruppi (nome_gruppo, descrizione_gruppo)
 VALUES
 ('Cactus Lovers', 'Un gruppo dedicato agli amanti dei cactus e delle piante grasse. Condividiamo consigli su cura, propagazione e specie rare.'),
 ('Orchidee Passione', 'Per chi è appassionato di orchidee! Qui discutiamo di varietà, fertilizzazione e tecniche di coltivazione per fiori spettacolari.'),

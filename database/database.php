@@ -41,6 +41,14 @@ class DatabaseHelper
         return $categories;
     }
 
+    public function getRandomCategories($n){
+        $stmt = $this->db->prepare("SELECT * FROM Categorie ORDER BY RAND() LIMIT ? ");
+        $stmt->bind_param('i', $n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Returns a product using its id (nome_prodotto).
      */
@@ -110,8 +118,13 @@ class DatabaseHelper
     public function searchProductByName($name)
     {
         $text = "%" . $name . "%";
+<<<<<<< HEAD
         $stmt = $this->db->prepare("SELECT nome_prodotto, prezzo FROM Prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
         $stmt->bind_param('s', $text);
+=======
+        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
+        $stmt->bind_param('s',$text);
+>>>>>>> bfe0521030d59dfce5c28ae1bd4688248fde854e
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);

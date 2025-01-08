@@ -6,7 +6,7 @@ body, nav, header, ul, li, a, h1,input[type="text"], form{
     font-family: 'Josefin Sans', sans-serif;
 }
 
-input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon{
+input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"]{
     cursor: pointer;
 }
 
@@ -560,6 +560,89 @@ section.main-articles > img.arrow-icon:active {
 
 /*Fine regole carosello versione mobile*/
 
+
+/*Inizio regole categorie nel main */
+
+main > section.main-categories-blocks > form > ul {
+    width: 100%;
+    margin-top: 20px;
+}
+
+main > section.main-categories-blocks > form > ul > li{
+    text-align: center;
+    position: relative;
+}
+
+main > section.main-categories-blocks > form > ul > li > img{
+    width: 80%;
+}
+
+main > section.main-categories-blocks > form > ul > li > section{
+    position: absolute; /* Positioning relative to the container */
+    top: 70%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Correct centering */
+    width: 80%;
+    height: 35%;
+    background-color: #F0F2EF;
+    color: #082D0F;
+    padding: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+}
+
+main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]{
+    height: 30%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    background-color: #082D0F;
+    color: #F0F2EF;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+}
+
+main > section.main-categories-blocks > form > ul > li > section > input[type="text"]{
+    height: 70%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    margin: 0; 
+    text-transform: uppercase;
+    font-size: large;
+    overflow: hidden;
+    text-align: center;
+    color: #082D0F;
+    border: 0px;
+}
+
+main > section.main-categories-blocks > form > ul > li > section > input[type="text"]:focus {
+    border: 0px;
+    outline: none;
+}
+
+@media (min-width:769px){
+    main > section.main-categories-blocks > form > ul {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+    }
+
+    main > section.main-categories-blocks > form > ul > li{
+        text-align: center;
+        position: relative;
+        width:50%;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
+}
+
+/*Fine regole categorie nel main */
+
 /*FINE INDEX MAIN MOBILE*/
 
 /*INIZIO SEARCH ASIDE MOBILE*/
@@ -675,7 +758,7 @@ aside > form > ul > li:nth-of-type(2) > ul > li > ul  input[type=checkbox]{
     margin-left: 20px;
 }
 
-aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden{
+aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden, aside > form > input.hidden{
     display: none;
     visibility: hidden;
 }
@@ -854,6 +937,10 @@ main > ul.search-results-list > li{
     box-shadow: 5px 5px 3px #3F413E;
 }
 
+main > ul.search-results-list > li.hidden{
+    display: none;
+}
+
 main > ul.search-results-list > li > a > img.product-image{
     width: 190px;
     height: 190px;  
@@ -894,6 +981,19 @@ main > ul.search-results-list{
     width:100%;
 }
 
+main > ul.search-results-list > li > a span.checked {
+    color: #082D0F;
+    opacity: 100%;
+  }
+
+main > ul.search-results-list > li > a{
+    text-decoration: none;
+}
+
+main > ul.search-results-list > li > a span{
+    color: #3F413E;
+    opacity: 60%;
+  }
 /*Fine regole main pagine search mobile*/
 
 @media (min-width: 768px){
@@ -1207,6 +1307,13 @@ main > ul.search-results-list{
         aside > form > ul > li.hidden{
             visibility: visible;
             display:block
+        }
+
+        aside > form > input.hidden{
+            margin-top: 30px;
+            margin-left: 20px;
+            visibility: visible;
+            display: inline-block;
         }
 
         aside > form input[type="button"]:first-of-type{

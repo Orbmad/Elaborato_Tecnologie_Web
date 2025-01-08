@@ -70,3 +70,56 @@ function openSubcategories(categoryName) {
         menuArrowDown.classList.add("hidden");
     } 
 }
+
+/**
+ * Function used to show suggestions for the searchbar while the user is typing.
+ * The suggestions list is updated at each letter typed by the user, starting after
+ * the first two letters are typed.
+ */
+async function showSuggestions() {
+    console.log("a");
+    const n = 3;
+    const text = document.querySelector("#fastSearch").value;
+    if(text.length>2){
+        const url = `./utils/api-suggestions.php?text=${encodeURIComponent(text)}&n=${n}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Response status: ${response.status}`);
+            }
+            const json = await response.json();
+            console.log(json);
+            const suggestions = generateSuggestions(json);
+            const suggestionsUl = document.querySelector(".suggestions");
+            suggestionsUl.innerHTML = suggestions;
+            if(suggestionsUl.children.length>0){
+                document.querySelector(".suggestions").classList.remove("not-showing");
+            }else{
+                document.querySelector(".suggestions").classList.add("not-showing");
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }else{
+        document.querySelector(".suggestions").classList.add("not-showing");
+    }
+}
+
+/**
+ * Creates suggestions as list items from a json containing their names
+ */
+function generateSuggestions(suggestions) {
+    let result = "";
+
+    for(let i=0; i < suggestions.length; i++){
+        let suggestion = `
+        <li class="product-suggested">
+            <a href="${suggestions[i]["nome_prodotto"]}">
+                <img src="upload/${suggestions[i]["nome_prodotto"]}.jpg" alt="${suggestions[i]["nome_prodotto"]} image"><p>${suggestions[i]["nome_prodotto"]}</p>
+            </a>
+        </li>
+        `;
+        result += suggestion;
+    }
+    return result;
+}
