@@ -6,6 +6,7 @@
     <title><?php echo $templateParams["titolo"]; ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet"> <!-Inserimento font->
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
@@ -97,21 +98,13 @@
     }
     ?>
 
-    <main>
-        <?php
-        if (isset($templateParams["slideShow"])) {
-            require($templateParams["slideShow"]);
-        }
-        ?>
-        <?php
-        if (isset($templateParams["mainContent"])) {
-            require($templateParams["mainContent"]);
-        }
-        ?>
-    </main>
+    <?php
+    if (isset($templateParams["mainContent"])) {
+        require($templateParams["mainContent"]);
+    }
+    ?>   
 
     <footer>
-
         <div class="contacts">
             <p>Contatti</p>
             <ul>
