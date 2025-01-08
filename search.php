@@ -6,7 +6,11 @@ $templateParams["titolo"] = "Plantatio";
 $templateParams["js"] = array("js/search.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
-$templateParams["searchResults"] = "template/search-results.php";
+if (isset($_GET['fastSearch'])) {
+    $templateParams["searchResults"] = $dbh->searchProductByName($_GET['fastSearch']);
+    $templateParams["mainContent"] = "template/search-results.php";
+}
+
 $templateParams["priceRange"] = $dbh->getProductsPrinceRange();
 $templateParams["famiglia"] = $dbh->getProductsAttributeValues("famiglia");
 $templateParams["genere"] = $dbh->getProductsAttributeValues("genere");

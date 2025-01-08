@@ -566,6 +566,7 @@ section.main-articles > img.arrow-icon:active {
 /*INIZIO SEARCH ASIDE MOBILE*/
 aside{
     /* background-color: #082d0f98; */
+    display: inline-block;
     background-color: #F0F2EF;
     border-bottom: 3px solid #082D0F;
     width: 100%;
@@ -758,6 +759,29 @@ main > article > section > p{
     /*inserimento del font-family*/
 }
 /*regole per lo stile della pagina per il singolo prodotto fine*/
+
+/*Inizio regole main pagine search mobile*/
+main > ul.search-results-list{
+    display: inline-block;
+    text-align: center;
+}
+
+main > ul.search-results-list > li{
+    display: inline-flex;
+    width: 200px;
+    height: 220px;
+    border: 2px solid #082D0F;
+    margin: 10px;
+    padding: 10px;
+    justify-content: center;
+    font-size: small;
+}
+
+main > ul.search-results-list > li > a > img.product-image{
+    width: 130px;
+    height: 130px;  
+}
+/*Fine regole main pagine search mobile*/
 
 @media (min-width: 768px){
 
