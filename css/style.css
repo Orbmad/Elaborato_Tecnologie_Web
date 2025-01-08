@@ -682,6 +682,84 @@ aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden{
 
 /*FINE SEARCH ASIDE MOBILE*/
 
+/*INIZIO LOGIN MAIN MOBILE*/
+
+main.login-form {
+    background-color: #F0F2EF;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 45px;
+    padding-bottom: 30px;
+}
+
+main.login-form label {
+    display: inline;
+    color: #F0F2EF;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-left: 6px;
+}
+
+main.login-form h1 {
+    color: #F0F2EF;
+    font-family: 'Josefin Sans', sans-serif;
+    margin-bottom: 26px;
+}
+
+main.login-form > section {
+    background-color: #082D0F;
+    padding: 20px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    border: solid 2px #3F413E;
+}
+
+main.login-form > section > form {
+    display: flex;
+    flex-direction: column;
+}
+
+main.login-form > section > form > ul > li {
+    height: 26px;
+    margin-bottom: 16px;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+}
+
+main.login-form > section > form > ul > li > input {
+    padding: 0px;
+    padding-left: 5px;
+    padding-right: 5px;
+    height: 18px;
+    width: 65%;
+    margin-left: auto;
+    border-radius: 7px;
+    border: solid 1px #3F413E;
+}
+
+main.login-form > section > form > ul > li > input[type="submit"],
+main.login-form > section > form > ul > li > button {
+    height: 100%;
+    width: 22%;
+    margin-right: 0px;
+    padding: 0px;
+    border-radius: 15px;
+    border: solid 1px #3F413E;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
+
+/*inizio sezione signup*/
+
+main.login-form > section.signup {
+    display: none;
+}
+
+/*fine sezione signup*/
+
+/*FINE LOGIN MAIN MOBILE*/
+
 
 /*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
 /* main{
