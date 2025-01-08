@@ -26,11 +26,15 @@
                 <h2><?php echo $result["nome_prodotto"] ?></h2>
                 <p><?php echo $result["prezzo"] ?> €</p>
                 <p>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star"></span>
-                    <span class="fa fa-star"></span>
+                <?php 
+                    $voto = $result["voto"];      
+                    for ($i = 1; $i <= $voto; $i++) {
+                        echo '<span class="fa fa-star checked"></span>';
+                    }
+                    for ($i = $voto + 1; $i <= 5; $i++) {
+                        echo '<span class="fa fa-star"></span>';
+                    }
+                    ?>
                 </p>
             </a>
         </li>

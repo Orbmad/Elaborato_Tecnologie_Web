@@ -902,6 +902,20 @@ main > ul.search-results-list{
     display: block;
     width:100%;
 }
+
+main > ul.search-results-list > li > a span.checked {
+    color: #082D0F;
+    opacity: 100%;
+  }
+
+main > ul.search-results-list > li > a{
+    text-decoration: none;
+}
+
+main > ul.search-results-list > li > a span{
+    color: #3F413E;
+    opacity: 60%;
+  }
 /*Fine regole main pagine search mobile*/
 
 @media (min-width: 768px){
