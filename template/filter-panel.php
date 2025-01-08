@@ -1,6 +1,6 @@
 <aside>
     <form id="filtered-search" action="search.php" method="GET">
-        <label for="#more-filters-btn">Visualizza più filtri</label>
+        <label for="more-filters-btn">Visualizza più filtri</label>
         <input type="button" id="more-filters-btn" value="Più filtri" />
         <ul>
             <li class="filter-price hidden">
@@ -67,9 +67,9 @@
                 </li>
             <?php endforeach; ?>
         </ul>
-        <label for="#apply-filters-btn">Applica i filtri</label>
+        <label for="apply-filters-btn">Applica i filtri</label>
         <input type="button" id="apply-filters-btn" class="hidden" value="Applica Filtri" />
-        <label for="#reset-filters-btn">Resetta i filtri</label>
+        <label for="reset-filters-btn">Resetta i filtri</label>
         <input type="reset" id="reset-filters-btn" class="hidden" value="Reset" />
     </form>
 </aside>
