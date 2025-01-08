@@ -559,7 +559,20 @@ section.main-articles > img.arrow-icon:active {
   }
 
 /*Fine regole carosello versione mobile*/
+
+
 /*Inizio regole categorie nel main */
+
+main > section.main-categories-blocks > ul {
+    width: 100%;
+    margin-top: 20px;
+}
+
+main > section.main-categories-blocks > ul > li{
+    text-align: center;
+    position: relative;
+}
+
 main > section.main-categories-blocks > ul > li > img{
     width: 80%;
 }
@@ -570,7 +583,7 @@ main > section.main-categories-blocks > ul > li > section{
     left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Correct centering */
     width: 80%;
-    height: 30%;
+    height: 35%;
     background-color: #F0F2EF;
     color: #082D0F;
     padding: 20px;
@@ -600,19 +613,25 @@ main > section.main-categories-blocks > ul > li > section > h2{
     margin: 0; 
     text-transform: uppercase;
     font-size: large;
+    overflow: hidden;
 }
 
+@media (min-width:769px){
+    main > section.main-categories-blocks > ul {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+    }
 
-main > section.main-categories-blocks > ul {
-    width: 100%;
-    margin-top: 20px;
+    main > section.main-categories-blocks > ul > li{
+        text-align: center;
+        position: relative;
+        width:50%;
+        box-sizing: border-box;
+        display: inline-block;
+    }
+
 }
-
-main > section.main-categories-blocks > ul > li{
-    text-align: center;
-    position: relative;
-}
-
 
 /*Fine regole categorie nel main */
 
