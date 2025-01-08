@@ -64,8 +64,7 @@ CREATE TABLE Prodotti (
     tipologia_foglia VARCHAR(30),
     colore_foglia VARCHAR(30), 
     descrizione TEXT,
-    voto DECIMAL(1,1) NOT NULL, 
-    FOREIGN KEY (id_sottocategoria) REFERENCES SottoCategorie(nome_sottocategoria)
+    voto DECIMAL(1,1) NOT NULL
 );
 
 -- Tabella carrello (Ogni utente possiede una tupla per ogni prodotto diverso nel carrello)
@@ -106,12 +105,11 @@ CREATE TABLE Ordini (
 
 -- Tabella dettagli ordini
 CREATE TABLE DettagliOrdini (
-    id_dettaglio INT AUTO_INCREMENT,
+    id_dettaglio INT AUTO_INCREMENT PRIMARY KEY,
     id_ordine INT NOT NULL,
     id_prodotto VARCHAR(150) NOT NULL,
     quantita INT NOT NULL,
     prezzo_unitario DECIMAL(10, 2) NOT NULL,
-    PRIMARY KEY(id_ordine, id_dettaglio),
     FOREIGN KEY (id_ordine) REFERENCES Ordini(id_ordine) ON DELETE CASCADE,
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(nome_prodotto)
 );
