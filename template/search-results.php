@@ -8,7 +8,7 @@
             $result["dimensioni"] = str_replace(' ', '', $result["dimensioni"]);
             $result["tipologia_foglia"] = str_replace(' ', '', $result["tipologia_foglia"]);
             $result["colore_foglia"] = str_replace(' ', '', $result["colore_foglia"]);
-            $result["profumo"] = str_replace(' ', '', $result["profumo"]);;    
+            $result["profumo"] = str_replace(' ', '', $result["profumo"]);   
         ?>
         <li class="<?php 
             echo $result["prezzo"] . ' sub-' . 

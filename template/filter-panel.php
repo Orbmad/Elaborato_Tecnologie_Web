@@ -33,14 +33,22 @@
                         $nomecategoria = $category["nome_categoria"];
                         $sottocategorie = $category["sottocategorie"];
                         echo "<li>";
-                        echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" >';
+                        if(isset($templateParams["searchedCategory"]) && $templateParams["searchedCategory"] == $nomecategoria){
+                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked="true">';
+                        }else{
+                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" >';
+                        }
                         echo '<label for="' . $nomecategoria . '">' . $nomecategoria . '</label>';
                         echo "<ul class='hidden " .  $nomecategoria . "-sub'>";
                         foreach ($sottocategorie as $sottocategoria) {
                             $nomesottocategoria = $sottocategoria["nome_sottocategoria"];
                             $id_sottocategoria = $sottocategoria["id_sottocategoria"];
                             echo "<li>";
-                            echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $id_sottocategoria . '" value="' . $nomesottocategoria . '">';
+                            if(isset($templateParams["searchedCategory"]) && $templateParams["searchedCategory"] == $nomecategoria){
+                                echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $id_sottocategoria . '" value="' . $nomesottocategoria . '" cehcked>';
+                            }else{
+                                echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $id_sottocategoria . '" value="' . $nomesottocategoria . '">';
+                            }
                             echo '<label for="' . $nomesottocategoria . '">' . $nomesottocategoria . '</label>';
                             echo "</li>";
                         }

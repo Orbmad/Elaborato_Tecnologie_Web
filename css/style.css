@@ -563,21 +563,21 @@ section.main-articles > img.arrow-icon:active {
 
 /*Inizio regole categorie nel main */
 
-main > section.main-categories-blocks > ul {
+main > section.main-categories-blocks > form > ul {
     width: 100%;
     margin-top: 20px;
 }
 
-main > section.main-categories-blocks > ul > li{
+main > section.main-categories-blocks > form > ul > li{
     text-align: center;
     position: relative;
 }
 
-main > section.main-categories-blocks > ul > li > img{
+main > section.main-categories-blocks > form > ul > li > img{
     width: 80%;
 }
 
-main > section.main-categories-blocks > ul > li > section{
+main > section.main-categories-blocks > form > ul > li > section{
     position: absolute; /* Positioning relative to the container */
     top: 70%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -593,7 +593,7 @@ main > section.main-categories-blocks > ul > li > section{
     padding: 0px;
 }
 
-main > section.main-categories-blocks > ul > li > section > input{
+main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]{
     height: 30%;
     display: flex; 
     justify-content: center;
@@ -605,7 +605,7 @@ main > section.main-categories-blocks > ul > li > section > input{
     text-transform: uppercase;
 }
 
-main > section.main-categories-blocks > ul > li > section > h2{
+main > section.main-categories-blocks > form > ul > li > section > input[type="text"]{
     height: 70%;
     display: flex; 
     justify-content: center; 
@@ -614,16 +614,24 @@ main > section.main-categories-blocks > ul > li > section > h2{
     text-transform: uppercase;
     font-size: large;
     overflow: hidden;
+    text-align: center;
+    color: #082D0F;
+    border: 0px;
+}
+
+main > section.main-categories-blocks > form > ul > li > section > input[type="text"]:focus {
+    border: 0px;
+    outline: none;
 }
 
 @media (min-width:769px){
-    main > section.main-categories-blocks > ul {
+    main > section.main-categories-blocks > form > ul {
         display: flex;
         width: 50%;
         flex-direction: row;
     }
 
-    main > section.main-categories-blocks > ul > li{
+    main > section.main-categories-blocks > form > ul > li{
         text-align: center;
         position: relative;
         width:50%;
