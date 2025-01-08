@@ -54,7 +54,6 @@
         <form>
     </section>
     <section class="best-products">
-        <h2>I Piú amati!</h2>
         <form action="search.php" method="GET">
             <ul class="search-results-list">
                 <?php

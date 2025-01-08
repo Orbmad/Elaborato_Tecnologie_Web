@@ -625,10 +625,17 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="t
 }
 
 @media (min-width:769px){
-    main > section.main-categories-blocks > form > ul {
+    /* inizio regole main index blocco categoria */
+
+    main > section.main-categories-blocks > form {
         display: flex;
-        width: 50%;
+        width: 48%;
         flex-direction: row;
+    }
+
+    main > section.main-categories-blocks > form >ul{
+        display: flex;
+        width: 100%;
     }
 
     main > section.main-categories-blocks > form > ul > li{
@@ -638,7 +645,17 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="t
         box-sizing: border-box;
         display: inline-block;
     }
+    /* fine regole main index blocco categoria */	
 
+    /* inizio regole main index blocco prodotti */
+    main > section.best-products > ul {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+    }
+
+
+    /* fine fine main index blocco prodotti */
 }
 
 /*Fine regole categorie nel main */
