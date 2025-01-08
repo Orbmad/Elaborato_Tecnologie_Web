@@ -20,7 +20,7 @@
                     <input type="range" id="max-price" name="max-price"
                         min="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>"
                         max="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>"
-                        value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" step="0.2">
+                        value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" step="0.1">
                     <label for="max-price-selected">Prezzo massimo selezionato</label>
                     <input type="text" id="max-price-selected"
                         value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" readonly />

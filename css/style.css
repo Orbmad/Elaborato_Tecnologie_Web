@@ -6,7 +6,7 @@ body, nav, header, ul, li, a, h1,input[type="text"], form{
     font-family: 'Josefin Sans', sans-serif;
 }
 
-input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon{
+input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"]{
     cursor: pointer;
 }
 

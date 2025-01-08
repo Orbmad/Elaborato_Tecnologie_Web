@@ -71,13 +71,13 @@ applyButton.addEventListener('click',function(){
     shownProducts.forEach(function(product) {
         let isHidden = false;
         checkBoxes.forEach(function(checkBox) {
-            if (!checkBox.checked && product.classList.contains(checkBox.name)) {
+            if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
                 isHidden = true;
             }
         });
 
         checkCategories.forEach(function(checkBox) {
-            if (!checkBox.checked && product.classList.contains(checkBox.name)) {
+            if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
                 isHidden = true;
             }
         });
