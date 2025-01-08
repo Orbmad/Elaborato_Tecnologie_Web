@@ -80,8 +80,8 @@ CREATE TABLE Carrello (
 
 -- Tabella gruppi di prodotti
 CREATE TABLE Gruppi (
-    nome_gruppo VARCHAR(50) PRIMARY KEY,
-    descrizione_gruppo TEXT
+    nomeGruppo VARCHAR(50) PRIMARY KEY,
+    descrizioneGruppo TEXT
 );
 
 -- Tabella appartenenza gruppo
