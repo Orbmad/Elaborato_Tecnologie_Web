@@ -1086,7 +1086,7 @@ main > article > section > p{
     }
     /*fix del carrello allineato all'icona utente*/
     body > header > ul > li:nth-child(2) > a > img{
-        top: 3px;
+        top: 13px;
     }
     /*ingrandimento immagine pallina*/
     body > header > ul > li.user_icon > a > img:nth-child(2){
