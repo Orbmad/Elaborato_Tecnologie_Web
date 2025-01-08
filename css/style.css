@@ -6,7 +6,7 @@ body, nav, header, ul, li, a, h1,input[type="text"], form{
     font-family: 'Josefin Sans', sans-serif;
 }
 
-input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon{
+input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"]{
     cursor: pointer;
 }
 
@@ -675,7 +675,7 @@ aside > form > ul > li:nth-of-type(2) > ul > li > ul  input[type=checkbox]{
     margin-left: 20px;
 }
 
-aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden{
+aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden, aside > form > input.hidden{
     display: none;
     visibility: hidden;
 }
@@ -774,6 +774,10 @@ main > ul.search-results-list > li{
     justify-content: center;
     font-size: small;
     box-shadow: 5px 5px 3px #3F413E;
+}
+
+main > ul.search-results-list > li.hidden{
+    display: none;
 }
 
 main > ul.search-results-list > li > a > img.product-image{
@@ -1129,6 +1133,13 @@ main > ul.search-results-list{
         aside > form > ul > li.hidden{
             visibility: visible;
             display:block
+        }
+
+        aside > form > input.hidden{
+            margin-top: 30px;
+            margin-left: 20px;
+            visibility: visible;
+            display: inline-block;
         }
 
         aside > form input[type="button"]:first-of-type{

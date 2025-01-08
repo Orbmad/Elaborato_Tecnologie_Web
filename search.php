@@ -7,6 +7,7 @@ $templateParams["js"] = array("js/search.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
 if (isset($_GET['fastSearch'])) {
+    $templateParams["searchedWord"] = $_GET['fastSearch'];
     $templateParams["searchResults"] = $dbh->searchProductByName($_GET['fastSearch']);
     $templateParams["mainContent"] = "template/search-results.php";
 }

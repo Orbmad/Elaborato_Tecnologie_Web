@@ -38,7 +38,7 @@
         <form action="search.php" method="GET">
             <label for="fastsearch">Ricerca rapida</label>
             <section class="search-text">
-                <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" />
+                <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" value="<?php if(isset($templateParams["searchedWord"])){echo($templateParams["searchedWord"]);}?>"/>
                 <ul class="suggestions not-showing">
                     <li class="product-suggested">
                         <a href="#">
