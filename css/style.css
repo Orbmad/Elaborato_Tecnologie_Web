@@ -843,12 +843,12 @@ main > article > section > p{
 /*regole per lo stile della pagina per il singolo prodotto fine*/
 
 /*Inizio regole main pagine search mobile*/
-main > ul.search-results-list{
+main  ul.search-results-list{
     display: inline-block;
     text-align: center;
 }
 
-main > ul.search-results-list > li{
+main  ul.search-results-list > li{
     display: inline-flex;
     width: 200px;
     height: 260px;
@@ -859,16 +859,16 @@ main > ul.search-results-list > li{
     box-shadow: 5px 5px 3px #3F413E;
 }
 
-main > ul.search-results-list > li.hidden{
+main ul.search-results-list > li.hidden{
     display: none;
 }
 
-main > ul.search-results-list > li > a > img.product-image{
+main  ul.search-results-list > li > a > img.product-image{
     width: 190px;
     height: 190px;  
 }
 
-main > ul.search-results-list > li > a > h2{
+main  ul.search-results-list > li > a > h2{
     font-size: small;
     color: #3F413E;
     text-align: start;
@@ -876,7 +876,7 @@ main > ul.search-results-list > li > a > h2{
     margin: 5px 0px;
 }
 
-main > ul.search-results-list > li > a > p:first-of-type{
+main  ul.search-results-list > li > a > p:first-of-type{
     font-size: smaller;
     color: #082D0F;
     text-align: start;
@@ -884,7 +884,7 @@ main > ul.search-results-list > li > a > p:first-of-type{
     margin: 5px 0px;
 }
 
-main > ul.search-results-list > li > a > p:nth-of-type(2){
+main  ul.search-results-list > li > a > p:nth-of-type(2){
     font-size: smaller;
     color: #082D0F;
     text-align: end;
@@ -893,26 +893,26 @@ main > ul.search-results-list > li > a > p:nth-of-type(2){
 }
 
 
-main > ul.search-results-list > li > a {
+main  ul.search-results-list > li > a {
     margin: 10px;
     width:100%;
 }
 
-main > ul.search-results-list{
+main  ul.search-results-list{
     display: block;
     width:100%;
 }
 
-main > ul.search-results-list > li > a span.checked {
+main  ul.search-results-list > li > a span.checked {
     color: #082D0F;
     opacity: 100%;
   }
 
-main > ul.search-results-list > li > a{
+main  ul.search-results-list > li > a{
     text-decoration: none;
 }
 
-main > ul.search-results-list > li > a span{
+main  ul.search-results-list > li > a span{
     color: #3F413E;
     opacity: 60%;
   }

@@ -53,4 +53,35 @@
             </ul>
         <form>
     </section>
+    <section class="best-products">
+        <h2>I Piú amati!</h2>
+        <form action="search.php" method="GET">
+            <ul class="search-results-list">
+                <?php
+                    foreach($templateParams["searchResults"] as $result):
+                ?>
+                <li>
+                    <a href="#">
+                        <img src="./upload/pianta1.jpg" class="product-image" alt="product image"/>
+                        <h2><?php echo $result["nome_prodotto"] ?></h2>
+                        <p><?php echo $result["prezzo"] ?> €</p>
+                        <p>
+                        <?php 
+                            $voto = $result["voto"];      
+                            for ($i = 1; $i <= $voto; $i++) {
+                                echo '<span class="fa fa-star checked"></span>';
+                            }
+                            for ($i = $voto + 1; $i <= 5; $i++) {
+                                echo '<span class="fa fa-star"></span>';
+                            }
+                            ?>
+                        </p>
+                    </a>
+                </li>
+                <?php
+                    endforeach;
+                ?>
+            </ul>
+        <form>
+    </section>
 <main>
