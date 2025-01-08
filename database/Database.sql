@@ -64,7 +64,7 @@ CREATE TABLE Prodotti (
     tipologia_foglia VARCHAR(30),
     colore_foglia VARCHAR(30), 
     descrizione TEXT,
-    voto DECIMAL(1,1) NOT NULL
+    voto INT NOT NULL
 );
 
 -- Tabella carrello (Ogni utente possiede una tupla per ogni prodotto diverso nel carrello)
