@@ -89,7 +89,7 @@ CREATE TABLE Appartenenze (
     id_gruppo VARCHAR(50) NOT NULL,
     id_prodotto VARCHAR(150) NOT NULL,
     PRIMARY KEY (id_gruppo, id_prodotto),
-    FOREIGN KEY (id_gruppo) REFERENCES Gruppi(nome_gruppo) ON DELETE CASCADE,
+    FOREIGN KEY (id_gruppo) REFERENCES Gruppi(nomeGruppo) ON DELETE CASCADE,
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(nome_prodotto) ON DELETE CASCADE
 );
 
