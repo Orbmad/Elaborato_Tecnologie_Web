@@ -23,6 +23,78 @@ label{
 }
 /*Fine regole di base della pagina*/
 
+/*INIZIO FOOTER VERSIONE MOBILE*/
+footer {
+    background-color: #082D0F;
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    margin-top: 35px;
+}
+
+footer > div.contacts, footer > div.credits {
+    background-color: #082D0F;
+    width: 100%;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+}
+
+footer div.credits ul {
+    list-style: none;
+}
+
+footer > div.credits  p, footer > div.contacts p{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 14px;
+    color: #F0F2EF;
+    margin: 6px;
+    margin-left: 0px;
+}
+
+footer > div.contacts {
+    margin-bottom: 10px;
+}
+
+footer > div.contacts ul {
+    display: flex;
+    flex-direction: column;
+}
+
+footer > div.contacts ul li {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 10px;
+    color: #F0F2EF;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+}
+
+footer > div.contacts ul li > img {
+    display: inline-block;
+    height: 10px;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+footer > div.credits ul li {
+    padding: 0px;
+    margin: 0px;
+}
+
+footer > div.credits  a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 6px;
+    color: #F0F2EF;
+}
+
+footer > div.credits  a:hover{
+    cursor: pointer;
+}
+
+/*FINE FOOTER VERSIONE MOBILE*/
+
 /* INIZIO NAV VERSIONE MOBILE */
 
 nav{
@@ -146,7 +218,6 @@ ul.suggestions >li a{
 
 /*Inizio menu categorie versione mobile*/
 nav.main-nav button.menu-icon{
-    padding: 0;
     border: none;
     width: 65px;
     margin-left: auto;
@@ -582,17 +653,33 @@ aside > form > ul > li.filter-checkbox input[type="checkbox"]{
     margin-right: 3px;
 }
 
-aside > form > ul > li:nth-of-type(2) input[type="checkbox"]{ 
+aside > form > ul > li:nth-of-type(2) > ul > li > input[type="checkbox"]{ 
     accent-color: #082D0F;
 }
 
-aside > form > ul > li:nth-of-type(2) label{ 
+aside > form > ul > li:nth-of-type(2) > ul > li > label{ 
     text-transform: uppercase;
+    margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 aside > form > ul > li {
     margin-left: 10px;
 }
+
+aside > form > ul > li:nth-of-type(2) > ul > li > ul  label{
+    text-transform: capitalize;
+}
+
+aside > form > ul > li:nth-of-type(2) > ul > li > ul  input[type=checkbox]{
+    margin-left: 20px;
+}
+
+aside > form > ul > li:nth-of-type(2) > ul > li > ul.hidden{
+    display: none;
+    visibility: hidden;
+}
+
 /*FINE SEARCH ASIDE MOBILE*/
 
 
@@ -674,6 +761,15 @@ main > article > section > p{
 
 @media (min-width: 768px){
 
+    /*INIZIO FOOTER DESKTOP*/
+
+    footer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    /*INIZIO FOOTER DESKTOP*/
+
     /* INIZIO NAV VERSIONE DESKTOP */
     nav.main-nav{
         display: flex;
@@ -682,6 +778,7 @@ main > article > section > p{
     /*Inizio barra di ricerca desktop*/
     nav.main-nav.closed-nav form{
         width: 30%;
+        min-width: 100px;
     }
 
     /*Fine barra di ricerca desktop*/
@@ -713,8 +810,8 @@ main > article > section > p{
         margin-left: auto;
         margin-right: auto;
 
-        flex-shrink: 1;
-        overflow: auto;
+        /*flex-shrink: 1;
+        /* overflow: auto; */
     }
 
     nav.main-nav.closed-nav ul.categories > li{
@@ -725,7 +822,7 @@ main > article > section > p{
 
         align-items: center;
         justify-content: center;
-        flex-grow: 1;
+
     }
 
     nav.main-nav.closed-nav > ul.categories button.category-button{
@@ -752,7 +849,7 @@ main > article > section > p{
     /*Inizio nav aperto desktop*/
 
     nav.main-nav.opened-subcategories {
-        height: auto;
+        height: 75px;
     }
 
     nav.main-nav.opened-subcategories ul.categories {
@@ -760,8 +857,25 @@ main > article > section > p{
     }
 
     nav.main-nav.opened-subcategories ul.categories button.category-button {
-        margin-top: 40%;
-        margin-bottom: 35px;
+        background-color: #082D0F;
+        color: #F0F2EF;
+        border: none;
+        font-size: 18px;
+
+        padding: 0%;
+        height: 73px;
+    }
+
+    nav.main-nav.opened-subcategories ul.categories ul.subcategories { /*Posizionamento del submenu*/
+        background-color: #082D0F;
+        border: 1px solid #F0F2EF;
+        border-top: none;
+        width: inherit;
+        padding: 12px;
+
+        position: absolute;
+        margin-top: 191px;
+        z-index: 3;
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button {
@@ -813,6 +927,7 @@ main > article > section > p{
         justify-content: center;
         height: 350px;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
     section.main-articles > ul > li.focused-article  img{
