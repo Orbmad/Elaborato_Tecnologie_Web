@@ -13,6 +13,9 @@
 </head>
 
 <body>
+<!--Temporaneo check di login-->
+<?php if (isset($_SESSION["email"])) {var_dump($_SESSION["email"]); }?>
+
     <header>
         <h1>Plantatio
         </h1><ul>

@@ -80,3 +80,10 @@ VALUES
 ('Erbe Aromatiche', 'Unisciti a noi per scoprire il magico mondo delle erbe aromatiche, dalla coltivazione alla loro trasformazione in cucina.'),
 ('Foresta Urbana', 'Amanti delle piante da interno? Questo è il posto giusto per esplorare come creare una foresta urbana nella propria casa.'),
 ('Piante Acquatiche', 'Uno spazio per gli appassionati di piante acquatiche. Condividiamo informazioni su acquari, stagni e sistemi idroponici.');
+
+-- Inserimento utenti --
+INSERT INTO Utenti (email, nome, cognome, password_hash, admin_flag)
+VALUES
+('mariorossi@gmail.com', 'Mario', 'Rossi', SH2('Mar1oRoss!', 256), 0),
+('giannimorandi@libero.it', 'Gianni', 'Morandi', SH2('Gianni', 256), 0),
+('admin', 'admin', 'admin', SH2('admin', 256), 1);

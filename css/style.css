@@ -817,11 +817,21 @@ main.login-form h1 {
     margin-bottom: 26px;
 }
 
+main.login-form p {
+    padding: 5px;
+    background-color: #F0F2EF;
+    color: #3F413E;
+    border: 2px solid #FF7D00;
+    border-radius: 8px;
+    
+    font-weight: bolder;
+}
+
 main.login-form > section {
     background-color: #082D0F;
     padding: 20px;
     border-radius: 10px;
-    border: solid 2px #3F413E;
+    box-shadow: 3px 3px #3F413E;
 }
 
 main.login-form > section > form {
@@ -850,7 +860,7 @@ main.login-form > section > form > ul > li > input {
 }
 
 main.login-form > section > form > ul > li > input[type="submit"],
-main.login-form > section > button {
+main.login-form > section button {
     height: 100%;
     width: 26%;
     max-width: 150px;
@@ -863,13 +873,6 @@ main.login-form > section > button {
     overflow: hidden;
     text-overflow: ellipsis;
 } 
-
-main.login-form > section > button {
-    max-width: 100px;
-    height: 22px;
-    border-radius: 8px;
-
-}
 
 /*inizio sezione signup*/
 
