@@ -2,14 +2,15 @@
 require_once 'bootstrap.php';
 
 
-$email = "utenteProva";
+$email = "michele.farneti23@gmail.com";
 
 //Base Template
 $templateParams["titolo"] = "Plantatio";
-$templateParams["js"] = array("js/index.js", "js/nav.js");
+$templateParams["js"] = array("js/nav.js");
 
 //Index template
-//$templateParams["cartArticles"] = $dbh->getCartArticles($email);
+$templateParams["cartProducts"] = $dbh->getCartProducts($email);
+$templateParams["cartTotalPrice"] = $dbh->getCartTotalPrice($email);
 $templateParams["mainContent"] = "main-cart.php";
 
 

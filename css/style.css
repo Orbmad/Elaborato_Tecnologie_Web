@@ -1121,6 +1121,7 @@ main.main-cart > section.cart-products > ul > li > section.product-description{
 
 main.main-cart > section.cart-products > ul > li > section.product-price{
     margin-left: auto;
+    font-weight: 500;
 }
 
 main.main-cart > section.cart-products > ul > li > section > p{
@@ -1130,6 +1131,18 @@ main.main-cart > section.cart-products > ul > li > section > p{
 main.main-cart > section.cart-products > ul > li > section.product-description > p:first-of-type{
     color: #082D0F;
     margin-bottom: 5px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(2).product-available{
+    color: green;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(2).product-unavailable{
+    color: red;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(2).product-lowav{
+    color: #FF7D00;
 }
 
 main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(3){
