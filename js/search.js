@@ -25,15 +25,15 @@ updateMaxText();
 
 const moreFiltersButton = document.getElementById('more-filters-btn');
 moreFiltersButton.addEventListener('click', function() {
-    const hideableSections = document.querySelectorAll("aside > form > ul > li, aside > form > input");
+    const hideableSections = document.querySelectorAll("aside > form > ul > li, #apply-filters-btn, #reset-filters-btn");
     hideableSections.forEach(function(section) {
         section.classList.toggle('hidden');
-        if(section.classList.contains('hidden')){
-            moreFiltersButton.setAttribute("value","Mostra filtri");
-        }else{
-            moreFiltersButton.setAttribute("value","Nascondi filtri");
-        }
     });
+    if(moreFiltersButton.value=="Nascondi filtri"){
+        moreFiltersButton.setAttribute("value","Mostra filtri");
+    }else{
+        moreFiltersButton.setAttribute("value","Nascondi filtri");
+    }
 })
 
 const categoryOptions = document.querySelectorAll('.category-selection');  

@@ -677,11 +677,13 @@ aside > form input[type="button"], aside > form input[type="reset"]{
     font-size: large ;
     text-transform: uppercase;
     padding: 10px;
+    transition: transform 0.2s ease;
 }
 
 aside > form input[type="button"]:active, aside > form input[type="reset"]:active{
     color: #F0F2EF;
     background-color: #082D0F;
+    transform: scale(0.9);
 }
 
 aside > form > ul> li.hidden{
@@ -726,7 +728,8 @@ aside > form > ul > li.filter-price section{
 aside > form > ul > li > h3{
     font-weight: bold;
     text-transform: capitalize;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    margin-top :10px;
 }
 
 aside > form > ul > li.filter-checkbox label{
