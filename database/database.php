@@ -22,6 +22,16 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getCategoryFromSubcategory($nomeSottoCategoria)
+    {
+        $stmt = $this->db->prepare("SELECT id_categoria FROM SottoCategorie WHERE nome_sottocategoria = ?");
+        $stmt->bind_param('s', $nomeSottoCategoria);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Returns all categories.
      */

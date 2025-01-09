@@ -6,7 +6,13 @@ $templateParams["titolo"] = "Plantatio";
 $templateParams["js"] = array("js/search.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
-if (isset($_GET['categoriaSelezionata'])) {
+if(isset($_GET['sottocategoriaSelezionata'])){
+    $templateParams["searchedSubCategory"] = str_replace(' ','',$_GET['sottocategoriaSelezionata']);
+    $templateParams["searchedCategory"] = str_replace(' ','', $dbh->getCategoryFromSubcategory($_GET['sottocategoriaSelezionata'])[0]["id_categoria"]);
+    $templateParams["searchResults"] = $dbh->searchProductByName("");
+    $templateParams["mainContent"] = "template/search-results.php";
+
+}else if (isset($_GET['categoriaSelezionata'])) {
     $templateParams["searchedCategory"] = str_replace(' ','',$_GET['categoriaSelezionata']);
     $templateParams["searchResults"] = $dbh->searchProductByName("");
     $templateParams["mainContent"] = "template/search-results.php";
