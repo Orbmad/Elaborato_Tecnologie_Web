@@ -38,23 +38,9 @@
             </li>
         </ul>
     </section>
-    <section class="main-categories-blocks">
-        <form action="search.php" method="GET">
-            <ul>
-                <?php foreach($templateParams["randomCategories"] as $category): ?>
-                <li>
-                    <img src="upload/pianta.jpg" alt="group image"/>
-                    <section>
-                        <input name="categoriaSelezionata" type="text" value="<?php echo $category["nome_categoria"]?>" readonly/>
-                        <input type="submit" value="Scopri"/>
-                    </section>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-        <form>
-    </section>
     <section class="best-products">
         <form action="search.php" method="GET">
+            <h2>I migliori prodotti...</h2>
             <ul class="search-results-list">
                 <?php
                     foreach($templateParams["searchResults"] as $result):
@@ -80,6 +66,22 @@
                 <?php
                     endforeach;
                 ?>
+            </ul>
+        </form>
+    </section>
+    <section class="main-categories-blocks">
+        <form action="search.php" method="GET">
+            <h2>Le categorie...</h2>
+            <ul>
+                <?php foreach($templateParams["randomCategories"] as $category): ?>
+                <li>
+                    <img src="upload/pianta.jpg" alt="group image"/>
+                    <section>
+                        <input name="categoriaSelezionata" type="text" value="<?php echo $category["nome_categoria"]?>" readonly/>
+                        <input type="submit" value="Scopri"/>
+                    </section>
+                </li>
+                <?php endforeach; ?>
             </ul>
         <form>
     </section>
