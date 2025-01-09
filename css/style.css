@@ -446,6 +446,7 @@ body > header > ul > li.user_icon:hover > ul{
 .main-articles article{
     background-color: #082D0F;
     display: block;
+    box-shadow: 5px 5px 3px #3F413E;
 }
 
 section.main-articles{
@@ -571,6 +572,11 @@ main > section.main-categories-blocks > form > ul > li{
     text-align: center;
     position: relative;
     margin-top: 20px;
+    transition: transform 0.2s ease;
+}
+
+body > main >section.main-categories-blocks > form > ul > li:hover{
+    transform: scale(1.05);
 }
 
 main > section.main-categories-blocks > form > ul > li > img{
@@ -604,6 +610,17 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="s
     color: #F0F2EF;
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
+    border: none ;
+}
+
+main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]:hover{
+    color: #082D0F;
+    background-color: #F0F2EF;
+    border: 2px solid #082D0F;
+}
+
+main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]:focus{ 
+    transform: scale(0.9);
 }
 
 main > section.main-categories-blocks > form > ul > li > section > input[type="text"]{
@@ -849,7 +866,18 @@ main  ul.search-results-list > li{
     justify-content: center;
     font-size: small;
     box-shadow: 5px 5px 3px #3F413E;
+    transition: transform 0.2s ease;
 }
+
+main  ul.search-results-list > li:hover{
+    transform: scale(1.05);
+}
+
+main  ul.search-results-list > li:active{
+    transform: scale(0.9);
+}
+
+
 
 main ul.search-results-list > li.hidden{
     display: none;
