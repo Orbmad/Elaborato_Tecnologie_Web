@@ -144,6 +144,10 @@
             </ul>
         </section>
 
+        <!-- <a href="https://www.flaticon.com/free-icons/plus" title="plus icons">Plus icons created by srip - Flaticon</a>
+         <a href="https://www.flaticon.com/free-icons/mathematics" title="mathematics icons">Mathematics icons created by Smashicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a>-->
+
     </footer>
     <!-Inserimento javascript->
         <?php
