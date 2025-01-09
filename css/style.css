@@ -563,28 +563,28 @@ section.main-articles > img.arrow-icon:active {
 
 
 /*Inizio regole categorie nel main */
-main > section.main-categories-blocks > form > ul {
+main > section.main-categories-blocks > ul {
     width: 100%;
     margin-top: 20px;
 }
 
-main > section.main-categories-blocks > form > ul > li{
+main > section.main-categories-blocks > ul > li{
     text-align: center;
     position: relative;
     margin-top: 20px;
     transition: transform 0.2s ease;
 }
 
-body > main >section.main-categories-blocks > form > ul > li:hover{
+body > main >section.main-categories-blocks > ul > li:hover{
     transform: scale(1.05);
 }
 
-main > section.main-categories-blocks > form > ul > li > img{
+main > section.main-categories-blocks > ul > li > img{
     width: 80%;
     box-shadow: 3px 3px 1px #3F413E;
 }
 
-main > section.main-categories-blocks > form > ul > li > section{
+main > section.main-categories-blocks > ul > li > section{
     position: absolute; /* Positioning relative to the container */
     top: 70%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -600,7 +600,14 @@ main > section.main-categories-blocks > form > ul > li > section{
     padding: 0px;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]{
+main > section.main-categories-blocks > ul > li > section > form{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]{
     height: 30%;
     display: flex; 
     justify-content: center;
@@ -613,17 +620,17 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="s
     border: none ;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]:hover{
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]:hover{
     color: #082D0F;
     background-color: #F0F2EF;
     border: 2px solid #082D0F;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]:focus{ 
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]:focus{ 
     transform: scale(0.9);
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="text"]{
+main > section.main-categories-blocks > ul > li > section > form > input[type="text"]{
     height: 70%;
     display: flex; 
     justify-content: center; 
@@ -637,18 +644,18 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="t
     border: 0px;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="text"]:focus {
+main > section.main-categories-blocks  > ul > li > section > form > input[type="text"]:focus {
     border: 0px;
     outline: none;
 }
 
-main > section.best-products > form > h2, main > section.main-categories-blocks > form > h2 {
-    color: #082D0F;
+body > main > section.best-products > h2, body > main > section.main-categories-blocks > h2 {
     text-transform: capitalize;
     text-decoration: underline;
     padding-left: 10px;
     margin-bottom: 10px;
     padding-bottom: 15px;
+    color: #082D0F;
 }
 /*Fine regole categorie nel main */
 
@@ -1393,22 +1400,26 @@ main  ul.search-results-list > li > a span{
 
     /* inizio regole main index blocco categoria */
 
-    main > section.main-categories-blocks, main > section.best-products {
-        display: flex;
+    main > section.main-categories-blocks, main > section.best-products{
         width:50%;
-        flex-direction: row;
         float: left;
         padding-left: 30px;
         box-sizing: border-box;
+        height: 100%;
     }
 
-    main > section.main-categories-blocks > form >ul{
+    main > section.best-products > ul.search-results-list >li {
         display: inline-block;
+        margin-top: 10px;
+    }
+
+    main > section.main-categories-blocks > ul, main > section.best-products > ul.search-results-list {
+        display: block;
         width: 100%;
         margin-top: 10px;
     }
 
-    main > section.main-categories-blocks > form > ul > li{
+    main > section.main-categories-blocks > ul > li{
         text-align: center;
         position: relative;
         box-sizing: border-box;
@@ -1419,13 +1430,13 @@ main  ul.search-results-list > li > a span{
         box-shadow: 3px 3px 1px #3F413E;
     }
 
-    main > section.main-categories-blocks > form > ul > li > img{
+    main > section.main-categories-blocks > ul > li > img{
         width: 200px;
         height: 200px;
         box-shadow:none;
     }
 
-    main > section.main-categories-blocks > form > ul > li > section{
+    main > section.main-categories-blocks > ul > li > section{
         width: 200px;
     }
     /* fine regole main index blocco categoria */	
@@ -1442,7 +1453,7 @@ main  ul.search-results-list > li > a span{
 
     /*INIZIO ASIDE DESKTOP*/
     aside{
-            min-width: 200px;
+            min-width: 270px;
             width: 30%;
             height: 100%;
             border-right: 3px solid #082D0F;
