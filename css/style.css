@@ -6,7 +6,7 @@ body, nav, header, ul, li, a, h1,input[type="text"], form, h3{
     font-family: 'Josefin Sans', sans-serif;
 }
 
-input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"]{
+input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"],input[type="submit"]{
     cursor: pointer;
 }
 
@@ -455,6 +455,7 @@ body > header > ul > li.user_icon:hover > ul{
 .main-articles article{
     background-color: #082D0F;
     display: block;
+    box-shadow: 5px 5px 3px #3F413E;
 }
 
 section.main-articles{
@@ -571,22 +572,28 @@ section.main-articles > img.arrow-icon:active {
 
 
 /*Inizio regole categorie nel main */
-
-main > section.main-categories-blocks > form > ul {
+main > section.main-categories-blocks > ul {
     width: 100%;
     margin-top: 20px;
 }
 
-main > section.main-categories-blocks > form > ul > li{
+main > section.main-categories-blocks > ul > li{
     text-align: center;
     position: relative;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
 }
 
-main > section.main-categories-blocks > form > ul > li > img{
+body > main >section.main-categories-blocks > ul > li:hover{
+    transform: scale(1.05);
+}
+
+main > section.main-categories-blocks > ul > li > img{
     width: 80%;
+    box-shadow: 3px 3px 1px #3F413E;
 }
 
-main > section.main-categories-blocks > form > ul > li > section{
+main > section.main-categories-blocks > ul > li > section{
     position: absolute; /* Positioning relative to the container */
     top: 70%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -602,7 +609,14 @@ main > section.main-categories-blocks > form > ul > li > section{
     padding: 0px;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]{
+main > section.main-categories-blocks > ul > li > section > form{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]{
     height: 30%;
     display: flex; 
     justify-content: center;
@@ -612,9 +626,20 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="s
     color: #F0F2EF;
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
+    border: none ;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="text"]{
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]:hover{
+    color: #082D0F;
+    background-color: #F0F2EF;
+    border: 2px solid #082D0F;
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]:focus{ 
+    transform: scale(0.9);
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="text"]{
     height: 70%;
     display: flex; 
     justify-content: center; 
@@ -628,28 +653,19 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="t
     border: 0px;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="text"]:focus {
+main > section.main-categories-blocks  > ul > li > section > form > input[type="text"]:focus {
     border: 0px;
     outline: none;
 }
 
-@media (min-width:769px){
-    main > section.main-categories-blocks > form > ul {
-        display: flex;
-        width: 50%;
-        flex-direction: row;
-    }
-
-    main > section.main-categories-blocks > form > ul > li{
-        text-align: center;
-        position: relative;
-        width:50%;
-        box-sizing: border-box;
-        display: inline-block;
-    }
-
+body > main > section.best-products > h2, body > main > section.main-categories-blocks > h2 {
+    text-transform: capitalize;
+    text-decoration: underline;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    color: #082D0F;
 }
-
 /*Fine regole categorie nel main */
 
 /*FINE INDEX MAIN MOBILE*/
@@ -677,11 +693,13 @@ aside > form input[type="button"], aside > form input[type="reset"]{
     font-size: large ;
     text-transform: uppercase;
     padding: 10px;
+    transition: transform 0.2s ease;
 }
 
 aside > form input[type="button"]:active, aside > form input[type="reset"]:active{
     color: #F0F2EF;
     background-color: #082D0F;
+    transform: scale(0.9);
 }
 
 aside > form > ul> li.hidden{
@@ -726,7 +744,8 @@ aside > form > ul > li.filter-price section{
 aside > form > ul > li > h3{
     font-weight: bold;
     text-transform: capitalize;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    margin-top :10px;
 }
 
 aside > form > ul > li.filter-checkbox label{
@@ -950,12 +969,12 @@ main.single-item > article > section > p{
 /*Fine regole per lo stile della pagina per il singolo prodotto mobile*/
 
 /*Inizio regole main pagine search mobile*/
-main > ul.search-results-list{
+main  ul.search-results-list{
     display: inline-block;
     text-align: center;
 }
 
-main > ul.search-results-list > li{
+main  ul.search-results-list > li{
     display: inline-flex;
     width: 200px;
     height: 260px;
@@ -964,18 +983,29 @@ main > ul.search-results-list > li{
     justify-content: center;
     font-size: small;
     box-shadow: 5px 5px 3px #3F413E;
+    transition: transform 0.2s ease;
 }
 
-main > ul.search-results-list > li.hidden{
+main  ul.search-results-list > li:hover{
+    transform: scale(1.05);
+}
+
+main  ul.search-results-list > li:active{
+    transform: scale(0.9);
+}
+
+
+
+main ul.search-results-list > li.hidden{
     display: none;
 }
 
-main > ul.search-results-list > li > a > img.product-image{
+main  ul.search-results-list > li > a > img.product-image{
     width: 190px;
     height: 190px;  
 }
 
-main > ul.search-results-list > li > a > h2{
+main  ul.search-results-list > li > a > h2{
     font-size: small;
     color: #3F413E;
     text-align: start;
@@ -983,7 +1013,7 @@ main > ul.search-results-list > li > a > h2{
     margin: 5px 0px;
 }
 
-main > ul.search-results-list > li > a > p:first-of-type{
+main  ul.search-results-list > li > a > p:first-of-type{
     font-size: smaller;
     color: #082D0F;
     text-align: start;
@@ -991,7 +1021,7 @@ main > ul.search-results-list > li > a > p:first-of-type{
     margin: 5px 0px;
 }
 
-main > ul.search-results-list > li > a > p:nth-of-type(2){
+main  ul.search-results-list > li > a > p:nth-of-type(2){
     font-size: smaller;
     color: #082D0F;
     text-align: end;
@@ -1000,26 +1030,26 @@ main > ul.search-results-list > li > a > p:nth-of-type(2){
 }
 
 
-main > ul.search-results-list > li > a {
+main  ul.search-results-list > li > a {
     margin: 10px;
     width:100%;
 }
 
-main > ul.search-results-list{
+main  ul.search-results-list{
     display: block;
     width:100%;
 }
 
-main > ul.search-results-list > li > a span.checked {
+main  ul.search-results-list > li > a span.checked {
     color: #082D0F;
     opacity: 100%;
   }
 
-main > ul.search-results-list > li > a{
+main  ul.search-results-list > li > a{
     text-decoration: none;
 }
 
-main > ul.search-results-list > li > a span{
+main  ul.search-results-list > li > a span{
     color: #3F413E;
     opacity: 60%;
   }
@@ -1376,11 +1406,63 @@ main > ul.search-results-list > li > a span{
         padding-bottom: 20px;
     }
     /*Fine regole carosello versione desktop*/
-    /* FINE NAV VERSIONE DESKTOP */
+
+    /* inizio regole main index blocco categoria */
+
+    main > section.main-categories-blocks, main > section.best-products{
+        width:50%;
+        float: left;
+        padding-left: 30px;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    main > section.best-products > ul.search-results-list >li {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    main > section.main-categories-blocks > ul, main > section.best-products > ul.search-results-list {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    main > section.main-categories-blocks > ul > li{
+        text-align: center;
+        position: relative;
+        box-sizing: border-box;
+        display: inline-block;
+        box-sizing: content-box;
+        margin: 10px;
+        height: 200px;
+        box-shadow: 3px 3px 1px #3F413E;
+    }
+
+    main > section.main-categories-blocks > ul > li > img{
+        width: 200px;
+        height: 200px;
+        box-shadow:none;
+    }
+
+    main > section.main-categories-blocks > ul > li > section{
+        width: 200px;
+    }
+    /* fine regole main index blocco categoria */	
+
+    /* inizio regole main index blocco prodotti */
+    main > section.best-products > ul {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+    }
+
+
+    /* fine main index blocco prodotti */
 
     /*INIZIO ASIDE DESKTOP*/
     aside{
-            min-width: 200px;
+            min-width: 270px;
             width: 30%;
             height: 100%;
             border-right: 3px solid #082D0F;

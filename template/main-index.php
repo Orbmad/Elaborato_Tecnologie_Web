@@ -38,19 +38,49 @@
             </li>
         </ul>
     </section>
+    <section class="best-products">
+        <h2>I migliori prodotti...</h2>
+        <ul class="search-results-list">
+            <?php
+                foreach($templateParams["searchResults"] as $result):
+            ?>
+            <li>
+                <a href="#">
+                    <img src="./upload/pianta1.jpg" class="product-image" alt="product image"/>
+                    <h2><?php echo $result["nome_prodotto"] ?></h2>
+                    <p><?php echo $result["prezzo"] ?> €</p>
+                    <p>
+                    <?php 
+                        $voto = $result["voto"];      
+                        for ($i = 1; $i <= $voto; $i++) {
+                            echo '<span class="fa fa-star checked"></span>';
+                        }
+                        for ($i = $voto + 1; $i <= 5; $i++) {
+                            echo '<span class="fa fa-star"></span>';
+                        }
+                        ?>
+                    </p>
+                </a>
+            </li>
+            <?php
+                endforeach;
+            ?>
+        </ul>
+    </section>
     <section class="main-categories-blocks">
-        <form action="search.php" method="GET">
-            <ul>
-                <?php foreach($templateParams["randomCategories"] as $category): ?>
-                <li>
-                    <img src="upload/pianta.jpg" alt="group image"/>
-                    <section>
-                        <input name="categoriaSelezionata" type="text" value="<?php echo $category["nome_categoria"]?>" readonly/>
-                        <input type="submit" value="Scopri"/>
-                    </section>
-                </li>
-                <?php endforeach; ?>
-            </ul>
-        <form>
+        <h2>Le categorie...</h2>
+        <ul>
+            <?php foreach($templateParams["randomCategories"] as $category): ?>
+            <li>
+                <img src="upload/categorie/<?php echo $category["nome_categoria"]?>.jpg" alt="<?php echo $category["nome_categoria"]?> image"/>
+                <section>
+                    <form action="search.php" method="GET">
+                        <input type="text" name="categoriaSelezionata" value="<?php echo $category["nome_categoria"]?>" readonly/>
+                        <input type="submit" value="SCOPRI"/>
+                    </form>
+                </section>
+            </li>
+            <?php endforeach; ?>
+        </ul>
     </section>
 <main>

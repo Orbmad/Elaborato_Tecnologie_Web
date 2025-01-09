@@ -25,15 +25,15 @@ updateMaxText();
 
 const moreFiltersButton = document.getElementById('more-filters-btn');
 moreFiltersButton.addEventListener('click', function() {
-    const hideableSections = document.querySelectorAll("aside > form > ul > li, aside > form > input");
+    const hideableSections = document.querySelectorAll("aside > form > ul > li, #apply-filters-btn, #reset-filters-btn");
     hideableSections.forEach(function(section) {
         section.classList.toggle('hidden');
-        if(section.classList.contains('hidden')){
-            moreFiltersButton.setAttribute("value","Mostra filtri");
-        }else{
-            moreFiltersButton.setAttribute("value","Nascondi filtri");
-        }
     });
+    if(moreFiltersButton.value=="Nascondi filtri"){
+        moreFiltersButton.setAttribute("value","Mostra filtri");
+    }else{
+        moreFiltersButton.setAttribute("value","Nascondi filtri");
+    }
 })
 
 const categoryOptions = document.querySelectorAll('.category-selection');  
@@ -55,16 +55,29 @@ categoryOptions.forEach(function(categoryOption) {
     });
 });
 
-const resetButton = document.getElementById("reset-filters-btn");
-resetButton.addEventListener('click',function(){
-    const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
-    shownProducts.forEach(function(product) {
-        product.classList.remove('hidden');
-    });
+const filtersForm = document.getElementById("filtered-search");
+filtersForm.addEventListener('reset',function(){
+    setTimeout(resetFilters, 0);
 });
 
+function resetFilters(){
+    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(2).filter-checkbox > ul > li > input[type='checkbox']");
+    checkCategories.forEach(function(checkBox){
+        if(!checkBox.checked){
+            const parent = checkBox.closest("li");
+            const subFiltersUl = parent.querySelector("ul");
+            if (subFiltersUl) {
+                subFiltersUl.classList.add("hidden");
+            }
+        }
+    });
+    applyFilters();
+}
+
 const applyButton = document.getElementById("apply-filters-btn");
-applyButton.addEventListener('click',function(){
+applyButton.addEventListener('click',applyFilters);
+
+function applyFilters(){
     const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
     const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(2).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
     const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)).filter-checkbox > ul > li > input[type='checkbox']");
@@ -85,11 +98,12 @@ applyButton.addEventListener('click',function(){
         if(parseFloat(product.classList[0])<parseFloat(minRangeInput.value) || parseFloat(product.classList[0])>parseFloat(maxRangeInput.value)){
             isHidden=true;
         }
-
         if (isHidden) {
             product.classList.add('hidden');
         } else {
             product.classList.remove('hidden');
         }
     });
-});
+}
+
+applyFilters();
