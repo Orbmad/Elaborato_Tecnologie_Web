@@ -22,7 +22,7 @@
      * Returns true if the user is logged in the active session.
      */
     function isUserLoggedIn() {
-        return !empty($_SESSION['idautore']);
+        return !empty($_SESSION['email']);
     }
 
     /**
