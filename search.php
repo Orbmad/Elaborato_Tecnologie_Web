@@ -7,7 +7,7 @@ $templateParams["js"] = array("js/search.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
 if (isset($_GET['categoriaSelezionata'])) {
-    $templateParams["searchedCategory"] = $_GET['categoriaSelezionata'];
+    $templateParams["searchedCategory"] = str_replace(' ','',$_GET['categoriaSelezionata']);
     $templateParams["searchResults"] = $dbh->searchProductByName("");
     $templateParams["mainContent"] = "template/search-results.php";
 }else if (isset($_GET['fastSearch'])) {
@@ -25,6 +25,7 @@ $templateParams["dimensioni"] = $dbh->getProductsAttributeValues("dimensioni");
 $templateParams["profumo"] = $dbh->getProductsAttributeValues("profumo");
 $templateParams["tipo di foglia"] = $dbh->getProductsAttributeValues("tipologia_foglia");
 $templateParams["colore delle foglie"] = $dbh->getProductsAttributeValues("colore_foglia");
+$templateParams["voto"] = $dbh->getProductsAttributeValues("voto");
 //$templateParams["categorie"] = $categories;
 $templateParams["categorie"] = $dbh->getCategories();
 

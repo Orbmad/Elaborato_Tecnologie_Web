@@ -1415,11 +1415,13 @@ main  ul.search-results-list > li > a span{
         display: inline-block;
         box-sizing: content-box;
         margin: 10px;
+        height: 200px;
         box-shadow: 3px 3px 1px #3F413E;
     }
 
     main > section.main-categories-blocks > form > ul > li > img{
         width: 200px;
+        height: 200px;
         box-shadow:none;
     }
 
