@@ -25,7 +25,7 @@ updateMaxText();
 
 const moreFiltersButton = document.getElementById('more-filters-btn');
 moreFiltersButton.addEventListener('click', function() {
-    const hideableSections = document.querySelectorAll("aside > form > ul > li");
+    const hideableSections = document.querySelectorAll("aside > form > ul > li, aside > form > input");
     hideableSections.forEach(function(section) {
         section.classList.toggle('hidden');
         if(section.classList.contains('hidden')){
@@ -55,3 +55,41 @@ categoryOptions.forEach(function(categoryOption) {
     });
 });
 
+const resetButton = document.getElementById("reset-filters-btn");
+resetButton.addEventListener('click',function(){
+    const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
+    shownProducts.forEach(function(product) {
+        product.classList.remove('hidden');
+    });
+});
+
+const applyButton = document.getElementById("apply-filters-btn");
+applyButton.addEventListener('click',function(){
+    const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
+    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(2).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
+    const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)).filter-checkbox > ul > li > input[type='checkbox']");
+    shownProducts.forEach(function(product) {
+        let isHidden = false;
+        checkBoxes.forEach(function(checkBox) {
+            if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
+                isHidden = true;
+            }
+        });
+
+        checkCategories.forEach(function(checkBox) {
+            if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
+                isHidden = true;
+            }
+        });
+
+        if(parseFloat(product.classList[0])<parseFloat(minRangeInput.value) || parseFloat(product.classList[0])>parseFloat(maxRangeInput.value)){
+            isHidden=true;
+        }
+
+        if (isHidden) {
+            product.classList.add('hidden');
+        } else {
+            product.classList.remove('hidden');
+        }
+    });
+});
