@@ -5,8 +5,8 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Plantatio";
 
 //Main content
-$templateParams["mainContent"] = "singolo-prodotto.php";
-$templateParams["js"] = array("js/product.js");
+$templateParams["mainContent"] = "single-item.php";
+$templateParams["js"] = array("js/product.js", "js/nav.js", "js/index.js");
 //Home Template
 $idprodotto = -1;
 if(isset($_GET["id"])){
@@ -18,6 +18,7 @@ $idprodotto = "Adiantum hispidulum";/*capire perchè se lo passo da URL in nome 
 /*per aprire la pagina relativa al singolo prodotto è necessario passare il suo ID per
 poter prelevare dal DB le informazioni relative ad esso*/
 $templateParams["prodotto"] = $dbh->getProductById($idprodotto);
+/*$templateParams["voto"] = 2.5;*/
 
 require 'template/base.php';
 ?>

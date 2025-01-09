@@ -362,9 +362,10 @@ body > header > h1{
 }
 body > header > ul{
     display: inline-block;
-    width: 70%;
+    width: 50%;
     text-align: right;
     list-style: none;
+    padding: 0px 0% 0px 20%;
 }
 body > header > ul > li > a > img{
     width: 40px;
@@ -381,6 +382,14 @@ body > header > ul > li{
     padding: 0 5%;
 }
 
+body > header > ul > li.user_icon{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    place-items: center;
+    text-decoration: none;
+}
+
 body > header > ul > li > a{
     display: grid;
     grid-template-columns: 1fr;
@@ -395,7 +404,7 @@ body > header > ul > li.user_icon > a > img{
 
 body > header > ul > li:nth-child(2) > a > img{
     position: relative;
-    top: 7px;
+    top: 13px;
 }
 
 body > header > ul > li.user_icon > a > img:nth-child(2){
@@ -415,10 +424,10 @@ body > header > ul > li.user_icon > a > p{
 
 body > header > ul > li > ul{
     position: absolute;
-    left: -35px;
     text-align: center;
-    width: 200px;
+    width: 90px;
     display: none;
+    top: 50px;
 }
 
 body > header > ul > li > ul > li{
@@ -431,7 +440,7 @@ body > header > ul > li > ul > li{
 body > header > ul > li > ul > li > a{
     color: #fff;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 11px;
 }
 
 /*quando si passa con il cursore sull'icona si apre vede il menù*/
@@ -808,11 +817,21 @@ main.login-form h1 {
     margin-bottom: 26px;
 }
 
+main.login-form p {
+    padding: 5px;
+    background-color: #F0F2EF;
+    color: #3F413E;
+    border: 2px solid #FF7D00;
+    border-radius: 8px;
+    
+    font-weight: bolder;
+}
+
 main.login-form > section {
     background-color: #082D0F;
     padding: 20px;
     border-radius: 10px;
-    border: solid 2px #3F413E;
+    box-shadow: 3px 3px #3F413E;
 }
 
 main.login-form > section > form {
@@ -841,7 +860,7 @@ main.login-form > section > form > ul > li > input {
 }
 
 main.login-form > section > form > ul > li > input[type="submit"],
-main.login-form > section > button {
+main.login-form > section button {
     height: 100%;
     width: 26%;
     max-width: 150px;
@@ -854,13 +873,6 @@ main.login-form > section > button {
     overflow: hidden;
     text-overflow: ellipsis;
 } 
-
-main.login-form > section > button {
-    max-width: 100px;
-    height: 22px;
-    border-radius: 8px;
-
-}
 
 /*inizio sezione signup*/
 
@@ -898,7 +910,7 @@ main.single-item > article > header > section > div.wrapper{
     border-radius: 10px;
     align-items: center;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 7px;
 }
 
 main.single-item > article > header > section > div.wrapper > span{
@@ -922,7 +934,7 @@ main.single-item > article > header > section > div.wrapper > span.number{
 main.single-item > article > header > section > button{
     border: none;
     color: #ffff;
-    font-size: 11px;
+    font-size: 13px;
     text-align: center;
     background-color: #082D0F;
     padding: 10px 15px;
@@ -945,6 +957,21 @@ main.single-item > article > header > section > h3{
     font-size: 20px;
     padding: 8px 0;
     color: #082D0F;
+    display: inline-block;
+    width: 20%;
+}
+
+main.single-item > article > header > section > div.star-value{
+    display: inline-block;
+    width: 55%;
+    /*padding-left: 30%;*/
+    text-align: right;
+    padding-right: 5%;
+}
+
+main.single-item > article > header > section > div > img{
+    display: inline-block;
+    width: 10px;
 }
 
 main.single-item > article > section > h3{
@@ -955,6 +982,36 @@ main.single-item > article > section > h3{
 main.single-item > article > section > p{
     font-size: 14px;
     padding: 3px 0;
+}
+
+main.single-item table > caption{
+    font-size: 17px;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+main.single-item table, main.single-item table th,
+main.single-item table td{
+    border: #000 1px solid;
+}
+
+main.single-item table th{
+    background-color: #082D0F;
+    color: #fff;
+    padding: 3px 1%;
+    font-size: 14px;
+}
+
+main.single-item table td{
+    color: #000;
+    padding: 3px 3%;
+    font-size: 13px;
+}
+
+main.single-item > article > section > table{
+    border-collapse: collapse;
+    width: 100%;
 }
 
 /*Fine regole per lo stile della pagina per il singolo prodotto mobile*/
@@ -1326,13 +1383,13 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         border: 1px solid #F0F2EF;
         border-top: none;
         width: 200px;
-        height: 130px;
+        height: 150px;
         padding: 12px;
 
         display: flex;
 
         position: absolute;
-        margin-top: 230px;
+        margin-top: 250px;
         z-index: 3;
     }
 
@@ -1647,8 +1704,31 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
     /*FINE ASIDE DESKTOP*/
 
     /*INIZIO HEADER versione DESKTOP*/
+    body > header{
+        margin: 20px 0% 0px;
+    }
+
     body > header > h1{
-        font-size: 50px;
+        font-size: 70px;
+        text-align: left;
+        width: 28%;
+        padding-left: 2%;
+        vertical-align: bottom;
+        
+    }
+
+    body > header > ul{
+        width: 30%;
+        padding: 0px 4% 0px 36%;/*VERIFICA*/
+    }
+
+    body > header > ul > li > ul{
+        width: 200px;
+        top: 75px;
+    }
+
+    body > header > ul > li > ul > li > a{
+        font-size: 20px;
     }
 
     body > header > ul > li > a > img{
@@ -1656,7 +1736,7 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
     }
     /*fix del carrello allineato all'icona utente*/
     body > header > ul > li:nth-child(2) > a > img{
-        top: 13px;
+        top: 19px;
     }
     /*ingrandimento immagine pallina*/
     body > header > ul > li.user_icon > a > img:nth-child(2){
@@ -1695,6 +1775,10 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         margin-top: 20px;
     }
     
+    main.single-item > article > header > section > div > img{
+        width: 25px;
+    }
+
     main.single-item > article > section > h3{
         font-size: 35px;
         margin-top: 25px;
@@ -1719,6 +1803,21 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
     main.single-item > article > header > section > div.wrapper > span{
         width: 25%;
         font-size: 20px;
+    }
+
+    main.single-item table th{
+        padding: 6px 3%;
+        font-size: 13px;
+    }
+
+    main.single-item table td{
+        color: #000;
+        padding: 6px 3%;
+        font-size: 13px;
+    }
+
+    main.single-item > article > section > table{
+        width: 40%;
     }
     /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 

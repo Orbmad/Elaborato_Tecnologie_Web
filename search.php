@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 //Base Template
 $templateParams["titolo"] = "Plantatio";
-$templateParams["js"] = array("js/search.js");
+$templateParams["js"] = array("js/search.js", "js/nav.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
 if(isset($_GET['sottocategoriaSelezionata'])){

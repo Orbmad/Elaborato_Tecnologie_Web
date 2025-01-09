@@ -13,11 +13,14 @@
 </head>
 
 <body>
+<!--Temporaneo check di login-->
+<?php if (isset($_SESSION["email"])) {var_dump($_SESSION["email"]); }?>
+
     <header>
         <h1>Plantatio
         </h1><ul>
             <li class="user_icon">
-                <a href="#"><img class="user_icon" src=".\img\Icona-Utente.png" alt="user-icon" /><img
+                <a href="#"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon" /><img
                         src="img/cerchio.png" alt="notifiche" />
 <!--Inserire numero di notifiche dell'utente-->
                     <p>1</p>
@@ -29,7 +32,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><img src=".\img\Icona-Carrello.jpg" alt="cart-icon" /></a>
+                <a href="#"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
             </li>
         </ul>
     </header>
@@ -67,6 +70,9 @@
                         <img class="toggleArrow down hidden <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>" src="upload/toggleArrow-down.png" alt="Toggle arrow open" />
                     </button>
                     <ul class="subcategories <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>">
+                        <li>
+                            <button class="subcategory-button" onclick="window.location.href='search.php?categoriaSelezionata=<?php echo $categoria['nome_categoria']; ?>'" type="button">Vedi tutto</button>
+                        </li>
                         <?php foreach ($categoria["sottocategorie"] as $sottocategoria): ?>
                             <li>
                                 <button class="subcategory-button" onclick="" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
