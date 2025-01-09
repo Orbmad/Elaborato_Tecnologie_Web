@@ -69,6 +69,12 @@ function resetFilters(){
             if (subFiltersUl) {
                 subFiltersUl.classList.add("hidden");
             }
+        }else{
+            const parent = checkBox.closest("li");
+            const subFiltersUl = parent.querySelector("ul");
+            if (subFiltersUl) {
+                subFiltersUl.classList.remove("hidden");
+            }
         }
     });
     applyFilters();
