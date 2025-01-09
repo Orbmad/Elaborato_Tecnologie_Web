@@ -1,6 +1,7 @@
 <?php
 
 if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params(900); //La sessione resta attiva per 15 minuti;
     session_start();
 }
 
