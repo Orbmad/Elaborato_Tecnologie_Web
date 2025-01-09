@@ -70,6 +70,9 @@
                         <img class="toggleArrow down hidden <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>" src="upload/toggleArrow-down.png" alt="Toggle arrow open" />
                     </button>
                     <ul class="subcategories <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>">
+                        <li>
+                            <button class="subcategory-button" onclick="window.location.href='search.php?categoriaSelezionata=<?php echo $categoria['nome_categoria']; ?>'" type="button">Vedi tutto</button>
+                        </li>
                         <?php foreach ($categoria["sottocategorie"] as $sottocategoria): ?>
                             <li>
                                 <button class="subcategory-button" onclick="" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>

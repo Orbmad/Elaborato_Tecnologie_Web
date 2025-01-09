@@ -1178,13 +1178,13 @@ main  ul.search-results-list > li > a span{
         border: 1px solid #F0F2EF;
         border-top: none;
         width: 200px;
-        height: 130px;
+        height: 150px;
         padding: 12px;
 
         display: flex;
 
         position: absolute;
-        margin-top: 230px;
+        margin-top: 250px;
         z-index: 3;
     }
 
