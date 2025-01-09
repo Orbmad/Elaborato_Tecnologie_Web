@@ -33,7 +33,7 @@
                                 <p> <?php echo $cartProduct["quantita"] ?></p>
                                 <img src="./upload/add.png" alt="" />
                             </section class="qt-selection">
-                            <a href="search.php">Prodotti simili</a>
+                            <a href="search.php?sottocategoriaSelezionata=<?php echo $cartProduct['id_sottocategoria']; ?>">Prodotti simili</a>
                         </section>
                     </section>
                     <section class="product-price">
