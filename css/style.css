@@ -1105,6 +1105,19 @@ main.main-cart > section.cart-products > section.cart-header >input{
     height: 40px;
     width: 200px;
     text-transform: uppercase;
+    border-color: #F0F2EF;
+}
+
+main.main-cart > section.cart-products > section.cart-header >input:hover{
+    transform: scale(1.05);
+    background-color: #F0F2EF;
+    color: #082D0F;
+    border-color: #082D0F;
+}
+
+
+main.main-cart > section.cart-products > section.cart-header >input:active{
+    transform: scale(0.95);
 }
 
 
@@ -1160,6 +1173,16 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
 main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > img{
     width: 15px;
     height: 15px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > img:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > img:active{
+    transform: scale(0.9);
+    cursor: pointer;
 }
 
 main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:last-of-type{
