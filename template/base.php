@@ -20,7 +20,7 @@
         <h1>Plantatio
         </h1><ul>
             <li class="user_icon">
-                <a href="#"><img class="user_icon" src=".\img\Icona-Utente.png" alt="user-icon" /><img
+                <a href="#"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon" /><img
                         src="img/cerchio.png" alt="notifiche" />
 <!--Inserire numero di notifiche dell'utente-->
                     <p>1</p>
@@ -32,7 +32,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><img src=".\img\Icona-Carrello.jpg" alt="cart-icon" /></a>
+                <a href="#"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
             </li>
         </ul>
     </header>

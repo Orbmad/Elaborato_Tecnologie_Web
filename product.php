@@ -5,8 +5,8 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Plantatio";
 
 //Main content
-$templateParams["mainContent"] = "singolo-prodotto.php";
-$templateParams["js"] = array("js/product.js");
+$templateParams["mainContent"] = "single-item.php";
+$templateParams["js"] = array("js/product.js", "js/nav.js", "js/index.js");
 //Home Template
 $idprodotto = -1;
 if(isset($_GET["id"])){
