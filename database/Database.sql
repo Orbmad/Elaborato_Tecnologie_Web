@@ -64,7 +64,7 @@ CREATE TABLE Prodotti (
     tipologia_foglia VARCHAR(30),
     colore_foglia VARCHAR(30), 
     descrizione TEXT,
-    voto DECIMAL(1,1) NOT NULL
+    voto INT NOT NULL
 );
 
 -- Tabella carrello (Ogni utente possiede una tupla per ogni prodotto diverso nel carrello)
@@ -80,8 +80,8 @@ CREATE TABLE Carrello (
 
 -- Tabella gruppi di prodotti
 CREATE TABLE Gruppi (
-    nome_gruppo VARCHAR(50) PRIMARY KEY,
-    descrizione_gruppo TEXT
+    nomeGruppo VARCHAR(50) PRIMARY KEY,
+    descrizioneGruppo TEXT
 );
 
 -- Tabella appartenenza gruppo
@@ -89,7 +89,7 @@ CREATE TABLE Appartenenze (
     id_gruppo VARCHAR(50) NOT NULL,
     id_prodotto VARCHAR(150) NOT NULL,
     PRIMARY KEY (id_gruppo, id_prodotto),
-    FOREIGN KEY (id_gruppo) REFERENCES Gruppi(nome_gruppo) ON DELETE CASCADE,
+    FOREIGN KEY (id_gruppo) REFERENCES Gruppi(nomeGruppo) ON DELETE CASCADE,
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(nome_prodotto) ON DELETE CASCADE
 );
 

@@ -60,21 +60,16 @@
         </form>
 
         <ul class="categories">
-            <?php foreach ($categories as $categoria): ?>
+            <?php foreach ($templateParams["categorie"] as $categoria): ?>
                 <li>
-                    <button class="category-button"
-                        onclick="openSubcategories('<?php echo $categoria['nome_categoria']; ?>')"><?php echo $categoria["nome_categoria"]; ?>
-                        <img class="toggleArrow side <?php echo $categoria['nome_categoria']; ?>"
-                            src="upload/toggleArrow-side.png" alt="Toggle arrow open">
-                        <img class="toggleArrow down hidden <?php echo $categoria['nome_categoria']; ?>"
-                            src="upload/toggleArrow-down.png" alt="Toggle arrow open">
+                    <button class="category-button" onclick='openSubcategories("<?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>")' type="button"><?php echo $categoria["nome_categoria"]; ?>
+                        <img class="toggleArrow side <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>" src="upload/toggleArrow-side.png" alt="Toggle arrow open" />
+                        <img class="toggleArrow down hidden <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>" src="upload/toggleArrow-down.png" alt="Toggle arrow open" />
                     </button>
-                    <ul class="subcategories <?php echo $categoria["nome_categoria"]; ?>">
+                    <ul class="subcategories <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>">
                         <?php foreach ($categoria["sottocategorie"] as $sottocategoria): ?>
                             <li>
-                                <!--onclick deve contenere una funzione che utilizza il nome della sottocategoria-->
-                                <button class="subcategory-button"
-                                    onclick=""><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
+                                <button class="subcategory-button" onclick="" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -84,9 +79,7 @@
 
 
         <!--MENU ICON-->
-        <script src="./js/nav.js"></script><!--Temporaneo perche non funziona ???????-->
-
-        <button class="menu-icon" onclick="mobileToggleMenu()">
+        <button class="menu-icon" onclick="mobileToggleMenu()" type="button">
             <img class="open-icon" src="upload/menu-icon.png" alt="Menu icon">
             <img class="close-icon" src="upload/close-menu-icon.png" alt="Close menu" />
         </button>
