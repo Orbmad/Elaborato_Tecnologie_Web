@@ -10,7 +10,7 @@ function resetText(inputId){
 }
 
 document.addEventListener("click", function(event) { 
-    console.log(event);   
+    //console.log(event);   
     if(event.target.closest("li.user_icon a")){
         console.log("OK");
         document.getElementById("submenu_user").style.display = "initial";

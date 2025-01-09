@@ -5,7 +5,7 @@ VALUES
     -- ID = 1
     ('Piante da interno'),
     -- ID = 2
-    ('Piante da orto, frutteto e cucina'),
+    ('Piante da cucina'),
     -- ID = 3
     ('Bulbi e sementi'),
     -- ID = 4
@@ -24,9 +24,9 @@ VALUES
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
-    ('Piante da orto, frutteto e cucina', 'Piante da frutto'), -- ID_sc = 5,
-    ('Piante da orto, frutteto e cucina', 'Piante da orto'), -- ID_sc = 6,
-    ('Piante da orto, frutteto e cucina', 'Piante aromatiche'); -- ID_sc = 7;
+    ('Piante da cucina', 'Piante da frutto'), -- ID_sc = 5,
+    ('Piante da cucina', 'Piante da orto'), -- ID_sc = 6,
+    ('Piante da cucina', 'Piante aromatiche'); -- ID_sc = 7;
 
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
@@ -73,7 +73,7 @@ VALUES
 
 
 -- Inserimento gruppi --
-INSERT INTO Gruppi (nome_gruppo, descrizione_gruppo)
+INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo)
 VALUES
 ('Cactus Lovers', 'Un gruppo dedicato agli amanti dei cactus e delle piante grasse. Condividiamo consigli su cura, propagazione e specie rare.'),
 ('Orchidee Passione', 'Per chi è appassionato di orchidee! Qui discutiamo di varietà, fertilizzazione e tecniche di coltivazione per fiori spettacolari.'),
