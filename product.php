@@ -18,6 +18,7 @@ $idprodotto = "Adiantum hispidulum";/*capire perchè se lo passo da URL in nome 
 /*per aprire la pagina relativa al singolo prodotto è necessario passare il suo ID per
 poter prelevare dal DB le informazioni relative ad esso*/
 $templateParams["prodotto"] = $dbh->getProductById($idprodotto);
+/*$templateParams["voto"] = 2.5;*/
 
 require 'template/base.php';
 ?>
