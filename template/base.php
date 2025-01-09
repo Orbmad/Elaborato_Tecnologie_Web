@@ -75,7 +75,7 @@
                         </li>
                         <?php foreach ($categoria["sottocategorie"] as $sottocategoria): ?>
                             <li>
-                                <button class="subcategory-button" onclick="" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
+                                <button class="subcategory-button" onclick="window.location.href='search.php?sottocategoriaSelezionata=<?php echo $sottocategoria['nome_sottocategoria']; ?>'" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
                             </li>
                         <?php endforeach; ?>
                     </ul>

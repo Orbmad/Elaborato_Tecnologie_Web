@@ -831,7 +831,7 @@ main.login-form > section {
     background-color: #082D0F;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 3px 3px #3F413E;
+    box-shadow: 3px 3px 2px #3F413E;
 }
 
 main.login-form > section > form {
