@@ -27,6 +27,6 @@
             </ul>
         </section>
     </article>
-    <h2>Lopinione dei planters!</h2>
+    <h2>L'opinione dei planters!</h2>
 <?php endif; ?>
 </main>
