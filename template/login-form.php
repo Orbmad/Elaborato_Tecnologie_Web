@@ -1,6 +1,6 @@
 <main class="login-form">
     <section class="login">
-        <form action="#" method="POST">
+        <form action="../utils/api-login.php" method="POST">
             <h1>Login</h1>
             <?php if(isset($templateParams["errorelogin"])): ?>
                 <p><?php echo $templateParams["errorelogin"]; ?></p>
@@ -23,7 +23,7 @@
     </section>
         
     <section class="signup hidden">
-        <form action="#" method="POST">
+        <form action="../utils/api-signup.php" method="POST">
             <h1>Sign up</h1>
             <?php if(isset($templateParams["erroreSignup"])): ?>
                 <p><?php echo $templateParams["erroreSignup"]; ?></p>
