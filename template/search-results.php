@@ -2,6 +2,7 @@
     <ul class="search-results-list">
         <?php
             foreach($templateParams["searchResults"] as $result):
+            $result["id_sottocategoria"] = str_replace(' ', '', $result["id_sottocategoria"]);
             $result["famiglia"] = str_replace(' ', '', $result["famiglia"]);
             $result["genere"] = str_replace(' ', '', $result["genere"]);
             $result["specie"] = str_replace(' ', '', $result["specie"]);
@@ -19,6 +20,7 @@
                 $result["dimensioni"] . ' ' . 
                 $result["tipologia_foglia"] . ' ' . 
                 $result["colore_foglia"] . ' ' . 
+                $result["voto"] . ' ' . 
                 $result["profumo"]; 
             ?>">
             <a href="#">

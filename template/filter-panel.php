@@ -2,6 +2,10 @@
     <form id="filtered-search" action="search.php" method="GET">
         <label for="more-filters-btn">Visualizza più filtri</label>
         <input type="button" id="more-filters-btn" value="Più filtri" />
+        <label for="apply-filters-btn">Applica i filtri</label>
+        <input type="button" id="apply-filters-btn" class="hidden" value="Applica Filtri" />
+        <label for="reset-filters-btn">Resetta i filtri</label>
+        <input type="reset" id="reset-filters-btn" class="hidden" value="Reset" />
         <ul>
             <li class="filter-price hidden">
                 <h3>Prezzo:</h3>
@@ -30,26 +34,44 @@
                 <h3>Categoria</h3>
                 <ul>
                     <?php foreach ($templateParams["categorie"] as $category) {
-                        $nomecategoria = $category["nome_categoria"];
-                        $sottocategorie = $category["sottocategorie"];
+                        $nomecategoriaLabel = $category["nome_categoria"];
+                        $nomecategoria = str_replace(' ', '', $category["nome_categoria"]);
+                        $sottocategorie = $category["sottocategorie"]; 
                         echo "<li>";
-                        if(isset($templateParams["searchedCategory"]) && $templateParams["searchedCategory"] == $nomecategoria){
-                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked="true">';
-                        }else{
-                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" >';
-                        }
-                        echo '<label for="' . $nomecategoria . '">' . $nomecategoria . '</label>';
-                        echo "<ul class='hidden " .  $nomecategoria . "-sub'>";
-                        foreach ($sottocategorie as $sottocategoria) {
-                            $nomesottocategoria = $sottocategoria["nome_sottocategoria"];
-                            $id_sottocategoria = $sottocategoria["id_sottocategoria"];
-                            echo "<li>";
-                            if(isset($templateParams["searchedCategory"]) && $templateParams["searchedCategory"] == $nomecategoria){
-                                echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $id_sottocategoria . '" value="' . $nomesottocategoria . '" cehcked>';
-                            }else{
-                                echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $id_sottocategoria . '" value="' . $nomesottocategoria . '">';
+                        if(isset($templateParams["searchedCategory"])){
+                            if($templateParams["searchedCategory"] == $nomecategoria){
+                                echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked>';
                             }
-                            echo '<label for="' . $nomesottocategoria . '">' . $nomesottocategoria . '</label>';
+                            else{
+                                echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection">';
+                            }
+                        }else{
+                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked>';
+                        }
+                        echo '<label for="' . $nomecategoria . '">' . $nomecategoriaLabel . '</label>';
+                        if(isset($templateParams["searchedCategory"])){
+                            if($templateParams["searchedCategory"] == $nomecategoria){
+                                echo "<ul class=' " .  $nomecategoria . "-sub'>";
+                            }else{
+                                echo "<ul class='hidden " .  $nomecategoria . "-sub'>";
+                            }
+                        }else{
+                            echo "<ul class='" .  $nomecategoria . "-sub'>";
+                        }
+                        foreach ($sottocategorie as $sottocategoria) {
+                            $nomesottocategoriaLabel = $sottocategoria["nome_sottocategoria"];
+                            $nomesottocategoria = str_replace(' ', '', $sottocategoria["nome_sottocategoria"]);
+                            echo "<li>";
+                            if(isset($templateParams["searchedCategory"])){
+                                if($templateParams["searchedCategory"] == $nomecategoria){
+                                    echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '" checked>';
+                                }else{
+                                    echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '">';
+                                }
+                            }else{
+                                echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '" checked>';
+                            }
+                            echo '<label for="' . $nomesottocategoria . '">' . $nomesottocategoriaLabel . '</label>';
                             echo "</li>";
                         }
                         echo "</ul>";
@@ -57,7 +79,7 @@
                     } ?>
                 </ul>
             </li>
-            <?php $filterAttributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipo di foglia", "colore delle foglie");
+            <?php $filterAttributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipo di foglia", "colore delle foglie","voto");
             foreach ($filterAttributes as $filterAttribute):
                 ?>
                 <li class="filter-checkbox filter-<?php echo $filterAttribute ?> hidden">
@@ -66,7 +88,7 @@
                         <?php
                         for ($i = 0; $i < count($templateParams[$filterAttribute]); $i++) {
                             echo "<li>";
-                            echo '<input type="checkbox" id="' . $templateParams[$filterAttribute][$i]["attributo"] . '" name="' . $templateParams[$filterAttribute][$i]["attributo"] . '" value="' . $filterAttribute . '">';
+                            echo '<input type="checkbox" id="' . $templateParams[$filterAttribute][$i]["attributo"] . '" name="' . $templateParams[$filterAttribute][$i]["attributo"] . '" value="' . $filterAttribute . '" checked>';
                             echo '<label for="' . $templateParams[$filterAttribute][$i]["attributo"] . '">' . $templateParams[$filterAttribute][$i]["attributo"] . '</label>';
                             echo "</li>";
                         }
@@ -75,9 +97,5 @@
                 </li>
             <?php endforeach; ?>
         </ul>
-        <label for="apply-filters-btn">Applica i filtri</label>
-        <input type="button" id="apply-filters-btn" class="hidden" value="Applica Filtri" />
-        <label for="reset-filters-btn">Resetta i filtri</label>
-        <input type="reset" id="reset-filters-btn" class="hidden" value="Reset" />
     </form>
 </aside>

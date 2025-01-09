@@ -55,7 +55,7 @@ class DatabaseHelper
     public function getProductById($product_id)
     {
         $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ?");
-        $stmt->bind_param('i', $product_id);
+        $stmt->bind_param('s', $product_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -125,6 +125,13 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getBestProducts($n){
+        $stmt = $this->db->prepare("SELECT * FROM prodotti ORDER BY voto LIMIT ?");
+        $stmt->bind_param('i',$n);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     /**
      * Insert a new user in the database
      */

@@ -9,6 +9,7 @@ $templateParams["js"] = array("js/index.js", "js/nav.js");
 $templateParams["randomArticles"] = $dbh->getArticles(3);
 $templateParams["mainContent"] = "main-index.php";
 $templateParams["randomCategories"] = $dbh->getRandomCategories(2);
+$templateParams["searchResults"]= $dbh->getBestProducts(4);
 
 require 'template/base.php';
 ?>

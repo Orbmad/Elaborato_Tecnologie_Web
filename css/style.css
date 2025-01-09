@@ -1,12 +1,12 @@
 /*Inizio regole di base della pagina*/
 /*Reset rule*/
-body, nav, header, ul, li, a, h1,input[type="text"], form{
+body, nav, header, ul, li, a, h1,input[type="text"], form, h3{
     padding: 0%;
     margin: 0%;
     font-family: 'Josefin Sans', sans-serif;
 }
 
-input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"]{
+input[type="button"],button,input[type="reset"],input[type="checkbox"], .searchbar-icon,input[type="range"],input[type="submit"]{
     cursor: pointer;
 }
 
@@ -446,6 +446,7 @@ body > header > ul > li.user_icon:hover > ul{
 .main-articles article{
     background-color: #082D0F;
     display: block;
+    box-shadow: 5px 5px 3px #3F413E;
 }
 
 section.main-articles{
@@ -562,22 +563,28 @@ section.main-articles > img.arrow-icon:active {
 
 
 /*Inizio regole categorie nel main */
-
-main > section.main-categories-blocks > form > ul {
+main > section.main-categories-blocks > ul {
     width: 100%;
     margin-top: 20px;
 }
 
-main > section.main-categories-blocks > form > ul > li{
+main > section.main-categories-blocks > ul > li{
     text-align: center;
     position: relative;
+    margin-top: 20px;
+    transition: transform 0.2s ease;
 }
 
-main > section.main-categories-blocks > form > ul > li > img{
+body > main >section.main-categories-blocks > ul > li:hover{
+    transform: scale(1.05);
+}
+
+main > section.main-categories-blocks > ul > li > img{
     width: 80%;
+    box-shadow: 3px 3px 1px #3F413E;
 }
 
-main > section.main-categories-blocks > form > ul > li > section{
+main > section.main-categories-blocks > ul > li > section{
     position: absolute; /* Positioning relative to the container */
     top: 70%; /* Center vertically */
     left: 50%; /* Center horizontally */
@@ -593,7 +600,14 @@ main > section.main-categories-blocks > form > ul > li > section{
     padding: 0px;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="submit"]{
+main > section.main-categories-blocks > ul > li > section > form{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]{
     height: 30%;
     display: flex; 
     justify-content: center;
@@ -603,9 +617,20 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="s
     color: #F0F2EF;
     font-family: 'Josefin Sans', sans-serif;
     text-transform: uppercase;
+    border: none ;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="text"]{
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]:hover{
+    color: #082D0F;
+    background-color: #F0F2EF;
+    border: 2px solid #082D0F;
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="submit"]:focus{ 
+    transform: scale(0.9);
+}
+
+main > section.main-categories-blocks > ul > li > section > form > input[type="text"]{
     height: 70%;
     display: flex; 
     justify-content: center; 
@@ -619,28 +644,19 @@ main > section.main-categories-blocks > form > ul > li > section > input[type="t
     border: 0px;
 }
 
-main > section.main-categories-blocks > form > ul > li > section > input[type="text"]:focus {
+main > section.main-categories-blocks  > ul > li > section > form > input[type="text"]:focus {
     border: 0px;
     outline: none;
 }
 
-@media (min-width:769px){
-    main > section.main-categories-blocks > form > ul {
-        display: flex;
-        width: 50%;
-        flex-direction: row;
-    }
-
-    main > section.main-categories-blocks > form > ul > li{
-        text-align: center;
-        position: relative;
-        width:50%;
-        box-sizing: border-box;
-        display: inline-block;
-    }
-
+body > main > section.best-products > h2, body > main > section.main-categories-blocks > h2 {
+    text-transform: capitalize;
+    text-decoration: underline;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    padding-bottom: 15px;
+    color: #082D0F;
 }
-
 /*Fine regole categorie nel main */
 
 /*FINE INDEX MAIN MOBILE*/
@@ -668,11 +684,13 @@ aside > form input[type="button"], aside > form input[type="reset"]{
     font-size: large ;
     text-transform: uppercase;
     padding: 10px;
+    transition: transform 0.2s ease;
 }
 
 aside > form input[type="button"]:active, aside > form input[type="reset"]:active{
     color: #F0F2EF;
     background-color: #082D0F;
+    transform: scale(0.9);
 }
 
 aside > form > ul> li.hidden{
@@ -717,7 +735,8 @@ aside > form > ul > li.filter-price section{
 aside > form > ul > li > h3{
     font-weight: bold;
     text-transform: capitalize;
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    margin-top :10px;
 }
 
 aside > form > ul > li.filter-checkbox label{
@@ -862,89 +881,91 @@ main.login-form > section.signup > form > ul > li > input[type="submit"] {
 /*FINE LOGIN MAIN MOBILE*/
 
 
-/*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
-/* main{
-    margin-top: 70px;
-    padding: 0 15%;
-} */
+/*Inizio regole per lo stile della pagina per il singolo prodotto mobile*/
 
-main > article > header > img{
-    width: 600px;
+main.single-item > article{
+    margin-top: 70px;
+    padding: 0 10%;
 }
 
-main > article > div.wrapper{
+main.single-item > article > header > img{
+    width: 100%;
+}
+
+main.single-item > article > header > section > div.wrapper{
     display: inline-block;
-    width: 30%;
+    width: 40%;
     border-radius: 10px;
-    text-align: center;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 5px;
 }
 
-main > article > div.wrapper > span{
+main.single-item > article > header > section > div.wrapper > span{
     display: inline-block;
-    width: 25%;
+    width: 20%;
     text-align: center;
-    font-size: 45px;
+    font-size: 16px;
     font-weight: bold;
     border: black solid 2px;
     padding: 2%;
     cursor: pointer;
 }
 
-main > article > div.wrapper > span.number{
+main.single-item > article > header > section > div.wrapper > span.number{
     cursor: auto;
+    padding-right: 3%;
+    border-left: none;
+    border-right: none;
 }
 
-main > article > button{
+main.single-item > article > header > section > button{
     border: none;
     color: #ffff;
-    font-size: 35px;
+    font-size: 11px;
     text-align: center;
     background-color: #082D0F;
-    padding: 20px 25px;
-    cursor: pointer; /*per il computer*/
+    padding: 10px 15px;
+    cursor: pointer;
     border-radius: 50px;
+    width: 60%;
     display: inline-block;
-    margin-top: 50px;
+    /*margin-top: 25px;*/
     float: right;
 }
 
-main > article > header > h2{
-    font-size: 50px;
+main.single-item > article > header > section > h2{
+    font-size: 30px;
     padding: 8px 0;
     margin: 4px 0;
-    /*inserimento del font-family*/
+    /*text-align: center;*/
 }
 
-main > article > header > h3{
-    font-size: 40px;
+main.single-item > article > header > section > h3{
+    font-size: 20px;
     padding: 8px 0;
     color: #082D0F;
-    /*inserimento del font-family*/
 }
 
-main > article > section > h3{
-    font-size: 40px;
-    margin-top: 50px;
-    /*inserimento del font-family*/
+main.single-item > article > section > h3{
+    font-size: 30px;
+    margin-top: 20px;
 }
 
-main > article > section > p{
-    font-size: 20px;
-    padding: 10px 0;
-    /*inserimento del font-family*/
+main.single-item > article > section > p{
+    font-size: 14px;
+    padding: 3px 0;
 }
-/*regole per lo stile della pagina per il singolo prodotto fine*/
+
+/*Fine regole per lo stile della pagina per il singolo prodotto mobile*/
 
 /*Inizio regole main pagine search mobile*/
-main > ul.search-results-list{
+main  ul.search-results-list{
     display: inline-block;
     text-align: center;
 }
 
-main > ul.search-results-list > li{
+main  ul.search-results-list > li{
     display: inline-flex;
     width: 200px;
     height: 260px;
@@ -953,18 +974,29 @@ main > ul.search-results-list > li{
     justify-content: center;
     font-size: small;
     box-shadow: 5px 5px 3px #3F413E;
+    transition: transform 0.2s ease;
 }
 
-main > ul.search-results-list > li.hidden{
+main  ul.search-results-list > li:hover{
+    transform: scale(1.05);
+}
+
+main  ul.search-results-list > li:active{
+    transform: scale(0.9);
+}
+
+
+
+main ul.search-results-list > li.hidden{
     display: none;
 }
 
-main > ul.search-results-list > li > a > img.product-image{
+main  ul.search-results-list > li > a > img.product-image{
     width: 190px;
     height: 190px;  
 }
 
-main > ul.search-results-list > li > a > h2{
+main  ul.search-results-list > li > a > h2{
     font-size: small;
     color: #3F413E;
     text-align: start;
@@ -972,7 +1004,7 @@ main > ul.search-results-list > li > a > h2{
     margin: 5px 0px;
 }
 
-main > ul.search-results-list > li > a > p:first-of-type{
+main  ul.search-results-list > li > a > p:first-of-type{
     font-size: smaller;
     color: #082D0F;
     text-align: start;
@@ -980,7 +1012,7 @@ main > ul.search-results-list > li > a > p:first-of-type{
     margin: 5px 0px;
 }
 
-main > ul.search-results-list > li > a > p:nth-of-type(2){
+main  ul.search-results-list > li > a > p:nth-of-type(2){
     font-size: smaller;
     color: #082D0F;
     text-align: end;
@@ -989,26 +1021,26 @@ main > ul.search-results-list > li > a > p:nth-of-type(2){
 }
 
 
-main > ul.search-results-list > li > a {
+main  ul.search-results-list > li > a {
     margin: 10px;
     width:100%;
 }
 
-main > ul.search-results-list{
+main  ul.search-results-list{
     display: block;
     width:100%;
 }
 
-main > ul.search-results-list > li > a span.checked {
+main  ul.search-results-list > li > a span.checked {
     color: #082D0F;
     opacity: 100%;
   }
 
-main > ul.search-results-list > li > a{
+main  ul.search-results-list > li > a{
     text-decoration: none;
 }
 
-main > ul.search-results-list > li > a span{
+main  ul.search-results-list > li > a span{
     color: #3F413E;
     opacity: 60%;
   }
@@ -1365,11 +1397,63 @@ main > ul.search-results-list > li > a span{
         padding-bottom: 20px;
     }
     /*Fine regole carosello versione desktop*/
-    /* FINE NAV VERSIONE DESKTOP */
+
+    /* inizio regole main index blocco categoria */
+
+    main > section.main-categories-blocks, main > section.best-products{
+        width:50%;
+        float: left;
+        padding-left: 30px;
+        box-sizing: border-box;
+        height: 100%;
+    }
+
+    main > section.best-products > ul.search-results-list >li {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    main > section.main-categories-blocks > ul, main > section.best-products > ul.search-results-list {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    main > section.main-categories-blocks > ul > li{
+        text-align: center;
+        position: relative;
+        box-sizing: border-box;
+        display: inline-block;
+        box-sizing: content-box;
+        margin: 10px;
+        height: 200px;
+        box-shadow: 3px 3px 1px #3F413E;
+    }
+
+    main > section.main-categories-blocks > ul > li > img{
+        width: 200px;
+        height: 200px;
+        box-shadow:none;
+    }
+
+    main > section.main-categories-blocks > ul > li > section{
+        width: 200px;
+    }
+    /* fine regole main index blocco categoria */	
+
+    /* inizio regole main index blocco prodotti */
+    main > section.best-products > ul {
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+    }
+
+
+    /* fine main index blocco prodotti */
 
     /*INIZIO ASIDE DESKTOP*/
     aside{
-            min-width: 200px;
+            min-width: 270px;
             width: 30%;
             height: 100%;
             border-right: 3px solid #082D0F;
@@ -1425,6 +1509,60 @@ main > ul.search-results-list > li > a span{
         font-size: 17px;
     }
     /*FINE HEADER versione DESKTOP*/
+
+    /*INIZIO regole per pagina SINGOLO PRODOTTO DESKTOP*/
+    main.single-item > article{
+        margin-top: 70px;
+        padding: 0 5%;    
+    }
+
+    main.single-item > article > header > img{
+        display: inline-block;
+        width: 35%;
+    }
+
+    main.single-item > article > header > section{
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+        padding: 50px 2.5%;
+    }
+
+    main.single-item > article > header > section > h2{
+        font-size: 40px;
+    }
+    
+    main.single-item > article > header > section > h3{
+        font-size: 30px;        
+        margin-top: 20px;
+    }
+    
+    main.single-item > article > section > h3{
+        font-size: 35px;
+        margin-top: 25px;
+    }
+    
+    main.single-item > article > section > p{
+        font-size: 20px;
+        padding: 3px 0;
+        
+    }
+
+    main.single-item > article > header > section{
+        margin-top: 30px;
+    }
+
+    main.single-item > article > header > section > button{
+        font-size: 20px;
+        width: 50%;
+        margin-right: 40px;
+    }
+
+    main.single-item > article > header > section > div.wrapper > span{
+        width: 25%;
+        font-size: 20px;
+    }
+    /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 
     /*Inizio regole main pagine search mobile*/
 
