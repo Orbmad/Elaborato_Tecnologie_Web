@@ -1,6 +1,6 @@
 /*Inizio regole di base della pagina*/
 /*Reset rule*/
-body, nav, header, ul, li, a, h1,input[type="text"], form{
+body, nav, header, ul, li, a, h1,input[type="text"], form, h3{
     padding: 0%;
     margin: 0%;
     font-family: 'Josefin Sans', sans-serif;
@@ -862,81 +862,83 @@ main.login-form > section.signup > form > ul > li > input[type="submit"] {
 /*FINE LOGIN MAIN MOBILE*/
 
 
-/*regole per lo stile della pagina per il singolo prodotto mobile inizio*/
-/* main{
-    margin-top: 70px;
-    padding: 0 15%;
-} */
+/*Inizio regole per lo stile della pagina per il singolo prodotto mobile*/
 
-main > article > header > img{
-    width: 600px;
+main.single-item > article{
+    margin-top: 70px;
+    padding: 0 10%;
 }
 
-main > article > div.wrapper{
+main.single-item > article > header > img{
+    width: 100%;
+}
+
+main.single-item > article > header > section > div.wrapper{
     display: inline-block;
-    width: 30%;
+    width: 40%;
     border-radius: 10px;
-    text-align: center;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
+    margin-top: 5px;
 }
 
-main > article > div.wrapper > span{
+main.single-item > article > header > section > div.wrapper > span{
     display: inline-block;
-    width: 25%;
+    width: 20%;
     text-align: center;
-    font-size: 45px;
+    font-size: 16px;
     font-weight: bold;
     border: black solid 2px;
     padding: 2%;
     cursor: pointer;
 }
 
-main > article > div.wrapper > span.number{
+main.single-item > article > header > section > div.wrapper > span.number{
     cursor: auto;
+    padding-right: 3%;
+    border-left: none;
+    border-right: none;
 }
 
-main > article > button{
+main.single-item > article > header > section > button{
     border: none;
     color: #ffff;
-    font-size: 35px;
+    font-size: 11px;
     text-align: center;
     background-color: #082D0F;
-    padding: 20px 25px;
-    cursor: pointer; /*per il computer*/
+    padding: 10px 15px;
+    cursor: pointer;
     border-radius: 50px;
+    width: 60%;
     display: inline-block;
-    margin-top: 50px;
+    /*margin-top: 25px;*/
     float: right;
 }
 
-main > article > header > h2{
-    font-size: 50px;
+main.single-item > article > header > section > h2{
+    font-size: 30px;
     padding: 8px 0;
     margin: 4px 0;
-    /*inserimento del font-family*/
+    /*text-align: center;*/
 }
 
-main > article > header > h3{
-    font-size: 40px;
+main.single-item > article > header > section > h3{
+    font-size: 20px;
     padding: 8px 0;
     color: #082D0F;
-    /*inserimento del font-family*/
 }
 
-main > article > section > h3{
-    font-size: 40px;
-    margin-top: 50px;
-    /*inserimento del font-family*/
+main.single-item > article > section > h3{
+    font-size: 30px;
+    margin-top: 20px;
 }
 
-main > article > section > p{
-    font-size: 20px;
-    padding: 10px 0;
-    /*inserimento del font-family*/
+main.single-item > article > section > p{
+    font-size: 14px;
+    padding: 3px 0;
 }
-/*regole per lo stile della pagina per il singolo prodotto fine*/
+
+/*Fine regole per lo stile della pagina per il singolo prodotto mobile*/
 
 /*Inizio regole main pagine search mobile*/
 main > ul.search-results-list{
@@ -1417,6 +1419,60 @@ main > ul.search-results-list > li > a span{
         font-size: 17px;
     }
     /*FINE HEADER versione DESKTOP*/
+
+    /*INIZIO regole per pagina SINGOLO PRODOTTO DESKTOP*/
+    main.single-item > article{
+        margin-top: 70px;
+        padding: 0 5%;    
+    }
+
+    main.single-item > article > header > img{
+        display: inline-block;
+        width: 35%;
+    }
+
+    main.single-item > article > header > section{
+        display: inline-block;
+        width: 50%;
+        vertical-align: top;
+        padding: 50px 2.5%;
+    }
+
+    main.single-item > article > header > section > h2{
+        font-size: 40px;
+    }
+    
+    main.single-item > article > header > section > h3{
+        font-size: 30px;        
+        margin-top: 20px;
+    }
+    
+    main.single-item > article > section > h3{
+        font-size: 35px;
+        margin-top: 25px;
+    }
+    
+    main.single-item > article > section > p{
+        font-size: 20px;
+        padding: 3px 0;
+        
+    }
+
+    main.single-item > article > header > section{
+        margin-top: 30px;
+    }
+
+    main.single-item > article > header > section > button{
+        font-size: 20px;
+        width: 50%;
+        margin-right: 40px;
+    }
+
+    main.single-item > article > header > section > div.wrapper > span{
+        width: 25%;
+        font-size: 20px;
+    }
+    /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 
     /*Inizio regole main pagine search mobile*/
 

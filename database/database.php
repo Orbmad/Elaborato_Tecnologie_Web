@@ -55,7 +55,7 @@ class DatabaseHelper
     public function getProductById($product_id)
     {
         $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ?");
-        $stmt->bind_param('i', $product_id);
+        $stmt->bind_param('s', $product_id);
         $stmt->execute();
         $result = $stmt->get_result();
 
