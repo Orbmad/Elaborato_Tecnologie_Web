@@ -445,7 +445,6 @@ body>header>ul>li.user_icon>a>img:nth-child(2) {
 body > header > ul > li.user_icon > a > p{
     position: relative;
     bottom: 2px;
-body>header>ul>li.user_icon>a>p {
     grid-area: 1/1;
     color: #fff;
     padding-bottom: 60%;
@@ -467,10 +466,6 @@ body > header > ul > li > ul > li{
     padding: 5px 0 ;
     background: #fff;
     border: solid #082D0F 1px;
-body>header>ul>li>ul>li {
-    padding: 5px 0;
-    background: #3F413E;
-    border: solid #AC5411 1px;
 }
 
 body > header > ul > li > ul > li > a{
@@ -1886,7 +1881,6 @@ main.main-cart>section.cart-products>ul>li>section.product-description>section:f
     body>header>ul {
         width: 30%;
         padding: 0px 4% 0px 36%;
-        
     }
 
     body>header>ul>li>ul {
@@ -1923,7 +1917,6 @@ main.main-cart>section.cart-products>ul>li>section.product-description>section:f
     body > header > ul > li > ul > li:nth-child(1) > span{
         font-size: 20px;
     }
-
     /*FINE HEADER versione DESKTOP*/
 
     /*INIZIO regole per pagina SINGOLO PRODOTTO DESKTOP*/
