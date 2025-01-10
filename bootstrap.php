@@ -7,7 +7,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 require_once("utils/functions.php");
 require_once("database/database.php");
-$dbh = new DatabaseHelper("localhost", "root", "", "Plantatio", 3306);
+$dbh = new DatabaseHelper("localhost", "root", "", "plantatio", 3306);
 
 //Template Params
 $templateParams["categorie"] = $dbh->getCategories();

@@ -1,6 +1,6 @@
 /*Inizio regole di base della pagina*/
 /*Reset rule*/
-body, nav, header, ul, li, a, h1,input[type="text"], form, h3{
+body, nav, header, ul, li, a, h1,input[type="text"], form, h3, p{
     padding: 0%;
     margin: 0%;
     font-family: 'Josefin Sans', sans-serif;
@@ -367,6 +367,7 @@ body > header > ul{
     display: inline-block;
     width: 50%;
     text-align: right;
+    vertical-align: bottom;
     list-style: none;
     padding: 0px 0% 0px 20%;
 }
@@ -393,6 +394,11 @@ body > header > ul > li.user_icon{
     text-decoration: none;
 }
 
+/*nascosta visibilità notifiche*/
+body > header > ul > li.user_icon .notVisible{
+    visibility: hidden;
+}
+
 body > header > ul > li > a{
     display: grid;
     grid-template-columns: 1fr;
@@ -403,11 +409,13 @@ body > header > ul > li > a{
 
 body > header > ul > li.user_icon > a > img{
     grid-area: 1/1;
+    bottom: 4px;
+    position: relative;
 }
 
 body > header > ul > li:nth-child(2) > a > img{
     position: relative;
-    top: 13px;
+    top: 4px;
 }
 
 body > header > ul > li.user_icon > a > img:nth-child(2){
@@ -418,6 +426,8 @@ body > header > ul > li.user_icon > a > img:nth-child(2){
 }
 /*DA MOD NEL CODICE inserimento del numero di notifiche che l'utente deve visualizzare*/
 body > header > ul > li.user_icon > a > p{
+    position: relative;
+    bottom: 2px;
     grid-area: 1/1;
     color: #fff;
     padding-bottom: 60%;
@@ -425,31 +435,58 @@ body > header > ul > li.user_icon > a > p{
     font-size: 11px;
 }
 
+
 body > header > ul > li > ul{
     position: absolute;
     text-align: center;
     width: 90px;
     display: none;
     top: 50px;
+    z-index: 3;
 }
 
 body > header > ul > li > ul > li{
     padding: 5px 0 ;
-    background: #3F413E;
-    border: solid #FF7D00 1px;
+    background: #fff;
+    border: solid #082D0F 1px;
 }
-
 
 body > header > ul > li > ul > li > a{
     color: #fff;
     text-decoration: none;
     font-size: 11px;
+    color: #082D0F;
+    font-weight: bold;
 }
 
-/*quando si passa con il cursore sull'icona si apre vede il menù*/
-body > header > ul > li.user_icon:hover > ul{
-    display: initial;
+body > header > ul > li > ul > li:nth-child(1){
+    padding: 5px 0 ;
+    background: #082D0F;
+    border: solid #fff 1px;
 }
+
+body > header > ul > li > ul > li:nth-child(1) > img{
+    width: 10px;
+    float:right;
+    padding-right: 5%;
+}
+
+body > header > ul > li > ul > li:nth-child(1) > span{
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+}
+
+/*body > header > ul > li > ul > li:nth-child(1) > a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+}*/
+
+/*quando si passa con il cursore sull'icona si apre vede il menù*/
+/*body > header > ul > li.user_icon:hover > ul{
+    display: initial;
+}*/
 
 /*FINE HEADER VERSIONE MOBILE*/
 
@@ -1783,7 +1820,7 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
 
     body > header > ul{
         width: 30%;
-        padding: 0px 4% 0px 36%;/*VERIFICA*/
+        padding: 0px 4% 0px 36%;
     }
 
     body > header > ul > li > ul{
@@ -1800,7 +1837,7 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
     }
     /*fix del carrello allineato all'icona utente*/
     body > header > ul > li:nth-child(2) > a > img{
-        top: 19px;
+        top: 5px;
     }
     /*ingrandimento immagine pallina*/
     body > header > ul > li.user_icon > a > img:nth-child(2){
@@ -1809,6 +1846,14 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
 
     body > header > ul > li.user_icon > a > p{
         font-size: 17px;
+    }
+
+    body > header > ul > li > ul > li:nth-child(1) > img{
+        width: 15px;
+    }
+    
+    body > header > ul > li > ul > li:nth-child(1) > span{
+        font-size: 20px;
     }
     /*FINE HEADER versione DESKTOP*/
 

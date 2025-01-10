@@ -20,19 +20,23 @@
         <a href="./index.php"><h1>Plantatio</h1>
         </a><ul>
             <li class="user_icon">
-                <a href="<?php if(!empty($_SESSION['email'])){echo '#';} else{ echo './login.php';} ?>"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
-                        src="img/cerchio.png" alt="notifiche" />
+                <a href="#" onclick="open_submenu()"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
+                        src="img/cerchio.png" alt="notifiche" <?php if(!isUserLoggedIn()){echo 'class = notVisible'; } ?> />
 <!--Inserire numero di notifiche dell'utente-->
-                    <p>1</p>
+                    <p <?php if(!isUserLoggedIn()){echo 'class = notVisible'; }?>>1</p>
                 </a>
+                <?php if(!isUserLoggedIn()): ?><!--da modificare-->
                 <ul id="submenu_user">
-                    <li><a href="#">Esci</a></li>
-                    <li><a href="#">Lista dei desideri</a></li>
-                    <li><a href="#">Notifiche</a></li>
+                    <li><span>Ciao <!--Inserimento del nome utente--></span><img onclick="close_submenu()" src="./upload/close-menu-icon.png" alt="close-button"/></li>
+                    <li><a href="<?php echo '../cart.php' ?>">Carrello</a></li>
+                    <li><a href="<?php echo '../order.php' ?>">Ordini</a></li>
+                    <li><a href="<?php echo '../notification.php' ?>">Notifiche</a></li>
+                    <li><a href="<?php echo '../utils/api-logout.php' ?>">Ordini</a></li>
                 </ul>
+                <?php endif; ?>
             </li>
             <li>
-                <a href="<?php if(!empty($_SESSION['email'])){echo '#';} else{ echo './login.php';} ?>"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
+                <a href="<?php if(isUserLoggedIn()){echo '#';} else{ echo './login.php';} ?>"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
             </li>
         </ul>
     </header>
