@@ -76,6 +76,30 @@
             </table>
         </section>
     </article>
-    <h2>L'opinione dei planters!</h2>
+    <section>
+        <h2>L'opinione dei planters!</h2>
+        <?php foreach($templateParams["recensioni_prodotto"] as $rec):?>
+            <article>
+            <h3><?php echo $rec["nome"] ?></h3><div class="star-value-user">
+                    <?php for($i = 1; $i <= $rec["voto"]; $i++): ?>
+                            <img src="upload/full_star.png" alt=""/>
+                            <?php if($rec["voto"] - $i == 0.5): break;?>
+                            <?php endif; ?>
+                        <?php endfor;?>
+                        <?php if($rec["voto"] == 0.5 || $rec["voto"] == 1.5
+                        || $rec["voto"] == 2.5 || $rec["voto"] == 3.5
+                        || $rec["voto"] == 4.5): ?>
+                            <img src="upload/half_star.png" alt=""/>
+                        <?php endif; ?>
+                        <?php for($i = $rec["voto"] + 1; $i <= 5; $i++ ): ?>
+                            <img src="upload/empty_star.png" alt=""/>
+                        <?php endfor; ?>
+                    </div><h3><?php echo $rec["voto"]?>/5</h3>
+            <h4><?php echo $rec["dataRec"] ?></h4>
+            <p><?php echo $rec["commento"] ?></p>
+            </article>
+        <?php endforeach; ?>
+    </section>
+    
 <?php endif; ?>
 </main>

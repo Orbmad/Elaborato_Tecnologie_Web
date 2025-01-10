@@ -19,6 +19,7 @@ $idprodotto = "Adiantum hispidulum";/*capire perchè se lo passo da URL in nome 
 poter prelevare dal DB le informazioni relative ad esso*/
 $templateParams["prodotto"] = $dbh->getProductById($idprodotto);
 /*$templateParams["voto"] = 2.5;*/
+$templateParams["recensioni_prodotto"] = $dbh->getReviewsOfProduct($idprodotto);
 
 require 'template/base.php';
 ?>

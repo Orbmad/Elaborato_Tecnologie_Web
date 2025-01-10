@@ -87,3 +87,9 @@ VALUES
 ('mariorossi@gmail.com', 'Mario', 'Rossi', SH2('Mar1oRoss!', 256), 0),
 ('giannimorandi@libero.it', 'Gianni', 'Morandi', SH2('Gianni', 256), 0),
 ('admin', 'admin', 'admin', SH2('admin', 256), 1);
+
+--inserimento delle recensioni--
+INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento, data_recensione)
+VALUES
+('mariorossi@gmail.com', 'Adiantum hispidulum', 4, 'Sono molto soddisfatto della pianta che ho acquistato. È stata imballata bene ed è arrivata intatta e, nonostante il riposo vegetativo, si vedeva che era in salute. Azienda seria e disponibile, mi è arrivata una piccola pianta in regalo che ho gradito molto. Grazie!', '2024-01-06'),
+('giannimorandi@libero.it', 'Adiantum hispidulum', 5, 'Devo dire che mi sono trovato molto bene come mia prima esperienza. Conservervati e confezionati in modo eccellente grazie', '2024-08-26'),
