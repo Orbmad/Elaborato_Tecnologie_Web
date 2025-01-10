@@ -12,7 +12,7 @@
                 <li>
                     <img src="./upload/pianta.jpg" alt="" />
                     <section class="product-description">
-                        <h3>
+                        <h3 onclick="window.location.href='product.php?id=<?php echo $cartProduct['nome_prodotto'] ?>'">
                             <?php echo $cartProduct["nome_prodotto"] ?>
                         </h3>
                         <p>
