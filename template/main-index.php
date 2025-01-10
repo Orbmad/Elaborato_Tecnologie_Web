@@ -44,7 +44,7 @@
             <?php
                 foreach($templateParams["searchResults"] as $result):
             ?>
-            <li>
+            <li onclick="window.location.href='product.php?id=<?php echo $result['nome_prodotto'] ?>'">
                 <a href="#">
                     <img src="./upload/pianta1.jpg" class="product-image" alt="product image"/>
                     <h2><?php echo $result["nome_prodotto"] ?></h2>

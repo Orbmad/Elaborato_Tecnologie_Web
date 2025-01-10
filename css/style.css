@@ -1225,6 +1225,10 @@ main.main-cart > section.cart-products > ul > li > img{
     margin-right: 20px;
 }
 
+main.main-cart > section.cart-products > ul > li > section > h3, main.main-cart > section.cart-products > ul > li > img{
+    cursor: pointer;
+}
+
 main.main-cart > section.cart-products > ul > li > section.product-description{
     display: flex;
     flex-direction: column;
