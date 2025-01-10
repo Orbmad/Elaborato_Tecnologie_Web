@@ -1814,7 +1814,7 @@ main.main-cart>section.cart-products>ul>li>section.product-description>section:f
         margin: auto;
     }
 
-    main.search-results-main ul.search-results-list{
+    main.search-results-main ul.search-results-list {
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
