@@ -46,20 +46,7 @@
             <label for="fastSearch">Ricerca rapida</label>
             <section class="search-text">
                 <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" value="<?php if(isset($templateParams["searchedWord"])){echo($templateParams["searchedWord"]);}?>"/>
-                <ul class="suggestions not-showing">
-                    <li class="product-suggested">
-                        <a href="#">
-                            <img src="upload/pianta1.jpg" alt="Product image">
-                            <p>Prodotto 1</p>
-                        </a>
-                    </li>
-                    <li class="product-suggested">
-                        <a href="#">
-                            <img src="upload/pianta.jpg" alt="Product image">
-                            <p>Prodotto 1</p>
-                        </a>
-                    </li>
-                </ul>
+                <ul class="suggestions not-showing"></ul>
             </section>
             <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button"
                 onclick="resetText('fastsearch')" />
