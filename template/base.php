@@ -16,10 +16,10 @@
 <!--Temporaneo check di login-->
 <?php if (isset($_SESSION["email"])) {var_dump($_SESSION["email"]); }?>
     <header>
-        <h1>Plantatio
-        </h1><ul>
+        <a href="./index.php"><h1>Plantatio</h1>
+        </a><ul>
             <li class="user_icon">
-                <a href="#"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon" /><img
+                <a href="<?php if(!empty($_SESSION['email'])){echo '#';} else{ echo './login.php';} ?>"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
                         src="img/cerchio.png" alt="notifiche" />
 <!--Inserire numero di notifiche dell'utente-->
                     <p>1</p>
@@ -31,7 +31,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
+                <a href="<?php if(!empty($_SESSION['email'])){echo '#';} else{ echo './login.php';} ?>"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
             </li>
         </ul>
     </header>
@@ -41,20 +41,7 @@
             <label for="fastSearch">Ricerca rapida</label>
             <section class="search-text">
                 <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" value="<?php if(isset($templateParams["searchedWord"])){echo($templateParams["searchedWord"]);}?>"/>
-                <ul class="suggestions not-showing">
-                    <li class="product-suggested">
-                        <a href="#">
-                            <img src="upload/pianta1.jpg" alt="Product image">
-                            <p>Prodotto 1</p>
-                        </a>
-                    </li>
-                    <li class="product-suggested">
-                        <a href="#">
-                            <img src="upload/pianta.jpg" alt="Product image">
-                            <p>Prodotto 1</p>
-                        </a>
-                    </li>
-                </ul>
+                <ul class="suggestions not-showing"></ul>
             </section>
             <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button"
                 onclick="resetText('fastsearch')" />

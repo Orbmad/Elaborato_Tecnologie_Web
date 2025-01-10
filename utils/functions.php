@@ -78,4 +78,12 @@
     
         return true; //Password sicura
     }
+
+    function addToCartIfUserIsLogged($id_prodotto, $quantità){
+        if(isUserLoggedIn()){
+            $dbh->addToCart($id_prodotto, $quantità);
+        }
+    }
+
+    
 ?>

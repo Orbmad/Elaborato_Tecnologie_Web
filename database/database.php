@@ -217,7 +217,7 @@ class DatabaseHelper
     }
 
     public function getReviewsOfProduct($idprodotto){
-        $query = "SELECT nome, voto, commento, DATE(data_recensione) as dataRec FROM Recensioni, Utenti WHERE id_utente = email AND id_prodotto = ? ORDER BY data_recensione DESC LIMIT 3";
+        $query = "SELECT nome, voto, commento, DATE(data_recensione) as dataRec FROM Recensioni, Utenti WHERE id_utente = email AND id_prodotto = ? ORDER BY data_recensione DESC";
         $stmt = $this->db->prepare($query);
         $stmt-> bind_param('s', $idprodotto);
         $stmt->execute();
@@ -255,6 +255,7 @@ class DatabaseHelper
 
     }
 
+<<<<<<< HEAD
     /**
      * Insert a new product, returns true if the insertion is executed correctly.
      */
@@ -384,4 +385,34 @@ class DatabaseHelper
         }
     }
     
+=======
+    public function checkElementInCart($idprodotto, $id_utente){
+        $stmt = db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
+        $stmt->bind_params('ss', $idprodotto, $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        
+        if($cont > 0){
+            return $cont[0]['quantita'];
+        } else{
+            return 0;
+        }
+    }
+
+    /*Insert the new item in the cart of the user or add qunti*/
+    public function addToCart($idprodotto, $quantità, $id_utente){
+        $quant = $this->checkElementInCart($idprodotto, $id_utente);
+        if($quant > 0){
+            $stmt = db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
+            $stmt->bind_params('is', $quant + $quantità, $id_utente);
+            $stmt->execute();
+        } else {
+            $stmt = $this->db->prepare("INSERT INTO Carrello (id_utente, id_prodotto, quantita) VALUES (?, ?, ?)");
+            $stmt->bind_param('ssi', $id_utente, $idprodotto, $quantità);
+            $stmt->execute();
+        }
+        
+    }
+>>>>>>> e429728eb4dbb0b02888cdc37e92b3c89f3c2673
 }

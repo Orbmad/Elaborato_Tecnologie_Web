@@ -10,9 +10,9 @@
         <ul>
             <?php foreach ($templateParams["cartProducts"] as $cartProduct): ?>
                 <li>
-                    <img src="./upload/pianta.jpg" alt="" />
+                    <img onclick="window.location.href='product.php?id=<?php echo $cartProduct['nome_prodotto'] ?>'" src="./upload/prodotti/<?php echo $cartProduct['nome_prodotto'] ?>.jpg" alt="" />
                     <section class="product-description">
-                        <h3>
+                        <h3 onclick="window.location.href='product.php?id=<?php echo $cartProduct['nome_prodotto'] ?>'">
                             <?php echo $cartProduct["nome_prodotto"] ?>
                         </h3>
                         <p>
