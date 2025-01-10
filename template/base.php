@@ -17,10 +17,10 @@
 <?php if (isset($_SESSION["email"])) {var_dump($_SESSION["email"]); }?>
 
     <header>
-        <h1>Plantatio
-        </h1><ul>
+        <a href="./index.php"><h1>Plantatio</h1>
+        </a><ul>
             <li class="user_icon">
-                <a href="<?php if(isUserLoggedIn()){echo './login.php';} else{ echo '#';} ?>"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
+                <a href="<?php if(!empty($_SESSION['email'])){echo '#';} else{ echo './login.php';} ?>"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
                         src="img/cerchio.png" alt="notifiche" />
 <!--Inserire numero di notifiche dell'utente-->
                     <p>1</p>
@@ -32,7 +32,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
+                <a href="<?php if(!empty($_SESSION['email'])){echo '#';} else{ echo './login.php';} ?>"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
             </li>
         </ul>
     </header>

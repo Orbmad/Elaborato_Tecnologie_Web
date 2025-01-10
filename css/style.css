@@ -352,13 +352,16 @@ body > header{
     margin: 20px 5% 0px;
 }
 
-body > header > h1{
+body > header > a{
     display: inline-block;
     width: 30%;
-    text-align: center;
+    text-decoration: none;
+}
+
+body > header > a > h1{
     color: #FF7D00;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 40px;
 }
 body > header > ul{
     display: inline-block;
@@ -371,7 +374,7 @@ body > header > ul > li > a > img{
     width: 40px;
 }
 
-body > header > h1, body > header > ul{
+body > header > a > h1, body > header > ul{
     vertical-align: bottom;
 }
 
@@ -1766,10 +1769,13 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         margin: 20px 0% 0px;
     }
 
-    body > header > h1{
+    body > header > a{
+        width: 28%;
+    }
+
+    body > header > a > h1{
         font-size: 70px;
         text-align: left;
-        width: 28%;
         padding-left: 2%;
         vertical-align: bottom;
         
