@@ -23,7 +23,7 @@
                 $result["voto"] . ' ' . 
                 $result["profumo"]; 
             ?>">
-            <a href="#">
+            <a href="product.php?id=<?php echo $result['nome_prodotto'] ?>">
                 <img src="./upload/pianta1.jpg" class="product-image" alt="product image"/>
                 <h2><?php echo $result["nome_prodotto"] ?></h2>
                 <p><?php echo $result["prezzo"] ?> €</p>

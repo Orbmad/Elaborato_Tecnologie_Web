@@ -1232,6 +1232,10 @@ main.main-cart > section.cart-products > ul > li > img{
     margin-right: 20px;
 }
 
+main.main-cart > section.cart-products > ul > li > section > h3, main.main-cart > section.cart-products > ul > li > img{
+    cursor: pointer;
+}
+
 main.main-cart > section.cart-products > ul > li > section.product-description{
     display: flex;
     flex-direction: column;
@@ -1301,12 +1305,23 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
 
 main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > a{
     margin-left: 30px;
+    color: #082D0F;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > a:focus{
+    transform: scale(0.9);
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > a:hover{
+    transform: scale(1.1);
 }
 
 main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > p:first-of-type{
     padding: 0px 16px;
+    width: 40px;
     margin: 0px;
     box-sizing: border-box;
+    text-align: center;
 }
 
 /*Fine regole carrello mobile*/
@@ -1671,11 +1686,6 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         padding-left: 30px;
         box-sizing: border-box;
         height: 100%;
-    }
-
-    main > section.best-products > ul.search-results-list >li {
-        display: inline-block;
-        margin-top: 10px;
     }
 
     main > section.main-categories-blocks > ul, main > section.best-products > ul.search-results-list {
