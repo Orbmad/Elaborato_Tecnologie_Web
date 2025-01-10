@@ -950,15 +950,12 @@ main.single-item > article > header > section > button{
     border-radius: 50px;
     width: 60%;
     display: inline-block;
-    /*margin-top: 25px;*/
-    float: right;
 }
 
 main.single-item > article > header > section > h2{
     font-size: 30px;
     padding: 8px 0;
     margin: 4px 0;
-    /*text-align: center;*/
 }
 
 main.single-item > article > header > section > h3{

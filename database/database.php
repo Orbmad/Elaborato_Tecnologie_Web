@@ -309,7 +309,7 @@ class DatabaseHelper
      */
     public function deleteProduct($nome) {
         try {
-            $stmt = $this->db->prepare("DELETE FROM Prodotti WHERE nome_prodotto");
+            $stmt = $this->db->prepare("DELETE FROM Prodotti WHERE nome_prodotto=?");
             $stmt->bind_param('s', $nome);
             $stmt->execute();
             return true;
@@ -341,6 +341,43 @@ class DatabaseHelper
             $stmt = $this->db->prepare("INSERT INTO Appartenenze (id_gruppo, id_prodotto) VALUES (?, ?)");
             $stmt->bind_param('ss', $nome_gruppo, $nome_prodotto);
             $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    public function removeProductFromGroup($nome_gruppo, $nome_prodotto) {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Appartenenze WHERE id_gruppo=? AND id_prodotto=?");
+            $stmt->bind_param('ss', $nome_gruppo, $nome_prodotto);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Adds a review.
+     */
+    public function addReview($id_utente, $id_prodotto, $voto, $commento) {
+        try {
+            //Inserimento Recensione
+            $stmt = $this->db->prepare("INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param('ssis', $id_utente, $id_prodotto, $voto, $commento);
+            $stmt->execute();
+
+            //Aggiornamento voto
+            $update = $this->db->prepare("UPDATE Prodotti
+                SET voto = (
+                    SELECT AVG(voto)
+                    FROM Recensioni
+                    WHERE id_prodotto = ?
+                )
+                WHERE nome_prodotto = ?;");
+            $update->bind_param('ss', $reviewFlag, $reviewFlag);
+            $update->execute();
             return true;
         } catch (PDOException) {
             return false;
