@@ -84,6 +84,6 @@ VALUES
 -- Inserimento utenti --
 INSERT INTO Utenti (email, nome, cognome, password_hash, admin_flag)
 VALUES
-('mariorossi@gmail.com', 'Mario', 'Rossi', SH2('Mar1oRoss!', 256), 0),
-('giannimorandi@libero.it', 'Gianni', 'Morandi', SH2('Gianni', 256), 0),
-('admin', 'admin', 'admin', SH2('admin', 256), 1);
+('mariorossi@gmail.com', 'Mario', 'Rossi', SHA2('Mar1oRoss!', 256), 0),
+('giannimorandi@libero.it', 'Gianni', 'Morandi', SHA2('Gianni', 256), 0),
+('admin', 'admin', 'admin', SHA2('admin', 256), 1);

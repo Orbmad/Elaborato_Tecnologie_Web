@@ -72,7 +72,7 @@ CREATE TABLE Carrello (
     id_carrello INT AUTO_INCREMENT,
     id_utente VARCHAR(150) NOT NULL,
     id_prodotto VARCHAR(150) NOT NULL,
-    quantita INT NOT NULL,
+    quantita INT CHECK (quantita > 0),
     PRIMARY KEY(id_carrello, id_utente),
     FOREIGN KEY (id_utente) REFERENCES Utenti(email) ON DELETE CASCADE,
     FOREIGN KEY (id_prodotto) REFERENCES Prodotti(nome_prodotto) ON DELETE CASCADE

@@ -51,7 +51,8 @@ class DatabaseHelper
         return $categories;
     }
 
-    public function getRandomCategories($n){
+    public function getRandomCategories($n)
+    {
         $stmt = $this->db->prepare("SELECT * FROM Categorie ORDER BY RAND() LIMIT ? ");
         $stmt->bind_param('i', $n);
         $stmt->execute();
@@ -66,6 +67,15 @@ class DatabaseHelper
     {
         $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ?");
         $stmt->bind_param('s', $product_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getGroup($nomeGruppo) {
+        $stmt = $this->db->prepare("SELECT * FROM Gruppi WHERE nomeGruppo = ?");
+        $stmt->bind_param('s', $nomeGruppo);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -116,6 +126,7 @@ class DatabaseHelper
      */
     public function getProductsAttributeValues($attribute_name)
     {
+        //DA MODIFICARE !!!!!!!!!!
         $stmt = $this->db->prepare("SELECT DISTINCT `$attribute_name` as attributo FROM Prodotti");
         $stmt->execute();
         $result = $stmt->get_result();
@@ -129,15 +140,16 @@ class DatabaseHelper
     {
         $text = "%" . $name . "%";
         $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
-        $stmt->bind_param('s',$text);
+        $stmt->bind_param('s', $text);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBestProducts($n){
+    public function getBestProducts($n)
+    {
         $stmt = $this->db->prepare("SELECT * FROM prodotti ORDER BY voto LIMIT ?");
-        $stmt->bind_param('i',$n);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -145,13 +157,15 @@ class DatabaseHelper
     /**
      * Insert a new user in the database
      */
-    public function newUser($email, $nome, $cognome, $password){
+    public function newUser($email, $nome, $cognome, $password)
+    {
         $stmt = $this->db->prepare("INSERT INTO Utenti (email, nome, cognome, password_hash) VALUES (?, ?, ?, SHA2(?, 256))");
         $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
         $stmt->execute();
     }
 
-    public function getCartProducts($email){
+    public function getCartProducts($email)
+    {
         $stmt = $this->db->prepare("SELECT prodotti.nome_prodotto, prodotti.prezzo, prodotti.id_sottocategoria, prodotti.stock, prodotti.nome_volgare, prodotti.descrizione, carrello.quantita FROM carrello INNER JOIN prodotti ON carrello.id_prodotto = prodotti.nome_prodotto WHERE carrello.id_utente=?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -159,7 +173,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCartTotalPrice($email){
+    public function getCartTotalPrice($email)
+    {
         $stmt = $this->db->prepare("SELECT SUM(carrello.quantita*prodotti.prezzo) as valore FROM `carrello` INNER JOIN prodotti ON prodotti.nome_prodotto = carrello.id_prodotto WHERE id_utente=?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -171,10 +186,11 @@ class DatabaseHelper
     /**
      * Returns user informations after login.
      */
-    public function checkLogin($email, $password){
+    public function checkLogin($email, $password)
+    {
         $query = "SELECT email, nome, cognome, admin_flag FROM Utenti WHERE email = ? AND password_hash = SHA2(?, 256)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$email, $password);
+        $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -184,13 +200,106 @@ class DatabaseHelper
     /**
      * Checks if an email is already associated with an account.
      */
-    public function checkExistingEmail($email) {
+    public function checkExistingEmail($email)
+    {
         $stmt = $this->db->prepare("SELECT email FROM Utenti WHERE email = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
-        
     }
+
+    /**
+     * Insert a new product, returns true if the insertion is executed correctly.
+     */
+    public function insertNewProduct($nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+    $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo, $tipologia_foglia, $colore_foglia, $descrizione) {
+
+        $query = "INSERT INTO Prodotti (nome_prodotto, prezzo, id_sottocategoria, stock, nome_volgare,
+            nome_scientifico, famiglia, genere, specie, dimensioni, profumo, tipologia_foglia, colore_foglia, descrizione)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('sdsissssssssss',
+                $nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+                $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo,
+                $tipologia_foglia, $colore_foglia, $descrizione
+            );
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Modifies an existing product, returns true if executed correctly.
+     */
+    public function updateProduct($nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+    $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo, $tipologia_foglia, $colore_foglia, $descrizione) {
+
+        $query = "UPDATE Prodotti 
+                SET prezzo = ?, id_sottocategoria = ?, stock = ?, nome_volgare = ?, 
+                    nome_scientifico = ?, famiglia = ?, genere = ?, specie = ?, 
+                    dimensioni = ?, profumo = ?, tipologia_foglia = ?, colore_foglia = ?, descrizione = ? 
+                WHERE nome_prodotto = ?";
+
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('dsisssssssssss',
+                $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+                $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo,
+                $tipologia_foglia, $colore_foglia, $descrizione, $nome_prodotto);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Deletes an existing product, returns true if executed correctly
+     */
+    public function deleteProduct($nome) {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Prodotti WHERE nome_prodotto");
+            $stmt->bind_param('s', $nome);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Creates a new group.
+     */
+    public function createNewGroup($nome_gruppo, $descrizione) {
+        try {
+            $stmt = $this->db->prepare("INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo) VALUES (?, ?)");
+            $stmt->bind_param('ss', $nome_gruppo, $descrizione);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Insert a product into a group.
+     */
+    public function addProductInGroup($nome_gruppo, $nome_prodotto) {
+
+        try {
+            $stmt = $this->db->prepare("INSERT INTO Appartenenze (id_gruppo, id_prodotto) VALUES (?, ?)");
+            $stmt->bind_param('ss', $nome_gruppo, $nome_prodotto);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
 }
