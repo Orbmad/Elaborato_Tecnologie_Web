@@ -210,8 +210,6 @@ class DatabaseHelper
         $query = "SELECT email, nome, cognome, admin_flag FROM Utenti WHERE email = ? AND password_hash = SHA2(?, 256)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ss', $email, $password);
-<<<<<<< HEAD
-=======
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -222,7 +220,6 @@ class DatabaseHelper
         $query = "SELECT nome, voto, commento, DATE(data_recensione) as dataRec FROM Recensioni, Utenti WHERE id_utente = email AND id_prodotto = ? ORDER BY data_recensione DESC LIMIT 3";
         $stmt = $this->db->prepare($query);
         $stmt-> bind_param('s', $idprodotto);
->>>>>>> 2d4e769d83ceb4f620d649fb834d7004f4d7f10e
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -240,8 +237,6 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
-<<<<<<< HEAD
-=======
 
     }
 
@@ -258,7 +253,6 @@ class DatabaseHelper
         $stmt->execute();
         $stmt->close();
 
->>>>>>> 2d4e769d83ceb4f620d649fb834d7004f4d7f10e
     }
 
     /**
