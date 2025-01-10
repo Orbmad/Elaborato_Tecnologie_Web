@@ -831,7 +831,7 @@ main.login-form > section {
     background-color: #082D0F;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 3px 3px #3F413E;
+    box-shadow: 3px 3px 2px #3F413E;
 }
 
 main.login-form > section > form {
@@ -1103,6 +1103,166 @@ main  ul.search-results-list > li > a span{
   }
 /*Fine regole main pagine search mobile*/
 
+/* inizio regole carrello mobile*/
+main.main-cart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main.main-cart > section.cart-products{
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 5px 5px 3px #3F413E;
+}
+
+main.main-cart > section.cart-products > section.cart-header{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+main.main-cart > section.cart-products > section.cart-header > input{
+    margin-left: auto;
+}
+
+main.main-cart > section.cart-products > section.cart-header > h2{
+    text-transform: uppercase;
+    color: #082D0F;
+}
+
+
+main.main-cart > section.cart-products > ul > li{
+    border-top: 1px solid #082D0F;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+}
+
+main.main-cart > section.cart-products > ul > li:last-of-type{
+    align-items: center;
+}
+
+
+main.main-cart > section.cart-products > ul > li:last-of-type > p{
+    margin-left: auto;
+}
+
+main.main-cart > section.cart-products > section.cart-header >input{
+    color: #F0F2EF;
+    background-color: #082D0F;
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 10px;
+    padding: 3px;
+    height: 40px;
+    width: 200px;
+    text-transform: uppercase;
+    border-color: #F0F2EF;
+}
+
+main.main-cart > section.cart-products > section.cart-header >input:hover{
+    transform: scale(1.05);
+    background-color: #F0F2EF;
+    color: #082D0F;
+    border-color: #082D0F;
+}
+
+
+main.main-cart > section.cart-products > section.cart-header >input:active{
+    transform: scale(0.95);
+}
+
+
+main.main-cart > section.cart-products > ul > li > img{
+    width: 80px;
+    height: 80px;
+    margin-right: 20px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description{
+    display: flex;
+    flex-direction: column;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-price{
+    margin-left: auto;
+    font-weight: 500;
+}
+
+main.main-cart > section.cart-products > ul > li > section > p{
+    margin-top: 0px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:first-of-type{
+    color: #082D0F;
+    margin-bottom: 5px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(2).product-available{
+    color: green;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(2).product-unavailable{
+    color: red;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(2).product-lowav{
+    color: #FF7D00;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(3){
+    display: none;
+    margin-bottom: 10px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type{
+    display: flex;
+    flex-direction: row;
+    margin-top: auto;
+    align-items: center;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > img{
+    width: 15px;
+    height: 15px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > img:hover{
+    transform: scale(1.3);
+    cursor: pointer;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > img:active{
+    transform: scale(0.9);
+    cursor: pointer;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:last-of-type{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid #082D0F;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > a{
+    margin-left: 30px;
+}
+
+main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > p:first-of-type{
+    padding: 0px 16px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+/*Fine regole carrello mobile*/
+
 @media (min-width: 768px){
 
     /*INIZIO FOOTER DESKTOP*/
@@ -1223,13 +1383,13 @@ main  ul.search-results-list > li > a span{
         border: 1px solid #F0F2EF;
         border-top: none;
         width: 200px;
-        height: 130px;
+        height: 150px;
         padding: 12px;
 
         display: flex;
 
         position: absolute;
-        margin-top: 230px;
+        margin-top: 250px;
         z-index: 3;
     }
 
@@ -1504,8 +1664,6 @@ main  ul.search-results-list > li > a span{
         width: 50%;
         flex-direction: row;
     }
-
-
     /* fine main index blocco prodotti */
 
     /*INIZIO ASIDE DESKTOP*/
@@ -1663,7 +1821,7 @@ main  ul.search-results-list > li > a span{
     }
     /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 
-    /*Inizio regole main pagine search mobile*/
+    /*Inizio regole main pagine search desktop*/
 
     aside{
         float: left;
@@ -1672,5 +1830,23 @@ main  ul.search-results-list > li > a span{
         float: left;
     }
     
-    /*Fine regole main pagine search mobile*/
+    /*Fine regole main pagine search desktop*/
+
+    /* Inizio regole carrello desktop */
+    main.main-cart > section.cart-products{
+        width: 70%;
+    }
+
+    main.main-cart > section.cart-products > ul > li > section.product-description > p:nth-of-type(3){
+        font-size: smaller;
+        display: flex;
+    }
+
+    main.main-cart > section.cart-products > ul > li > img{
+        width: 180px;
+        height: 180px;
+        margin-right: 20px;
+    }
+    
+    /* fine regole carrello desktop */
 }

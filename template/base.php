@@ -70,9 +70,12 @@
                         <img class="toggleArrow down hidden <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>" src="upload/toggleArrow-down.png" alt="Toggle arrow open" />
                     </button>
                     <ul class="subcategories <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>">
+                        <li>
+                            <button class="subcategory-button" onclick="window.location.href='search.php?categoriaSelezionata=<?php echo $categoria['nome_categoria']; ?>'" type="button">Vedi tutto</button>
+                        </li>
                         <?php foreach ($categoria["sottocategorie"] as $sottocategoria): ?>
                             <li>
-                                <button class="subcategory-button" onclick="" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
+                                <button class="subcategory-button" onclick="window.location.href='search.php?sottocategoriaSelezionata=<?php echo $sottocategoria['nome_sottocategoria']; ?>'" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
                             </li>
                         <?php endforeach; ?>
                     </ul>
@@ -146,6 +149,10 @@
                 </li>
             </ul>
         </section>
+
+        <!-- <a href="https://www.flaticon.com/free-icons/plus" title="plus icons">Plus icons created by srip - Flaticon</a>
+         <a href="https://www.flaticon.com/free-icons/mathematics" title="mathematics icons">Mathematics icons created by Smashicons - Flaticon</a>
+        <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a>-->
 
     </footer>
     <!-Inserimento javascript->
