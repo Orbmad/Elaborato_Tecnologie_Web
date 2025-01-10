@@ -1679,13 +1679,17 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         padding-left: 30px;
         box-sizing: border-box;
         height: 100%;
+        justify-content: left;
     }
 
-    main > section.main-categories-blocks > ul, main > section.best-products > ul.search-results-list {
+    main > section.main-categories-blocks > ul, main >section.best-products > ul{
         display: block;
         width: 100%;
         margin-top: 10px;
+        
+        text-align: left;
     }
+
 
     main > section.main-categories-blocks > ul > li{
         text-align: center;
@@ -1698,6 +1702,7 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         box-shadow: 3px 3px 1px #3F413E;
     }
 
+
     main > section.main-categories-blocks > ul > li > img{
         width: 200px;
         height: 200px;
@@ -1708,14 +1713,6 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         width: 200px;
     }
     /* fine regole main index blocco categoria */	
-
-    /* inizio regole main index blocco prodotti */
-    main > section.best-products > ul {
-        display: flex;
-        width: 50%;
-        flex-direction: row;
-    }
-    /* fine main index blocco prodotti */
 
     /*INIZIO ASIDE DESKTOP*/
     aside{
