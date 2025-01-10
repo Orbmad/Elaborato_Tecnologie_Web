@@ -25,3 +25,9 @@ function reduceQuantity(){
         num.innerHTML += a;
     }
 }
+
+function getQuantity(){
+    const num = document.querySelector("main.single-item > article > header > section > div.wrapper > span.number");
+    let a = num.innerHTML;
+    return a;
+}
