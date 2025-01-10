@@ -20,7 +20,7 @@
         <h1>Plantatio
         </h1><ul>
             <li class="user_icon">
-                <a href="#"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon" /><img
+                <a href="<?php if(isUserLoggedIn()){echo './login.php';} else{ echo '#';} ?>"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
                         src="img/cerchio.png" alt="notifiche" />
 <!--Inserire numero di notifiche dell'utente-->
                     <p>1</p>

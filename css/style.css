@@ -969,9 +969,12 @@ main.single-item > article > header > section > div.star-value{
     padding-right: 5%;
 }
 
-main.single-item > article > header > section > div > img{
-    display: inline-block;
-    width: 10px;
+main.single-item > article > header > section > div > span.checked{
+    color:#FF7D00;
+}
+
+main.single-item > article > header > section > div > span.fa{
+    font-size: 14px;
 }
 
 main.single-item > article > section > h3{
@@ -1001,17 +1004,21 @@ main.single-item table th{
     color: #fff;
     padding: 3px 1%;
     font-size: 14px;
+    width: 40%;
+    text-align: left;
 }
 
 main.single-item table td{
     color: #000;
     padding: 3px 3%;
     font-size: 13px;
+    width: 60%;
 }
 
 main.single-item > article > section > table{
     border-collapse: collapse;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 main.single-item > section{
@@ -1041,7 +1048,7 @@ main.single-item > section > article div.star-value-user{
     text-align: left;
 }
 
-main.single-item > section > article div.star-value-user img{
+main.single-item > section > article div.star-value-user span{
     width: 10px;
 }
 
@@ -1828,11 +1835,18 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
     main.single-item > article > section > p{
         font-size: 20px;
         padding: 3px 0;
-        
     }
 
     main.single-item > article > header > section{
         margin-top: 30px;
+    }
+
+    main.single-item > article > header > section > div{
+        padding-bottom: 20px;
+    }
+
+    main.single-item > article > header > section > div > span.fa{
+        font-size: 25px;
     }
 
     main.single-item > article > header > section > button{
@@ -1862,8 +1876,57 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
     }
 
     main.single-item table > caption{
+        margin-bottom: 15px;
+        font-size: 20px;
+    }
+
+    main.single-item table th{
+        padding: 6px 1%;
+        font-size: 17px;
+        width: 40%;
+    }
+    
+    main.single-item table td{
+        font-size: 15px;
+        width: 60%;
+    }
+    
+    main.single-item > section{
+        padding: 0 5%;
+    }
+    
+    main.single-item > section > h2{
+        font-size: 20px;
+    }
+    
+    main.single-item > section > article{
+        border: #082D0F 1px solid;
+        width: 60%;
+        padding: 2.5% 2.5%;
         margin-bottom: 10px;
     }
+    
+    main.single-item > section > article > h3{
+        font-size: 18px;
+        display: inline-block;
+        width: 15%;
+    }
+    
+    main.single-item > section > article div.star-value-user{
+        display: inline-block;
+        width: 15%;
+        margin-right: 10px;
+        text-align: right;
+    }
+    
+    main.single-item > section > article > h4{
+        font-size: 14px;
+    }
+    
+    main.single-item > section > article > p{
+        font-size: 17px;
+    }
+    
     /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 
     /*Inizio regole main pagine search desktop*/
