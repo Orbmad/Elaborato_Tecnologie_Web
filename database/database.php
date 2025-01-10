@@ -180,4 +180,17 @@ class DatabaseHelper
 
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    /**
+     * Checks if an email is already associated with an account.
+     */
+    public function checkExistingEmail($email) {
+        $stmt = $this->db->prepare("SELECT email FROM Utenti WHERE email = ?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+        
+    }
 }

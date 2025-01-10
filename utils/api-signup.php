@@ -11,6 +11,8 @@
             $_SESSION["errorelogin"] = $checkPassword;
         } else if ($_POST["signPassword"] != $_POST["confermaPassword"]) {
             $_SESSION["errorelogin"] = "Le due password non sono uguali";
+        } else if ($dbh->checkExistingEmail($_POST["signEmail"])) {
+            $_SESSION["errorelogin"] = "La email inserita è già associata ad un account";
         } else {
             $dbh->newUser($_POST["signEmail"], $_POST["nome"], $_POST["cognome"], $_POST["signPassword"]);
         }
