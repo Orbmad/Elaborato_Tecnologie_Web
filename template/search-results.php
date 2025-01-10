@@ -1,4 +1,4 @@
-<main id="search-results-main" class="search-results-main">
+<main class="search-results-main">
     <ul class="search-results-list">
         <?php
             foreach($templateParams["searchResults"] as $result):
