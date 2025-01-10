@@ -22,7 +22,7 @@
                             <img src="upload/half_star.png" alt=""/>
                         <?php endif; ?>
                         <?php for($i = $prodotto["voto"] + 1; $i <= 5; $i++ ): ?>
-                            <img src="upload/full_star.png" alt=""/>
+                            <img src="upload/empty_star.png" alt=""/>
                         <?php endfor; ?>
                     </div><h3><?php echo $prodotto["voto"]?>/5</h3>
                 <div class="wrapper">
