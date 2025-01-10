@@ -381,7 +381,7 @@ body > header > a{
 }
 
 body > header > a > h1{
-    color: #FF7D00;
+    color: #AC5411;
     font-weight: bold;
     font-size: 40px;
 }
@@ -462,7 +462,7 @@ body>header>ul>li>ul {
 body>header>ul>li>ul>li {
     padding: 5px 0;
     background: #3F413E;
-    border: solid #FF7D00 1px;
+    border: solid #AC5411 1px;
 }
 
 
@@ -720,7 +720,7 @@ aside {
     display: flex;
     align-items: center;
     font-family: 'Josefin Sans', sans-serif;
-    color: #FF7D00;
+    color: #AC5411;
 }
 
 aside>form input[type="button"],
@@ -750,7 +750,7 @@ aside>form>ul>li.hidden {
 }
 
 aside>form>ul>li.filter-price input[type="range"] {
-    accent-color: #FF7D00;
+    accent-color: #AC5411;
     display: inline-block;
     width: 60px;
     align-self: center;
@@ -801,7 +801,7 @@ aside>form>ul>li.filter-checkbox input[type="checkbox"] {
     display: inline-block;
     color: #082D0F;
     margin: 0px;
-    accent-color: #FF7D00;
+    accent-color: #AC5411;
     margin-bottom: 2px;
     margin-right: 3px;
 }
@@ -866,7 +866,7 @@ main.login-form p {
     padding: 5px;
     background-color: #F0F2EF;
     color: #3F413E;
-    border: 2px solid #FF7D00;
+    border: 2px solid #AC5411;
     border-radius: 8px;
 
     font-weight: bolder;
@@ -1015,7 +1015,7 @@ main.single-item>article>header>section>div.star-value {
 }
 
 main.single-item > article > header > section > div > span.checked{
-    color:#FF7D00;
+    color:#AC5411;
 }
 
 main.single-item > article > header > section > div > span.fa{
@@ -1312,7 +1312,7 @@ main.main-cart>section.cart-products>ul>li>section.product-description>p:nth-of-
 }
 
 main.main-cart>section.cart-products>ul>li>section.product-description>p:nth-of-type(2).product-lowav {
-    color: #FF7D00;
+    color: #AC5411;
 }
 
 main.main-cart>section.cart-products>ul>li>section.product-description>p:nth-of-type(3) {
