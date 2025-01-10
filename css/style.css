@@ -1014,6 +1014,47 @@ main.single-item > article > section > table{
     width: 100%;
 }
 
+main.single-item > section{
+    padding: 0 10%;
+}
+
+main.single-item > section > h2{
+    font-size: 17px;
+    margin-top: 20px;
+}
+
+main.single-item > section > article{
+    border: #082D0F 1px solid;
+    padding: 2.5% 2.5%;
+    margin-bottom: 10px;
+}
+
+main.single-item > section > article > h3{
+    font-size: 14px;
+    display: inline-block;
+    width: 25%;
+}
+
+main.single-item > section > article div.star-value-user{
+    display: inline-block;
+    width: 30%;
+    text-align: left;
+}
+
+main.single-item > section > article div.star-value-user img{
+    width: 10px;
+}
+
+main.single-item > section > article > h4{
+    font-size: 12px;
+    margin: 6px 0;
+}
+
+main.single-item > section > article > p{
+    font-size: 14px;
+    margin: 6px 0;
+}
+
 /*Fine regole per lo stile della pagina per il singolo prodotto mobile*/
 
 /*Inizio regole main pagine search mobile*/
@@ -1820,6 +1861,10 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
 
     main.single-item > article > section > table{
         width: 40%;
+    }
+
+    main.single-item table > caption{
+        margin-bottom: 10px;
     }
     /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 

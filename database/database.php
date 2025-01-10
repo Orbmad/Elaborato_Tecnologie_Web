@@ -206,6 +206,16 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getReviewsOfProduct($idprodotto){
+        $query = "SELECT nome, voto, commento, DATE(data_recensione) as dataRec FROM Recensioni, Utenti WHERE id_utente = email AND id_prodotto = ? ORDER BY data_recensione DESC LIMIT 3";
+        $stmt = $this->db->prepare($query);
+        $stmt-> bind_param('s', $idprodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Checks if an email is already associated with an account.
      */
