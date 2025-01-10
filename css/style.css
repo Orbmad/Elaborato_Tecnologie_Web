@@ -1681,11 +1681,6 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
         height: 100%;
     }
 
-    main > section.best-products > ul.search-results-list >li {
-        display: inline-block;
-        margin-top: 10px;
-    }
-
     main > section.main-categories-blocks > ul, main > section.best-products > ul.search-results-list {
         display: block;
         width: 100%;
