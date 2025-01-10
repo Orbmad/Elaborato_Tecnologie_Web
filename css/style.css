@@ -1257,8 +1257,10 @@ main.main-cart > section.cart-products > ul > li > section.product-description >
 
 main.main-cart > section.cart-products > ul > li > section.product-description > section:first-of-type > section:first-of-type > p:first-of-type{
     padding: 0px 16px;
+    width: 40px;
     margin: 0px;
     box-sizing: border-box;
+    text-align: center;
 }
 
 /*Fine regole carrello mobile*/

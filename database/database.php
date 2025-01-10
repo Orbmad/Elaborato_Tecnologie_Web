@@ -51,7 +51,8 @@ class DatabaseHelper
         return $categories;
     }
 
-    public function getRandomCategories($n){
+    public function getRandomCategories($n)
+    {
         $stmt = $this->db->prepare("SELECT * FROM Categorie ORDER BY RAND() LIMIT ? ");
         $stmt->bind_param('i', $n);
         $stmt->execute();
@@ -129,15 +130,16 @@ class DatabaseHelper
     {
         $text = "%" . $name . "%";
         $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
-        $stmt->bind_param('s',$text);
+        $stmt->bind_param('s', $text);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getBestProducts($n){
+    public function getBestProducts($n)
+    {
         $stmt = $this->db->prepare("SELECT * FROM prodotti ORDER BY voto LIMIT ?");
-        $stmt->bind_param('i',$n);
+        $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -145,13 +147,15 @@ class DatabaseHelper
     /**
      * Insert a new user in the database
      */
-    public function newUser($email, $nome, $cognome, $password){
+    public function newUser($email, $nome, $cognome, $password)
+    {
         $stmt = $this->db->prepare("INSERT INTO Utenti (email, nome, cognome, password_hash) VALUES (?, ?, ?, SHA2(?, 256))");
         $stmt->bind_param('ssss', $email, $nome, $cognome, $password);
         $stmt->execute();
     }
 
-    public function getCartProducts($email){
+    public function getCartProducts($email)
+    {
         $stmt = $this->db->prepare("SELECT prodotti.nome_prodotto, prodotti.prezzo, prodotti.id_sottocategoria, prodotti.stock, prodotti.nome_volgare, prodotti.descrizione, carrello.quantita FROM carrello INNER JOIN prodotti ON carrello.id_prodotto = prodotti.nome_prodotto WHERE carrello.id_utente=?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
@@ -159,22 +163,43 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getCartTotalPrice($email){
+    public function getCartTotalPrice($email)
+    {
         $stmt = $this->db->prepare("SELECT SUM(carrello.quantita*prodotti.prezzo) as valore FROM `carrello` INNER JOIN prodotti ON prodotti.nome_prodotto = carrello.id_prodotto WHERE id_utente=?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $result = $result->fetch_assoc();
+        if(isset($result["valore"])) {
+            return $result["valore"];
+        } else {
+            return 0;
+        }
+    }
+
+    public function getCartTotalProducts($email)
+    {
+        $stmt = $this->db->prepare("SELECT SUM(carrello.quantita) as valore FROM `carrello` WHERE id_utente=?");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $result = $result->fetch_assoc();
+        if(isset($result["valore"])) {
+            return $result["valore"];
+        } else {
+            return 0;
+        }
     }
 
 
     /**
      * Returns user informations after login.
      */
-    public function checkLogin($email, $password){
+    public function checkLogin($email, $password)
+    {
         $query = "SELECT email, nome, cognome, admin_flag FROM Utenti WHERE email = ? AND password_hash = SHA2(?, 256)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('ss',$email, $password);
+        $stmt->bind_param('ss', $email, $password);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -184,13 +209,29 @@ class DatabaseHelper
     /**
      * Checks if an email is already associated with an account.
      */
-    public function checkExistingEmail($email) {
+    public function checkExistingEmail($email)
+    {
         $stmt = $this->db->prepare("SELECT email FROM Utenti WHERE email = ?");
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
-        
+
+    }
+
+    public function changeCartProductQt($email, $productId, $product_qt)
+    {
+        if ($product_qt == 0) {
+            $stmt = $this->db->prepare("DELETE FROM carrello WHERE id_utente = ? AND id_prodotto = ?");
+            $stmt->bind_param('ss', $email, $productId);
+        } else {
+            $stmt = $this->db->prepare("UPDATE carrello SET quantita = ? WHERE id_utente = ? AND id_prodotto = ?");
+            $stmt->bind_param('iss', $product_qt, $email, $productId);
+        }
+
+        $stmt->execute();
+        $stmt->close();
+
     }
 }

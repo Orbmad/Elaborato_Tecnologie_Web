@@ -84,6 +84,12 @@ VALUES
 -- Inserimento utenti --
 INSERT INTO Utenti (email, nome, cognome, password_hash, admin_flag)
 VALUES
-('mariorossi@gmail.com', 'Mario', 'Rossi', SH2('Mar1oRoss!', 256), 0),
-('giannimorandi@libero.it', 'Gianni', 'Morandi', SH2('Gianni', 256), 0),
-('admin', 'admin', 'admin', SH2('admin', 256), 1);
+('mariorossi@gmail.com', 'Mario', 'Rossi', SHA2('Mar1oRoss!', 256), 0),
+('giannimorandi@libero.it', 'Gianni', 'Morandi', SHA2('Gianni', 256), 0),
+('admin', 'admin', 'admin', SHA2('admin', 256), 1);
+('michele.farneti23@gmail.com', 'Michele', 'Farneti', SHA2('1', 256), 0)
+
+INSERT INTO Carrello (id_utente,id_prodotto,quantita) 
+VALUES 
+('michele.farneti23@gmail.com','Adiantum hispidulum',2), 
+('michele.farneti23@gmail.com','Beaucarnea recurvata',2);
