@@ -480,6 +480,15 @@ body>header>ul>li.user_icon:hover>ul {
 /*FINE HEADER VERSIONE MOBILE*/
 
 /*INIZIO INIDEX MAIN MOBILE*/
+
+/*Inizio admin page*/
+
+main.admin-page {
+    background-color: #F0F2EF;
+}
+
+/*Inizio admin page*/
+
 /*Inizio regole carosello versione mobile*/
 .main-articles article {
     background-color: #082D0F;

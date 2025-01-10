@@ -255,7 +255,6 @@ class DatabaseHelper
 
     }
 
-<<<<<<< HEAD
     /**
      * Insert a new product, returns true if the insertion is executed correctly.
      */
@@ -385,7 +384,6 @@ class DatabaseHelper
         }
     }
     
-=======
     public function checkElementInCart($idprodotto, $id_utente){
         $stmt = db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
         $stmt->bind_params('ss', $idprodotto, $id_utente);
@@ -414,5 +412,4 @@ class DatabaseHelper
         }
         
     }
->>>>>>> e429728eb4dbb0b02888cdc37e92b3c89f3c2673
 }
