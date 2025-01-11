@@ -143,15 +143,16 @@ class DatabaseHelper
             $results[$attribute] = $valuesList;
         }
 
-        $stmt = $this->db->prepare("SELECT DISTINCT nomeGruppo FROM Gruppi");
+        $stmt = $this->db->prepare("SELECT DISTINCT nomeGruppo as nome_gruppo FROM Gruppi");
         $stmt->execute();
         $result = $stmt->get_result();
         $values = $result->fetch_all(MYSQLI_ASSOC);
         $valuesList = [];
         foreach ($values as $row) {
-            $valuesList[] = $row['nomeGruppo'];
+            $valuesList[] = $row['nome_gruppo'];
         }
-        $results['nomeGruppo'] = $valuesList;
+        $valuesList[] = "Nessuno";
+        $results['nome_gruppo'] = $valuesList;
         return $results;
     }
 
@@ -181,7 +182,7 @@ class DatabaseHelper
 
         // Verifica se ci sono righe nel risultato
         if ($result->num_rows === 0) {
-            $result = "";
+            $result = "Nessuno";
         } else {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
             $gruppi= array_map(function ($row) {

@@ -93,10 +93,11 @@ applyButton.addEventListener('click',applyFilters);
 
 function applyFilters(){
     const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
-    let checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
+    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
     const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)).filter-checkbox > ul > li > input[type='checkbox']");
     shownProducts.forEach(function(product) {
         let isHidden = false;
+        let isShown = true;
         checkBoxes.forEach(function(checkBox) {
             if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
                 isHidden = true;
@@ -112,13 +113,13 @@ function applyFilters(){
         if(parseFloat(product.classList[0])<parseFloat(minRangeInput.value) || parseFloat(product.classList[0])>parseFloat(maxRangeInput.value) || parseInt(product.classList[1])<parseInt(minRatingInput.value)){
             isHidden=true;
         }
-        if (isHidden) {
+        if (isHidden || !isShown) {
             product.classList.add('hidden');
         } else {
             product.classList.remove('hidden');
         }
         
-    });
+    });   
 }
 
 window.addEventListener('load', function () {
