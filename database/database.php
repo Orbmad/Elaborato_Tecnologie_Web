@@ -115,12 +115,24 @@ class DatabaseHelper
     /**
      * Returns all different attributes of type '$attribute_name' of all products
      */
-    public function getProductsAttributeValues($attribute_name)
+    public function getProductsAttributesValues()
     {
-        $stmt = $this->db->prepare("SELECT DISTINCT `$attribute_name` as attributo FROM Prodotti");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+        $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia", "voto");
+        $results = [];
+
+        foreach ($attributes as $attribute) {
+            $stmt = $this->db->prepare("SELECT DISTINCT `$attribute` as attributo FROM Prodotti");
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $values = $result->fetch_all(MYSQLI_ASSOC);
+
+            $valuesList = [];
+            foreach ($values as $row) {
+                $valuesList[] = $row['attributo'];
+            }
+            $results[$attribute] = $valuesList;
+        }
+        return $results;
     }
 
     /**
@@ -170,7 +182,7 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         $result = $result->fetch_assoc();
-        if(isset($result["valore"])) {
+        if (isset($result["valore"])) {
             return $result["valore"];
         } else {
             return 0;
@@ -184,7 +196,7 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         $result = $result->fetch_assoc();
-        if(isset($result["valore"])) {
+        if (isset($result["valore"])) {
             return $result["valore"];
         } else {
             return 0;
@@ -206,10 +218,11 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getReviewsOfProduct($idprodotto){
+    public function getReviewsOfProduct($idprodotto)
+    {
         $query = "SELECT nome, voto, commento, DATE(data_recensione) as dataRec FROM Recensioni, Utenti WHERE id_utente = email AND id_prodotto = ? ORDER BY data_recensione DESC";
         $stmt = $this->db->prepare($query);
-        $stmt-> bind_param('s', $idprodotto);
+        $stmt->bind_param('s', $idprodotto);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -245,24 +258,26 @@ class DatabaseHelper
 
     }
 
-    public function checkElementInCart($idprodotto, $id_utente){
+    public function checkElementInCart($idprodotto, $id_utente)
+    {
         $stmt = db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
         $stmt->bind_params('ss', $idprodotto, $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
-        
-        if($cont > 0){
+
+        if ($cont > 0) {
             return $cont[0]['quantita'];
-        } else{
+        } else {
             return 0;
         }
     }
 
     /*Insert the new item in the cart of the user or add qunti*/
-    public function addToCart($idprodotto, $quantità, $id_utente){
+    public function addToCart($idprodotto, $quantità, $id_utente)
+    {
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
-        if($quant > 0){
+        if ($quant > 0) {
             $stmt = db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
             $stmt->bind_params('is', $quant + $quantità, $id_utente);
             $stmt->execute();
@@ -271,6 +286,6 @@ class DatabaseHelper
             $stmt->bind_param('ssi', $id_utente, $idprodotto, $quantità);
             $stmt->execute();
         }
-        
+
     }
 }

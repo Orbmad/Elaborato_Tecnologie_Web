@@ -777,14 +777,14 @@ aside>form>ul>li.hidden {
     display: none;
 }
 
-aside>form>ul>li.filter-price input[type="range"] {
+aside>form>ul>li.filter-range input[type="range"] {
     accent-color: #AC5411;
     display: inline-block;
     width: 60px;
     align-self: center;
 }
 
-aside>form>ul>li.filter-price input[type="text"] {
+aside>form>ul>li.filter-range input[type="text"] {
     width: 40px;
     background-color: #F0F2EF;
     color: #082D0F;
@@ -794,12 +794,12 @@ aside>form>ul>li.filter-price input[type="text"] {
     font-style: italic;
 }
 
-aside>form>ul>li.filter-price input[type="text"]:focus {
+aside>form>ul>li.filter-range input[type="text"]:focus {
     border: none;
     outline: none;
 }
 
-aside>form>ul>li.filter-price label:nth-of-type(1) {
+aside>form>ul>li.filter-range label:nth-of-type(1) {
     width: 80px;
     justify-content: center;
     color: #082D0F;
@@ -807,8 +807,9 @@ aside>form>ul>li.filter-price label:nth-of-type(1) {
     display: inline-block;
 }
 
-aside>form>ul>li.filter-price section {
+aside>form>ul>li.filter-range section {
     margin-top: 10px;
+    display: flex;
 }
 
 aside>form>ul>li>h3 {
@@ -834,11 +835,11 @@ aside>form>ul>li.filter-checkbox input[type="checkbox"] {
     margin-right: 3px;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>input[type="checkbox"] {
+aside>form>ul>li:nth-of-type(3)>ul>li>input[type="checkbox"] {
     accent-color: #082D0F;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>label {
+aside>form>ul>li:nth-of-type(3)>ul>li>label {
     text-transform: uppercase;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -848,15 +849,15 @@ aside>form>ul>li {
     margin-left: 10px;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>ul label {
+aside>form>ul>li:nth-of-type(3)>ul>li>ul label {
     text-transform: capitalize;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>ul input[type=checkbox] {
+aside>form>ul>li:nth-of-type(3)>ul>li>ul input[type=checkbox] {
     margin-left: 20px;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>ul.hidden,
+aside>form>ul>li:nth-of-type(3)>ul>li>ul.hidden,
 aside>form>input.hidden {
     display: none;
     visibility: hidden;
@@ -1837,12 +1838,17 @@ main.main-cart>section.cart-products>ul>li>section.product-description>section:f
         display: none;
     }
 
-    aside>form>ul>li.filter-price>ul>li {
+    aside>form>ul>li.filter-range>ul>li {
         display: flex;
         height: 35px;
         width: 100%;
         align-items: center;
         margin-left: 10px;
+    }
+
+    aside h2 {
+        text-transform: capitalize;
+        margin-bottom: 5px;
     }
 
     /*FINE ASIDE DESKTOP*/

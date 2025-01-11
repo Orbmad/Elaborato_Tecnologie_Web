@@ -24,15 +24,7 @@ if(isset($_GET['sottocategoriaSelezionata'])){
 
 
 $templateParams["priceRange"] = $dbh->getProductsPrinceRange();
-$templateParams["famiglia"] = $dbh->getProductsAttributeValues("famiglia");
-$templateParams["genere"] = $dbh->getProductsAttributeValues("genere");
-$templateParams["specie"] = $dbh->getProductsAttributeValues("specie");
-$templateParams["dimensioni"] = $dbh->getProductsAttributeValues("dimensioni");
-$templateParams["profumo"] = $dbh->getProductsAttributeValues("profumo");
-$templateParams["tipo di foglia"] = $dbh->getProductsAttributeValues("tipologia_foglia");
-$templateParams["colore delle foglie"] = $dbh->getProductsAttributeValues("colore_foglia");
-$templateParams["voto"] = $dbh->getProductsAttributeValues("voto");
-//$templateParams["categorie"] = $categories;
+$templateParams["attributesValues"] = $dbh->getProductsAttributesValues();
 $templateParams["categorie"] = $dbh->getCategories();
 
 require 'template/base.php';
