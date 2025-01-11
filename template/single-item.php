@@ -20,7 +20,7 @@
                     </div><h3><?php echo $prodotto["voto"]?>/5</h3>
                 <div class="wrapper">
                     <span class="minus" onclick="reduceQuantity()">-</span><span class="number">01</span><span class="plus" onclick="addQuantity(<?php echo $prodotto["stock"]?>)">+</span>
-                </div><button type="button" onclick="<?addToCartIfUserIsLogged(echo $prodotto['nome_prodotto'], echo '<script type='text/javascript'>''getQuantity()';''</script>';, echo $_SESSION['email'])?>">Aggiungi al carrello</button>
+                </div><button type="button" onclick="<? addToCartIfUserIsLogged(echo $prodotto['nome_prodotto'], echo '<script type='text/javascript'>''getQuantity()';''</script>';, echo $_SESSION['email'])?>">Aggiungi al carrello</button>
             </section>
         </header>
         <!--Il bottone QUANTITA' deve passare id_prodotto e quantità per mettere nel carrello-->

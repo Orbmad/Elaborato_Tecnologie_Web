@@ -276,11 +276,42 @@ class DatabaseHelper
 
     /*Get the notifications of a user*/
     public function getNotificationOfAUser($id_utente){
-        $stmt = $this->db->prepare("SELECT data_notifica, messaggio FROM Notifiche WHERE id_utente = ?");
-        $stmt->bind_params('s', $id_utente);
+        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio FROM Notifiche WHERE id_utente = ?");
+        $stmt->bind_param('s', $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_utente){
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ?");
+        $stmt->bind_param('ss', $id_utente, $messaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return ($cont > 0);
+    }
+
+    public function ciao(){
+        return "ciao()";
+    }
+
+    public function changeStateOfAMessage($messaggio, $id_utente){
+        //if($this->db->checkIfAMessageWasRead($messaggio, "ciao" ,$id_utente)){
+            $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
+            $stmt->bind_param('ss', $id_utente, $messaggio);
+            $stmt->execute();
+            return "ciao()";
+        //}
+    }
+
+    public function getNumberOfMessagesNotRead($id_utente){
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0");
+        $stmt->bind_param('s', $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return $cont;
     }
 }

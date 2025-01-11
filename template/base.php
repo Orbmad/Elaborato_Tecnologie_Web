@@ -23,7 +23,7 @@
                 <a href="<?php if(isUserLoggedIn()){echo '#';} else{ echo './login.php';} ?>" onclick="open_submenu()"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
                         src="img/cerchio.png" alt="notifiche" <?php if(!isUserLoggedIn()){echo 'class = notVisible'; } ?> />
 <!--Inserire numero di notifiche dell'utente-->
-                    <p <?php if(!isUserLoggedIn()){echo 'class = notVisible'; }?>>1</p>
+                    <p <?php if(!isUserLoggedIn()){echo 'class = notVisible'; }?>><?php if(isUserLoggedIn()){echo numberOfMessagesNotRead($dbh); }?></p>
                 </a>
                 <?php if(isUserLoggedIn()): ?>
                 <ul id="submenu_user">
@@ -31,7 +31,7 @@
                     <li><a href="<?php echo './cart.php' ?>">Carrello</a></li>
                     <li><a href="<?php echo './order.php' ?>">Ordini</a></li>
                     <li><a href="<?php echo './notification.php' ?>">Notifiche</a></li>
-                    <li><a href="<?php echo './utils/api-logout.php' ?>">Ordini</a></li>
+                    <li><a href="<?php echo './utils/api-logout.php' ?>">Logout</a></li>
                 </ul>
                 <?php endif; ?>
             </li>

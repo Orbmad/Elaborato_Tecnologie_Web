@@ -106,8 +106,15 @@ VALUES
 ('giannimorandi@libero.it', 'Gianni', 'Morandi', SH2('Gianni', 256), 0),
 ('admin', 'admin', 'admin', SH2('admin', 256), 1);
 
---inserimento delle recensioni--
+-- inserimento delle recensioni --
 INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento, data_recensione)
 VALUES
 ('mariorossi@gmail.com', 'Adiantum hispidulum', 4, 'Sono molto soddisfatto della pianta che ho acquistato. È stata imballata bene ed è arrivata intatta e, nonostante il riposo vegetativo, si vedeva che era in salute. Azienda seria e disponibile, mi è arrivata una piccola pianta in regalo che ho gradito molto. Grazie!', '2024-01-06'),
-('giannimorandi@libero.it', 'Adiantum hispidulum', 5, 'Devo dire che mi sono trovato molto bene come mia prima esperienza. Conservervati e confezionati in modo eccellente grazie', '2024-08-26'),
+('giannimorandi@libero.it', 'Adiantum hispidulum', 5, 'Devo dire che mi sono trovato molto bene come mia prima esperienza. Conservervati e confezionati in modo eccellente grazie', '2024-08-26');
+
+
+-- insermento delle notifiche --
+INSERT INTO Notifiche (id_utente, data_notifica, messaggio)
+VALUES
+('gino.pino@gmail.com', '2025-01-11', 'Il pacco è in consegna, ci scusiamo per il ritardo'),
+('gino.pino@gmail.com', '2025-01-11', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.')
