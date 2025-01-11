@@ -76,7 +76,7 @@
             return "La password deve contenere almeno un carattere speciale (!@#$%^&*...).";
         }
     
-        return true; // ✅ Password sicura
+        return true; //Password sicura
     }
 
     function addToCartIfUserIsLogged($id_prodotto, $quantità){
