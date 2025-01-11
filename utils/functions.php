@@ -76,13 +76,25 @@
             return "La password deve contenere almeno un carattere speciale (!@#$%^&*...).";
         }
     
-        return true; // ✅ Password sicura
+        return true; //Password sicura
     }
 
     function addToCartIfUserIsLogged($id_prodotto, $quantità){
         if(isUserLoggedIn()){
             $dbh->addToCart($id_prodotto, $quantità);
         }
+    }
+
+    /*Verifica se la notifica è stata letta oppure no*/
+    function notificationNotRead($messaggio, $data_notifica, $dbh){
+
+        return $dbh->checkIfAMessageWasRead($messaggio, $data_notifica, $_SESSION['email']);
+    }
+
+    function numberOfMessagesNotRead($dbh){
+        if(!empty($_SESSION['email']))
+            return $dbh->getNumberOfMessagesNotRead($_SESSION['email']);
+        else 0;
     }
 
 

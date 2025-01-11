@@ -73,6 +73,15 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getGroup($nomeGruppo) {
+        $stmt = $this->db->prepare("SELECT * FROM Gruppi WHERE nomeGruppo = ?");
+        $stmt->bind_param('s', $nomeGruppo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Function returning n random groups from the groups table, articles for the
      * main page slideshow will be made out of them.
@@ -117,6 +126,7 @@ class DatabaseHelper
      */
     public function getProductsAttributesValues()
     {
+<<<<<<< HEAD
         $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia", "voto");
         $results = [];
 
@@ -144,6 +154,13 @@ class DatabaseHelper
         }
         $results["gruppo"] = $valuesList;
         return $results;
+=======
+        //DA MODIFICARE !!!!!!!!!!
+        $stmt = $this->db->prepare("SELECT DISTINCT `$attribute_name` as attributo FROM Prodotti");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+>>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
     }
 
     /**
@@ -269,10 +286,145 @@ class DatabaseHelper
 
     }
 
+<<<<<<< HEAD
     public function checkElementInCart($idprodotto, $id_utente)
     {
         $stmt = db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
         $stmt->bind_params('ss', $idprodotto, $id_utente);
+=======
+    /**
+     * Insert a new product, returns true if the insertion is executed correctly.
+     */
+    public function insertNewProduct($nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+    $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo, $tipologia_foglia, $colore_foglia, $descrizione) {
+
+        $query = "INSERT INTO Prodotti (nome_prodotto, prezzo, id_sottocategoria, stock, nome_volgare,
+            nome_scientifico, famiglia, genere, specie, dimensioni, profumo, tipologia_foglia, colore_foglia, descrizione)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('sdsissssssssss',
+                $nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+                $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo,
+                $tipologia_foglia, $colore_foglia, $descrizione
+            );
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Modifies an existing product, returns true if executed correctly.
+     */
+    public function updateProduct($nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+    $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo, $tipologia_foglia, $colore_foglia, $descrizione) {
+
+        $query = "UPDATE Prodotti 
+                SET prezzo = ?, id_sottocategoria = ?, stock = ?, nome_volgare = ?, 
+                    nome_scientifico = ?, famiglia = ?, genere = ?, specie = ?, 
+                    dimensioni = ?, profumo = ?, tipologia_foglia = ?, colore_foglia = ?, descrizione = ? 
+                WHERE nome_prodotto = ?";
+
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('dsisssssssssss',
+                $prezzo, $id_sottocategoria, $stock, $nome_volgare,
+                $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo,
+                $tipologia_foglia, $colore_foglia, $descrizione, $nome_prodotto);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Deletes an existing product, returns true if executed correctly
+     */
+    public function deleteProduct($nome) {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Prodotti WHERE nome_prodotto=?");
+            $stmt->bind_param('s', $nome);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Creates a new group.
+     */
+    public function createNewGroup($nome_gruppo, $descrizione) {
+        try {
+            $stmt = $this->db->prepare("INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo) VALUES (?, ?)");
+            $stmt->bind_param('ss', $nome_gruppo, $descrizione);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Insert a product into a group.
+     */
+    public function addProductInGroup($nome_gruppo, $nome_prodotto) {
+
+        try {
+            $stmt = $this->db->prepare("INSERT INTO Appartenenze (id_gruppo, id_prodotto) VALUES (?, ?)");
+            $stmt->bind_param('ss', $nome_gruppo, $nome_prodotto);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    public function removeProductFromGroup($nome_gruppo, $nome_prodotto) {
+        try {
+            $stmt = $this->db->prepare("DELETE FROM Appartenenze WHERE id_gruppo=? AND id_prodotto=?");
+            $stmt->bind_param('ss', $nome_gruppo, $nome_prodotto);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Adds a review.
+     */
+    public function addReview($id_utente, $id_prodotto, $voto, $commento) {
+        try {
+            //Inserimento Recensione
+            $stmt = $this->db->prepare("INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param('ssis', $id_utente, $id_prodotto, $voto, $commento);
+            $stmt->execute();
+
+            //Aggiornamento voto
+            $update = $this->db->prepare("UPDATE Prodotti
+                SET voto = (
+                    SELECT AVG(voto)
+                    FROM Recensioni
+                    WHERE id_prodotto = ?
+                )
+                WHERE nome_prodotto = ?;");
+            $update->bind_param('ss', $reviewFlag, $reviewFlag);
+            $update->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+    
+    public function checkElementInCart($idprodotto, $id_utente){
+        $stmt = $this->db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
+        $stmt->bind_param('ss', $idprodotto, $id_utente);
+>>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
         $stmt->execute();
         $result = $stmt->get_result();
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
@@ -290,7 +442,11 @@ class DatabaseHelper
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
         if($quant > 0){
             $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
+<<<<<<< HEAD
             $stmt->bind_params('is', $quant + $quantità, $id_utente);
+=======
+            $stmt->bind_param('is', $quant + $quantità, $id_utente);
+>>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
             $stmt->execute();
         } else {
             $stmt = $this->db->prepare("INSERT INTO Carrello (id_utente, id_prodotto, quantita) VALUES (?, ?, ?)");
@@ -302,11 +458,42 @@ class DatabaseHelper
 
     /*Get the notifications of a user*/
     public function getNotificationOfAUser($id_utente){
-        $stmt = $this->db->prepare("SELECT data_notifica, messaggio FROM Notifiche WHERE id_utente = ?");
-        $stmt->bind_params('s', $id_utente);
+        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio FROM Notifiche WHERE id_utente = ?");
+        $stmt->bind_param('s', $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_utente){
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ?");
+        $stmt->bind_param('ss', $id_utente, $messaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return ($cont > 0);
+    }
+
+    public function ciao(){
+        return "ciao()";
+    }
+
+    public function changeStateOfAMessage($messaggio, $id_utente){
+        //if($this->db->checkIfAMessageWasRead($messaggio, "ciao" ,$id_utente)){
+            $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
+            $stmt->bind_param('ss', $id_utente, $messaggio);
+            $stmt->execute();
+            return "ciao()";
+        //}
+    }
+
+    public function getNumberOfMessagesNotRead($id_utente){
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0");
+        $stmt->bind_param('s', $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return $cont;
     }
 }
