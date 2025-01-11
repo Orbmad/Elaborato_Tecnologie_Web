@@ -126,7 +126,6 @@ class DatabaseHelper
      */
     public function getProductsAttributesValues()
     {
-<<<<<<< HEAD
         $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia", "voto");
         $results = [];
 
@@ -147,20 +146,6 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         $values = $result->fetch_all(MYSQLI_ASSOC);
-
-        $valuesList = [];
-        foreach ($values as $row) {
-            $valuesList[] = $row['nomeGruppo'];
-        }
-        $results["gruppo"] = $valuesList;
-        return $results;
-=======
-        //DA MODIFICARE !!!!!!!!!!
-        $stmt = $this->db->prepare("SELECT DISTINCT `$attribute_name` as attributo FROM Prodotti");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
->>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
     }
 
     /**
@@ -443,7 +428,7 @@ class DatabaseHelper
         if($quant > 0){
             $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
 <<<<<<< HEAD
-            $stmt->bind_params('is', $quant + $quantità, $id_utente);
+        
 =======
             $stmt->bind_param('is', $quant + $quantità, $id_utente);
 >>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
