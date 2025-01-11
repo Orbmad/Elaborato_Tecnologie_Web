@@ -5,6 +5,9 @@
         <?php if(isset($_SESSION["errore"])):?>
             <p><?php echo $_SESSION["errore"]; ?></p>
         <?php endif; ?>
+        <?php if(isset($_SESSION["msg"])): ?>
+            <p><?php echo $_SESSION["msg"]; ?></p>
+        <?php endif; ?>
 
         <ul>
             <li>
@@ -25,27 +28,27 @@
     <section class="inserisci-prodotto hidden">
         <h1>Inserisci prodotto</h1>
 
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php?queryType=inserisci-prodotto" method="$_GET">
             <ul>
                 <li>
-                    <label for="nome_prodotto">Nome prodotto</label>
+                    <label for="nome_prodotto">Nome prodotto:</label>
                     <input type="text" id="nome_prodotto" name="nome_prodotto" />
                 </li>
                 <li>
-                    <label for="prezzo">Prezzo</label>
+                    <label for="prezzo">Prezzo:</label>
                     <input type="text" id="prezzo" name="prezzo" />
                 </li>
                 <li>
                     <!--Considera menu a tendina-->
-                    <label for="nome_sottocategoria">Sottocategoria</label>
+                    <label for="nome_sottocategoria">Sottocategoria:</label>
                     <input type="text" id="nome_sottocategoria" name="nome_sottocategoria" />
                 </li>
                 <li>
-                    <label for="stock">Stock</label>
+                    <label for="stock">Stock:</label>
                     <input type="text" id="stock" name="stock" />
                 </li>
                 <li>
-                    <label for="nome_volgare">Nome volgare</label>
+                    <label for="nome_volgare">Nome volgare:</label>
                     <input type="text" id="nome_volgare" name="nome_volgare" />
                 </li>
                 <li>
@@ -94,14 +97,14 @@
 
     <section class="crea-gruppo hidden">
         <h1>Crea gruppo</h1>
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php?queryType=crea-gruppo" method="$_GET">
             <ul>
                 <li>
-                    <label for="nomeGruppo">Nome gruppo</label>
+                    <label for="nomeGruppo">Nome gruppo:</label>
                     <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>
-                    <label for="descrizioneGruppo">Descrizione gruppo</label>
+                    <label for="descrizioneGruppo">Descrizione gruppo:</label>
                     <input type="text" id="descrizioneGruppo" name="descrizioneGruppo" />
                 </li>
                 <li>
@@ -113,14 +116,14 @@
 
     <section class="inserisci-in-gruppo hidden">
         <h1>Inserisci in gruppo</h1>
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php?queryType=inserisci-in-gruppo" method="$_GET">
             <ul>
                 <li>
-                    <label for="nome_prodotto">Nome gruppo</label>
+                    <label for="nome_prodotto">Nome gruppo:</label>
                     <input type="text" id="nome_prodotto" name="nomeGruppo" />
                 </li>
                 <li>
-                    <label for="nomeGruppo">Nome prodotto</label>
+                    <label for="nomeGruppo">Nome prodotto:</label>
                     <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>
@@ -132,14 +135,14 @@
 
     <section class="rimuovi-da-gruppo hidden">
         <h1>Inserisci in gruppo</h1>
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php?queryType=rimuovi-da-gruppo" method="$_GET">
             <ul>
                 <li>
-                    <label for="nome_prodotto">Nome prodotto</label>
+                    <label for="nome_prodotto">Nome prodotto:</label>
                     <input type="text" id="nome_prodotto" name="nomeGruppo" />
                 </li>
                 <li>
-                    <label for="nomeGruppo">Nome gruppo</label>
+                    <label for="nomeGruppo">Nome gruppo:</label>
                     <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>

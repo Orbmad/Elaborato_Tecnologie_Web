@@ -43,6 +43,7 @@ label {
 /*INIZIO FOOTER VERSIONE MOBILE*/
 footer {
     width: 100%;
+    min-height: 380px;
     background-color: #082D0F;
     font-family: 'Josefin Sans', sans-serif;
     display: flex;
@@ -519,20 +520,28 @@ body > header > ul > li > ul > li:nth-child(1) > span{
 
 /*INIZIO INIDEX MAIN MOBILE*/
 
-/*Inizio admin page*/
+/*Inizio admin page mobile*/
 
 main.admin-page {
     background-color: #F0F2EF;
-    padding: 20px;
+    padding: 40px 25px;
+    min-height: 280px;
 }
 
 main.admin-page section.hidden {
     display: none;
 }
 
+main.admin-page section form ul li label {
+    display: inline;
+    color: #F0F2EF;
+    font-size: 22px;
+    margin-right: auto;
+}
+
 main.admin-page section {
     background-color: #082D0F;
-    padding: 20px;
+    padding: 35px 20px;
     border-radius: 10px;
     box-shadow: 5px 5px 3px #3F413E;
 }
@@ -541,15 +550,42 @@ main.admin-page section ul {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
 }
 
 main.admin-page section ul li {
     display: flex;
     width: 100%;
     height: 40px;
+    padding-left: 15px;
+    padding-right: 15px;
     margin-bottom: 15px;
     align-items: center;
     justify-content: center;
+}
+
+main.admin-page section ul li input {
+    width: 50%;
+    height: 18px;
+    border-radius: 7px;
+    border: solid 1px #3F413E;
+}
+
+main.admin-page > section > form > ul > li > input[type="submit"] {
+    height: 90%;
+    width: 26%;
+    max-width: 150px;
+    margin-right: 0px;
+    padding: 0px;
+    border-radius: 15px;
+    border: solid 1px #3F413E;
+    font-size: 18px;
+    font-weight: bold;
+    color: #082D0F;
+    margin-top: 15px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 main.admin-page section ul li button {
@@ -557,8 +593,9 @@ main.admin-page section ul li button {
     min-height: 30px;
     border-style: none;
     border-radius: 15px;
-    width: 50%;
+    width: 65%;
     box-shadow: 3px 3px 2px #3F413E;
+    color: #082D0F;
 
     font-size: 16px;
     font-weight: bold;
@@ -570,12 +607,14 @@ main.admin-page section ul li button:hover {
 
 main.admin-page section h1 {
     color: #F0F2EF;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
+    font-size: 28px;
 }
 
+/*-- inserisci prodotto*/
 
 
-/*Inizio admin page*/
+/*fine admin page*/
 
 /*Inizio regole carosello versione mobile*/
 .main-articles article {
@@ -1004,6 +1043,7 @@ main.login-form>section>form>ul>li>input {
 
 main.login-form > section > form > ul > li > input[type="submit"],
 main.login-form > section > form > ul > li > button {
+    color: #082D0F;
     height: 90%;
     width: 26%;
     max-width: 150px;
@@ -1525,6 +1565,7 @@ main.notification ul li img{
     footer {
         display: flex;
         flex-direction: row;
+        min-height: 280px;
     }
 
     /*INIZIO FOOTER DESKTOP*/
@@ -2203,6 +2244,14 @@ main.notification ul li img{
 
     /*Inizio admin page desktop*/
 
+    main.admin-page {
+        padding: 40px;
+    }
+
+    main.admin-page section {
+        padding: 45px;
+    }
+
     main.admin-page section ul {
         display: flex;
         flex-direction: row;
@@ -2211,12 +2260,16 @@ main.notification ul li img{
     }
 
     main.admin-page section ul li {
-        width: calc(50% - 10px);
+        width: calc(45% - 30px);
     }
 
     main.admin-page section ul li button {
         width: 80%;
+        min-height: 40px;
+        font-size: 24px;
     }
+
+    /*-- inserisci prodotto*/
 
     /*fine admin page desktop*/
 }
