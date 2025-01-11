@@ -132,6 +132,17 @@ class DatabaseHelper
             }
             $results[$attribute] = $valuesList;
         }
+
+        $stmt = $this->db->prepare("SELECT DISTINCT nomeGruppo FROM Gruppi");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $values = $result->fetch_all(MYSQLI_ASSOC);
+
+        $valuesList = [];
+        foreach ($values as $row) {
+            $valuesList[] = $row['nomeGruppo'];
+        }
+        $results["gruppo"] = $valuesList;
         return $results;
     }
 
