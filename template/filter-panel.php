@@ -34,13 +34,9 @@
                 <h2>Valutazione minima:</h2>
                 <section class="min-rating">
                     <label for="min-rating">Rating minimo</label>
-                    <input type="range" id="min-rating" name="min-rating"
-                        min="0"
-                        max="5"
-                        value="0">
+                    <input type="range" id="min-rating" name="min-rating" min="0" max="5" value="0">
                     <label for="min-rating-selected">Valutazione minima selezionata</label>
-                    <input type="text" id="min-rating-selected"
-                        value="0" readonly />
+                    <input type="text" id="min-rating-selected" value="0" readonly />
                 </section>
             </li>
             <li class="filter-checkbox hidden">
@@ -98,7 +94,7 @@
             <?php
             foreach (array_keys($templateParams["attributesValues"]) as $filterAttribute): ?>
                 <li class="filter-checkbox filter-<?php echo $filterAttribute ?> hidden">
-                    <h2><?php echo str_replace('_',' ',$filterAttribute) ?></h2>
+                    <h2><?php echo str_replace('_', ' ', $filterAttribute) ?></h2>
                     <ul>
                         <?php
                         for ($i = 0; $i < count($templateParams["attributesValues"][$filterAttribute]); $i++) {
