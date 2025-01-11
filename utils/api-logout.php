@@ -1,4 +1,5 @@
 <?php
+    require_once '../bootstrap.php';
 
     if (!(session_status() === PHP_SESSION_NONE)) {
         $_SESSION = [];

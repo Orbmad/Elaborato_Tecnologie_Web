@@ -1,6 +1,16 @@
 /*Inizio regole di base della pagina*/
 /*Reset rule*/
-body, nav, header, ul, li, a, h1,input[type="text"], form, h3, p{
+body,
+nav,
+header,
+ul,
+li,
+a,
+h1,
+input[type="text"],
+form,
+button,
+h3 {
     padding: 0%;
     margin: 0%;
     font-family: 'Josefin Sans', sans-serif;
@@ -508,6 +518,65 @@ body > header > ul > li > ul > li:nth-child(1) > span{
 /*FINE HEADER VERSIONE MOBILE*/
 
 /*INIZIO INIDEX MAIN MOBILE*/
+
+/*Inizio admin page*/
+
+main.admin-page {
+    background-color: #F0F2EF;
+    padding: 20px;
+}
+
+main.admin-page section.hidden {
+    display: none;
+}
+
+main.admin-page section {
+    background-color: #082D0F;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 3px #3F413E;
+}
+
+main.admin-page section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main.admin-page section ul li {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 15px;
+    align-items: center;
+    justify-content: center;
+}
+
+main.admin-page section ul li button {
+    padding: 0px;
+    min-height: 30px;
+    border-style: none;
+    border-radius: 15px;
+    width: 50%;
+    box-shadow: 3px 3px 2px #3F413E;
+
+    font-size: 16px;
+    font-weight: bold;
+}
+
+main.admin-page section ul li button:hover {
+    scale: 1.1;
+}
+
+main.admin-page section h1 {
+    color: #F0F2EF;
+    margin-bottom: 15px;
+}
+
+
+
+/*Inizio admin page*/
+
 /*Inizio regole carosello versione mobile*/
 .main-articles article {
     background-color: #082D0F;
@@ -777,14 +846,14 @@ aside>form>ul>li.hidden {
     display: none;
 }
 
-aside>form>ul>li.filter-price input[type="range"] {
+aside>form>ul>li.filter-range input[type="range"] {
     accent-color: #AC5411;
     display: inline-block;
     width: 60px;
     align-self: center;
 }
 
-aside>form>ul>li.filter-price input[type="text"] {
+aside>form>ul>li.filter-range input[type="text"] {
     width: 40px;
     background-color: #F0F2EF;
     color: #082D0F;
@@ -794,12 +863,12 @@ aside>form>ul>li.filter-price input[type="text"] {
     font-style: italic;
 }
 
-aside>form>ul>li.filter-price input[type="text"]:focus {
+aside>form>ul>li.filter-range input[type="text"]:focus {
     border: none;
     outline: none;
 }
 
-aside>form>ul>li.filter-price label:nth-of-type(1) {
+aside>form>ul>li.filter-range label:nth-of-type(1) {
     width: 80px;
     justify-content: center;
     color: #082D0F;
@@ -807,8 +876,9 @@ aside>form>ul>li.filter-price label:nth-of-type(1) {
     display: inline-block;
 }
 
-aside>form>ul>li.filter-price section {
+aside>form>ul>li.filter-range section {
     margin-top: 10px;
+    display: flex;
 }
 
 aside>form>ul>li>h3 {
@@ -834,11 +904,11 @@ aside>form>ul>li.filter-checkbox input[type="checkbox"] {
     margin-right: 3px;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>input[type="checkbox"] {
+aside>form>ul>li:nth-of-type(3)>ul>li>input[type="checkbox"] {
     accent-color: #082D0F;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>label {
+aside>form>ul>li:nth-of-type(3)>ul>li>label {
     text-transform: uppercase;
     margin-bottom: 5px;
     margin-top: 5px;
@@ -848,15 +918,15 @@ aside>form>ul>li {
     margin-left: 10px;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>ul label {
+aside>form>ul>li:nth-of-type(3)>ul>li>ul label {
     text-transform: capitalize;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>ul input[type=checkbox] {
+aside>form>ul>li:nth-of-type(3)>ul>li>ul input[type=checkbox] {
     margin-left: 20px;
 }
 
-aside>form>ul>li:nth-of-type(2)>ul>li>ul.hidden,
+aside>form>ul>li:nth-of-type(3)>ul>li>ul.hidden,
 aside>form>input.hidden {
     display: none;
     visibility: hidden;
@@ -932,9 +1002,9 @@ main.login-form>section>form>ul>li>input {
     border: solid 1px #3F413E;
 }
 
-main.login-form>section>form>ul>li>input[type="submit"],
-main.login-form>section button {
-    height: 100%;
+main.login-form > section > form > ul > li > input[type="submit"],
+main.login-form > section > form > ul > li > button {
+    height: 90%;
     width: 26%;
     max-width: 150px;
     margin-right: 0px;
@@ -945,7 +1015,7 @@ main.login-form>section button {
 
     overflow: hidden;
     text-overflow: ellipsis;
-}
+} 
 
 /*inizio sezione signup*/
 
@@ -1015,15 +1085,12 @@ main.single-item>article>header>section>button {
     border-radius: 50px;
     width: 60%;
     display: inline-block;
-    /*margin-top: 25px;*/
-    float: right;
 }
 
 main.single-item>article>header>section>h2 {
     font-size: 30px;
     padding: 8px 0;
     margin: 4px 0;
-    /*text-align: center;*/
 }
 
 main.single-item>article>header>section>h3 {
@@ -1636,11 +1703,18 @@ main.notification ul li img{
         align-items: start;
     }
 
+    main.login-form > section > form > ul > li:last-of-type {
+        margin-top: 20px;
+        padding-top: 20px;
+        vertical-align: middle;
+        flex-direction: row;
+    }
+
     main.login-form>section>form>ul>li>input {
         margin-left: 0;
         margin-right: auto;
         height: 18px;
-        width: 85%;
+        width: 65%;
         max-width: 1000px;
     }
 
@@ -1650,7 +1724,10 @@ main.notification ul li img{
 
     main.login-form>section>form>ul>li>input[type="submit"] {
         margin-left: auto;
-        margin-top: 20px;
+    }
+
+    main.login-form > section > form > ul > li > input[type="submit"],
+    main.login-form > section > form > ul > li > button {
         height: 38px;
         font-size: 18px;
     }
@@ -1660,7 +1737,7 @@ main.notification ul li img{
         max-width: 260px;
     }
 
-    main.login-form>section>button {
+    main.login-form > section > button {
         height: 28px;
         font-size: 18px;
     }
@@ -1886,12 +1963,17 @@ main.notification ul li img{
         display: none;
     }
 
-    aside>form>ul>li.filter-price>ul>li {
+    aside>form>ul>li.filter-range>ul>li {
         display: flex;
         height: 35px;
         width: 100%;
         align-items: center;
         margin-left: 10px;
+    }
+
+    aside h2 {
+        text-transform: capitalize;
+        margin-bottom: 5px;
     }
 
     /*FINE ASIDE DESKTOP*/

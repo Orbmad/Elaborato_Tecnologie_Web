@@ -7,8 +7,8 @@
         <label for="reset-filters-btn">Resetta i filtri</label>
         <input type="reset" id="reset-filters-btn" class="hidden" value="Reset" />
         <ul>
-            <li class="filter-price hidden">
-                <h3>Prezzo:</h3>
+            <li class="filter-range hidden">
+                <h2>Prezzo:</h2>
                 <section class="min-price">
                     <label for="min-price">Prezzo minimo</label>
                     <input type="range" id="min-price" name="min-price"
@@ -30,8 +30,21 @@
                         value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" readonly />
                 </section>
             </li>
+            <li class="filter-range hidden">
+                <h2>Valutazione minima:</h2>
+                <section class="min-rating">
+                    <label for="min-rating">Rating minimo</label>
+                    <input type="range" id="min-rating" name="min-rating"
+                        min="0"
+                        max="5"
+                        value="0">
+                    <label for="min-rating-selected">Valutazione minima selezionata</label>
+                    <input type="text" id="min-rating-selected"
+                        value="0" readonly />
+                </section>
+            </li>
             <li class="filter-checkbox hidden">
-                <h3>Categoria</h3>
+                <h2>Categoria</h2>
                 <ul>
                     <?php foreach ($templateParams["categorie"] as $category) {
                         $nomecategoriaLabel = $category["nome_categoria"];
@@ -82,17 +95,16 @@
                     } ?>
                 </ul>
             </li>
-            <?php $filterAttributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipo di foglia", "colore delle foglie", "voto");
-            foreach ($filterAttributes as $filterAttribute):
-                ?>
+            <?php
+            foreach (array_keys($templateParams["attributesValues"]) as $filterAttribute): ?>
                 <li class="filter-checkbox filter-<?php echo $filterAttribute ?> hidden">
-                    <h3><?php echo $filterAttribute ?></h3>
+                    <h2><?php echo str_replace('_',' ',$filterAttribute) ?></h2>
                     <ul>
                         <?php
-                        for ($i = 0; $i < count($templateParams[$filterAttribute]); $i++) {
+                        for ($i = 0; $i < count($templateParams["attributesValues"][$filterAttribute]); $i++) {
                             echo "<li>";
-                            echo '<input type="checkbox" id="' . $templateParams[$filterAttribute][$i]["attributo"] . '" name="' . $templateParams[$filterAttribute][$i]["attributo"] . '" value="' . $filterAttribute . '" checked>';
-                            echo '<label for="' . $templateParams[$filterAttribute][$i]["attributo"] . '">' . $templateParams[$filterAttribute][$i]["attributo"] . '</label>';
+                            echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
+                            echo '<label for="' . $templateParams["attributesValues"][$filterAttribute][$i] . '">' . $templateParams["attributesValues"][$filterAttribute][$i] . '</label>';
                             echo "</li>";
                         }
                         ?>
