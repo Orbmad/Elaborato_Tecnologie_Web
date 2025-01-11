@@ -10,20 +10,21 @@ if(isset($_GET['sottocategoriaSelezionata'])){
     $templateParams["searchedSubCategory"] = str_replace(' ','',$_GET['sottocategoriaSelezionata']);
     $templateParams["searchedCategory"] = str_replace(' ','', $dbh->getCategoryFromSubcategory($_GET['sottocategoriaSelezionata'])[0]["id_categoria"]);
     $templateParams["searchResults"] = $dbh->searchProductByName("");
-    $templateParams["mainContent"] = "template/search-results.php";
 }else if (isset($_GET['categoriaSelezionata'])) {
     $templateParams["searchedCategory"] = str_replace(' ','',$_GET['categoriaSelezionata']);
     $templateParams["searchResults"] = $dbh->searchProductByName("");
-    $templateParams["mainContent"] = "template/search-results.php";
 }else if (isset($_GET['fastSearch'])) {
     $templateParams["searchedWord"] = $_GET['fastSearch'];
     $templateParams["searchResults"] = $dbh->searchProductByName($_GET['fastSearch']);
-    $templateParams["mainContent"] = "template/search-results.php";
 }
 
-foreach($templateParams["searchResults"] as &$result) {
+$updatedResults = [];
+foreach ($templateParams["searchResults"] as $result) {
     $result["nomeGruppo"] = $dbh->getProductGroups($result["nome_prodotto"]);
+    $updatedResults[] = $result;
 }
+$templateParams["searchResults"] = $updatedResults;
+$templateParams["mainContent"] = "template/search-results.php";
 
 
 $templateParams["priceRange"] = $dbh->getProductsPrinceRange();

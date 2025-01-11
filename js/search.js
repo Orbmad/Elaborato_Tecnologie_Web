@@ -69,7 +69,7 @@ filtersForm.addEventListener('reset',function(){
 });
 
 function resetFilters(){
-    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(2).filter-checkbox > ul > li > input[type='checkbox']");
+    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > input[type='checkbox']");
     checkCategories.forEach(function(checkBox){
         if(!checkBox.checked){
             const parent = checkBox.closest("li");
@@ -93,7 +93,7 @@ applyButton.addEventListener('click',applyFilters);
 
 function applyFilters(){
     const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
-    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
+    let checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
     const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)).filter-checkbox > ul > li > input[type='checkbox']");
     shownProducts.forEach(function(product) {
         let isHidden = false;
@@ -121,4 +121,9 @@ function applyFilters(){
     });
 }
 
-applyFilters();
+window.addEventListener('load', function () {
+    // Chiama la funzione di reset una sola volta con un ritardo di 500 millisecondi
+    setTimeout(function () {
+        resetFilters();
+    }, 1);
+});

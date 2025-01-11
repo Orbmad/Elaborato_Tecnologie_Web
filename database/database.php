@@ -127,7 +127,7 @@ class DatabaseHelper
      */
     public function getProductsAttributesValues()
     {
-        $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia", "voto");
+        $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia");
         $results = [];
 
         foreach ($attributes as $attribute) {
