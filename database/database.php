@@ -271,12 +271,6 @@ class DatabaseHelper
 
     }
 
-<<<<<<< HEAD
-    public function checkElementInCart($idprodotto, $id_utente)
-    {
-        $stmt = db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
-        $stmt->bind_params('ss', $idprodotto, $id_utente);
-=======
     /**
      * Insert a new product, returns true if the insertion is executed correctly.
      */
@@ -409,7 +403,6 @@ class DatabaseHelper
     public function checkElementInCart($idprodotto, $id_utente){
         $stmt = $this->db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
         $stmt->bind_param('ss', $idprodotto, $id_utente);
->>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
         $stmt->execute();
         $result = $stmt->get_result();
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
@@ -427,11 +420,7 @@ class DatabaseHelper
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
         if($quant > 0){
             $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
-<<<<<<< HEAD
-        
-=======
             $stmt->bind_param('is', $quant + $quantità, $id_utente);
->>>>>>> b3980a09055c4c6f7e74e7e6af5def6faed84483
             $stmt->execute();
         } else {
             $stmt = $this->db->prepare("INSERT INTO Carrello (id_utente, id_prodotto, quantita) VALUES (?, ?, ?)");
