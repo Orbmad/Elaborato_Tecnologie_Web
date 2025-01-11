@@ -267,14 +267,6 @@ class DatabaseHelper
 
     }
 
-    public function checkElementInCart($idprodotto, $id_utente)
-    {
-        $stmt = $this->db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
-        $stmt->bind_params('ss', $idprodotto, $id_utente);
-
-        //INCOMPLETO?
-    }
-
     /**
      * Insert a new product, returns true if the insertion is executed correctly.
      */
