@@ -7,7 +7,7 @@
         ?>
         <article>
         <header>
-            <img src="upload/<?php echo $prodotto["nome_prodotto"] ?>.jpg" alt=""/><section>
+            <img src="upload/prodotti/<?php echo $prodotto["nome_prodotto"] ?>.jpg" alt=""/><section>
                 <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
                 <h3><?php echo $prodotto["prezzo"] ?>$
                 </h3><div class="star-value">
@@ -72,16 +72,16 @@
         </section>
     </article>
     <section>
-        <h2>L'opinione dei planters!</h2>
+        <h2>L&apos;opinione dei planters!</h2>
         <?php foreach($templateParams["recensioni_prodotto"] as $rec):?>
             <article>
             <h3><?php echo $rec["nome"] ?></h3><div class="star-value-user">
-            <?php for($i = 1; $i <= $prodotto["voto"]; $i++): ?>
-                            <span class="fa fa-star checked"></span>
-                        <?php endfor;?>
-                        <?php for($i = $prodotto["voto"] + 1; $i <= 5; $i++ ): ?>
-                            <span class="fa fa-star"></span>
-                        <?php endfor; ?>
+            <?php for($i = 1; $i <= $rec["voto"]; $i++): ?>
+                <span class="fa fa-star checked"></span>
+            <?php endfor;?>
+            <?php for($i = $rec["voto"] + 1; $i <= 5; $i++ ): ?>
+                    <span class="fa fa-star"></span>
+            <?php endfor; ?>
                     </div><h3><?php echo $rec["voto"]?>/5</h3>
             <h4><?php echo $rec["dataRec"] ?></h4>
             <p><?php echo $rec["commento"] ?></p>

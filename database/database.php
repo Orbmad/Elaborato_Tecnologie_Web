@@ -277,8 +277,8 @@ class DatabaseHelper
     public function addToCart($idprodotto, $quantità, $id_utente)
     {
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
-        if ($quant > 0) {
-            $stmt = db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
+        if($quant > 0){
+            $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
             $stmt->bind_params('is', $quant + $quantità, $id_utente);
             $stmt->execute();
         } else {
@@ -287,5 +287,15 @@ class DatabaseHelper
             $stmt->execute();
         }
 
+    }
+
+    /*Get the notifications of a user*/
+    public function getNotificationOfAUser($id_utente){
+        $stmt = $this->db->prepare("SELECT data_notifica, messaggio FROM Notifiche WHERE id_utente = ?");
+        $stmt->bind_params('s', $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 }

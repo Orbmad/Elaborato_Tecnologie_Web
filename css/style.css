@@ -1043,7 +1043,11 @@ main.single-item>article>header>section>div.star-value {
     padding-right: 5%;
 }
 
-main.single-item > article > header > section > div > span.checked{
+/*main.single-item > article > header > section > div > span.checked{
+    color:#AC5411;
+}*/
+
+main.single-item span.checked{
     color:#AC5411;
 }
 
@@ -1402,6 +1406,47 @@ main.main-cart>section.cart-products>ul>li>section.product-description>section:f
 }
 
 /*Fine regole carrello mobile*/
+
+/*Inizio notifiche mobile*/
+main.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main.notification>section.cart-products {
+    width: 90%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 5px 5px 3px #3F413E;
+}
+
+main.notification> section.cart-products > ul > li {
+    border-top: 1px solid #082D0F;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    /*display: flex;*/
+    flex-direction: column;
+}
+
+main.notification> section.cart-products > ul > li > button{
+    text-align: center;
+    width: 20%;
+    color: #F0F2EF;
+    background-color: #082D0F;
+    font-family: 'Josefin Sans', sans-serif;
+    border-radius: 10px;
+    padding: 3px;
+    height: 25px;
+    /*width: 200px;*/
+    text-transform: uppercase;
+    border-color: #F0F2EF;
+}
+
+/*Fine notifiche mobile*/
 
 @media (min-width: 768px) {
 
