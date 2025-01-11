@@ -168,6 +168,30 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getProductGroups($nomeProdotto)
+    {
+        $stmt = $this->db->prepare("SELECT gruppi.nomeGruppo 
+                            FROM `prodotti` 
+                            INNER JOIN appartenenze ON prodotti.nome_prodotto = appartenenze.id_prodotto 
+                            INNER JOIN gruppi ON gruppi.nomeGruppo = appartenenze.id_gruppo 
+                            WHERE nome_prodotto = ?");
+        $stmt->bind_param('s',$nomeProdotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Verifica se ci sono righe nel risultato
+        if ($result->num_rows === 0) {
+            $result = "";
+        } else {
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            $gruppi= array_map(function ($row) {
+                return str_replace(' ', '', $row['nomeGruppo']);
+            }, $rows);
+            $result = implode(' ', $gruppi);
+        }
+        return $result;
+    }
+
     public function getBestProducts($n)
     {
         $stmt = $this->db->prepare("SELECT * FROM prodotti ORDER BY voto LIMIT ?");

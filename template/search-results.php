@@ -21,6 +21,7 @@
                 $result["dimensioni"] . ' ' .
                 $result["tipologia_foglia"] . ' ' .
                 $result["colore_foglia"] . ' ' .
+                $result["nomeGruppo"] . ' ' .
                 $result["profumo"];
             ?>">
                 <a href="product.php?id=<?php echo $result['nome_prodotto'] ?>">
