@@ -85,5 +85,17 @@
         }
     }
 
+    /*Verifica se la notifica è stata letta oppure no*/
+    function notificationNotRead($messaggio, $data_notifica, $dbh){
+
+        return $dbh->checkIfAMessageWasRead($messaggio, $data_notifica, $_SESSION['email']);
+    }
+
+    function numberOfMessagesNotRead($dbh){
+        if(!empty($_SESSION['email']))
+            return $dbh->getNumberOfMessagesNotRead($_SESSION['email']);
+        else 0;
+    }
+
 
 ?>

@@ -7,11 +7,20 @@ $templateParams["titolo"] = "Plantatio";
 $templateParams["mainContent"] = "user_notification.php";
 $templateParams["js"] = array("js/nav.js", "js/index.js", "js/notification.js");
 
-$idprodotto = 'Adiantum hispidulum';
+$json = file_get_contents('php://input');
+$data = json_decode($json, true);
 
-$templateParams["notifiche"] = $dbh->getReviewsOfProduct($idprodotto);
+if (isset($data['message'])) {
+    echo $data['message'];
+    $messageContent = $data['message'];
+    $dbh->changeStateOfAMessage($messageContent, $_SESSION['email']);
+}
+/*Attualmente mostra */
+//$idprodotto = 'Adiantum hispidulum';
 
-//$templateParams["notifiche"] = $dbh->getNotificationOfAUser($_SESSION['email']);
+//$templateParams["notifiche"] = $dbh->getReviewsOfProduct($idprodotto);
+
+$templateParams["notifiche"] = $dbh->getNotificationOfAUser($_SESSION['email']);
 
 require 'template/base.php';
 ?>
