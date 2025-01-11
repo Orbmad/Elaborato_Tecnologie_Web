@@ -2196,4 +2196,23 @@ main.notification> section.cart-products > ul > li > button{
     }
 
     /* fine regole carrello desktop */
+
+    /*Inizio admin page desktop*/
+
+    main.admin-page section ul {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    main.admin-page section ul li {
+        width: calc(50% - 10px);
+    }
+
+    main.admin-page section ul li button {
+        width: 80%;
+    }
+
+    /*fine admin page desktop*/
 }
