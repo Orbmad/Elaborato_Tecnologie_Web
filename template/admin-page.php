@@ -22,7 +22,7 @@
         </ul>
     </section>
 
-    <section class="inserisci-prodotto">
+    <section class="inserisci-prodotto hidden">
         <h1>Inserisci prodotto</h1>
 
         <form action="#" method="$_GET">
