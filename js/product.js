@@ -31,3 +31,30 @@ function getQuantity(){
     let a = num.innerHTML;
     return a;
 }
+
+function addToCart(id_prodotto){
+    //console.log(this.getQuantity(), id_prodotto);
+    let quan = getQuantity();
+    if(quan < 10){
+        quan = quan.substring(1,quan.length);
+    }
+    //console.log(quan);
+    const data = { productQuant: quan, productId: id_prodotto };
+    fetch('product.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Errore nella risposta dal server');
+            }
+            return response.text();
+        })
+        .then(data => {
+            document.body.innerHTML = data;
+        })
+        .catch(error => console.error('Errore:', error));
+}
