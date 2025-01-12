@@ -105,7 +105,7 @@
         $fullPath = $path.$imageName;
 
         $maxKB = 1000;
-        $acceptedExtensions = array("jpg", "jpeg");
+        $acceptedExtensions = array("jpg");
         $result = false;
         $msg = "";
 
