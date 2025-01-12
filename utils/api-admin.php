@@ -5,8 +5,8 @@ unset($_SESSION["msg"]);
 unset($_SESSION["errore"]);
 
 if (!(isset($_GET["queryType"]))) {
-    $_SESSION["errore"] = "Errore nell'operazione effettuata";
-} else if ($_GET["queryType"] == "inserisci-prodotto") {
+    $_SESSION["errore"] = "Errore nell'operazione effettuata, parametri non ricevuti".$_GET["queryType"];
+} else if ($_GET["queryType"] == "inserisciprodotto") {
     //Inserimento prodotto
     if ($dbh->insertNewProduct(
         $_GET["nome_prodotto"],
@@ -28,30 +28,30 @@ if (!(isset($_GET["queryType"]))) {
     } else {
         $_SESSION["errore"] = "Errore inserimento prodotto";
     }
-} else if ($_GET["quertType"] == "crea-gruppo") {
+} else if ($_GET["queryType"] == "creagruppo") {
     //Creazione gruppo
     if ($dbh->createNewGroup(
-        $_GET["nome_gruppo"],
-        $_GET["descrizione"]
+        $_GET["nomeGruppo"],
+        $_GET["descrizioneGruppo"]
     )) {
         $_SESSION["msg"] = "Gruppo creato";
     } else {
         $_SESSION["errore"] = "Errore creazione gruppo";
     }
-} else if ($_GET["quertType"] == "inserisci-in-gruppo") {
+} else if ($_GET["queryType"] == "inserisciingruppo") {
     //Inserimento in gruppo
     if ($dbh->addProductInGroup(
-        $_GET["nome_gruppo"],
-        $_GET["nome_prodotto"]
+        $_GET["nomeGruppo"],
+        $_GET["nomeProdotto"]
     )) {
         $_SESSION["msg"] = "Prodotto inserito nel gruppo";
     } else {
         $_SESSION["errore"] = "Errore di inserimento";
     }
-} else if ($_GET["quertType"] == "rimuovi-da-gruppo") {
+} else if ($_GET["queryType"] == "rimuovidagruppo") {
     //Rimozione da gruppo
     if ($dbh->removeProductFromGroup(
-        $_GET["nome_gruppo"],
+        $_GET["nomeGruppo"],
         $_GET["nome_prodotto"]
     )) {
         $_SESSION["msg"] = "Prodotto rimosso dal gruppo";
@@ -59,7 +59,7 @@ if (!(isset($_GET["queryType"]))) {
         $_SESSION["errore"] = "Errore di rimozione";
     }
 } else {
-    $_SESSION["errore"] = "Errore nell'operazione effettuata";
+    $_SESSION["errore"] = "Errore nell'operazione effettuata, operazione non riconosciuta";
 }
 
 header("Location: ../admin.php");

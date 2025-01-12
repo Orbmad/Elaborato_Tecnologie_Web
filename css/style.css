@@ -532,6 +532,17 @@ main.admin-page section.hidden {
     display: none;
 }
 
+main.admin-page section p {
+    background-color: #F0F2EF;
+    color: #AC5411;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 25px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 1px #AC5411;
+    margin-bottom: 30px;
+}
+
 main.admin-page section form ul li label {
     display: inline;
     color: #F0F2EF;
@@ -566,15 +577,18 @@ main.admin-page section ul li {
 
 main.admin-page section ul li input {
     width: 50%;
-    height: 18px;
+    height: 26px;
     border-radius: 7px;
     border: solid 1px #3F413E;
+
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 main.admin-page > section > form > ul > li > input[type="submit"] {
     height: 90%;
-    width: 26%;
-    max-width: 150px;
+    width: 40%;
+    max-width: 300px;
     margin-right: 0px;
     padding: 0px;
     border-radius: 15px;
@@ -583,9 +597,14 @@ main.admin-page > section > form > ul > li > input[type="submit"] {
     font-weight: bold;
     color: #082D0F;
     margin-top: 15px;
+    font-weight: bold;
 
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+main.admin-page > section > form > ul > li > input[type="submit"]:hover {
+    scale: 1.1;
 }
 
 main.admin-page section ul li button {

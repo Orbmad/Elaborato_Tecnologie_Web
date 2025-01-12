@@ -28,7 +28,8 @@
     <section class="inserisci-prodotto hidden">
         <h1>Inserisci prodotto</h1>
 
-        <form action="./utils/api-admin.php?queryType=inserisci-prodotto" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+            <input type="hidden" name="queryType" value="inserisciprodotto" />
             <ul>
                 <li>
                     <label for="nome_prodotto">Nome prodotto:</label>
@@ -97,7 +98,8 @@
 
     <section class="crea-gruppo hidden">
         <h1>Crea gruppo</h1>
-        <form action="./utils/api-admin.php?queryType=crea-gruppo" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+            <input type="hidden" name="queryType" value="creagruppo" />
             <ul>
                 <li>
                     <label for="nomeGruppo">Nome gruppo:</label>
@@ -116,15 +118,16 @@
 
     <section class="inserisci-in-gruppo hidden">
         <h1>Inserisci in gruppo</h1>
-        <form action="./utils/api-admin.php?queryType=inserisci-in-gruppo" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+            <input type="hidden" name="queryType" value="inserisciingruppo" />
             <ul>
                 <li>
                     <label for="nome_prodotto">Nome gruppo:</label>
-                    <input type="text" id="nome_prodotto" name="nomeGruppo" />
+                    <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>
                     <label for="nomeGruppo">Nome prodotto:</label>
-                    <input type="text" id="nomeGruppo" name="nomeGruppo" />
+                    <input type="text" id="nomeProdotto" name="nomeProdotto" />
                 </li>
                 <li>
                     <input type="submit" name="submit" value="Conferma"/>
@@ -135,11 +138,12 @@
 
     <section class="rimuovi-da-gruppo hidden">
         <h1>Inserisci in gruppo</h1>
-        <form action="./utils/api-admin.php?queryType=rimuovi-da-gruppo" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+        <input type="hidden" name="queryType" value="rimuovidagruppo" />
             <ul>
                 <li>
                     <label for="nome_prodotto">Nome prodotto:</label>
-                    <input type="text" id="nome_prodotto" name="nomeGruppo" />
+                    <input type="text" id="nomeProdotto" name="nomeProdotto" />
                 </li>
                 <li>
                     <label for="nomeGruppo">Nome gruppo:</label>
