@@ -94,10 +94,11 @@ applyButton.addEventListener('click',applyFilters);
 function applyFilters(){
     const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
     const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
-    const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)).filter-checkbox > ul > li > input[type='checkbox']");
+    const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:last-child).filter-checkbox > ul > li > input[type='checkbox']");
+    const checkGroups = document.querySelectorAll("aside > form > ul > li:last-child.filter-checkbox > ul > li > input[type='checkbox']");
     shownProducts.forEach(function(product) {
         let isHidden = false;
-        let isShown = true;
+        let belongsToCheckedGroup = false;
         checkBoxes.forEach(function(checkBox) {
             if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
                 isHidden = true;
@@ -111,12 +112,20 @@ function applyFilters(){
         });
 
         if(parseFloat(product.classList[0])<parseFloat(minRangeInput.value) || parseFloat(product.classList[0])>parseFloat(maxRangeInput.value) || parseInt(product.classList[1])<parseInt(minRatingInput.value)){
-            isHidden=true;
+            isHidden = true;
         }
-        if (isHidden || !isShown) {
-            product.classList.add('hidden');
-        } else {
+
+        checkGroups.forEach(function(checkBox) {
+            if (checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
+                belongsToCheckedGroup = true;
+            }       
+        });
+        
+
+        if (!isHidden && belongsToCheckedGroup) {
             product.classList.remove('hidden');
+        } else {
+            product.classList.add('hidden');
         }
         
     });   
