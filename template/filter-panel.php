@@ -99,7 +99,15 @@
                         <?php
                         for ($i = 0; $i < count($templateParams["attributesValues"][$filterAttribute]); $i++) {
                             echo "<li>";
-                            echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
+                            if (isset($templateParams["searchedGroup"]) && $filterAttribute === "nome_gruppo") {
+                                if ($templateParams["searchedGroup"] === $templateParams["attributesValues"][$filterAttribute][$i]) {
+                                    echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
+                                } else {
+                                    echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" >';
+                                }
+                            }else{
+                                echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
+                            }
                             echo '<label for="' . $templateParams["attributesValues"][$filterAttribute][$i] . '">' . $templateParams["attributesValues"][$filterAttribute][$i] . '</label>';
                             echo "</li>";
                         }
