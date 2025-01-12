@@ -31,3 +31,8 @@ document.querySelector("main.admin-page section.default button.rimuovi-da-gruppo
     defaultSection.classList.add("hidden");
     section.classList.remove("hidden");
 })
+
+document.getElementById("fileInput").addEventListener("change", function() {
+    let fileName = this.files.length > 0 ? this.files[0].name : "Nessun file selezionato";
+    document.querySelector(".file-name").textContent = fileName;
+});

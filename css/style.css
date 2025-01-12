@@ -581,6 +581,10 @@ main.admin-page section ul li {
     justify-content: center;
 }
 
+main.admin-page section form ul li:nth-last-child(2) {
+    margin-top: 25px;
+}
+
 main.admin-page section ul li input {
     width: 50%;
     height: 26px;
@@ -590,6 +594,43 @@ main.admin-page section ul li input {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+/*Stile inserimento file*/
+
+main.admin-page section ul li section.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #F0F2EF;
+    padding: 5px;
+}
+
+main.admin-page section ul li section.file-upload input[type="file"] {
+    display: none;
+}
+
+main.admin-page section ul li section.file-upload label {
+    background-color: #082D0F;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+main.admin-page section ul li section.file-upload label:hover {
+    background-color: #AC5411;
+}
+
+main.admin-page section ul li section.file-upload span.file-name {
+    font-size: 16px;
+    color: #3F413E;
+}
+
+/*fine stile inserimento file*/
 
 main.admin-page > section > form > ul > li > input[type="submit"] {
     height: 90%;
@@ -604,6 +645,7 @@ main.admin-page > section > form > ul > li > input[type="submit"] {
     color: #082D0F;
     margin-top: 15px;
     font-weight: bold;
+    box-shadow: 3px 3px 2px #3F413E;
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1078,6 +1120,7 @@ main.login-form > section > form > ul > li > button {
     border-radius: 15px;
     border: solid 1px #3F413E;
     font-size: 14px;
+    font-weight: bold;
 
     overflow: hidden;
     text-overflow: ellipsis;
