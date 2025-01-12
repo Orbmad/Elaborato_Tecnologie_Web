@@ -5,7 +5,7 @@ require_once 'bootstrap.php';
 
 //Base Template
 $templateParams["titolo"] = "Plantatio - login";
-$templateParams["js"] = array("js/login.js", "js/nav.js", "js/index.js");
+$templateParams["js"] = array("js/login.js", "js/nav.js", "js/header.js");
 
 //Main content
 $templateParams["mainContent"] = "login-form.php";

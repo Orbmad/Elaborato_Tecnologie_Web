@@ -10,7 +10,8 @@ h1,
 input[type="text"],
 form,
 button,
-h3 {
+h3,
+p {
     padding: 0%;
     margin: 0%;
     font-family: 'Josefin Sans', sans-serif;
@@ -503,6 +504,11 @@ body > header > ul > li > ul > li:nth-child(1) > span{
     text-decoration: none;
     font-size: 11px;
 }
+
+/*fix del carrello allineato all'icona utente
+body > header > ul > li:nth-child(2) > a > img{
+    top: 10px;
+}*/
 
 /*body > header > ul > li > ul > li:nth-child(1) > a{
     color: #fff;
@@ -1087,6 +1093,18 @@ main.single-item>article>header>section>button {
     display: inline-block;
 }
 
+main.single-item>article>header>section>button:hover{
+        transform: scale(1.05);
+        background-color: #F0F2EF;
+        color: #082D0F;
+        border-color: #082D0F;
+        border: #082D0F solid 3px;
+}
+    
+main.single-item>article>header>section>button:active{
+        transform: scale(0.95);
+}
+
 main.single-item>article>header>section>h2 {
     font-size: 30px;
     padding: 8px 0;
@@ -1481,7 +1499,7 @@ main.notification {
     width: 100%;
 }
 
-main.notification>section.cart-products {
+main.notification > section.cart-products {
     width: 90%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -1498,6 +1516,11 @@ main.notification> section.cart-products > ul > li {
     flex-direction: column;
 }
 
+main.notification > section.cart-products > ul > li > h3{
+    display: inline;
+    width: 30%;
+}
+
 main.notification> section.cart-products > ul > li > button{
     text-align: center;
     width: 20%;
@@ -1510,6 +1533,29 @@ main.notification> section.cart-products > ul > li > button{
     /*width: 200px;*/
     text-transform: uppercase;
     border-color: #F0F2EF;
+    /*margin-left: 20%;*/
+}
+
+main.notification> section.cart-products > ul > li > button:hover{
+    transform: scale(1.05);
+    background-color: #F0F2EF;
+    color: #082D0F;
+    border-color: #082D0F;
+    border: #082D0F solid 3px;
+}
+
+main.notification> section.cart-products > ul > li > button:active{
+    transform: scale(0.95);
+}
+
+main.notification ul li img.show{
+    width: 15px;
+    display: inline;
+}
+
+main.notification ul li img.hidden{
+    display: none;
+    width: 20%;
 }
 
 /*Fine notifiche mobile*/
@@ -2196,4 +2242,40 @@ main.notification> section.cart-products > ul > li > button{
     }
 
     /* fine regole carrello desktop */
+
+    /*Inizio notifiche desktop*/
+    main.notification > section.cart-products {
+        width: 70%;
+    }
+
+    main.notification> section.cart-products > ul > li {
+        border-top: 1px solid #082D0F;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        /*display: flex;*/
+        flex-direction: column;
+    }
+
+    main.notification > section.cart-products > ul > li > h3{
+        display: inline;
+        width: 30%;
+        font-size: 25px;
+    }
+
+    main.notification> section.cart-products > ul > li > button{
+        width: 10%;
+        padding: 2px;
+        height: 30px;
+        font-size: 17px;
+    }
+
+    main.notification ul li img.show{
+        width: 20px;
+    }
+
+    main.notification> section.cart-products > ul > li > p{
+        font-size: 17px;
+        padding: 1.5% 0px;
+    }
+    /*Fine notifiche desktop*/
 }

@@ -6,7 +6,7 @@ $email = "michele.farneti23@gmail.com";
 
 //Base Template
 $templateParams["titolo"] = "Plantatio";
-$templateParams["js"] = array("js/nav.js","js/cart.js", "js/index.js");
+$templateParams["js"] = array("js/nav.js","js/cart.js", "js/header.js");
 
 $json = file_get_contents('php://input');
 $data = json_decode($json, true);

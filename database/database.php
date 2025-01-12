@@ -73,7 +73,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getGroup($nomeGruppo) {
+    public function getGroup($nomeGruppo)
+    {
         $stmt = $this->db->prepare("SELECT * FROM Gruppi WHERE nomeGruppo = ?");
         $stmt->bind_param('s', $nomeGruppo);
         $stmt->execute();
@@ -141,6 +142,16 @@ class DatabaseHelper
             }
             $results[$attribute] = $valuesList;
         }
+
+        $stmt = $this->db->prepare("SELECT DISTINCT nomeGruppo FROM Gruppi");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $values = $result->fetch_all(MYSQLI_ASSOC);
+        $valuesList = [];
+        foreach ($values as $row) {
+            $valuesList[] = $row['nomeGruppo'];
+        }
+        $results['nomeGruppo'] = $valuesList;
         return $results;
     }
 
@@ -270,8 +281,22 @@ class DatabaseHelper
     /**
      * Insert a new product, returns true if the insertion is executed correctly.
      */
-    public function insertNewProduct($nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
-    $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo, $tipologia_foglia, $colore_foglia, $descrizione) {
+    public function insertNewProduct(
+        $nome_prodotto,
+        $prezzo,
+        $id_sottocategoria,
+        $stock,
+        $nome_volgare,
+        $nome_scientifico,
+        $famiglia,
+        $genere,
+        $specie,
+        $dimensioni,
+        $profumo,
+        $tipologia_foglia,
+        $colore_foglia,
+        $descrizione
+    ) {
 
         $query = "INSERT INTO Prodotti (nome_prodotto, prezzo, id_sottocategoria, stock, nome_volgare,
             nome_scientifico, famiglia, genere, specie, dimensioni, profumo, tipologia_foglia, colore_foglia, descrizione)
@@ -279,10 +304,22 @@ class DatabaseHelper
 
         try {
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('sdsissssssssss',
-                $nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
-                $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo,
-                $tipologia_foglia, $colore_foglia, $descrizione
+            $stmt->bind_param(
+                'sdsissssssssss',
+                $nome_prodotto,
+                $prezzo,
+                $id_sottocategoria,
+                $stock,
+                $nome_volgare,
+                $nome_scientifico,
+                $famiglia,
+                $genere,
+                $specie,
+                $dimensioni,
+                $profumo,
+                $tipologia_foglia,
+                $colore_foglia,
+                $descrizione
             );
             $stmt->execute();
             return true;
@@ -294,8 +331,22 @@ class DatabaseHelper
     /**
      * Modifies an existing product, returns true if executed correctly.
      */
-    public function updateProduct($nome_prodotto, $prezzo, $id_sottocategoria, $stock, $nome_volgare,
-    $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo, $tipologia_foglia, $colore_foglia, $descrizione) {
+    public function updateProduct(
+        $nome_prodotto,
+        $prezzo,
+        $id_sottocategoria,
+        $stock,
+        $nome_volgare,
+        $nome_scientifico,
+        $famiglia,
+        $genere,
+        $specie,
+        $dimensioni,
+        $profumo,
+        $tipologia_foglia,
+        $colore_foglia,
+        $descrizione
+    ) {
 
         $query = "UPDATE Prodotti 
                 SET prezzo = ?, id_sottocategoria = ?, stock = ?, nome_volgare = ?, 
@@ -305,10 +356,23 @@ class DatabaseHelper
 
         try {
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('dsisssssssssss',
-                $prezzo, $id_sottocategoria, $stock, $nome_volgare,
-                $nome_scientifico, $famiglia, $genere, $specie, $dimensioni, $profumo,
-                $tipologia_foglia, $colore_foglia, $descrizione, $nome_prodotto);
+            $stmt->bind_param(
+                'dsisssssssssss',
+                $prezzo,
+                $id_sottocategoria,
+                $stock,
+                $nome_volgare,
+                $nome_scientifico,
+                $famiglia,
+                $genere,
+                $specie,
+                $dimensioni,
+                $profumo,
+                $tipologia_foglia,
+                $colore_foglia,
+                $descrizione,
+                $nome_prodotto
+            );
             $stmt->execute();
             return true;
         } catch (PDOException) {
@@ -319,7 +383,8 @@ class DatabaseHelper
     /**
      * Deletes an existing product, returns true if executed correctly
      */
-    public function deleteProduct($nome) {
+    public function deleteProduct($nome)
+    {
         try {
             $stmt = $this->db->prepare("DELETE FROM Prodotti WHERE nome_prodotto=?");
             $stmt->bind_param('s', $nome);
@@ -333,7 +398,8 @@ class DatabaseHelper
     /**
      * Creates a new group.
      */
-    public function createNewGroup($nome_gruppo, $descrizione) {
+    public function createNewGroup($nome_gruppo, $descrizione)
+    {
         try {
             $stmt = $this->db->prepare("INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo) VALUES (?, ?)");
             $stmt->bind_param('ss', $nome_gruppo, $descrizione);
@@ -347,7 +413,8 @@ class DatabaseHelper
     /**
      * Insert a product into a group.
      */
-    public function addProductInGroup($nome_gruppo, $nome_prodotto) {
+    public function addProductInGroup($nome_gruppo, $nome_prodotto)
+    {
 
         try {
             $stmt = $this->db->prepare("INSERT INTO Appartenenze (id_gruppo, id_prodotto) VALUES (?, ?)");
@@ -359,7 +426,8 @@ class DatabaseHelper
         }
     }
 
-    public function removeProductFromGroup($nome_gruppo, $nome_prodotto) {
+    public function removeProductFromGroup($nome_gruppo, $nome_prodotto)
+    {
         try {
             $stmt = $this->db->prepare("DELETE FROM Appartenenze WHERE id_gruppo=? AND id_prodotto=?");
             $stmt->bind_param('ss', $nome_gruppo, $nome_prodotto);
@@ -373,7 +441,8 @@ class DatabaseHelper
     /**
      * Adds a review.
      */
-    public function addReview($id_utente, $id_prodotto, $voto, $commento) {
+    public function addReview($id_utente, $id_prodotto, $voto, $commento)
+    {
         try {
             //Inserimento Recensione
             $stmt = $this->db->prepare("INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento) VALUES (?, ?, ?, ?)");
@@ -395,28 +464,30 @@ class DatabaseHelper
             return false;
         }
     }
-    
-    public function checkElementInCart($idprodotto, $id_utente){
+
+    public function checkElementInCart($idprodotto, $id_utente)
+    {
         $stmt = $this->db->prepare("SELECT * FROM Carrello WHERE id_prodotto = ? AND id_utente = ?");
         $stmt->bind_param('ss', $idprodotto, $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
-        $cont = count($result->fetch_all(MYSQLI_ASSOC));
-
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $cont = count($result);
         if ($cont > 0) {
-            return $cont[0]['quantita'];
+            return $result[0]['quantita'];
         } else {
             return 0;
         }
     }
 
-    /*Insert the new item in the cart of the user or add qunti*/
+    /*Insert the new item in the cart of the user or add quantity*/
     public function addToCart($idprodotto, $quantità, $id_utente)
     {
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
         if($quant > 0){
-            $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
-            $stmt->bind_param('is', $quant + $quantità, $id_utente);
+            $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ? AND id_prodotto = ?");
+            $quantità += $quant; 
+            $stmt->bind_param('iss', $quantità, $id_utente, $idprodotto);
             $stmt->execute();
         } else {
             $stmt = $this->db->prepare("INSERT INTO Carrello (id_utente, id_prodotto, quantita) VALUES (?, ?, ?)");
@@ -427,12 +498,47 @@ class DatabaseHelper
     }
 
     /*Get the notifications of a user*/
-    public function getNotificationOfAUser($id_utente){
-        $stmt = $this->db->prepare("SELECT data_notifica, messaggio FROM Notifiche WHERE id_utente = ?");
+    public function getNotificationOfAUser($id_utente)
+    {
+        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio FROM Notifiche WHERE id_utente = ?");
         $stmt->bind_param('s', $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_utente)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ?");
+        $stmt->bind_param('ss', $id_utente, $messaggio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return ($cont > 0);
+    }
+
+    /*public function ciao(){
+        return "ciao()";
+    }*/
+
+    public function changeStateOfAMessage($messaggio, $id_utente){
+        echo $messaggio;
+        if($this->checkIfAMessageWasRead($messaggio, "" ,$id_utente)){
+            $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
+            $stmt->bind_param('ss', $id_utente, $messaggio);
+            $stmt->execute();
+            return "ciao()";
+        }
+    }
+
+    public function getNumberOfMessagesNotRead($id_utente)
+    {
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0");
+        $stmt->bind_param('s', $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return $cont;
     }
 }
