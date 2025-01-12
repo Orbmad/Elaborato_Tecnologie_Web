@@ -4,55 +4,65 @@ require_once '../bootstrap.php';
 unset($_SESSION["msg"]);
 unset($_SESSION["errore"]);
 
-if (!(isset($_GET["queryType"]))) {
-    $_SESSION["errore"] = "Errore nell'operazione effettuata, parametri non ricevuti".$_GET["queryType"];
-} else if ($_GET["queryType"] == "inserisciprodotto") {
+if (!(isset($_POST["queryType"]))) {
+    $_SESSION["errore"] = "Errore nell'operazione effettuata, parametri non ricevuti".$_POST["queryType"];
+} else if ($_POST["queryType"] == "inserisciprodotto" && isset($_FILES["immagine"])) {
     //Inserimento prodotto
-    if ($dbh->insertNewProduct(
-        $_GET["nome_prodotto"],
-        $_GET["prezzo"],
-        $_GET["id_sottocategoria"],
-        $_GET["stock"],
-        $_GET["nome_volgare"],
-        $_GET["nome_scientifico"],
-        $_GET["famiglia"],
-        $_GET["genere"],
-        $_GET["specie"],
-        $_GET["dimensioni"],
-        $_GET["profumo"],
-        $_GET["tipologia_foglia"],
-        $_GET["colore_foglia"],
-        $_GET["descrizione"]
-    )) {
-        $_SESSION["msg"] = "Prodotto inserito";
+    list($result, $msg) = uploadImage("../upload/prodotti/", $_FILES["immagine"], $_POST["nome_prodotto"]);
+    if (!$result) {
+        $_SESSION["errore"] = $msg;
     } else {
-        $_SESSION["errore"] = "Errore inserimento prodotto";
+        if ($dbh->insertNewProduct(
+            $_POST["nome_prodotto"],
+            $_POST["prezzo"],
+            $_POST["nome_sottocategoria"],
+            $_POST["stock"],
+            $_POST["nome_volgare"],
+            $_POST["nome_scientifico"],
+            $_POST["famiglia"],
+            $_POST["genere"],
+            $_POST["specie"],
+            $_POST["dimensioni"],
+            $_POST["profumo"],
+            $_POST["tipologia_foglia"],
+            $_POST["colore_foglia"],
+            $_POST["descrizione"]
+        )) {
+            $_SESSION["msg"] = "Prodotto inserito";
+        } else {
+            $_SESSION["errore"] = "Errore inserimento prodotto";
+        }
     }
-} else if ($_GET["queryType"] == "creagruppo") {
+} else if ($_POST["queryType"] == "creagruppo" /*&& isset($_FILES["immagine"])*/) {
     //Creazione gruppo
-    if ($dbh->createNewGroup(
-        $_GET["nomeGruppo"],
-        $_GET["descrizioneGruppo"]
-    )) {
-        $_SESSION["msg"] = "Gruppo creato";
+    list($result, $msg) = uploadImage("../upload/gruppi/", $_FILES["immagine"], $_POST["nomeGruppo"]);
+    if (!$result) {
+        $_SESSION["errore"] = $msg;
     } else {
-        $_SESSION["errore"] = "Errore creazione gruppo";
+        if ($dbh->createNewGroup(
+            $_POST["nomeGruppo"],
+            $_POST["descrizioneGruppo"]
+        )) {
+            $_SESSION["msg"] = "Gruppo creato";
+        } else {
+            $_SESSION["errore"] = "Errore creazione gruppo";
+        }
     }
-} else if ($_GET["queryType"] == "inserisciingruppo") {
+} else if ($_POST["queryType"] == "inserisciingruppo") {
     //Inserimento in gruppo
     if ($dbh->addProductInGroup(
-        $_GET["nomeGruppo"],
-        $_GET["nomeProdotto"]
+        $_POST["nomeGruppo"],
+        $_POST["nomeProdotto"]
     )) {
         $_SESSION["msg"] = "Prodotto inserito nel gruppo";
     } else {
         $_SESSION["errore"] = "Errore di inserimento";
     }
-} else if ($_GET["queryType"] == "rimuovidagruppo") {
+} else if ($_POST["queryType"] == "rimuovidagruppo") {
     //Rimozione da gruppo
     if ($dbh->removeProductFromGroup(
-        $_GET["nomeGruppo"],
-        $_GET["nome_prodotto"]
+        $_POST["nomeGruppo"],
+        $_POST["nome_prodotto"]
     )) {
         $_SESSION["msg"] = "Prodotto rimosso dal gruppo";
     } else {
@@ -64,3 +74,5 @@ if (!(isset($_GET["queryType"]))) {
 
 header("Location: ../admin.php");
 exit;
+
+?>

@@ -67,10 +67,10 @@ footer section.credits ul {
     list-style: none;
 }
 
-footer>section.credits p,
-footer>section.contacts p {
+footer>section.credits h1,
+footer>section.contacts h1 {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
+    font-size: 22px;
     color: #F0F2EF;
     margin: 6px;
     margin-left: 0px;
@@ -87,7 +87,7 @@ footer>section.contacts ul {
 
 footer>section.contacts ul li {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
+    font-size: 16px;
     color: #F0F2EF;
     align-items: center;
     justify-content: center;
@@ -95,8 +95,8 @@ footer>section.contacts ul li {
 }
 
 footer>section.contacts ul li>img {
-    display: inline-block;
-    height: 10px;
+    display: inline;
+    height: 14px;
     margin-right: 8px;
     vertical-align: middle;
 }
@@ -108,7 +108,7 @@ footer>section.credits ul li {
 
 footer>section.credits a {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 6px;
+    font-size: 12px;
     color: #F0F2EF;
 }
 
@@ -581,6 +581,10 @@ main.admin-page section ul li {
     justify-content: center;
 }
 
+main.admin-page section form ul li:nth-last-child(2) {
+    margin-top: 25px;
+}
+
 main.admin-page section ul li input {
     width: 50%;
     height: 26px;
@@ -590,6 +594,43 @@ main.admin-page section ul li input {
     padding-left: 10px;
     padding-right: 10px;
 }
+
+/*Stile inserimento file*/
+
+main.admin-page section ul li section.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #F0F2EF;
+    padding: 5px;
+}
+
+main.admin-page section ul li section.file-upload input[type="file"] {
+    display: none;
+}
+
+main.admin-page section ul li section.file-upload label {
+    background-color: #082D0F;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+main.admin-page section ul li section.file-upload label:hover {
+    background-color: #AC5411;
+}
+
+main.admin-page section ul li section.file-upload span.file-name {
+    font-size: 16px;
+    color: #3F413E;
+}
+
+/*fine stile inserimento file*/
 
 main.admin-page > section > form > ul > li > input[type="submit"] {
     height: 90%;
@@ -604,6 +645,7 @@ main.admin-page > section > form > ul > li > input[type="submit"] {
     color: #082D0F;
     margin-top: 15px;
     font-weight: bold;
+    box-shadow: 3px 3px 2px #3F413E;
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1025,13 +1067,14 @@ main.login-form h1 {
 }
 
 main.login-form p {
-    padding: 5px;
     background-color: #F0F2EF;
-    color: #3F413E;
-    border: 2px solid #AC5411;
-    border-radius: 8px;
-
-    font-weight: bolder;
+    color: #AC5411;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 25px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 1px #AC5411;
+    margin-bottom: 30px;
 }
 
 main.login-form>section {
@@ -1077,6 +1120,7 @@ main.login-form > section > form > ul > li > button {
     border-radius: 15px;
     border: solid 1px #3F413E;
     font-size: 14px;
+    font-weight: bold;
 
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1629,7 +1673,7 @@ main.notification ul li img.hidden{
         min-height: 280px;
     }
 
-    /*INIZIO FOOTER DESKTOP*/
+    /*FINE FOOTER DESKTOP*/
 
     /* INIZIO NAV VERSIONE DESKTOP */
     nav.main-nav {
@@ -1652,6 +1696,21 @@ main.notification ul li img.hidden{
     /*Fine regole lista suggerimenti desktop*/
 
     /*Inizio menu categorie desktop*/
+    nav.main-nav.closed-nav > ul.categories > li,
+    nav.main-nav.opened-nav > ul.categories > li {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    nav.main-nav.closed-nav > ul.categories > li > button.category-button,
+    nav.main-nav.opened-nav > ul.categories > li > button.category-button {
+        padding: 0px 6px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     nav.main-nav.closed-nav button.menu-icon {
         display: none;
     }
@@ -1672,14 +1731,13 @@ main.notification ul li img.hidden{
         margin-right: auto;
 
         display: flex;
-        flex-wrap: nowrap;
         overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     nav.main-nav.closed-nav ul.categories>li {
         height: 96%;
-        padding-right: 12px;
-        padding-left: 12px;
+        padding: 0px;
 
         align-items: center;
         justify-content: center;
@@ -1695,14 +1753,10 @@ main.notification ul li img.hidden{
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
-        font-size: 18px;
+        font-size: 22px;
 
         padding: 0%;
         height: 100%;
-
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
     }
 
     nav.main-nav.closed-nav>ul.categories>li button.category-button:hover {
@@ -1726,11 +1780,20 @@ main.notification ul li img.hidden{
         height: auto;
     }
 
+    nav.main-nav > ul.categories > li {
+        padding: 0px;
+        border-right: solid 1px #F0F2EF;
+    }
+
+    nav.main-nav ul.categories li:last-child {
+        border-style: none;
+    }
+
     nav.main-nav.opened-subcategories ul.categories button.category-button {
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
-        font-size: 18px;
+        font-size: 22px;
 
         padding: 0%;
         height: 73px;
@@ -1761,9 +1824,12 @@ main.notification ul li img.hidden{
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
-        font-size: 15px;
+        font-size: 18px;
         width: 100%;
         text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button:hover {
