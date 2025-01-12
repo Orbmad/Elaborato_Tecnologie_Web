@@ -79,7 +79,7 @@
         return true; //Password sicura
     }
 
-    function addToCartIfUserIsLogged($id_prodotto, $quantità){
+    function addToCartIfUserIsLogged($id_prodotto, $quantità, $dbh){
         if(isUserLoggedIn()){
             $dbh->addToCart($id_prodotto, $quantità);
         }

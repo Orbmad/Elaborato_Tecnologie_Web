@@ -471,22 +471,23 @@ class DatabaseHelper
         $stmt->bind_param('ss', $idprodotto, $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
-        $cont = count($result->fetch_all(MYSQLI_ASSOC));
-
+        $result = $result->fetch_all(MYSQLI_ASSOC);
+        $cont = count($result);
         if ($cont > 0) {
-            return $cont[0]['quantita'];
+            return $result[0]['quantita'];
         } else {
             return 0;
         }
     }
 
-    /*Insert the new item in the cart of the user or add qunti*/
+    /*Insert the new item in the cart of the user or add quantity*/
     public function addToCart($idprodotto, $quantità, $id_utente)
     {
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
-        if ($quant > 0) {
-            $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ?");
-            $stmt->bind_param('is', $quant + $quantità, $id_utente);
+        if($quant > 0){
+            $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ? AND id_prodotto = ?");
+            $quantità += $quant; 
+            $stmt->bind_param('iss', $quantità, $id_utente, $idprodotto);
             $stmt->execute();
         } else {
             $stmt = $this->db->prepare("INSERT INTO Carrello (id_utente, id_prodotto, quantita) VALUES (?, ?, ?)");
@@ -507,7 +508,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_utente)
+    public function checkIfAMessageWasRead($messaggio, $id_utente)
     {
         $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ?");
         $stmt->bind_param('ss', $id_utente, $messaggio);
@@ -517,19 +518,18 @@ class DatabaseHelper
         return ($cont > 0);
     }
 
-    public function ciao()
-    {
+    /*public function ciao(){
         return "ciao()";
-    }
+    }*/
 
-    public function changeStateOfAMessage($messaggio, $id_utente)
-    {
-        //if($this->db->checkIfAMessageWasRead($messaggio, "ciao" ,$id_utente)){
-        $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
-        $stmt->bind_param('ss', $id_utente, $messaggio);
-        $stmt->execute();
-        return "ciao()";
-        //}
+    public function changeStateOfAMessage($messaggio, $id_utente){
+        echo $messaggio;
+        if($this->checkIfAMessageWasRead($messaggio, "" ,$id_utente)){
+            $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
+            $stmt->bind_param('ss', $id_utente, $messaggio);
+            $stmt->execute();
+            return "ciao()";
+        }
     }
 
     public function getNumberOfMessagesNotRead($id_utente)

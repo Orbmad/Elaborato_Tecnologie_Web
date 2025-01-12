@@ -50,8 +50,8 @@
                         //si prende tag con numero di notifiche e la si cambia in #corretto
                         let numberNotificationTag = document.querySelector('body > header p');
                         console.log(numberNotificationTag.innerHTML);
-                        numberNotificationTag.innerHTML = numberOfNotification - 1;
-
+                        numberNotificationTag.innerHTML = numberNotificationTag.innerHTML - 1;
+                        console.log(numberNotificationTag.innerHTML);
                         /*Quando il bottone è chiamato la prima volta -> effettuo query definendo data*/
                         const data = { message: content };
                         fetch('notification.php', {
@@ -67,9 +67,9 @@
                                 }
                                 return response.text();
                             })
-                            .then(data => {
+                            /*.then(data => {
                                 document.body.innerHTML = data;
-                            })
+                            })*/
                             .catch(error => console.error('Errore:', error));
                 }
             }
