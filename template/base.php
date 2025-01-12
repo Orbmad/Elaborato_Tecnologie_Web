@@ -95,7 +95,7 @@
 
     <footer>
         <section class="contacts">
-            <p>Contatti</p>
+            <h1>Contatti</h1>
             <ul>
                 <li>
                     <img src="./upload/email.png" alt="email icon">
@@ -113,7 +113,7 @@
         </section>
 
         <section class="credits">
-            <p>Crediti</p>
+            <h1>Crediti</h1>
             <ul>
                 <li>
                     <a href="https://www.flaticon.com/free-icons/menu-burger" title="menu-burger icons">Menu-burger icons created by

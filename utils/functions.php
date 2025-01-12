@@ -97,5 +97,47 @@
         else 0;
     }
 
+    /**
+     * Uploads an image in local directory.
+     */
+    function uploadImage($path, $image, $newFileName) {
+        $imageName = basename($image["name"]);
+        $fullPath = $path.$imageName;
 
+        $maxKB = 1000;
+        $acceptedExtensions = array("jpg", "jpeg");
+        $result = false;
+        $msg = "";
+
+        //Controllo che il file sia una immagine
+        $imageSize = getimagesize($image["tmp_name"]);
+        if ($imageSize === false) {
+            $msg = "Errore: il file caricato non è una immagine";
+            return array($result, $msg);
+        }
+        //Controllo la dimensione dell'immagine
+        if ($image["size"] > $maxKB * 1024) {
+            $msg = "Errore: l'immagine caricata è troppo grande";
+            return array($result, $msg);
+        }
+        //Controllo l'estensione del file
+        $imageFileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
+        if(!in_array($imageFileType, $acceptedExtensions)){
+            $msg .= "Errore: estensione della immagine non supportata";
+            return array($result, $msg);
+        }
+        //Rinomino il file
+        $fullPath = $path.$newFileName.$imageFileType;
+
+        //Carico il file nella directory
+        if (!move_uploaded_file($image["tmp_name"], $fullPath)) {
+            $msg = "Errore: impossibile caricare l'immagine";
+            return array($result, $msg);
+        } else {
+            $result = true;
+            $msg = "Immagine caricata";
+        }
+
+        return array($result, $msg);
+    }
 ?>

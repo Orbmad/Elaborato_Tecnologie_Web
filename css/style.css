@@ -67,10 +67,10 @@ footer section.credits ul {
     list-style: none;
 }
 
-footer>section.credits p,
-footer>section.contacts p {
+footer>section.credits h1,
+footer>section.contacts h1 {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 14px;
+    font-size: 18px;
     color: #F0F2EF;
     margin: 6px;
     margin-left: 0px;
@@ -87,7 +87,7 @@ footer>section.contacts ul {
 
 footer>section.contacts ul li {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: #F0F2EF;
     align-items: center;
     justify-content: center;
@@ -96,7 +96,7 @@ footer>section.contacts ul li {
 
 footer>section.contacts ul li>img {
     display: inline-block;
-    height: 10px;
+    height: 12px;
     margin-right: 8px;
     vertical-align: middle;
 }
@@ -108,7 +108,7 @@ footer>section.credits ul li {
 
 footer>section.credits a {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 6px;
+    font-size: 10px;
     color: #F0F2EF;
 }
 
@@ -1025,13 +1025,14 @@ main.login-form h1 {
 }
 
 main.login-form p {
-    padding: 5px;
     background-color: #F0F2EF;
-    color: #3F413E;
-    border: 2px solid #AC5411;
-    border-radius: 8px;
-
-    font-weight: bolder;
+    color: #AC5411;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px 25px;
+    border-radius: 4px;
+    box-shadow: 3px 3px 1px #AC5411;
+    margin-bottom: 30px;
 }
 
 main.login-form>section {
@@ -1629,7 +1630,7 @@ main.notification ul li img.hidden{
         min-height: 280px;
     }
 
-    /*INIZIO FOOTER DESKTOP*/
+    /*FINE FOOTER DESKTOP*/
 
     /* INIZIO NAV VERSIONE DESKTOP */
     nav.main-nav {
