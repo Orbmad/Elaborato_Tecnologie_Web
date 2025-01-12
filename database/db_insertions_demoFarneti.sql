@@ -84,11 +84,11 @@ VALUES
 -- Inserimento gruppi --
 INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo)
 VALUES
-('Cactus Lovers', 'Un gruppo dedicato agli amanti dei cactus e delle piante grasse. Condividiamo consigli su cura, propagazione e specie rare.'),
-('Orchidee Passione', 'Per chi è appassionato di orchidee! Qui discutiamo di varietà, fertilizzazione e tecniche di coltivazione per fiori spettacolari.'),
-('Erbe Aromatiche', 'Unisciti a noi per scoprire il magico mondo delle erbe aromatiche, dalla coltivazione alla loro trasformazione in cucina.'),
 ('Foresta Urbana', 'Amanti delle piante da interno? Questo è il posto giusto per esplorare come creare una foresta urbana nella propria casa.'),
-('Piante Acquatiche', 'Uno spazio per gli appassionati di piante acquatiche. Condividiamo informazioni su acquari, stagni e sistemi idroponici.');
+('Piante Acquatiche', 'Esplora il mondo delle piante acquatiche, ideali per acquari, laghetti e giardini d’acqua. Scopri quali specie scegliere e come prendersene cura.'),
+('Piante da Cucina', 'Scopri le piante utili in cucina: erbe aromatiche, piante officinali e ortaggi per coltivare sapore e salute direttamente a casa tua.'),
+('Vasi e Arredamento', 'Idee e consigli per utilizzare vasi e piante come elementi decorativi per arricchire l’estetica degli interni ed esterni della tua casa.'),
+('Fiori Ornamentali', 'Una guida sui fiori ornamentali più belli e profumati per il giardino e gli spazi interni, con suggerimenti su cura e design.');
 
 -- Inserimento utenti --
 INSERT INTO Utenti (email, nome, cognome, password_hash, admin_flag)

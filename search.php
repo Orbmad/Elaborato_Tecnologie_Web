@@ -14,7 +14,7 @@ if(isset($_GET['sottocategoriaSelezionata'])){
     $templateParams["searchedCategory"] = str_replace(' ','',$_GET['categoriaSelezionata']);
     $templateParams["searchResults"] = $dbh->searchProductByName("");
 }else if(isset($_GET['gruppoSelezionato'])){
-    $templateParams["searchedGroup"] = str_replace(' ','',$_GET['gruppoSelezionato']);
+    $templateParams["searchedGroup"] = $_GET['gruppoSelezionato'];
     $templateParams["searchResults"] = $dbh->searchProductByName("");
 }else if (isset($_GET['fastSearch'])) {
     $templateParams["searchedWord"] = $_GET['fastSearch'];
