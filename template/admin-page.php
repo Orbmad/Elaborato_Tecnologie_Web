@@ -5,19 +5,22 @@
         <?php if(isset($_SESSION["errore"])):?>
             <p><?php echo $_SESSION["errore"]; ?></p>
         <?php endif; ?>
+        <?php if(isset($_SESSION["msg"])): ?>
+            <p><?php echo $_SESSION["msg"]; ?></p>
+        <?php endif; ?>
 
         <ul>
             <li>
-                <button type="button">Inserisci prodotto</button>
+                <button class="inserisci-prodotto" type="button">Inserisci prodotto</button>
             </li>
             <li>
-                <button type="button">Crea gruppo</button>
+                <button class="crea-gruppo" type="button">Crea gruppo</button>
             </li>
             <li>
-                <button type="button">Inserisci in gruppo</button>
+                <button class="inserisci-in-gruppo" type="button">Inserisci in gruppo</button>
             </li>
             <li>
-                <button type="button">Rimuovi da gruppo</button>
+                <button class="rimuovi-da-gruppo" type="button">Rimuovi da gruppo</button>
             </li>
         </ul>
     </section>
@@ -25,67 +28,64 @@
     <section class="inserisci-prodotto hidden">
         <h1>Inserisci prodotto</h1>
 
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+            <input type="hidden" name="queryType" value="inserisciprodotto" />
             <ul>
                 <li>
-                    <label for="nome_prodotto"></label>
+                    <label for="nome_prodotto">Nome prodotto:</label>
                     <input type="text" id="nome_prodotto" name="nome_prodotto" />
                 </li>
                 <li>
-                    <label for="prezzo"></label>
+                    <label for="prezzo">Prezzo:</label>
                     <input type="text" id="prezzo" name="prezzo" />
                 </li>
                 <li>
                     <!--Considera menu a tendina-->
-                    <label for="nome_sottocategoria"></label>
+                    <label for="nome_sottocategoria">Sottocategoria:</label>
                     <input type="text" id="nome_sottocategoria" name="nome_sottocategoria" />
                 </li>
                 <li>
-                    <label for="stock"></label>
+                    <label for="stock">Stock:</label>
                     <input type="text" id="stock" name="stock" />
                 </li>
                 <li>
-                    <label for="nome_volgare"></label>
+                    <label for="nome_volgare">Nome volgare:</label>
                     <input type="text" id="nome_volgare" name="nome_volgare" />
                 </li>
                 <li>
-                    <label for="nome_scientifico"></label>
+                    <label for="nome_scientifico">Nome Scientifico:</label>
                     <input type="text" id="nome_scientifico" name="nome_scientifico" />
                 </li>
                 <li>
-                    <label for="famiglia"></label>
+                    <label for="famiglia">Famiglia:</label>
                     <input type="text" id="famiglia" name="famiglia" />
                 </li>
                 <li>
-                    <label for="famiglia"></label>
-                    <input type="text" id="famiglia" name="famiglia" />
-                </li>
-                <li>
-                    <label for="genere"></label>
+                    <label for="genere">Genere:</label>
                     <input type="text" id="genere" name="genere" />
                 </li>
                 <li>
-                    <label for="specie"></label>
+                    <label for="specie">Specie:</label>
                     <input type="text" id="specie" name="specie" />
                 </li>
                 <li>
-                    <label for="profumo"></label>
+                    <label for="profumo">Profumo:</label>
                     <input type="text" id="profumo" name="profumo" />
                 </li>
                 <li>
-                    <label for="tipologia_foglia"></label>
+                    <label for="tipologia_foglia">Tipologia foglia:</label>
                     <input type="text" id="tipologia_foglia" name="tipologia_foglia" />
                 </li>
                 <li>
-                    <label for="colore_foglia"></label>
+                    <label for="colore_foglia">Colore foglia:</label>
                     <input type="text" id="colore_foglia" name="colore_foglia" />
                 </li>
                 <li>
-                    <label for="dimensioni"></label>
+                    <label for="dimensioni">Dimensioni</label>
                     <input type="text" id="dimensioni" name="dimensioni" />
                 </li>
                 <li>
-                    <label for="descrizione"></label>
+                    <label for="descrizione">Descrizione:</label>
                     <input type="text" id="descrizione" name="descrizione" />
                 </li>
                 <li>
@@ -98,14 +98,15 @@
 
     <section class="crea-gruppo hidden">
         <h1>Crea gruppo</h1>
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+            <input type="hidden" name="queryType" value="creagruppo" />
             <ul>
                 <li>
-                    <label for="nomeGruppo"></label>
+                    <label for="nomeGruppo">Nome gruppo:</label>
                     <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>
-                    <label for="descrizioneGruppo"></label>
+                    <label for="descrizioneGruppo">Descrizione gruppo:</label>
                     <input type="text" id="descrizioneGruppo" name="descrizioneGruppo" />
                 </li>
                 <li>
@@ -117,15 +118,16 @@
 
     <section class="inserisci-in-gruppo hidden">
         <h1>Inserisci in gruppo</h1>
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+            <input type="hidden" name="queryType" value="inserisciingruppo" />
             <ul>
                 <li>
-                    <label for="nome_prodotto"></label>
-                    <input type="text" id="nome_prodotto" name="nomeGruppo" />
+                    <label for="nome_prodotto">Nome gruppo:</label>
+                    <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>
-                    <label for="nomeGruppo"></label>
-                    <input type="text" id="nomeGruppo" name="nomeGruppo" />
+                    <label for="nomeGruppo">Nome prodotto:</label>
+                    <input type="text" id="nomeProdotto" name="nomeProdotto" />
                 </li>
                 <li>
                     <input type="submit" name="submit" value="Conferma"/>
@@ -136,14 +138,15 @@
 
     <section class="rimuovi-da-gruppo hidden">
         <h1>Inserisci in gruppo</h1>
-        <form action="#" method="$_GET">
+        <form action="./utils/api-admin.php" method="GET">
+        <input type="hidden" name="queryType" value="rimuovidagruppo" />
             <ul>
                 <li>
-                    <label for="nome_prodotto"></label>
-                    <input type="text" id="nome_prodotto" name="nomeGruppo" />
+                    <label for="nome_prodotto">Nome prodotto:</label>
+                    <input type="text" id="nomeProdotto" name="nomeProdotto" />
                 </li>
                 <li>
-                    <label for="nomeGruppo"></label>
+                    <label for="nomeGruppo">Nome gruppo:</label>
                     <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>

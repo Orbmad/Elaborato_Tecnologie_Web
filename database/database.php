@@ -508,7 +508,7 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_utente)
+    public function checkIfAMessageWasRead($messaggio, $id_utente)
     {
         $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ?");
         $stmt->bind_param('ss', $id_utente, $messaggio);
