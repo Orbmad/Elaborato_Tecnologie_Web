@@ -1126,6 +1126,11 @@ main.login-form > section > form > ul > li > button {
     text-overflow: ellipsis;
 } 
 
+main.login-form > section > form > ul > li > input[type="submit"]:hover,
+main.login-form > section > form > ul > li > button:hover {
+    scale: 1.1;
+}
+
 /*inizio sezione signup*/
 
 main.login-form>section.hidden {
