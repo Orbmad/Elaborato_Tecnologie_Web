@@ -70,7 +70,7 @@ footer section.credits ul {
 footer>section.credits h1,
 footer>section.contacts h1 {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 18px;
+    font-size: 22px;
     color: #F0F2EF;
     margin: 6px;
     margin-left: 0px;
@@ -87,7 +87,7 @@ footer>section.contacts ul {
 
 footer>section.contacts ul li {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 12px;
+    font-size: 16px;
     color: #F0F2EF;
     align-items: center;
     justify-content: center;
@@ -95,8 +95,8 @@ footer>section.contacts ul li {
 }
 
 footer>section.contacts ul li>img {
-    display: inline-block;
-    height: 12px;
+    display: inline;
+    height: 14px;
     margin-right: 8px;
     vertical-align: middle;
 }
@@ -108,7 +108,7 @@ footer>section.credits ul li {
 
 footer>section.credits a {
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 10px;
+    font-size: 12px;
     color: #F0F2EF;
 }
 
@@ -1696,6 +1696,21 @@ main.notification ul li img.hidden{
     /*Fine regole lista suggerimenti desktop*/
 
     /*Inizio menu categorie desktop*/
+    nav.main-nav.closed-nav > ul.categories > li,
+    nav.main-nav.opened-nav > ul.categories > li {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    nav.main-nav.closed-nav > ul.categories > li > button.category-button,
+    nav.main-nav.opened-nav > ul.categories > li > button.category-button {
+        padding: 0px 6px;
+
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     nav.main-nav.closed-nav button.menu-icon {
         display: none;
     }
@@ -1716,14 +1731,13 @@ main.notification ul li img.hidden{
         margin-right: auto;
 
         display: flex;
-        flex-wrap: nowrap;
         overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     nav.main-nav.closed-nav ul.categories>li {
         height: 96%;
-        padding-right: 12px;
-        padding-left: 12px;
+        padding: 0px;
 
         align-items: center;
         justify-content: center;
@@ -1739,14 +1753,10 @@ main.notification ul li img.hidden{
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
-        font-size: 18px;
+        font-size: 22px;
 
         padding: 0%;
         height: 100%;
-
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
     }
 
     nav.main-nav.closed-nav>ul.categories>li button.category-button:hover {
@@ -1770,11 +1780,20 @@ main.notification ul li img.hidden{
         height: auto;
     }
 
+    nav.main-nav > ul.categories > li {
+        padding: 0px;
+        border-right: solid 1px #F0F2EF;
+    }
+
+    nav.main-nav ul.categories li:last-child {
+        border-style: none;
+    }
+
     nav.main-nav.opened-subcategories ul.categories button.category-button {
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
-        font-size: 18px;
+        font-size: 22px;
 
         padding: 0%;
         height: 73px;
@@ -1805,9 +1824,12 @@ main.notification ul li img.hidden{
         background-color: #082D0F;
         color: #F0F2EF;
         border: none;
-        font-size: 15px;
+        font-size: 18px;
         width: 100%;
         text-align: left;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button:hover {
