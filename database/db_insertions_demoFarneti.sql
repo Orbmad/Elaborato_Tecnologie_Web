@@ -104,9 +104,6 @@ INSERT INTO Carrello (id_utente,id_prodotto,quantita)
 VALUES 
 ('michele.farneti23@gmail.com','Adiantum hispidulum',2), 
 ('michele.farneti23@gmail.com','Beaucarnea recurvata',2);
-('mariorossi@gmail.com', 'Mario', 'Rossi', SH2('Mar1oRoss!', 256), 0),
-('giannimorandi@libero.it', 'Gianni', 'Morandi', SH2('Gianni', 256), 0),
-('admin', 'admin', 'admin', SH2('admin', 256), 1);
 
 -- inserimento delle recensioni --
 INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento, data_recensione)
