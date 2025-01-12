@@ -127,7 +127,7 @@ class DatabaseHelper
      */
     public function getProductsAttributesValues()
     {
-        $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia", "voto");
+        $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia");
         $results = [];
 
         foreach ($attributes as $attribute) {
@@ -143,15 +143,16 @@ class DatabaseHelper
             $results[$attribute] = $valuesList;
         }
 
-        $stmt = $this->db->prepare("SELECT DISTINCT nomeGruppo FROM Gruppi");
+        $stmt = $this->db->prepare("SELECT DISTINCT nomeGruppo as nome_gruppo FROM Gruppi");
         $stmt->execute();
         $result = $stmt->get_result();
         $values = $result->fetch_all(MYSQLI_ASSOC);
         $valuesList = [];
         foreach ($values as $row) {
-            $valuesList[] = $row['nomeGruppo'];
+            $valuesList[] = $row['nome_gruppo'];
         }
-        $results['nomeGruppo'] = $valuesList;
+        $valuesList[] = "Nessuno";
+        $results['nome_gruppo'] = $valuesList;
         return $results;
     }
 
@@ -166,6 +167,30 @@ class DatabaseHelper
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getProductGroups($nomeProdotto)
+    {
+        $stmt = $this->db->prepare("SELECT gruppi.nomeGruppo 
+                            FROM `prodotti` 
+                            INNER JOIN appartenenze ON prodotti.nome_prodotto = appartenenze.id_prodotto 
+                            INNER JOIN gruppi ON gruppi.nomeGruppo = appartenenze.id_gruppo 
+                            WHERE nome_prodotto = ?");
+        $stmt->bind_param('s',$nomeProdotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Verifica se ci sono righe nel risultato
+        if ($result->num_rows === 0) {
+            $result = "Nessuno";
+        } else {
+            $rows = $result->fetch_all(MYSQLI_ASSOC);
+            $gruppi= array_map(function ($row) {
+                return str_replace(' ', '', $row['nomeGruppo']);
+            }, $rows);
+            $result = implode(' ', $gruppi);
+        }
+        return $result;
     }
 
     public function getBestProducts($n)

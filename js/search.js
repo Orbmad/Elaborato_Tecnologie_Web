@@ -69,7 +69,7 @@ filtersForm.addEventListener('reset',function(){
 });
 
 function resetFilters(){
-    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(2).filter-checkbox > ul > li > input[type='checkbox']");
+    const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > input[type='checkbox']");
     checkCategories.forEach(function(checkBox){
         if(!checkBox.checked){
             const parent = checkBox.closest("li");
@@ -97,6 +97,7 @@ function applyFilters(){
     const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)).filter-checkbox > ul > li > input[type='checkbox']");
     shownProducts.forEach(function(product) {
         let isHidden = false;
+        let isShown = true;
         checkBoxes.forEach(function(checkBox) {
             if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
                 isHidden = true;
@@ -112,13 +113,18 @@ function applyFilters(){
         if(parseFloat(product.classList[0])<parseFloat(minRangeInput.value) || parseFloat(product.classList[0])>parseFloat(maxRangeInput.value) || parseInt(product.classList[1])<parseInt(minRatingInput.value)){
             isHidden=true;
         }
-        if (isHidden) {
+        if (isHidden || !isShown) {
             product.classList.add('hidden');
         } else {
             product.classList.remove('hidden');
         }
         
-    });
+    });   
 }
 
-applyFilters();
+window.addEventListener('load', function () {
+    // Chiama la funzione di reset una sola volta con un ritardo di 500 millisecondi
+    setTimeout(function () {
+        resetFilters();
+    }, 1);
+});
