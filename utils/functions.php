@@ -53,6 +53,24 @@ function generateProductBox($productInfo)
     return $productBox;
 }
 
+
+function generateCAtegoryBox($categoryInfo)
+{
+    $categoryBox = "
+        <li>
+            <img src=\"upload/categorie/" . $categoryInfo["nome_categoria"] . ".jpg\" alt='" . $categoryInfo['nome_categoria'] . " image' />
+            <section>
+                <form action='search.php' method='GET'>
+                    <input type='text' name='categoriaSelezionata' value='" . $categoryInfo["nome_categoria"] . "' readonly />
+                    <input type='submit' value='SCOPRI' />
+                </form>
+            </section>
+        </li>
+    ";
+
+    return $categoryBox;
+}
+
 /**
  * Register the user in the current session.
  */

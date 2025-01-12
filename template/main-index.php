@@ -19,29 +19,17 @@
     <section class="best-products">
         <h2>I migliori prodotti...</h2>
         <ul class="search-results-list">
-            <?php
-            foreach ($templateParams["searchResults"] as $result) {
+            <?php foreach ($templateParams["searchResults"] as $result) {
                 echo generateProductBox($result);
-            }
-            ?>
+            } ?>
         </ul>
     </section>
     <section class="main-categories-blocks">
         <h2>Le categorie...</h2>
         <ul>
-            <?php foreach ($templateParams["randomCategories"] as $category): ?>
-                <li>
-                    <img src="upload/categorie/<?php echo $category["nome_categoria"] ?>.jpg"
-                        alt="<?php echo $category["nome_categoria"] ?> image" />
-                    <section>
-                        <form action="search.php" method="GET">
-                            <input type="text" name="categoriaSelezionata" value="<?php echo $category["nome_categoria"] ?>"
-                                readonly />
-                            <input type="submit" value="SCOPRI" />
-                        </form>
-                    </section>
-                </li>
-            <?php endforeach; ?>
+            <?php foreach ($templateParams["randomCategories"] as $category) {
+                echo generateCAtegoryBox($category);
+            } ?>
         </ul>
     </section>
     <main>

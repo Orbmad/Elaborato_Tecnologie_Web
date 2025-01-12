@@ -81,13 +81,15 @@ VALUES
     ('Piante non Pet Friendly', 'Codonanthe crassifolia', 34.20 ,6, 'non specificato', 'Codonanthe crassifolia', 'Gesneriaceae', 'Codonanthe', ' C. crassifolia', '10 - 20 cm', 'Non profumata', 'Sempreverde', 'Verde', 'La pianta di Codonanthe crassifolia è una pianta d’appartamento che appartiene alla famiglia delle Gesneriaceae e che genera fusti prostrati e radicanti nei nodi, oppure penduli. Sviluppa foglie da ellittiche a ovate, cerose, di colore verde da medio a cupo, lunghe 5 cm o più, con ghiandole rosse sulla pagina inferiore. Dalla primavera all’estate produce cime ascellari di 1-4 fiori bianchi, lunghi 2-2,5 cm, con gola gialla. Predilige un’esposizione luminosa, schermata nei mesi/ore di forte insolazione. '),
     ('Vasi e fioriere', 'Vaso VIBES FOLD COUPE', 10.80 ,6, 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'Ø 14', 'non specificato', 'non specificato', 'non specificato', 'Adatto per interni dal moderno motivo decorativo si inserisce perfettamente negli ambienti accoglienti, alla moda e simpatici. Vibes Fold Coupe è una nuova famiglia di vasi per interni, che aumentano le vibrazioni positive di un ambiente accogliente, armonioso, alla moda e simpatico. Ha forma rotonda e organica e i suoi colori tenui e il motivo decorativo mettono in massima evidenza la bellezza delle tue piante d’appartamento. Prodotto con plastica riciclata, prodotto grazie alla nostra turbina eolica, 100% riciclabile. Disponibile in diversi colori di tendenza. Non scolorisce, è facile da pulire e a prova d’urto.');
 
+
+
 -- Inserimento gruppi --
 INSERT INTO Gruppi (nomeGruppo, descrizioneGruppo)
 VALUES
 ('Foresta Urbana', 'Amanti delle piante da interno? Questo è il posto giusto per esplorare come creare una foresta urbana nella propria casa.'),
 ('Piante Acquatiche', 'Esplora il mondo delle piante acquatiche, ideali per acquari, laghetti e giardini d’acqua. Scopri quali specie scegliere e come prendersene cura.'),
 ('Piante da Cucina', 'Scopri le piante utili in cucina: erbe aromatiche, piante officinali e ortaggi per coltivare sapore e salute direttamente a casa tua.'),
-('Vasi e Arredamento', 'Idee e consigli per utilizzare vasi e piante come elementi decorativi per arricchire l’estetica degli interni ed esterni della tua casa.'),
+('Decorazioni', 'Idee per utilizzare vasi e piante come elementi decorativi per arricchire l’estetica degli interni ed esterni della tua casa.'),
 ('Fiori Ornamentali', 'Una guida sui fiori ornamentali più belli e profumati per il giardino e gli spazi interni, con suggerimenti su cura e design.');
 
 -- Inserimento utenti --
@@ -117,4 +119,18 @@ VALUES
 INSERT INTO Notifiche (id_utente, data_notifica, messaggio)
 VALUES
 ('gino.pino@gmail.com', '2025-01-11', 'Il pacco è in consegna, ci scusiamo per il ritardo'),
-('gino.pino@gmail.com', '2025-01-11', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.')
+('gino.pino@gmail.com', '2025-01-11', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.');
+
+-- insermento appartenenze ai gruppi --
+INSERT INTO Appartenenze (id_gruppo, id_prodotto)
+VALUES
+('Foresta Urbana','Adiantum hispidulum'),
+('Foresta Urbana','Vaso VIBES FOLD COUPE'),
+('Foresta Urbana','Beaucarnea recurvata'),
+('Piante da Cucina','Maggiorana'),
+('Piante da Cucina','Goji rosso'),
+('Piante da Cucina','Smallanthus sonchifolius'),
+('Decorazioni','Vaso VIBES FOLD COUPE'),
+('Fiori Ornamentali','Adiantum hispidulum'),
+('Fiori Ornamentali','Goji rosso'),
+('Piante Acquatiche','Iris pseudacorus');
