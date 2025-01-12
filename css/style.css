@@ -1316,14 +1316,15 @@ main ul.search-results-list>li>a span {
 /*Fine regole main pagine search mobile*/
 
 /* inizio regole carrello mobile*/
-main.main-cart {
+main.main-cart ,main.main-order-recap {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100%;
 }
 
-main.main-cart>section.cart-products {
+main.main-cart>section.cart-products, main.main-order-recap >section.order-recap, main.main-order-recap >section.order-form-sec {
     width: 90%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -1348,12 +1349,39 @@ main.main-cart>section.cart-products>section.cart-header>h2 {
 }
 
 
-main.main-cart>section.cart-products>ul>li {
+main.main-cart>section.cart-products>ul>li , main.main-order-recap >section.order-recap>ul >li {
     border-top: 1px solid #082D0F;
     padding-top: 15px;
     padding-bottom: 15px;
     display: flex;
     flex-direction: row;
+}
+
+main.main-order-recap >section.order-recap>ul >li{
+    align-items: center;
+    display: flex ;
+    flex-direction: row;
+    padding: 5px 20px;
+}
+
+
+main.main-order-recap >section.order-recap>ul >li > p{
+    margin-left: auto;
+    display: flex;
+}
+
+main.main-order-recap >section.order-recap>section.order-recap-total{
+    border-top: 1px solid #082D0F;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+main.main-order-recap >section.order-recap>section.order-recap-total >p{
+    display: flex;
+    margin-left: auto;
+    text-decoration: underline;
+    font-weight: bold;
 }
 
 main.main-cart>section.cart-products>ul>li:last-of-type {
@@ -1393,6 +1421,12 @@ main.main-cart>section.cart-products>section.cart-header>input:active {
 main.main-cart>section.cart-products>ul>li>img {
     width: 80px;
     height: 80px;
+    margin-right: 20px;
+}
+
+main.main-order-recap>section.order-recap>ul>li>img {
+    width: 30px;
+    height: 30px;
     margin-right: 20px;
 }
 
