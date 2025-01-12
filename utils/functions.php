@@ -173,6 +173,7 @@ function numberOfMessagesNotRead($dbh)
  * Uploads an image in local directory.
  */
 function uploadImage($path, $image, $newFileName) {
+    $newFileName = preg_replace("/[^a-zA-Z0-9_-]/", "", $newFileName);
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
 
@@ -195,15 +196,15 @@ function uploadImage($path, $image, $newFileName) {
     //Controllo l'estensione del file
     $imageFileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
     if(!in_array($imageFileType, $acceptedExtensions)){
-        $msg .= "Errore: estensione della immagine non supportata";
+        $msg = "Errore: estensione della immagine non supportata";
         return array($result, $msg);
     }
     //Rinomino il file
-    $fullPath = $path.$newFileName.$imageFileType;
+    $fullPath = $path.$newFileName.".".$imageFileType;
 
     //Carico il file nella directory (Se già presente viene sovrascritto)
     if (!move_uploaded_file($image["tmp_name"], $fullPath)) {
-        $msg = "Errore: impossibile caricare l'immagine";
+        $msg = "Errore: impossibile caricare l'immagine in: ".$fullPath." --> tmp: ".$image["tmp_name"]." >Error: ".$image["error"];
         return array($result, $msg);
     } else {
         $result = true;

@@ -6,16 +6,16 @@ unset($_SESSION["errore"]);
 
 if (!(isset($_POST["queryType"]))) {
     $_SESSION["errore"] = "Errore nell'operazione effettuata, parametri non ricevuti".$_POST["queryType"];
-} else if ($_POST["queryType"] == "inserisciprodotto") {
+} else if ($_POST["queryType"] == "inserisciprodotto" && isset($_FILES["immagine"])) {
     //Inserimento prodotto
-    list($result, $msg) = uploadImage("upload/prodotti/", $_FILES["immagine"], $_POST["nome_prodotto"]);
+    list($result, $msg) = uploadImage("../upload/prodotti/", $_FILES["immagine"], $_POST["nome_prodotto"]);
     if (!$result) {
         $_SESSION["errore"] = $msg;
     } else {
         if ($dbh->insertNewProduct(
             $_POST["nome_prodotto"],
             $_POST["prezzo"],
-            $_POST["id_sottocategoria"],
+            $_POST["nome_sottocategoria"],
             $_POST["stock"],
             $_POST["nome_volgare"],
             $_POST["nome_scientifico"],
@@ -33,9 +33,9 @@ if (!(isset($_POST["queryType"]))) {
             $_SESSION["errore"] = "Errore inserimento prodotto";
         }
     }
-} else if ($_POST["queryType"] == "creagruppo") {
+} else if ($_POST["queryType"] == "creagruppo" /*&& isset($_FILES["immagine"])*/) {
     //Creazione gruppo
-    list($result, $msg) = uploadImage("upload/prodotti/", $_FILES["immagine"], $_POST["nomeGruppo"]);
+    list($result, $msg) = uploadImage("../upload/gruppi/", $_FILES["immagine"], $_POST["nomeGruppo"]);
     if (!$result) {
         $_SESSION["errore"] = $msg;
     } else {
