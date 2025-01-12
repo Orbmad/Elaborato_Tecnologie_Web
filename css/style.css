@@ -585,8 +585,8 @@ main.admin-page section form ul li:nth-last-child(2) {
     margin-top: 25px;
 }
 
-main.admin-page section ul li input {
-    width: 50%;
+main.admin-page > section > form > ul > li > input {
+    width: 40%;
     height: 26px;
     border-radius: 7px;
     border: solid 1px #3F413E;
