@@ -98,7 +98,8 @@ VALUES
 ('mariorossi@gmail.com', 'Mario', 'Rossi', SHA2('Mar1oRoss!', 256), 0),
 ('giannimorandi@libero.it', 'Gianni', 'Morandi', SHA2('Gianni', 256), 0),
 ('admin', 'admin', 'admin', SHA2('admin', 256), 1),
-('michele.farneti23@gmail.com', 'Michele', 'Farneti', SHA2('1', 256), 0);
+('michele.farneti23@gmail.com', 'Michele', 'Farneti', SHA2('1', 256), 0),
+('gino.pino@gmail.com', 'Gino', 'Pino', SHA2('1', 256), 0);
 
 INSERT INTO Carrello (id_utente,id_prodotto,quantita) 
 VALUES 

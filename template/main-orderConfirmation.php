@@ -14,7 +14,7 @@
                         <h3>
                             <?php echo $cartProduct["nome_prodotto"] ?>
                         </h3>
-                        <p>Quantità : <?php echo $cartProduct["quantita"] ?></p>
+                        <p>Qt : <?php echo $cartProduct["quantita"] ?></p>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -31,15 +31,34 @@
         <section class="order-form-sec">
             <h2>Indirizzo di spedizione</h2>
             <form>
-                <label for="addr-via">Via</label><br>
-                <input type="text" id="addr-via" name="addr-via" required/>
-                <label for="addr-citta">Città</label><br>
-                <input type="text" id="addr-citta" name="addr-citta"  required/>
-                <label for="addr-cap">Cap</label><br>
-                <input type="text" id="addr-cap" name="addr-cap" maxlength="5" pattern="[0-9]{5}" required />
-                <label for="addr-nazione">Nazione</label><br>
-                <input type="text" id="addr-nazione" name="addr-nazione" />
-                
+                <ul>
+                    <li>
+                        <label for="addr-via">Via</label>
+                        <input type="text" id="addr-via" name="addr-via" required />
+                    </li>
+                    <li>
+                        <label for="addr-citta">Città</label>
+                        <input type="text" id="addr-citta" name="addr-citta" required />
+                    </li>
+                    <li>
+                        <label for="addr-cap">Cap</label>
+                        <input type="text" id="addr-cap" name="addr-cap" maxlength="5" pattern="[0-9]{5}" required />
+                    </li>
+                    <li>
+                        <label for="addr-nazione">Nazione</label>
+                        <select class="form-select" autocomplete="nazione" id="addr-nazione" name="nazione">
+                            <option value="IT">Italia</option>
+                            <option value="SM">San Marino</option>
+                            <option value="CH">Svizzera</option>
+                            <option value="VA">Cittá del vaticano</option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="addr-save">Desideri salvare l'indirizzo?</label>
+                        <input type="checkbox"  id="addr-save" name="addr-save">
+                    </li>
+                </ul>
+                <input type="button" value="Seleziona indirizzo"/>
             </form>
         </section>
         <section class="order-form-sec">
