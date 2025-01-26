@@ -173,7 +173,7 @@ function numberOfMessagesNotRead($dbh)
  * Uploads an image in local directory.
  */
 function uploadImage($path, $image, $newFileName) {
-    $newFileName = preg_replace("/[^a-zA-Z0-9_-]/", "", $newFileName);
+    //$newFileName = preg_replace("/[^a-zA-Z0-9_-]/", "", $newFileName);
     $imageName = basename($image["name"]);
     $fullPath = $path.$imageName;
 
