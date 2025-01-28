@@ -1,4 +1,7 @@
 <?php
+
+use LDAP\Result;
+
 class DatabaseHelper
 {
     private $db;
@@ -176,7 +179,7 @@ class DatabaseHelper
                             INNER JOIN appartenenze ON prodotti.nome_prodotto = appartenenze.id_prodotto 
                             INNER JOIN gruppi ON gruppi.nomeGruppo = appartenenze.id_gruppo 
                             WHERE nome_prodotto = ?");
-        $stmt->bind_param('s',$nomeProdotto);
+        $stmt->bind_param('s', $nomeProdotto);
         $stmt->execute();
         $result = $stmt->get_result();
 
@@ -185,7 +188,7 @@ class DatabaseHelper
             $result = "Nessuno";
         } else {
             $rows = $result->fetch_all(MYSQLI_ASSOC);
-            $gruppi= array_map(function ($row) {
+            $gruppi = array_map(function ($row) {
                 return str_replace(' ', '', $row['nomeGruppo']);
             }, $rows);
             $result = implode(' ', $gruppi);
@@ -285,7 +288,6 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
-
     }
 
     public function changeCartProductQt($email, $productId, $product_qt)
@@ -300,7 +302,6 @@ class DatabaseHelper
 
         $stmt->execute();
         $stmt->close();
-
     }
 
     /**
@@ -505,13 +506,15 @@ class DatabaseHelper
         }
     }
 
-    /*Insert the new item in the cart of the user or add quantity*/
+    /**
+     * Insert the new item in the cart of the user or add quantity
+     */
     public function addToCart($idprodotto, $quantità, $id_utente)
     {
         $quant = $this->checkElementInCart($idprodotto, $id_utente);
-        if($quant > 0){
+        if ($quant > 0) {
             $stmt = $this->db->prepare("UPDATE Carrello SET quantita = ? WHERE id_utente = ? AND id_prodotto = ?");
-            $quantità += $quant; 
+            $quantità += $quant;
             $stmt->bind_param('iss', $quantità, $id_utente, $idprodotto);
             $stmt->execute();
         } else {
@@ -519,10 +522,11 @@ class DatabaseHelper
             $stmt->bind_param('ssi', $id_utente, $idprodotto, $quantità);
             $stmt->execute();
         }
-
     }
 
-    /*Get the notifications of a user*/
+    /**
+     * Get the notifications of a user
+     */
     public function getNotificationOfAUser($id_utente)
     {
         $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio FROM Notifiche WHERE id_utente = ?");
@@ -531,6 +535,60 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    //Inizio Queries Ausilio notifiche
+
+    /**
+     * Creates a notification
+     */
+    public function newNotification($id_utente, $testo)
+    {
+        $query = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES (?, ?)";
+
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('ss', $id_utente, $testo);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the users that have a certain product in their cart
+     */
+    public function getUsersWithProductInCart($nome_prodotto)
+    {
+        $query = "SELECT U.email
+                FROM  Carrello C
+                JOIN Utenti U ON C.id_utente = U.email
+                WHERE C.id_prodotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $nome_prodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Add notifications to Admin
+     */
+    public function newAdminNotification($testo)
+    {
+        $query = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES ('admin', ?)";
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s', $testo);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
     }
 
     public function checkIfAMessageWasRead($messaggio, $id_utente)
@@ -543,13 +601,10 @@ class DatabaseHelper
         return ($cont > 0);
     }
 
-    /*public function ciao(){
-        return "ciao()";
-    }*/
-
-    public function changeStateOfAMessage($messaggio, $id_utente){
+    public function changeStateOfAMessage($messaggio, $id_utente)
+    {
         echo $messaggio;
-        if($this->checkIfAMessageWasRead($messaggio, "" ,$id_utente)){
+        if ($this->checkIfAMessageWasRead($messaggio, "", $id_utente)) {
             $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
             $stmt->bind_param('ss', $id_utente, $messaggio);
             $stmt->execute();
@@ -566,4 +621,6 @@ class DatabaseHelper
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
         return $cont;
     }
+
+    //Fine queries ausilio notifiche
 }
