@@ -96,6 +96,7 @@ CREATE TABLE Ordini (
     id_utente VARCHAR(50) NOT NULL,
     id_metodo INT NOT NULL,
     id_indirizzo INT NOT NULL,
+    stato_ordine VARCHAR(100) DEFAULT 'in attesa',
     data_ordine TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     totale DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (id_utente) REFERENCES Utenti(email) ON DELETE CASCADE,
