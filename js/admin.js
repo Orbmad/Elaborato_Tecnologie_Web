@@ -32,6 +32,22 @@ document.querySelector("main.admin-page section.default button.rimuovi-da-gruppo
     section.classList.remove("hidden");
 })
 
+//Bottone modifica ordine
+document.querySelector("main.admin-page section.default button.modifica-stato-ordine").addEventListener('click', function() {
+    const section = document.querySelector("main.admin-page section.modifica-stato-ordine");
+
+    defaultSection.classList.add("hidden");
+    section.classList.remove("hidden");
+})
+
+//Bottone invia notifica
+document.querySelector("main.admin-page section.default button.invia-notifica").addEventListener('click', function() {
+    const section = document.querySelector("main.admin-page section.invia-notifica");
+
+    defaultSection.classList.add("hidden");
+    section.classList.remove("hidden");
+})
+
 document.getElementById("fileInput-product").addEventListener("change", function() {
     let fileName = this.files.length > 0 ? this.files[0].name : "Nessun file selezionato";
     document.querySelector(".file-name-product").textContent = fileName;
