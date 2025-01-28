@@ -1,0 +1,10 @@
+- Sistema design login e signup e simili
+- Aggiungi creazione di notifiche pagina admin
+- Aggiungi creazione gestione ordini pagina admin
+- Aggiungi invio notifiche agli utenti  !!!!
+- Aggiungi modifica prodotto in pagina prodotto per l'admin !!!
+
+
+- Sistema design nav
+- Verifica codice html mediante checker werehouse
+- Aggiungi nel mostra articoli vincolo 'stock > 0'

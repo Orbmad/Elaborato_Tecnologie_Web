@@ -1424,14 +1424,15 @@ main ul.search-results-list>li>a span {
 /*Fine regole main pagine search mobile*/
 
 /* inizio regole carrello mobile*/
-main.main-cart {
+main.main-cart ,main.main-order-recap {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     width: 100%;
 }
 
-main.main-cart>section.cart-products {
+main.main-cart>section.cart-products, main.main-order-recap >section.order-recap, main.main-order-recap >section.order-form-sec {
     width: 90%;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -1456,13 +1457,104 @@ main.main-cart>section.cart-products>section.cart-header>h2 {
 }
 
 
-main.main-cart>section.cart-products>ul>li {
+main.main-cart>section.cart-products>ul>li , main.main-order-recap >section.order-recap>ul >li {
     border-top: 1px solid #082D0F;
     padding-top: 15px;
     padding-bottom: 15px;
     display: flex;
     flex-direction: row;
 }
+
+main.main-order-recap >section.order-recap>ul >li{
+    align-items: center;
+    display: flex ;
+    flex-direction: row;
+    padding: 5px 20px;
+}
+
+main.main-order-recap >section.order-recap> section.order-recap-header > p {
+    margin-bottom: 10px;
+    color: #3F413E;
+}
+
+
+main.main-order-recap >section.order-recap>ul >li > p{
+    margin-left: auto;
+    display: flex;
+}
+
+main.main-order-recap >section.order-recap>section.order-recap-total{
+    border-top: 1px solid #082D0F;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+main.main-order-recap >section.order-recap>section.order-recap-total >p{
+    display: flex;
+    margin-left: auto;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li label{
+    visibility: visible;
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 2px;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li{
+    display: flex;
+    flex-direction: column;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li > input[type="text"], body > main.main-order-recap >section.order-form-sec > form > ul > li > select {
+    height: 20px;
+    padding: 0px 5px;
+    border: 1px solid #3F413E;
+    color: #3F413E;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li:first-of-type > input[type="text"] {
+    width: 200px;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li:nth-of-type(2) > input[type="text"] {
+    width: 150px;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li:nth-of-type(3) > input[type="text"] {
+    width: 40px;
+}
+
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li:last-of-type{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+    vertical-align:middle;
+    color: #3F413E;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li:last-of-type input{ 
+    margin: 0px 0px 0px 10px;
+    accent-color: #082D0F;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li:last-of-type > label{
+    margin-top: 0;
+    font-size: small;
+}
+
+body > main.main-order-recap >section.order-form-sec > form > ul > li > input{
+    display: block;
+}
+
+body > main.main-order-recap >section.order-form-sec > form{
+    width: 70%;
+}
+
 
 main.main-cart>section.cart-products>ul>li:last-of-type {
     align-items: center;
@@ -1501,6 +1593,12 @@ main.main-cart>section.cart-products>section.cart-header>input:active {
 main.main-cart>section.cart-products>ul>li>img {
     width: 80px;
     height: 80px;
+    margin-right: 20px;
+}
+
+main.main-order-recap>section.order-recap>ul>li>img {
+    width: 30px;
+    height: 30px;
     margin-right: 20px;
 }
 
@@ -1709,11 +1807,8 @@ main.notification ul li img.hidden{
 
     nav.main-nav.closed-nav > ul.categories > li > button.category-button,
     nav.main-nav.opened-nav > ul.categories > li > button.category-button {
-        padding: 0px 6px;
-
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        padding: 0px 14px;
+        white-space: wrap;
     }
 
     nav.main-nav.closed-nav button.menu-icon {
@@ -1748,9 +1843,7 @@ main.notification ul li img.hidden{
         justify-content: center;
 
         flex: 1 1 auto;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+        white-space: wrap;
         min-width: 40px;
     }
 
@@ -1759,9 +1852,12 @@ main.notification ul li img.hidden{
         color: #F0F2EF;
         border: none;
         font-size: 22px;
+        padding: 0px 12px;
 
         padding: 0%;
         height: 100%;
+
+        white-space: wrap;
     }
 
     nav.main-nav.closed-nav>ul.categories>li button.category-button:hover {
@@ -1799,9 +1895,11 @@ main.notification ul li img.hidden{
         color: #F0F2EF;
         border: none;
         font-size: 22px;
+        padding: 0px 12px;
 
         padding: 0%;
         height: 73px;
+        white-space: wrap;
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories {
