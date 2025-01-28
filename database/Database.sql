@@ -26,8 +26,7 @@ CREATE TABLE Indirizzi (
 -- Tabella metodi di pagamento
 CREATE TABLE MetodiPagamento (
     id_metodo INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_metodo VARCHAR(50) NOT NULL, -- es. "Carta di credito", "PayPal"
-    dettagli_metodo VARCHAR(255) NOT NULL -- es. numero carta
+    tipo_metodo VARCHAR(50) NOT NULL -- es. "Carta di credito", "PayPal"
 );
 
 -- Tabella categorie
