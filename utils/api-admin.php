@@ -29,6 +29,7 @@ if (!(isset($_POST["queryType"]))) {
             $_POST["descrizione"]
         )) {
             $_SESSION["msg"] = "Prodotto inserito";
+            $dbh->broadcastNotification("Controlla il nostro nuovo prodotto " . $_POST["nome_prodotto"]);
         } else {
             $_SESSION["errore"] = "Errore inserimento prodotto";
         }
@@ -67,6 +68,27 @@ if (!(isset($_POST["queryType"]))) {
         $_SESSION["msg"] = "Prodotto rimosso dal gruppo";
     } else {
         $_SESSION["errore"] = "Errore di rimozione";
+    }
+} else if ($_POST["queryType"] == "modificaordine") {
+    //Modifica ordine
+    if ($dbh->updateOrderState(
+        $_POST["id_ordine"],
+        $_POST["stato"],
+        $dbh->getUserFromOrder($_POST["id_ordine"])
+    )) {
+        $_SESSION["msg"] = "Stato ordine aggiornato";
+    } else {
+        $_SESSION["errore"] = "Errore di aggiornamento stato";
+    }
+} else if ($_POST["queryType"] == "invianotifica") {
+    //Invia notifica
+    if ($dbh->newNotification(
+        $_POST["email_utente"],
+        $_POST["messaggio"]
+    )) {
+        $_SESSION["msg"] = "Notifica inviata";
+    } else {
+        $_SESSION["errore"] = "Errore invio notifica";
     }
 } else {
     $_SESSION["errore"] = "Errore nell'operazione effettuata, operazione non riconosciuta";

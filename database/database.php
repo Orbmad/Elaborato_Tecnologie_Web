@@ -304,6 +304,9 @@ class DatabaseHelper
         $stmt->close();
     }
 
+
+    // INIZIO QUERY ADMIN
+
     /**
      * Insert a new product, returns true if the insertion is executed correctly.
      */
@@ -411,8 +414,11 @@ class DatabaseHelper
      */
     public function deleteProduct($nome)
     {
+        $query = "UPDATE Prodotti
+                SET stock = 0
+                WHERE nome_prodotto = ?";
         try {
-            $stmt = $this->db->prepare("DELETE FROM Prodotti WHERE nome_prodotto=?");
+            $stmt = $this->db->prepare($query);
             $stmt->bind_param('s', $nome);
             $stmt->execute();
             return true;
@@ -463,6 +469,53 @@ class DatabaseHelper
             return false;
         }
     }
+
+    /**
+     * Updates the state of an order and send a notification to the user
+     */
+    public function updateOrderState($id_ordine, $stato, $id_utente)
+    {
+        $query = "UPDATE Ordine
+                SET stato_ordine = ?
+                WHERE id_ordine = ?";
+
+        $notif = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES (?, ?)";
+
+        try {
+            $stmt_query = $this->db->prepare($query);
+            $stmt_notif = $this->db->prepare($notif);
+
+            $stmt_query->bind_param('si', $stato, $id_ordine);
+            $stmt_notif->bind_param('ss', $id_utente, "Lo stato dell'ordine " . $id_ordine . " è stato aggiornato: " . $stato);
+
+            $stmt_query->execute();
+            $stmt_notif->execute();
+
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the user from an order
+     */
+    public function getUserFromOrder($id_ordine) {
+        $query = "SELECT id_utente
+                FROM Ordini
+                WHERE id_ordine = ?";
+
+        $stmt = $this->db->prepare($id_ordine);
+        $stmt->bind_param('s', $id_ordine);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC)[0]["id_utente"];
+    }
+
+    //FINE QUERY ADMIN
 
     /**
      * Adds a review.
@@ -540,6 +593,19 @@ class DatabaseHelper
     //Inizio Queries Ausilio notifiche
 
     /**
+     * Returns all users
+     */
+    public function getAllUsers() {
+        $query = "SELECT email FROM Utenti";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
      * Creates a notification
      */
     public function newNotification($id_utente, $testo)
@@ -552,6 +618,23 @@ class DatabaseHelper
             $stmt->bind_param('ss', $id_utente, $testo);
             $stmt->execute();
             return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    public function broadcastNotification($testo) {
+        $users = $this->getAllUsers();
+        $query = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES (?, ?)";
+        
+        try {
+            $stmt = $this->db->prepare($query);
+            foreach ($users as $user) {
+                $stmt->bind_param('ss', $user["email"], $testo);
+                $stmt->execute();
+            }
+            return false;
         } catch (PDOException) {
             return false;
         }

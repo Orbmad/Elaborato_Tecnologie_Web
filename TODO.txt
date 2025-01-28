@@ -1,5 +1,3 @@
-- Aggiungi creazione di notifiche pagina admin
-- Aggiungi creazione gestione ordini pagina admin
 - Aggiungi invio notifiche agli utenti  !!!!
 - Aggiungi modifica prodotto in pagina prodotto per l'admin !!!
 

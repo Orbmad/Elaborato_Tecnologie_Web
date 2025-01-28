@@ -93,7 +93,7 @@
                     <label for="descrizione">Descrizione:</label>
                     <input type="text" id="descrizione" name="descrizione" />
                 </li>
-                <li>
+                <li class="files">
                     <!--Inserimento Immagine-->
                     <section class="file-upload">
                         <label for="fileInput-product">📁 Immagine prodotto</label>
@@ -102,6 +102,7 @@
                     </section>
                 </li>
                 <li>
+                    <a href="admin.php">Indietro</a>
                     <input type="submit" name="submit" value="Conferma" />
                 </li>
             </ul>
@@ -121,7 +122,7 @@
                     <label for="descrizioneGruppo">Descrizione gruppo:</label>
                     <input type="text" id="descrizioneGruppo" name="descrizioneGruppo" />
                 </li>
-                <li>
+                <li class="files">
                     <!--Inserimento Immagine-->
                     <section class="file-upload">
                         <label for="fileInput-group">📁 Immagine gruppo</label>
@@ -130,6 +131,7 @@
                     </section>
                 </li>
                 <li>
+                    <a href="admin.php">Indietro</a>
                     <input type="submit" name="submit" value="Conferma" />
                 </li>
             </ul>
@@ -150,6 +152,7 @@
                     <input type="text" id="nomeProdotto" name="nomeProdotto" />
                 </li>
                 <li>
+                    <a href="admin.php">Indietro</a>
                     <input type="submit" name="submit" value="Conferma" />
                 </li>
             </ul>
@@ -170,31 +173,60 @@
                     <input type="text" id="nomeGruppo" name="nomeGruppo" />
                 </li>
                 <li>
+                    <a href="admin.php">Indietro</a>
                     <input type="submit" name="submit" value="Conferma" />
                 </li>
+
             </ul>
         </form>
     </section>
 
-    <section class="modifica-stato-ordine">
+    <section class="modifica-stato-ordine hidden">
         <h1>Modifica stato ordine</h1>
         <form action="./utils/api-admin.php" method="POST">
             <input type="hidden" name="queryType" value="modificaordine" />
 
             <ul>
                 <li>
-                    <label for="id_ordine">Codice ordine</label>
+                    <label for="id_ordine">Codice ordine:</label>
                     <input type="text" id="id_ordine" name="id_ordine" />
                 </li>
                 <li>
-                    <select name="stao" id="stato">
-                        <option value="annullato">Annullato</option>
-                        <option value="in-attesa">In attesa</option>
-                        <option value="accettato">Accettato</option>
+                    <label for="stato">Stato:</label>
+                    <select name="stato" id="stato">
+                        <option value="Annullato">Annullato</option>
+                        <option value="In attesa">In attesa</option>
+                        <option value="Accettato">Accettato</option>
                         <option value="Spedito">Spedito</option>
-                        <option value="in-consegna">In consegna</option>
-                        <option value="consegnato">Cosegnato</option>
+                        <option value="In consegna">In consegna</option>
+                        <option value="Consegnato">Cosegnato</option>
                     </select>
+                </li>
+                <li>
+                    <a href="admin.php">Indietro</a>
+                    <input type="submit" name="submit" value="Conferma" />
+                </li>
+
+            </ul>
+        </form>
+    </section>
+
+    <section class="invia-notifica hidden">
+        <h1>Invia notifica</h1>
+        <form action="./utils/api-admin.php" method="POST">
+            <input type="hidden" name="queryType" value="invianotifica" />
+            <ul>
+                <li>
+                    <label for="email_utente">Email utente</label>
+                    <input type="text" id="email_utente" name="email_utente" />
+                </li>
+                <li>
+                    <label for="messaggio">Notifica</label>
+                    <input type="text" id="messaggio" name="messaggio" />
+                </li>
+                <li>
+                    <a href="admin.php">Indietro</a>
+                    <input type="submit" name="submit" value="Conferma" />
                 </li>
             </ul>
         </form>
