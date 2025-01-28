@@ -593,6 +593,19 @@ class DatabaseHelper
     //Inizio Queries Ausilio notifiche
 
     /**
+     * Returns all users
+     */
+    public function getAllUsers() {
+        $query = "SELECT email FROM Utenti";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
      * Creates a notification
      */
     public function newNotification($id_utente, $testo)
@@ -605,6 +618,23 @@ class DatabaseHelper
             $stmt->bind_param('ss', $id_utente, $testo);
             $stmt->execute();
             return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    public function broadcastNotification($testo) {
+        $users = $this->getAllUsers();
+        $query = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES (?, ?)";
+        
+        try {
+            $stmt = $this->db->prepare($query);
+            foreach ($users as $user) {
+                $stmt->bind_param('ss', $user["email"], $testo);
+                $stmt->execute();
+            }
+            return false;
         } catch (PDOException) {
             return false;
         }

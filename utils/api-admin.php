@@ -29,6 +29,7 @@ if (!(isset($_POST["queryType"]))) {
             $_POST["descrizione"]
         )) {
             $_SESSION["msg"] = "Prodotto inserito";
+            $dbh->broadcastNotification("Controlla il nostro nuovo prodotto " . $_POST["nome_prodotto"]);
         } else {
             $_SESSION["errore"] = "Errore inserimento prodotto";
         }
