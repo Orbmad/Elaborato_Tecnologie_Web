@@ -529,7 +529,7 @@ class DatabaseHelper
      */
     public function getNotificationOfAUser($id_utente)
     {
-        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio FROM Notifiche WHERE id_utente = ?");
+        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio, id_notifica FROM Notifiche WHERE id_utente = ?");
         $stmt->bind_param('s', $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -591,22 +591,22 @@ class DatabaseHelper
         }
     }
 
-    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_utente)
+    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_notifica , $id_utente)
     {
-        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ?");
-        $stmt->bind_param('ss', $id_utente, $messaggio);
+        $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ? AND id_notifica = ?");
+        $stmt->bind_param('ssi', $id_utente, $messaggio, $id_notifica);
         $stmt->execute();
         $result = $stmt->get_result();
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
         return ($cont > 0);
     }
 
-    public function changeStateOfAMessage($messaggio, $id_utente)
+    public function changeStateOfAMessage($messaggio, $id_notifica, $id_utente)
     {
         echo $messaggio;
-        if ($this->checkIfAMessageWasRead($messaggio, "", $id_utente)) {
-            $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ?");
-            $stmt->bind_param('ss', $id_utente, $messaggio);
+        if ($this->checkIfAMessageWasRead($messaggio, "", $id_notifica, $id_utente)) {
+            $stmt = $this->db->prepare("UPDATE Notifiche SET letto = 1 WHERE id_utente = ? AND messaggio = ? AND id_notifica = ?");
+            $stmt->bind_param('ssi', $id_utente, $messaggio, $id_notifica);
             $stmt->execute();
             return "ciao()";
         }

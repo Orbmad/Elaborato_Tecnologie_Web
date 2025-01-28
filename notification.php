@@ -12,7 +12,8 @@ $data = json_decode($json, true);
 
 if (isset($data['message'])) {
     $messageContent = $data['message'];
-    $dbh->changeStateOfAMessage($messageContent, $_SESSION['email']);
+    $id_notifica = $data['id'];
+    $dbh->changeStateOfAMessage($messageContent, $id_notifica, $_SESSION['email']);
 }
 /*Attualmente mostra */
 //$idprodotto = 'Adiantum hispidulum';
