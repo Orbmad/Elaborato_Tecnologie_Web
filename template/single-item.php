@@ -13,7 +13,9 @@
                 <section>
                     <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
                     <h3><?php echo $prodotto["prezzo"] ?>$
-                    </h3><div class="star-value">
+                    </h3>
+
+                    <div class="star-value">
                         <?php for ($i = 1; $i <= $prodotto["voto"]; $i++): ?>
                             <span class="fa fa-star checked"></span>
                         <?php endfor; ?>
@@ -21,18 +23,27 @@
                             <span class="fa fa-star"></span>
                         <?php endfor; ?>
                     </div>
-                    <h3><?php echo $prodotto["voto"] ?>/5</h3>
+
+                    <!--h3><?/*php echo $prodotto["voto"] */ ?>/5</h3-->
+
                     <?php if ($prodotto['stock'] > 0): ?>
                         <div class="wrapper">
-                            <span class="minus" onclick="reduceQuantity()">-</span><span class="number">01</span><span class="plus" onclick="addQuantity(<?php echo $prodotto["stock"] ?>)">+</span>
-                        </div><button type="button" <?php if (isUserLoggedIn()) : ?>
+                            <span class="minus" onclick="reduceQuantity()">-</span>
+                            <span class="number">01</span>
+                            <span class="plus" onclick="addQuantity(<?php echo $prodotto['stock'] ?>)">+</span>
+                        </div>
+
+                        <button type="button" <?php if (isUserLoggedIn()) : ?>
                             onclick="addToCart('<?php echo $prodotto['nome_prodotto'] ?>')"
                             <?php else: ?> onclick="showErrorMessage()"
-                            <?php endif; ?>>Aggiungi al carrello</button>
+                            <?php endif; ?>>Aggiungi al carrello
+                        </button>
                         <span class="hidden">Operazione non disponibile, è necessario essere loggati</span>
+
                     <?php else: ?>
                         <span class="out_of_stock">La pianta non è al momento disponibile</span>
                     <?php endif; ?>
+
                 </section>
             </header>
 
@@ -53,7 +64,7 @@
                         <input type="hidden" name="id" value="<?php echo $prodotto["nome_prodotto"] ?>" />
                         <ul>
                             <li>
-                                <button type="button" onclick="updateProduct()">Modifica prodotto</button>
+                                <button type="button" onclick=updateProduct() >Modifica prodotto</button>
                             </li>
                             <li>
                                 <button type="submit" name="elimina" value="<?php echo $prodotto["nome_prodotto"] ?>">Cancella prodotto</button>
@@ -73,7 +84,7 @@
                                 </li>
                                 <li>
                                     <label for="prezzo">Prezzo:</label>
-                                    <input type="text" id="prezzo" name="prezzo" />
+                                    <input type="number" id="prezzo" name="prezzo" />
                                 </li>
                                 <li>
                                     <label for="nome_sottocategoria">Sottocategoria:</label>
@@ -189,6 +200,7 @@
                 </table>
             </section>
         </article>
+
         <section>
             <h2>L&apos;opinione dei planters!</h2>
             <?php foreach ($templateParams["recensioni_prodotto"] as $rec): ?>
