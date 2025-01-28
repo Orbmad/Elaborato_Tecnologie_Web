@@ -1807,11 +1807,8 @@ main.notification ul li img.hidden{
 
     nav.main-nav.closed-nav > ul.categories > li > button.category-button,
     nav.main-nav.opened-nav > ul.categories > li > button.category-button {
-        padding: 0px 6px;
-
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
+        padding: 0px 14px;
+        white-space: wrap;
     }
 
     nav.main-nav.closed-nav button.menu-icon {
@@ -1846,9 +1843,7 @@ main.notification ul li img.hidden{
         justify-content: center;
 
         flex: 1 1 auto;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        white-space: nowrap;
+        white-space: wrap;
         min-width: 40px;
     }
 
@@ -1857,13 +1852,12 @@ main.notification ul li img.hidden{
         color: #F0F2EF;
         border: none;
         font-size: 22px;
+        padding: 0px 12px;
 
         padding: 0%;
         height: 100%;
 
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: normal;
+        white-space: wrap;
     }
 
     nav.main-nav.closed-nav>ul.categories>li button.category-button:hover {
@@ -1901,10 +1895,11 @@ main.notification ul li img.hidden{
         color: #F0F2EF;
         border: none;
         font-size: 22px;
+        padding: 0px 12px;
 
         padding: 0%;
         height: 73px;
-        white-space: normal;
+        white-space: wrap;
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories {
