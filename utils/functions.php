@@ -157,7 +157,6 @@ function addToCartIfUserIsLogged($id_prodotto, $quantità, $dbh)
 /*Verifica se la notifica è stata letta oppure no*/
 function notificationNotRead($messaggio, $data_notifica, $dbh)
 {
-
     return $dbh->checkIfAMessageWasRead($messaggio, $data_notifica, $_SESSION['email']);
 }
 
