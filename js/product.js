@@ -68,3 +68,10 @@ function addToCart(id_prodotto){
         })
         .catch(error => console.error('Errore:', error));
 }
+
+//Gestione della parte dedicata all'admin
+function updateProduct() {
+    let updateProductSection = document.querySelector("main.single-item section-admin-product > section");
+
+    updateProductSection.classList.toggle("hidden");
+}

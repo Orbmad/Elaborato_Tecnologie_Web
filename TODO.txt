@@ -1,11 +1,10 @@
-- Aggiungi invio notifiche agli utenti  !!!!
 - Aggiungi modifica prodotto in pagina prodotto per l'admin !!!
 
 
 - Sistema design login e signup e simili
 
 
-- prodotti presenti nel carrello devono essre visibili nella lista prodotti
+- prodotti presenti nel carrello devono essere visibili nella lista prodotti
 
 - crea notifiche per venditore
 
