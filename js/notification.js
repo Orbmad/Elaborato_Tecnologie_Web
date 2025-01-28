@@ -31,7 +31,7 @@
         }
     }*/
 
-        function modificaNotifica(content, numberOfNotification){
+        function modificaNotifica(content, numberOfNotification, id_notifica){
             let p_tags = document.querySelectorAll('main.notification ul li p');
             let button_tags = document.querySelectorAll('main.notification ul li button');
             let image_tag = document.querySelectorAll('main.notification ul li img');
@@ -53,7 +53,8 @@
                         numberNotificationTag.innerHTML = numberNotificationTag.innerHTML - 1;
                         console.log(numberNotificationTag.innerHTML);
                         /*Quando il bottone è chiamato la prima volta -> effettuo query definendo data*/
-                        const data = { message: content };
+                        const data = { message: content, id: id_notifica };
+                        //console.log(data['id']);
                         fetch('notification.php', {
                             method: 'POST',
                             headers: {
