@@ -1740,7 +1740,7 @@ main.notification ul li img.hidden{
 
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
     }
 
     nav.main-nav.closed-nav>ul.categories>li button.category-button:hover {
@@ -1772,6 +1772,7 @@ main.notification ul li img.hidden{
 
         padding: 0%;
         height: 73px;
+        white-space: normal;
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories {
