@@ -18,9 +18,17 @@
                             <span class="fa fa-star"></span>
                         <?php endfor; ?>
                     </div><h3><?php echo $prodotto["voto"]?>/5</h3>
-                <div class="wrapper">
-                    <span class="minus" onclick="reduceQuantity()">-</span><span class="number">01</span><span class="plus" onclick="addQuantity(<?php echo $prodotto["stock"]?>)">+</span>
-                </div><button type="button" onclick="addToCart('<?php echo $prodotto['nome_prodotto']?>')">Aggiungi al carrello</button>
+                <?php if($prodotto['stock'] > 0):?>
+                    <div class="wrapper">
+                        <span class="minus" onclick="reduceQuantity()">-</span><span class="number">01</span><span class="plus" onclick="addQuantity(<?php echo $prodotto["stock"]?>)">+</span>
+                    </div><button type="button" <?php if(isUserLoggedIn()) :?>
+                        onclick="addToCart('<?php echo $prodotto['nome_prodotto']?>')"
+                    <?php else: ?> onclick="showErrorMessage()"
+                    <?php endif;?>>Aggiungi al carrello</button>
+                    <span class="hidden">Operazione non disponibile, è necessario essere loggati</span>
+                <?php else: ?>
+                    <span class="out_of_stock">La pianta non è al momento disponibile</span>
+                <?php endif;?>
             </section>
         </header>
         <!--Il bottone QUANTITA' deve passare id_prodotto e quantità per mettere nel carrello-->

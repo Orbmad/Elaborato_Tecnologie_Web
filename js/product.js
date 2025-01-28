@@ -32,8 +32,18 @@ function getQuantity(){
     return a;
 }
 
+function showErrorMessage(){
+    $span = document.querySelector('span.hidden');
+    if($span != null){
+        console.log(22);
+        $span.classList.remove('hidden');
+        $span.classList.add('show');
+    }
+}
+
 function addToCart(id_prodotto){
-    //console.log(this.getQuantity(), id_prodotto);
+    console.log(this.getQuantity(), id_prodotto);
+    console.log("ENTRATO!");
     let quan = getQuantity();
     if(quan < 10){
         quan = quan.substring(1,quan.length);

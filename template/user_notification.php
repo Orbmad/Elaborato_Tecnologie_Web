@@ -10,7 +10,7 @@
                 <li>
                         <h3>
                             <?php echo $notifica['dataRec'] ?>
-                        </h3><img class="<?php if(notificationNotRead($notifica['messaggio'], $notifica['dataRec'], $dbh)){echo 'show';}else{echo 'hidden';}?>" src="./img/cerchio.png" alt="notification to read"/>
+                        </h3><img class="<?php if(notificationNotRead($notifica['messaggio'], $notifica['dataRec'], $dbh)){echo 'show';}else{echo 'hidden';}?>" src="./img/cerchio-marrone.png" alt="notification to read"/>
                         <p><?php echo $notifica['messaggio'] ?></p>
                         <button onclick="modificaNotifica('<?php echo $notifica['messaggio'] ?>', '<?php echo numberOfMessagesNotRead($dbh) ?>')">Leggi</button>
                     </li>

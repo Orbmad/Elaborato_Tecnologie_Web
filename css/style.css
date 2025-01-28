@@ -1376,6 +1376,24 @@ main.single-item>section>article>p {
     margin: 6px 0;
 }
 
+main.single-item span.hidden{
+    visibility: hidden;
+}
+
+main.single-item span.show{
+    visibility: visible;
+    color: #AC5411;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+main.single-item article header section span.out_of_stock{
+    color: #AC5411;
+    margin-top: 10px;
+    display: inline-block;
+    font-size: 20px;
+}
+
 /*Fine regole per lo stile della pagina per il singolo prodotto mobile*/
 
 /*Inizio regole main pagine search mobile*/
@@ -2495,6 +2513,15 @@ main.notification ul li img.hidden{
         font-size: 17px;
     }
     
+    main.single-item article header section span.out_of_stock{
+        margin-top: 30px;
+        font-size: 30px;
+    }
+
+    main.single-item span.show{
+        font-size: 20px;
+    }
+
     /*FINE regole per pagina SINGOLO PRODOTTO DESKTOP*/
 
     /* Inizio regole carrello desktop */
