@@ -25,12 +25,9 @@ CREATE TABLE Indirizzi (
 
 -- Tabella metodi di pagamento
 CREATE TABLE MetodiPagamento (
-    id_metodo INT AUTO_INCREMENT NOT NULL,
-    id_utente VARCHAR(150) NOT NULL,
+    id_metodo INT AUTO_INCREMENT PRIMARY KEY,
     tipo_metodo VARCHAR(50) NOT NULL, -- es. "Carta di credito", "PayPal"
-    dettagli_metodo VARCHAR(255) NOT NULL, -- es. numero carta
-    PRIMARY KEY (id_metodo, id_utente),
-    FOREIGN KEY (id_utente) REFERENCES Utenti(email) ON DELETE CASCADE
+    dettagli_metodo VARCHAR(255) NOT NULL -- es. numero carta
 );
 
 -- Tabella categorie
@@ -98,9 +95,13 @@ CREATE TABLE Appartenenze (
 CREATE TABLE Ordini (
     id_ordine INT AUTO_INCREMENT PRIMARY KEY,
     id_utente VARCHAR(50) NOT NULL,
+    id_metodo INT NOT NULL,
+    id_indirizzo INT NOT NULL,
     data_ordine TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     totale DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (id_utente) REFERENCES Utenti(email) ON DELETE CASCADE
+    FOREIGN KEY (id_utente) REFERENCES Utenti(email) ON DELETE CASCADE,
+    FOREIGN KEY (id_metodo) REFERENCES MetodiPagamento(id_metodo) ON DELETE CASCADE,
+    FOREIGN KEY (id_indirizzo) REFERENCES Indirizzi(id_indirizzo) ON DELETE CASCADE
 );
 
 -- Tabella dettagli ordini

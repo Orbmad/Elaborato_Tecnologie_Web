@@ -3,6 +3,8 @@
 - Aggiungi creazione gestione ordini pagina admin
 - Aggiungi invio notifiche agli utenti  !!!!
 - Aggiungi modifica prodotto in pagina prodotto per l'admin !!!
+
+
 - Sistema design nav
 - Migliora Database !!!!!!!!!!!
 - Verifica codice html mediante checker werehouse
