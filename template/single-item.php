@@ -48,7 +48,7 @@
             </header>
 
             <!-- SEZIONE VISIBILE SOLO ALL'ADMIN -->
-            <?php if (!isAdminLoggedIn()): ?>
+            <?php if (isAdminLoggedIn()): ?>
                 <section class="admin-product">
                     <h1>Gestione prodotto</h1>
 
@@ -80,59 +80,59 @@
                             <ul>
                                 <li>
                                     <label for="nome_prodotto">Nome prodotto:</label>
-                                    <input type="text" id="nome_prodotto" name="nome_prodotto" required />
+                                    <input type="text" id="nome_prodotto" name="nome_prodotto" value="<?php echo $prodotto["nome_prodotto"] ?>" required />
                                 </li>
                                 <li>
                                     <label for="prezzo">Prezzo:</label>
-                                    <input type="number" id="prezzo" name="prezzo" />
+                                    <input type="number" id="prezzo" name="prezzo" value="<?php echo $prodotto["prezzo"] ?>" required/>
                                 </li>
                                 <li>
                                     <label for="nome_sottocategoria">Sottocategoria:</label>
-                                    <input type="text" id="nome_sottocategoria" name="nome_sottocategoria" required />
+                                    <input type="text" id="nome_sottocategoria" name="nome_sottocategoria" value="<?php echo $prodotto["id_sottocategoria"] ?>" required />
                                 </li>
                                 <li>
                                     <label for="stock">Stock:</label>
-                                    <input type="text" id="stock" name="stock" required />
+                                    <input type="text" id="stock" name="stock" value="<?php echo $prodotto["stock"] ?>" required />
                                 </li>
                                 <li>
                                     <label for="nome_volgare">Nome volgare:</label>
-                                    <input type="text" id="nome_volgare" name="nome_volgare" />
+                                    <input type="text" id="nome_volgare" name="nome_volgare" value="<?php echo $prodotto["nome_volgare"] ?>" />
                                 </li>
                                 <li>
                                     <label for="nome_scientifico">Nome Scientifico:</label>
-                                    <input type="text" id="nome_scientifico" name="nome_scientifico" />
+                                    <input type="text" id="nome_scientifico" name="nome_scientifico" value="<?php echo $prodotto["nome_scientifico"] ?>" />
                                 </li>
                                 <li>
                                     <label for="famiglia">Famiglia:</label>
-                                    <input type="text" id="famiglia" name="famiglia" />
+                                    <input type="text" id="famiglia" name="famiglia" value="<?php echo $prodotto["famiglia"] ?>" />
                                 </li>
                                 <li>
                                     <label for="genere">Genere:</label>
-                                    <input type="text" id="genere" name="genere" />
+                                    <input type="text" id="genere" name="genere" value="<?php echo $prodotto["genere"] ?>" />
                                 </li>
                                 <li>
                                     <label for="specie">Specie:</label>
-                                    <input type="text" id="specie" name="specie" />
+                                    <input type="text" id="specie" name="specie" value="<?php echo $prodotto["specie"] ?>" />
                                 </li>
                                 <li>
                                     <label for="profumo">Profumo:</label>
-                                    <input type="text" id="profumo" name="profumo" />
+                                    <input type="text" id="profumo" name="profumo" value="<?php echo $prodotto["profumo"] ?>" />
                                 </li>
                                 <li>
                                     <label for="tipologia_foglia">Tipologia foglia:</label>
-                                    <input type="text" id="tipologia_foglia" name="tipologia_foglia" />
+                                    <input type="text" id="tipologia_foglia" name="tipologia_foglia" value="<?php echo $prodotto["tipologia_foglia"] ?>" />
                                 </li>
                                 <li>
                                     <label for="colore_foglia">Colore foglia:</label>
-                                    <input type="text" id="colore_foglia" name="colore_foglia" />
+                                    <input type="text" id="colore_foglia" name="colore_foglia" value="<?php echo $prodotto["colore_foglia"] ?>" />
                                 </li>
                                 <li>
                                     <label for="dimensioni">Dimensioni</label>
-                                    <input type="text" id="dimensioni" name="dimensioni" />
+                                    <input type="text" id="dimensioni" name="dimensioni" value="<?php echo $prodotto["dimensioni"] ?>" />
                                 </li>
                                 <li>
                                     <label for="descrizione">Descrizione:</label>
-                                    <input type="text" id="descrizione" name="descrizione" />
+                                    <input type="text" id="descrizione" name="descrizione" value="<?php echo $prodotto["descrizione"] ?>" />
                                 </li>
                                 <li class="files">
                                     <!--Inserimento Immagine-->
