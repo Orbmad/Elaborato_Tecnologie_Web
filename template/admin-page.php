@@ -43,7 +43,7 @@
                 </li>
                 <li>
                     <label for="prezzo">Prezzo:</label>
-                    <input type="text" id="prezzo" name="prezzo" />
+                    <input type="number" id="prezzo" name="prezzo" />
                 </li>
                 <li>
                     <label for="nome_sottocategoria">Sottocategoria:</label>

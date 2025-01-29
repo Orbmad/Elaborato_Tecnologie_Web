@@ -1437,6 +1437,18 @@ main.single-item>article>section.admin-product>h1 {
     color: #000;
 }
 
+main.single-item>article>section.admin-product>p {
+    width: 100%;
+    padding: 6px 20px;
+    margin: 6px;
+    background-color: #F0F2EF;
+    color: #AC5411;
+    font-weight: bold;
+    border: #AC5411 solid 1px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #AC5411;
+}
+
 main.single-item>article>section.admin-product>form {
     width: 100%;
     display: flex;
@@ -2078,12 +2090,9 @@ main.notification ul li img.hidden {
         height: 100%;
         align-items: center;
         list-style: none;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0px 16px;
 
         display: flex;
-        overflow: hidden;
-        text-overflow: ellipsis;
     }
 
     nav.main-nav.closed-nav ul.categories>li {
@@ -2171,8 +2180,8 @@ main.notification ul li img.hidden {
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories li {
-        margin-top: clamp(6px, 25%, 10px);
-        margin-bottom: clamp(6px, 25%, 10px);
+        margin-top: 8px;
+        margin-bottom: 8px;
     }
 
     nav.main-nav.opened-subcategories ul.categories ul.subcategories button.subcategory-button {
