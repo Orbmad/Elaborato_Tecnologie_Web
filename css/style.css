@@ -1181,10 +1181,17 @@ main.login-form>section>form>ul>li>input {
 }
 
 main.login-form>section>form>ul>li>input[type="submit"],
-main.login-form>section>form>ul>li>button {
+main.login-form>section>form>ul>li>button,
+main.login-form>section>form>ul>li>a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #F0F2EF;
+    text-decoration: none;
     color: #082D0F;
     height: 90%;
-    width: 26%;
+    width: 60%;
     max-width: 150px;
     margin-right: 0px;
     padding: 0px;
@@ -1198,7 +1205,8 @@ main.login-form>section>form>ul>li>button {
 }
 
 main.login-form>section>form>ul>li>input[type="submit"]:hover,
-main.login-form>section>form>ul>li>button:hover {
+main.login-form>section>form>ul>li>button:hover,
+main.login-form>section>form>ul>li>a:hover {
     scale: 1.1;
 }
 
@@ -2271,15 +2279,15 @@ main.notification ul li img.hidden {
     }
 
     main.login-form>section>form>ul>li>input {
-        margin-left: 0;
+        margin-left: auto;
         margin-right: auto;
         height: 18px;
-        width: 65%;
-        max-width: 1000px;
+        width: 100%;
+        max-width: none;
     }
 
     main.login-form>section.signup>form>ul>li>input {
-        width: 85%;
+        width: 100%;
     }
 
     main.login-form>section>form>ul>li>input[type="submit"] {
@@ -2287,7 +2295,8 @@ main.notification ul li img.hidden {
     }
 
     main.login-form>section>form>ul>li>input[type="submit"],
-    main.login-form>section>form>ul>li>button {
+    main.login-form>section>form>ul>li>button,
+    main.login-form>section>form>ul>li>a {
         height: 38px;
         font-size: 18px;
     }

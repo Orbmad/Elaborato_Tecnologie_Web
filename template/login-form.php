@@ -54,6 +54,7 @@
                     <input type="password" id="confermaPassword" name="confermaPassword" />
                 </li>
                 <li>
+                    <a href="login.php">Indietro</a>
                     <input type="submit" name="submitSignup" value="Conferma Iscrizione" />
                 </li>
             </ul>
