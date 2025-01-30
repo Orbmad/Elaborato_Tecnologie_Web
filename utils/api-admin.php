@@ -5,7 +5,7 @@ unset($_SESSION["msg"]);
 unset($_SESSION["errore"]);
 
 if (!(isset($_POST["queryType"]))) {
-    $_SESSION["errore"] = "Errore nell'operazione effettuata, parametri non ricevuti".$_POST["queryType"];
+    $_SESSION["errore"] = "Errore nell'operazione effettuata, parametri non ricevuti" . $_POST["queryType"];
 } else if ($_POST["queryType"] == "inserisciprodotto" && isset($_FILES["immagine"])) {
     //Inserimento prodotto
     list($result, $msg) = uploadImage("../upload/prodotti/", $_FILES["immagine"], $_POST["nome_prodotto"]);

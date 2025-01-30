@@ -68,3 +68,18 @@ function addToCart(id_prodotto){
         })
         .catch(error => console.error('Errore:', error));
 }
+
+//Gestione della parte dedicata all'admin
+function updateProduct() {
+    let updateProductSection = document.querySelector("main.single-item section.admin-product section");
+
+    console.log("click");
+
+    updateProductSection.classList.toggle("hidden");
+}
+
+document.getElementById("fileInput-product").addEventListener("change", function() {
+    let fileName = this.files.length > 0 ? this.files[0].name : "Nessun file selezionato";
+    document.querySelector(".file-name-product").textContent = fileName;
+    console.log("changed string");
+});

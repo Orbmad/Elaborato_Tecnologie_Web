@@ -39,19 +39,19 @@
             <ul>
                 <li>
                     <label for="nome_prodotto">Nome prodotto:</label>
-                    <input type="text" id="nome_prodotto" name="nome_prodotto" />
+                    <input type="text" id="nome_prodotto" name="nome_prodotto" required/>
                 </li>
                 <li>
                     <label for="prezzo">Prezzo:</label>
-                    <input type="text" id="prezzo" name="prezzo" />
+                    <input type="number" id="prezzo" name="prezzo" />
                 </li>
                 <li>
                     <label for="nome_sottocategoria">Sottocategoria:</label>
-                    <input type="text" id="nome_sottocategoria" name="nome_sottocategoria" />
+                    <input type="text" id="nome_sottocategoria" name="nome_sottocategoria" required/>
                 </li>
                 <li>
                     <label for="stock">Stock:</label>
-                    <input type="text" id="stock" name="stock" />
+                    <input type="text" id="stock" name="stock" required/>
                 </li>
                 <li>
                     <label for="nome_volgare">Nome volgare:</label>

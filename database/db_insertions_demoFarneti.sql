@@ -38,8 +38,7 @@ INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
 VALUES
     ('Vasi e arredo', 'Vasi e fioriere'), -- ID_sc = 10,
-    ('Vasi e arredo', 'Supporti di coltivazione'), -- ID_sc = 11,
-    ('Vasi e arredo', 'Arredo giardino'); -- ID_sc = 12;
+    ('Vasi e arredo', 'Supporti di coltivazione'); -- ID_sc = 11,
 
 INSERT INTO
     SottoCategorie (id_categoria, nome_sottocategoria)
@@ -132,3 +131,29 @@ VALUES
 ('Fiori Ornamentali','Adiantum hispidulum'),
 ('Fiori Ornamentali','Goji rosso'),
 ('Piante Acquatiche','Iris pseudacorus');
+
+-- Inserimento metodi pagamento -- 
+INSERT INTO MetodiPagamento (tipo_metodo)
+VALUES
+('Carta'),
+('Paypal');
+
+-- Inserimento altri prodotti --
+INSERT INTO Prodotti (
+        id_sottocategoria,
+        nome_prodotto,
+        prezzo,
+        stock,
+        nome_volgare,
+        nome_scientifico,
+        famiglia,
+        genere,
+        specie,
+        dimensioni,
+        profumo,
+        tipologia_foglia,
+        colore_foglia,
+        descrizione
+    )
+VALUES
+('Supporti di coltivazione', 'Cupolino', 7.90, 10, '', '', '', '', '', '', '', '', '', "Cupolino GREEN BASICS GROW HOUSE di Elho, serra per Vassoio da coltura GREEN BASICS GROW TRAY di Elho. Garantisce il miglior clima di crescita per la pianta, grazie al controller di ventilazione nella parte superiore, che consente di regolare la temperatura e la fornitura d'aria, in modo che le piante e le erbe inizino a crescere in poco tempo. Resistente ai raggi UV, si adatta a temperature fino a -40 °C. Facile da pulire ed indistruttibile. Tutti i prodotti sono realizzati in plastica riciclata.");

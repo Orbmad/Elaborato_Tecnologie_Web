@@ -5,7 +5,7 @@ require_once 'bootstrap.php';
 $templateParams["titolo"] = "Plantatio - Admin";
 $templateParams["js"] = array("js/admin.js", "js/nav.js");
 
-if (isAdminLoggedIn()) { //RICORDATI DI INSERIRE IL PUNTO ESCLAMATIVO!!!!!!!!!!!(LHO TOLTO PER PROVA)
+if (!isAdminLoggedIn()) {
     header("Location: ./index.php");
     exit;
 }
