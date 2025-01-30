@@ -9,33 +9,63 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
         rel="stylesheet" />
-        <link rel="stylesheet" type="text/css" href="./css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css" />
 </head>
 
 <body>
-<!--Temporaneo check di login-->
-<?php if (isset($_SESSION["email"])) {var_dump($_SESSION["email"]); }?>
+    <!--Temporaneo check di login-->
+    <?php if (isset($_SESSION["email"])) {
+        var_dump($_SESSION["email"]);
+    } ?>
     <header>
-        <a href="./index.php"><h1>Plantatio</h1>
-        </a><ul>
+        <a href="./index.php">
+            <h1>Plantatio</h1>
+        </a>
+        <ul>
             <li class="user_icon">
-                <a href="<?php if(isUserLoggedIn()){echo '#';} else{ echo './login.php';} ?>" onclick="open_submenu()"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
-                        src="img/cerchio-marroncino.png" alt="notifiche" <?php if(!isUserLoggedIn()){echo 'class = notVisible'; } ?> />
-<!--Inserire numero di notifiche dell'utente-->
-                    <p <?php if(!isUserLoggedIn()){echo 'class = notVisible'; }?>><?php if(isUserLoggedIn()){echo numberOfMessagesNotRead($dbh); }?></p>
+                <a href="<?php if (isUserLoggedIn()) {
+                                echo '#';
+                            } else {
+                                echo './login.php';
+                            } ?>" onclick="open_submenu()">
+                    <img class="user_icon" src=".\upload\User-Icon.png" alt="user-icon" />
+                    <img src="upload/Notif-circle.png" alt="notifiche" <?php if (!isUserLoggedIn()) {
+                                                                            echo 'class = notVisible';
+                                                                        } ?> />
+                    <!--Inserire numero di notifiche dell'utente-->
+                    <p <?php if (!isUserLoggedIn()) {
+                            echo 'class = notVisible';
+                        } ?>><?php if (isUserLoggedIn()) {
+                                    echo numberOfMessagesNotRead($dbh);
+                                } ?></p>
                 </a>
-                <?php if(isUserLoggedIn()): ?>
-                <ul id="submenu_user">
-                    <li><span>Ciao <?php echo $_SESSION['nome']?></span><img onclick="close_submenu()" src="./upload/close-menu-icon.png" alt="close-button"/></li>
-                    <li><a href="<?php echo './cart.php' ?>">Carrello</a></li>
-                    <li><a href="<?php echo './orders.php' ?>">Ordini</a></li>
-                    <li><a href="<?php echo './notification.php' ?>">Notifiche</a></li>
-                    <li><a href="<?php echo './utils/api-logout.php' ?>">Logout</a></li>
-                </ul>
+
+                <?php if (isUserLoggedIn()): ?>
+                    <ul id="submenu_user">
+                        <li><span>Ciao <?php echo $_SESSION['nome'] ?></span><img onclick="close_submenu()" src="./upload/close-menu-icon.png" alt="close-button" /></li>
+                        <li><a href="<?php echo './cart.php' ?>">Carrello</a></li>
+                        <li><a href="<?php echo './orders.php' ?>">Ordini</a></li>
+                        <li><a href="<?php echo './address.php' ?>">Indirizzi</a></li>
+                        <li><a href="<?php echo './notification.php' ?>">Notifiche</a></li>
+                        <li><a href="<?php echo './utils/api-logout.php' ?>">Logout</a></li>
+                    </ul>
                 <?php endif; ?>
+
             </li>
+
             <li>
-                <a href="<?php if(isUserLoggedIn()){echo './cart.php';} else{ echo './login.php';} ?>"><img src=".\img\Cart-Icon.png" alt="cart-icon" /></a>
+                <a href="<?php if (isUserLoggedIn()) {
+                                echo './cart.php';
+                            } else {
+                                echo './login.php';
+                            } ?>"><img src=".\upload\Cart-Icon.png" alt="cart-icon" />
+                </a>
+            </li>
+
+            <li>
+                <a href="./index.php" >
+                    <img src="./upload/Home-Icon.png" alt="Home" />
+                </a>
             </li>
         </ul>
     </header>
@@ -44,7 +74,9 @@
         <form action="search.php" method="GET">
             <label for="fastSearch">Ricerca rapida</label>
             <section class="search-text">
-                <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" value="<?php if(isset($templateParams["searchedWord"])){echo($templateParams["searchedWord"]);}?>"/>
+                <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..." oninput="showSuggestions()" value="<?php if (isset($templateParams["searchedWord"])) {
+                                                                                                                                                    echo ($templateParams["searchedWord"]);
+                                                                                                                                                } ?>" />
                 <ul class="suggestions not-showing"></ul>
             </section>
             <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button"
@@ -91,7 +123,7 @@
     if (isset($templateParams["mainContent"])) {
         require($templateParams["mainContent"]);
     }
-    ?>   
+    ?>
 
     <footer>
         <section class="contacts">

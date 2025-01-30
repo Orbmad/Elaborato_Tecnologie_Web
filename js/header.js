@@ -4,7 +4,7 @@ function open_submenu(){
 
 function close_submenu(){
     document.getElementById("submenu_user").style.display = "none";
-    console.log(document.getElementById("submenu_user"));
+    //console.log(document.getElementById("submenu_user"));
 }
 
 function checkVisibilityOfNotificationCircle(isUserLogged){
