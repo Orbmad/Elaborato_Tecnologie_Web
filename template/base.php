@@ -28,7 +28,7 @@
                 <ul id="submenu_user">
                     <li><span>Ciao <?php echo $_SESSION['nome']?></span><img onclick="close_submenu()" src="./upload/close-menu-icon.png" alt="close-button"/></li>
                     <li><a href="<?php echo './cart.php' ?>">Carrello</a></li>
-                    <li><a href="<?php echo './order.php' ?>">Ordini</a></li>
+                    <li><a href="<?php echo './orders.php' ?>">Ordini</a></li>
                     <li><a href="<?php echo './notification.php' ?>">Notifiche</a></li>
                     <li><a href="<?php echo './utils/api-logout.php' ?>">Logout</a></li>
                 </ul>

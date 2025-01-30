@@ -212,4 +212,12 @@ function uploadImage($path, $image, $newFileName) {
 
     return array($result, $msg);
 }
+
+function getProductsOfAOrder($order, $dbh){
+    return $dbh->getItemsInAnOrder($order);
+}
+
+function hasUserLeftAReviewForProduct($dbh, $id_prodotto){
+    return $dbh->hasUserLeftAReviewForProduct($_SESSION['email'], $id_prodotto);
+}
 ?>

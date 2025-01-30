@@ -63,6 +63,6 @@
         </section>
         <section class="order-form-sec">
             <h2>Metodo di pagamento</h2>
-        </section>
+        </section>        
     <?php endif; ?>
 </main>

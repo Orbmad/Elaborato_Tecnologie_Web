@@ -706,4 +706,33 @@ class DatabaseHelper
     }
 
     //Fine queries ausilio notifiche
+
+    public function getOrdersOfAUser($id_utente)
+    {
+        $stmt = $this->db->prepare("SELECT id_ordine, stato_ordine, DATE(data_ordine) as dataOrdine , totale, via, citta, provincia, nazione, cap FROM ordini, indirizzi
+                                    WHERE indirizzi.id_indirizzo = ordini.id_indirizzo AND indirizzi.id_utente = ? AND ordini.id_utente = ?");
+        $stmt->bind_param('ss', $id_utente, $id_utente);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getItemsInAnOrder($id_ordine)
+    {
+        $stmt = $this->db->prepare("SELECT id_dettaglio, nome_prodotto, quantita, prezzo_unitario FROM dettagliordini, prodotti WHERE nome_prodotto = id_prodotto AND id_ordine = ?");
+        $stmt->bind_param('i', $id_ordine);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function hasUserLeftAReviewForProduct($id_utente, $id_prodotto){
+        $stmt = $this->db->prepare("SELECT * FROM recensioni WHERE id_utente = ? AND id_prodotto =  ?");
+        $stmt->bind_param('ss', $id_utente, $id_prodotto);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $cont = count($result->fetch_all(MYSQLI_ASSOC));
+        return ($cont > 0);
+    }
+
 }
