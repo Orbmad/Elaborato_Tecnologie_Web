@@ -1727,6 +1727,19 @@ main.main-order-recap {
     width: 100%;
 }
 
+main.main-order-recap img{
+   width: 35px;
+   height: 35px;
+   margin-left: auto;
+   cursor: pointer;
+}
+
+section.address-form-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 main.main-cart>section.cart-products,
 main.main-order-recap>section.order-recap,
 main.main-order-recap>section.order-form-sec {
@@ -1795,11 +1808,20 @@ main.main-order-recap>section.order-recap>section.order-recap-total>p {
     font-weight: bold;
 }
 
+body>main.main-order-recap>section.order-form-sec>form {
+    padding-left: 15px;
+}
+
+
 body>main.main-order-recap>section.order-form-sec>form>ul>li label {
     visibility: visible;
     display: flex;
     margin-top: 15px;
     margin-bottom: 2px;
+}
+
+body>main.main-order-recap>section.order-form-sec>form>ul>li label.hidden{
+    display: none;
 }
 
 body>main.main-order-recap>section.order-form-sec>form>ul>li {
@@ -1808,40 +1830,36 @@ body>main.main-order-recap>section.order-form-sec>form>ul>li {
 }
 
 body>main.main-order-recap>section.order-form-sec>form>ul>li>input[type="text"],
+body>main.main-order-recap>section.order-form-sec>form>ul>li>input[type="date"],
+body>main.main-order-recap>section.order-form-sec>form>ul>li>input[type="email"],
+body>main.main-order-recap>section.order-form-sec>form>ul>li>input[type="month"],
 body>main.main-order-recap>section.order-form-sec>form>ul>li>select {
     height: 20px;
     padding: 0px 5px;
     border: 1px solid #3F413E;
     color: #3F413E;
+    width: 170px;
+    box-sizing: border-box;
 }
 
-body>main.main-order-recap>section.order-form-sec>form>ul>li:first-of-type>input[type="text"] {
-    width: 200px;
+.not-showing{
+    display: none !important; 
 }
 
-body>main.main-order-recap>section.order-form-sec>form>ul>li:nth-of-type(2)>input[type="text"] {
-    width: 150px;
-}
-
-body>main.main-order-recap>section.order-form-sec>form>ul>li:nth-of-type(3)>input[type="text"] {
-    width: 40px;
-}
-
-
-body>main.main-order-recap>section.order-form-sec>form>ul>li:last-of-type {
-    margin-top: 10px;
+body>main.main-order-recap>section.order-form-sec>form>ul>li.checkbox-field {
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     vertical-align: middle;
     color: #3F413E;
 }
 
-body>main.main-order-recap>section.order-form-sec>form>ul>li:last-of-type input {
+body>main.main-order-recap>section.order-form-sec>form>ul>li.checkbox-field input {
     margin: 0px 0px 0px 10px;
     accent-color: #082D0F;
 }
 
-body>main.main-order-recap>section.order-form-sec>form>ul>li:last-of-type>label {
+body>main.main-order-recap>section.order-form-sec>form>ul>li.checkbox-field>label {
     margin-top: 0;
     font-size: small;
 }
@@ -1850,10 +1868,10 @@ body>main.main-order-recap>section.order-form-sec>form>ul>li>input {
     display: block;
 }
 
-body>main.main-order-recap>section.order-form-sec>form {
-    width: 70%;
+body>main.main-order-recap>section.order-form-sec>form>ul>li>input[type="submit"] {
+    margin-left: auto;
+    margin-top: 40px;
 }
-
 
 main.main-cart>section.cart-products>ul>li:last-of-type {
     align-items: center;
@@ -1864,7 +1882,7 @@ main.main-cart>section.cart-products>ul>li:last-of-type>p {
     margin-left: auto;
 }
 
-main.main-cart>section.cart-products>section.cart-header>input {
+.green-button {
     color: #F0F2EF;
     background-color: #082D0F;
     font-family: 'Josefin Sans', sans-serif;
@@ -1876,7 +1894,7 @@ main.main-cart>section.cart-products>section.cart-header>input {
     border-color: #F0F2EF;
 }
 
-main.main-cart>section.cart-products>section.cart-header>input:hover {
+.green-button:hover {
     transform: scale(1.05);
     background-color: #F0F2EF;
     color: #082D0F;
@@ -1884,7 +1902,7 @@ main.main-cart>section.cart-products>section.cart-header>input:hover {
 }
 
 
-main.main-cart>section.cart-products>section.cart-header>input:active {
+.green-button:active {
     transform: scale(0.95);
 }
 
@@ -2854,46 +2872,46 @@ main.notification ul li img.hidden {
 
     /*Inizio regole admin prodotto*/
 
-    main.single-item > article > section.admin-product {
+    main.single-item>article>section.admin-product {
         padding: 10px 16%;
     }
 
-    main.single-item > article > section.admin-product > h1 {
+    main.single-item>article>section.admin-product>h1 {
         font-size: 38px;
         margin: 20px 0px;
     }
 
-    main.single-item > article > section.admin-product > form > ul > li > button {
+    main.single-item>article>section.admin-product>form>ul>li>button {
         font-size: 24px;
         max-width: 340px;
     }
 
-    main.single-item > article > section.admin-product > section > form > ul > li {
+    main.single-item>article>section.admin-product>section>form>ul>li {
         width: calc(50% - 20px);
         padding: 0px 10px;
     }
 
-    main.single-item > article > section.admin-product > section > form > ul > li > label {
+    main.single-item>article>section.admin-product>section>form>ul>li>label {
         font-size: 24px;
     }
 
-    main.single-item > article > section.admin-product > section > form > ul > li > input[type="text"],
-    main.single-item > article > section.admin-product > section > form > ul > li > input[type="number"] {
+    main.single-item>article>section.admin-product>section>form>ul>li>input[type="text"],
+    main.single-item>article>section.admin-product>section>form>ul>li>input[type="number"] {
         height: 32px;
         font-size: 18px;
     }
 
-    main.single-item > article > section.admin-product > section > form > ul > li:last-of-type {
+    main.single-item>article>section.admin-product>section>form>ul>li:last-of-type {
         width: 100%;
     }
 
-    main.single-item > article > section.admin-product > section > form > ul > li:last-of-type > input {
+    main.single-item>article>section.admin-product>section>form>ul>li:last-of-type>input {
         box-shadow: none;
         font-size: 24px;
         max-width: 300px;
     }
 
-    main.single-item > article > section.admin-product > section > form > ul > li.files > section{
+    main.single-item>article>section.admin-product>section>form>ul>li.files>section {
         display: flex;
         justify-content: center;
     }

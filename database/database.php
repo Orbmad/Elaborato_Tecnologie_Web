@@ -35,6 +35,13 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPaymentMethods(){
+        $stmt = $this->db->prepare("SELECT * FROM metodipagamento");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Returns all categories.
      */
@@ -165,7 +172,7 @@ class DatabaseHelper
     public function searchProductByName($name)
     {
         $text = "%" . $name . "%";
-        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
+        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? AND stock > 0 ORDER BY RAND()");
         $stmt->bind_param('s', $text);
         $stmt->execute();
         $result = $stmt->get_result();
