@@ -1643,7 +1643,7 @@ main ul.search-results-list {
 main ul.search-results-list>li {
     display: inline-flex;
     width: 200px;
-    height: 260px;
+    height: 280px;
     border: 1px solid #082D0F;
     margin: 10px;
     justify-content: center;
@@ -1689,6 +1689,8 @@ main ul.search-results-list>li>a>h2 {
     text-align: start;
     padding-left: 10px;
     margin: 5px 0px;
+
+    height: 26px;
 }
 
 main ul.search-results-list>li>a>p:first-of-type {

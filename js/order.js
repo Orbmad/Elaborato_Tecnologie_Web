@@ -137,25 +137,16 @@ document.getElementById("payment-form").addEventListener('submit', function (eve
         };
     }
     const methodSelected = document.getElementById("payment-method").value;
-    if (methodSelected == 2) {
-        datiPagamento = {
-            email: document.getElementById("pay-email").value
-        };
-    } else {
-        datiPagamento = {
-            numero: document.getElementById("pay-numero").value,
-            scadenza: document.getElementById("pay-date").value,
-            cvv: document.getElementById("pay-cvv").value
-        };
-    }
 
     const dati = {
         user: document.getElementById("loggedUser").value,
         totalPrice: document.getElementById("costoTotale").value,
-        datiPagamento: datiPagamento,
+        metodoPagamento : methodSelected,
         datiIndirizzo: datiIndirizzo
     }
-    
+
+    console.log(dati);
+
     fetch("processa-ordine.php", {
         method: "POST",
         headers: {

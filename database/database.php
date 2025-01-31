@@ -957,4 +957,46 @@ class DatabaseHelper
             return false;
         }
     }
+
+    /**
+     * Creates a new order with the products in the cart and an address not saved
+     */
+    public function createOrderFromCart_addressNotSaved($user, $id_metodo, $via, $citta, $provincia, $cap, $nazione, $totale)
+    {
+        try {
+            // creazione ordine
+            $newOrder = "INSERT INTO Ordini (id_utente, id_metodo, via, citta, provincia, cap, nazione, totale)
+                    VALUES (?, ?, ?, ?)";
+            $stmt_newOrder = $this->db->prepare($newOrder);
+            $stmt_newOrder->bind_param('sisssssd', $user, $id_metodo, $via, $citta, $provincia, $cap, $nazione, $totale);
+            $stmt_newOrder->execute();
+            $order_id = $stmt_newOrder->insert_id;
+
+            //creazione query dettaglio ordine
+            $newOrderDetail = "INSERT INTO DettagliOrdini (id_ordine, id_prodotto, quantita, prezzo_unitario)
+                    VALUES (?, ?, ?, ?)";
+            $stmt_newOrderDetail = $this->db->prepare($newOrderDetail);
+
+            //recupero informazioni dal carrello
+            $cart = $this->fetchUserCart($user);
+
+            //inserimento informazioni in dettagli ordine
+            foreach ($cart as $detail) {
+                $stmt_newOrderDetail->bind_param('isid', $order_id, $detail["id_prodotto"], $detail["quantita"], $detail["prezzo"]);
+                $this->removeFromStock($detail["id_prodotto"], $detail["quantita"]);
+                $stmt_newOrderDetail->execute();
+            }
+
+            //svuotamento carrello
+            $this->emptyCart($user);
+
+            //Notifica Admin
+            $string = "L'utente " . $user . " ha effettuato un nuovo ordine. Codice ordine: " . $order_id;
+            $this->newAdminNotification($string);
+
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
 }
