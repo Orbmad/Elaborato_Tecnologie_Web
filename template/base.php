@@ -20,7 +20,7 @@
         </a><ul>
             <li class="user_icon">
                 <a href="<?php if(isUserLoggedIn()){echo '#';} else{ echo './login.php';} ?>" onclick="open_submenu()"><img class="user_icon" src=".\img\User-Icon.png" alt="user-icon"/><img
-                        src="img/cerchio-marroncino.png" alt="notifiche" <?php if(!isUserLoggedIn()){echo 'class = notVisible'; } ?> />
+                        src="img/cerchio-marroncino.png" onclick="window.location.href='notification.php'" alt="notifiche" <?php if(!isUserLoggedIn()){echo 'class = notVisible'; } ?> />
 <!--Inserire numero di notifiche dell'utente-->
                     <p <?php if(!isUserLoggedIn()){echo 'class = notVisible'; }?>><?php if(isUserLoggedIn()){echo numberOfMessagesNotRead($dbh); }?></p>
                 </a>
