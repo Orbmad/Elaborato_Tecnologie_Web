@@ -3108,5 +3108,19 @@ main.address-page > section > ul > li > form > button:active {
         margin: 8px;
     }
 
-    /*Fine pagina indirizzi desktop*/
+    main.main-order-recap section.order-item section.leave-review label{
+        font-size: 18px;
+    }
+
+    main.main-order-recap section.order-item section.leave-review textarea{
+        width: 60%;
+        height: 10em;
+    }
+
+    main.main-order-recap section.order-item section.leave-review button{
+        float: right;
+        margin-left: 0%;
+        margin-right: 40%;
+    }
+    /*Fine ordini desktop*/
 }
