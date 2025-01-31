@@ -905,7 +905,7 @@ class DatabaseHelper
                 WHERE nome_prodotto = ?";
         try {
             $stmt = $this->db->prepare($query);
-            $stmt->bind_param('si', $id_prodotto, $quantity);
+            $stmt->bind_param('is', $quantity, $id_prodotto);
             $stmt->execute();
             return true;
         } catch (PDOException) {
@@ -952,9 +952,24 @@ class DatabaseHelper
     }
 
     /**
+     * Saves the address
+     */
+    public function saveAddress($id_utente, $via, $citta, $provincia, $cap, $nazione) {
+        $query = "INSERT INTO Indirizzi (id_utente, via, citta, provincia, cap, nazione)
+                VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssss', $id_utente, $via, $citta, $provincia, $cap, $nazione);
+        if($stmt->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * Creates a new order with the products in the cart and an address not saved
      */
-    public function createOrderFromCart_addressNotSaved($user, $id_metodo, $via, $citta, $provincia, $cap, $nazione, $totale)
+    public function createOrderFromCart_addressNotSaved($user, $id_metodo, $via, $citta, $provincia, $cap, $nazione, $totale, $save)
     {
         try {
             // creazione ordine
@@ -964,6 +979,11 @@ class DatabaseHelper
             $stmt_newOrder->bind_param('sisssssd', $user, $id_metodo, $via, $citta, $provincia, $cap, $nazione, $totale);
             $stmt_newOrder->execute();
             $order_id = $stmt_newOrder->insert_id;
+
+            //Salvataggio indirizzo
+            if ($save) {
+                $this->saveAddress($user, $via, $citta, $provincia, $cap, $nazione);
+            }
 
             //creazione query dettaglio ordine
             $newOrderDetail = "INSERT INTO DettagliOrdini (id_ordine, id_prodotto, quantita, prezzo_unitario)
@@ -991,5 +1011,21 @@ class DatabaseHelper
         } catch (PDOException) {
             return false;
         }
+    }
+
+    public function isOrderPossible($user) {
+        $query = "SELECT nome_prodotto
+                FROM Prodotti P
+                JOIN Carrello C ON C.id_prodotto = P.nome_prodotto
+                WHERE P.stock < P.stock - C.quantita
+                AND C.id_utente = ?";
+        
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return !($result->fetch_all(MYSQLI_ASSOC) > 0);
     }
 }

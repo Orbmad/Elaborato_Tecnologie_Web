@@ -1,6 +1,5 @@
 
-- prodotti presenti nel carrello devono essere visibili nella lista prodotti
-
-- crea notifiche admin dopo nuovo ordine
+- Aggiungi salvataggio indirizzo
+- Controlla aggiornamento stock dopo ordine
 
 - Verifica codice html mediante checker werehouse
