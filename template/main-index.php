@@ -20,7 +20,12 @@
         <h2>I migliori prodotti...</h2>
         <ul class="search-results-list">
             <?php foreach ($templateParams["searchResults"] as $result) {
-                echo generateProductBox($result);
+                if (isset($_SESSION["email"])) {
+                    $cartSign = $dbh->hasUserProductInCart($_SESSION["email"], $result["nome_prodotto"]);
+                } else {
+                    $cartSign = false;
+                }
+                echo generateProductBox($result, $cartSign);
             } ?>
         </ul>
     </section>

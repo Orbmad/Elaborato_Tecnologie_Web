@@ -68,7 +68,7 @@ class DatabaseHelper
      */
     public function getProductById($product_id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ?");
+        $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ? AND presente = 1");
         $stmt->bind_param('s', $product_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -76,6 +76,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Returns a group from its name
+     */
     public function getGroup($nomeGruppo)
     {
         $stmt = $this->db->prepare("SELECT * FROM Gruppi WHERE nomeGruppo = ?");
@@ -84,6 +87,30 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Returns all user addresses
+     */
+    public function getUserAddresses($user) {
+        $query = "SELECT *
+                FROM Indirizzi
+                WHERE id_utente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteUserAddress($user, $id_indirizzo) {
+        $query = "DELETE FROM Indirizzi
+                WHERE id_utente = ?
+                AND id_indirizzo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $user, $id_indirizzo);
+        $stmt->execute();
     }
 
     /**
@@ -198,7 +225,7 @@ class DatabaseHelper
 
     public function getBestProducts($n)
     {
-        $stmt = $this->db->prepare("SELECT * FROM prodotti ORDER BY voto LIMIT ?");
+        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE presente = 1 ORDER BY voto DESC LIMIT ?");
         $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -415,13 +442,26 @@ class DatabaseHelper
     public function deleteProduct($nome)
     {
         $query = "UPDATE Prodotti
-                SET stock = 0
+                SET presente = 0
                 WHERE nome_prodotto = ?";
         try {
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('s', $nome);
             $stmt->execute();
             return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    public function removeDeletedProductFromCarts($nome)
+    {
+        $query = "DELETE FROM Carrello
+                WHERE id_prodotto = ?";
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s', $nome);
+            $stmt->execute();
         } catch (PDOException) {
             return false;
         }
@@ -501,7 +541,8 @@ class DatabaseHelper
     /**
      * Returns the user from an order
      */
-    public function getUserFromOrder($id_ordine) {
+    public function getUserFromOrder($id_ordine)
+    {
         $query = "SELECT id_utente
                 FROM Ordini
                 WHERE id_ordine = ?";
@@ -590,13 +631,44 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Returns true if the user has a certain product in its cart
+     */
+    public function hasUserProductInCart($user, $id_prodotto) {
+        $query = "SELECT *
+                FROM Carrello
+                WHERE id_utente = ?
+                AND id_prodotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $user, $id_prodotto);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     //Inizio Queries Ausilio notifiche
 
     /**
-     * Returns all users
+     * Returns all users except teh admins
      */
-    public function getAllUsers() {
-        $query = "SELECT email FROM Utenti";
+    public function getAllUsers()
+    {
+        $query = "SELECT email FROM Utenti WHERE admin_flag = 0";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Returns all the admins
+     */
+    public function getAllAdmins() {
+        $query = "SELECT email FROM Utenti WHERE admin_flag = 0";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
 
@@ -623,11 +695,36 @@ class DatabaseHelper
         }
     }
 
-    public function broadcastNotification($testo) {
+
+    /**
+     * Creates a notification for all the users
+     */
+    public function broadcastNotification($testo)
+    {
         $users = $this->getAllUsers();
         $query = "INSERT INTO Notifiche (id_utente, messaggio)
                 VALUES (?, ?)";
-        
+
+        try {
+            $stmt = $this->db->prepare($query);
+            foreach ($users as $user) {
+                $stmt->bind_param('ss', $user["email"], $testo);
+                $stmt->execute();
+            }
+            return false;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Creates a notification for all the admins
+     */
+    public function adminNotification($testo) {
+        $users = $this->getAllAdmins();
+        $query = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES (?, ?)";
+
         try {
             $stmt = $this->db->prepare($query);
             foreach ($users as $user) {
@@ -674,7 +771,7 @@ class DatabaseHelper
         }
     }
 
-    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_notifica , $id_utente)
+    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_notifica, $id_utente)
     {
         $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ? AND id_notifica = ?");
         $stmt->bind_param('ssi', $id_utente, $messaggio, $id_notifica);
@@ -726,7 +823,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function hasUserLeftAReviewForProduct($id_utente, $id_prodotto){
+    public function hasUserLeftAReviewForProduct($id_utente, $id_prodotto)
+    {
         $stmt = $this->db->prepare("SELECT * FROM recensioni WHERE id_utente = ? AND id_prodotto =  ?");
         $stmt->bind_param('ss', $id_utente, $id_prodotto);
         $stmt->execute();
@@ -734,5 +832,4 @@ class DatabaseHelper
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
         return ($cont > 0);
     }
-
 }

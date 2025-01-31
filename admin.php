@@ -3,7 +3,7 @@ require_once 'bootstrap.php';
 
 //Base Template
 $templateParams["titolo"] = "Plantatio - Admin";
-$templateParams["js"] = array("js/admin.js", "js/nav.js");
+$templateParams["js"] = array("js/admin.js", "js/nav.js", "js/header.js");
 
 if (!isAdminLoggedIn()) {
     header("Location: ./index.php");

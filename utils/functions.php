@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Restituisce la stringa passata dopo aver sostituito gli spazi con dei trattini.
  */
@@ -25,7 +26,7 @@ function createArticle($groupInfo)
     return $article;
 }
 
-function generateProductBox($productInfo)
+function generateProductBox($productInfo, $cartSign)
 {
     $productName = htmlspecialchars($productInfo['nome_prodotto']);
     $productPrice = htmlspecialchars($productInfo['prezzo']);
@@ -39,7 +40,20 @@ function generateProductBox($productInfo)
         $stars .= '<span class="fa fa-star"></span>';
     }
 
-    $productBox = "
+    if ($cartSign) {
+        $productBox = "
+        <li>
+            <a href=\"product.php?id=" . urlencode($productName) . "\">
+                <img src=\"upload/prodotti/" . $productName . ".jpg\" class='product-image' alt='product image' />
+                <h2>" . $productName . "</h2>
+                <p>" . $productPrice . " €</p>
+                <p>" . $stars . "</p>
+                <img src='./upload/Card-Cart-Icon.png' class='cart-icon' alt='articolo presente nel carrello' />
+            </a>
+        </li>
+        ";
+    } else {
+        $productBox = "
         <li>
             <a href=\"product.php?id=" . urlencode($productName) . "\">
                 <img src=\"upload/prodotti/" . $productName . ".jpg\" class='product-image' alt='product image' />
@@ -48,7 +62,8 @@ function generateProductBox($productInfo)
                 <p>" . $stars . "</p>
             </a>
         </li>
-    ";
+        ";
+    }
 
     return $productBox;
 }
@@ -155,7 +170,7 @@ function addToCartIfUserIsLogged($id_prodotto, $quantità, $dbh)
 }
 
 /*Verifica se la notifica è stata letta oppure no*/
-function notificationNotRead($messaggio, $data_notifica, $id_notifica ,$dbh)
+function notificationNotRead($messaggio, $data_notifica, $id_notifica, $dbh)
 {
     return $dbh->checkIfAMessageWasRead($messaggio, $data_notifica, $id_notifica, $_SESSION['email']);
 }
@@ -171,10 +186,11 @@ function numberOfMessagesNotRead($dbh)
 /**
  * Uploads an image in local directory.
  */
-function uploadImage($path, $image, $newFileName) {
+function uploadImage($path, $image, $newFileName)
+{
     //$newFileName = preg_replace("/[^a-zA-Z0-9_-]/", "", $newFileName);
     $imageName = basename($image["name"]);
-    $fullPath = $path.$imageName;
+    $fullPath = $path . $imageName;
 
     $maxKB = 1000;
     $acceptedExtensions = array("jpg");
@@ -193,17 +209,17 @@ function uploadImage($path, $image, $newFileName) {
         return array($result, $msg);
     }
     //Controllo l'estensione del file
-    $imageFileType = strtolower(pathinfo($fullPath,PATHINFO_EXTENSION));
-    if(!in_array($imageFileType, $acceptedExtensions)){
+    $imageFileType = strtolower(pathinfo($fullPath, PATHINFO_EXTENSION));
+    if (!in_array($imageFileType, $acceptedExtensions)) {
         $msg = "Errore: estensione della immagine non supportata";
         return array($result, $msg);
     }
     //Rinomino il file
-    $fullPath = $path.$newFileName.".".$imageFileType;
+    $fullPath = $path . $newFileName . "." . $imageFileType;
 
     //Carico il file nella directory (Se già presente viene sovrascritto)
     if (!move_uploaded_file($image["tmp_name"], $fullPath)) {
-        $msg = "Errore: impossibile caricare l'immagine in: ".$fullPath." --> tmp: ".$image["tmp_name"]." >Error: ".$image["error"];
+        $msg = "Errore: impossibile caricare l'immagine in: " . $fullPath . " --> tmp: " . $image["tmp_name"] . " >Error: " . $image["error"];
         return array($result, $msg);
     } else {
         $result = true;
@@ -213,11 +229,12 @@ function uploadImage($path, $image, $newFileName) {
     return array($result, $msg);
 }
 
-function getProductsOfAOrder($order, $dbh){
+function getProductsOfAOrder($order, $dbh)
+{
     return $dbh->getItemsInAnOrder($order);
 }
 
-function hasUserLeftAReviewForProduct($dbh, $id_prodotto){
+function hasUserLeftAReviewForProduct($dbh, $id_prodotto)
+{
     return $dbh->hasUserLeftAReviewForProduct($_SESSION['email'], $id_prodotto);
 }
-?>

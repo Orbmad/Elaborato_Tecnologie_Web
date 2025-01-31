@@ -40,6 +40,9 @@
                         }
                         ?>
                     </p>
+                    <?php if (isset($_SESSION["email"]) && $dbh->hasUserProductInCart($_SESSION["email"], $result['nome_prodotto'])): ?>
+                        <img src='./upload/Card-Cart-Icon.png' class='cart-icon' alt='articolo presente nel carrello' />
+                    <?php endif; ?>
                 </a>
             </li>
             <?php
