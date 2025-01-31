@@ -14,7 +14,7 @@
                 <button class="inserisci-prodotto" type="button">Inserisci prodotto</button>
             </li>
             <li>
-                <button class="crea-gruppo" type="button">Crea gruppo</button>
+                <button class="crea-gruppo" type="button">Crea/Elimina gruppo</button>
             </li>
             <li>
                 <button class="inserisci-in-gruppo" type="button">Inserisci in gruppo</button>
@@ -110,13 +110,13 @@
     </section>
 
     <section class="crea-gruppo hidden">
-        <h1>Crea gruppo</h1>
+        <h1>Crea/Elimina gruppo</h1>
         <form action="./utils/api-admin.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="queryType" value="creagruppo" />
             <ul>
                 <li>
                     <label for="nomeGruppo">Nome gruppo:</label>
-                    <input type="text" id="nomeGruppo" name="nomeGruppo" />
+                    <input type="text" id="nomeGruppo" name="nomeGruppo" required />
                 </li>
                 <li>
                     <label for="descrizioneGruppo">Descrizione gruppo:</label>
@@ -132,7 +132,8 @@
                 </li>
                 <li>
                     <a href="admin.php">Indietro</a>
-                    <input type="submit" name="submit" value="Conferma" />
+                    <input type="submit" name="submit-type" value="Elimina" />
+                    <input type="submit" name="submit-type" value="Conferma" />
                 </li>
             </ul>
         </form>

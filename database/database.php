@@ -483,6 +483,29 @@ class DatabaseHelper
     }
 
     /**
+     * Deletes a group
+     */
+    public function deleteGroup($nome_gruppo) {
+        $query1 = "DELETE FROM Appartenenze
+                WHERE id_gruppo = ?";
+        $query2 = "DELETE FROM Gruppi
+                WHERE nomeGruppo = ?";
+        try {
+            $stmt1 = $this->db->prepare($query1);
+            $stmt1->bind_param('s', $nome_gruppo);
+            $stmt1->execute();
+
+            $stmt2 = $this->db->prepare($query2);
+            $stmt2->bind_param('s', $nome_gruppo);
+            $stmt2->execute();
+
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
      * Insert a product into a group.
      */
     public function addProductInGroup($nome_gruppo, $nome_prodotto)
