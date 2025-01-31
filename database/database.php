@@ -76,6 +76,9 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Returns a group from its name
+     */
     public function getGroup($nomeGruppo)
     {
         $stmt = $this->db->prepare("SELECT * FROM Gruppi WHERE nomeGruppo = ?");
@@ -84,6 +87,30 @@ class DatabaseHelper
         $result = $stmt->get_result();
 
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Returns all user addresses
+     */
+    public function getUserAddresses($user) {
+        $query = "SELECT *
+                FROM Indirizzi
+                WHERE id_utente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function deleteUserAddress($user, $id_indirizzo) {
+        $query = "DELETE FROM Indirizzi
+                WHERE id_utente = ?
+                AND id_indirizzo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('si', $user, $id_indirizzo);
+        $stmt->execute();
     }
 
     /**
@@ -427,7 +454,7 @@ class DatabaseHelper
         }
     }
 
-    public function removeDeletdProductFromCarts($nome)
+    public function removeDeletedProductFromCarts($nome)
     {
         $query = "DELETE FROM Carrello
                 WHERE id_prodotto = ?";

@@ -39,7 +39,7 @@ if (!isset($_POST["queryType"])) {
         //Cancellazione prodotto
         $dbh->deleteProduct($_POST["elimina"]);
         $_SESSION["msg"] = "Prodotto eliminato";
-        $dbh->removeDeletdProductFromCarts($_POST["id"]);
+        $dbh->removeDeletedProductFromCarts($_POST["id"]);
         $targetUsers = $dbh->getUsersWithProductInCart($_POST["id"]);
         foreach ($targetUser as $user) {
             $dbh->newNotification($user["email"], "Il prodotto " . $_POST["nome_prodotto"] . "presente nel tuo carrello è stato rimosso.");
