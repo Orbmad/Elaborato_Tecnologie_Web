@@ -983,6 +983,10 @@ class DatabaseHelper
             //svuotamento carrello
             $this->emptyCart($user);
 
+            //Notifica Admin
+            $string = "L'utente " . $user . " ha effettuato un nuovo ordine. Codice ordine: " . $order_id;
+            $this->newAdminNotification($string);
+
             return true;
         } catch (PDOException) {
             return false;
