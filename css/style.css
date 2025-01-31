@@ -1666,6 +1666,18 @@ main ul.search-results-list>li>a>img.product-image {
     height: 190px;
 }
 
+main ul.search-results-list>li>a>img.cart-icon {
+    /*cart icon*/
+    position: relative;
+    width: 22px;
+    padding: 4px;   
+    z-index: 3;
+    background-color: #AC5411;
+    left: 82%;
+    bottom: 100%;
+    border-radius: 50%;
+}
+
 main ul.search-results-list>li>a>h2 {
     font-size: small;
     color: #3F413E;
@@ -1702,7 +1714,7 @@ main ul.search-results-list {
 }
 
 main ul.search-results-list>li>a span.checked {
-    color: #082D0F;
+    color: #AC5411;
     opacity: 100%;
 }
 
@@ -2083,6 +2095,79 @@ main.notification ul li img.hidden {
 
 /*Fine notifiche mobile*/
 
+/*Inizio pagina indirizzi mobile*/
+
+main.address-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 26px 10px;
+}
+
+main.address-page > section {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 2px 2px 2px #3F413E;
+
+    width: 86%;
+}
+
+main.address-page > section > h1 {
+    font-size: 28px;
+    color: #082D0F;
+    padding: 4px 12px;
+    margin-top: 8px;
+}
+
+main.address-page > section > ul {
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+main.address-page > section > ul > li {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #AC5411;
+    border-radius: 12px;
+    box-shadow: 1px 1px #AC5411;
+    margin-bottom: 10px;
+}
+
+main.address-page > section > ul > li > p {
+    margin-bottom: 4px;
+}
+
+main.address-page > section > ul > li > form {
+    display: flex;
+    justify-content: right;
+}
+
+main.address-page > section > ul > li > form > button {
+    background-color: #AC5411;
+    color: #F0F2EF;
+    border-style: none;
+    font-size: 16px;
+    padding: 4px 8px;
+    border-radius: 8px;
+}
+
+main.address-page > section > ul > li > form > button:hover {
+    scale: 1.05;
+}
+
+main.address-page > section > ul > li > form > button:active {
+    scale: 0.95;
+}
+
+
+/*Fine pagina indirizzi mobile*/
+
 @media (min-width: 768px) {
 
     /*INIZIO FOOTER DESKTOP*/
@@ -2273,8 +2358,15 @@ main.notification ul li img.hidden {
 
     /*Inizio login desktop*/
 
+    main.login-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     main.login-form>section {
         padding: 40px;
+        width: 50%;
     }
 
     main.login-form label {
@@ -2776,7 +2868,7 @@ main.notification ul li img.hidden {
         width: calc(58% - 80px);
         font-size: 22px;
 
-        height: 12%;
+        height: auto;
         margin: auto 38px;
         padding: 0px 10px;
     }
@@ -3012,4 +3104,22 @@ main.notification ul li img.hidden {
     }
 
     /*Fine notifiche desktop*/
+
+    /*Inizio pagina indirizzi desktop*/
+
+    main.address-page > section {
+        width: 72%;
+    }
+
+    main.address-page > section > ul {
+        flex-direction: unset;
+    }
+
+    main.address-page > section > ul > li {
+        width: calc(50% - 30px);
+        padding: 12px;
+        margin: 8px;
+    }
+
+    /*Fine pagina indirizzi desktop*/
 }

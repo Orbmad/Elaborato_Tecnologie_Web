@@ -1,7 +1,6 @@
 
 - prodotti presenti nel carrello devono essere visibili nella lista prodotti
 
-- crea notifiche per venditore (Da sistemare)
+- crea notifiche admin dopo nuovo ordine
 
 - Verifica codice html mediante checker werehouse
-- Aggiungi nel mostra articoli vincolo 'stock > 0'
