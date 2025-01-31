@@ -24,19 +24,22 @@ if (!isset($_POST["queryType"])) {
             $_POST["colore_foglia"],
             $_POST["descrizione"]
         )) {
+            //Modifica prodotto
             $_SESSION["msg"] = "Prodotto modificato";
             if ($_POST["stock"] == 0) {
                 $targetUsers = $dbh->getUsersWithProductInCart($_POST["id"]);
                 foreach ($targetUser as $user) {
-                    $dbh->newNotification($user["email"], "Il prodotto " . $_POST["nome_prodotto"] . "presente nel tuo carrello è stato rimosso.");
+                    $dbh->newNotification($user["email"], "Il prodotto " . $_POST["nome_prodotto"] . "presente nel tuo carrello non è più disponibile.");
                 }
             }
         } else {
             $_SESSION["errore"] = "Errore: impossibile modificare il prodotto";
         }
     } else if (isset($_POST["elimina"])) {
+        //Cancellazione prodotto
         $dbh->deleteProduct($_POST["elimina"]);
         $_SESSION["msg"] = "Prodotto eliminato";
+        $dbh->removeDeletdProductFromCarts($_POST["id"]);
         $targetUsers = $dbh->getUsersWithProductInCart($_POST["id"]);
         foreach ($targetUser as $user) {
             $dbh->newNotification($user["email"], "Il prodotto " . $_POST["nome_prodotto"] . "presente nel tuo carrello è stato rimosso.");

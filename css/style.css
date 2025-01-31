@@ -2255,8 +2255,15 @@ main.notification ul li img.hidden {
 
     /*Inizio login desktop*/
 
+    main.login-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     main.login-form>section {
         padding: 40px;
+        width: 50%;
     }
 
     main.login-form label {

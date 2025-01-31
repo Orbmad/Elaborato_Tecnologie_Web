@@ -415,13 +415,26 @@ class DatabaseHelper
     public function deleteProduct($nome)
     {
         $query = "UPDATE Prodotti
-                SET stock = 0
+                SET presente = 0
                 WHERE nome_prodotto = ?";
         try {
             $stmt = $this->db->prepare($query);
             $stmt->bind_param('s', $nome);
             $stmt->execute();
             return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    public function removeDeletdProductFromCarts($nome)
+    {
+        $query = "DELETE FROM Carrello
+                WHERE id_prodotto = ?";
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s', $nome);
+            $stmt->execute();
         } catch (PDOException) {
             return false;
         }
@@ -501,7 +514,8 @@ class DatabaseHelper
     /**
      * Returns the user from an order
      */
-    public function getUserFromOrder($id_ordine) {
+    public function getUserFromOrder($id_ordine)
+    {
         $query = "SELECT id_utente
                 FROM Ordini
                 WHERE id_ordine = ?";
@@ -595,7 +609,8 @@ class DatabaseHelper
     /**
      * Returns all users
      */
-    public function getAllUsers() {
+    public function getAllUsers()
+    {
         $query = "SELECT email FROM Utenti";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -623,11 +638,12 @@ class DatabaseHelper
         }
     }
 
-    public function broadcastNotification($testo) {
+    public function broadcastNotification($testo)
+    {
         $users = $this->getAllUsers();
         $query = "INSERT INTO Notifiche (id_utente, messaggio)
                 VALUES (?, ?)";
-        
+
         try {
             $stmt = $this->db->prepare($query);
             foreach ($users as $user) {
@@ -674,7 +690,7 @@ class DatabaseHelper
         }
     }
 
-    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_notifica , $id_utente)
+    public function checkIfAMessageWasRead($messaggio, $data_notifica, $id_notifica, $id_utente)
     {
         $stmt = $this->db->prepare("SELECT * FROM Notifiche WHERE id_utente = ? AND letto = 0 AND messaggio = ? AND id_notifica = ?");
         $stmt->bind_param('ssi', $id_utente, $messaggio, $id_notifica);
@@ -726,7 +742,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function hasUserLeftAReviewForProduct($id_utente, $id_prodotto){
+    public function hasUserLeftAReviewForProduct($id_utente, $id_prodotto)
+    {
         $stmt = $this->db->prepare("SELECT * FROM recensioni WHERE id_utente = ? AND id_prodotto =  ?");
         $stmt->bind_param('ss', $id_utente, $id_prodotto);
         $stmt->execute();
@@ -734,5 +751,4 @@ class DatabaseHelper
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
         return ($cont > 0);
     }
-
 }

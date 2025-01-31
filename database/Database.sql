@@ -49,6 +49,7 @@ CREATE TABLE Prodotti (
     nome_prodotto VARCHAR(150) PRIMARY KEY,
     prezzo DECIMAL(10, 2) NOT NULL,
     id_sottocategoria VARCHAR(100) NOT NULL,
+    presente BOOLEAN DEFAULT 1,
     stock INT NOT NULL,
     nome_volgare VARCHAR(50), -- Tassonomia Pianta-----------------------------
     nome_scientifico VARCHAR(50),
