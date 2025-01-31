@@ -666,6 +666,11 @@ main.admin-page>section>form>ul>li>a:hover {
     scale: 1.1;
 }
 
+main.admin-page>section.crea-gruppo>form>ul>li>input[type="submit"],
+main.admin-page>section.crea-gruppo>form>ul>li>a {
+    width: 32%;
+}
+
 /*Stile inserimento file*/
 
 main.admin-page section ul li section.file-upload {

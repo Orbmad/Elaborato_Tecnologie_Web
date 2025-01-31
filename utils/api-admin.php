@@ -35,19 +35,30 @@ if (!(isset($_POST["queryType"]))) {
         }
     }
 } else if ($_POST["queryType"] == "creagruppo" /*&& isset($_FILES["immagine"])*/) {
-    //Creazione gruppo
-    list($result, $msg) = uploadImage("../upload/gruppi/", $_FILES["immagine"], $_POST["nomeGruppo"]);
-    if (!$result) {
-        $_SESSION["errore"] = $msg;
-    } else {
-        if ($dbh->createNewGroup(
-            $_POST["nomeGruppo"],
-            $_POST["descrizioneGruppo"]
-        )) {
-            $_SESSION["msg"] = "Gruppo creato";
+    if ($_POST["submit-type"] == "Conferma") {
+        //Creazione gruppo
+        list($result, $msg) = uploadImage("../upload/gruppi/", $_FILES["immagine"], $_POST["nomeGruppo"]);
+        if (!$result) {
+            $_SESSION["errore"] = $msg;
         } else {
-            $_SESSION["errore"] = "Errore creazione gruppo";
+            if ($dbh->createNewGroup(
+                $_POST["nomeGruppo"],
+                $_POST["descrizioneGruppo"]
+            )) {
+                $_SESSION["msg"] = "Gruppo creato";
+            } else {
+                $_SESSION["errore"] = "Errore creazione gruppo";
+            }
         }
+    } else if ($_POST["submit-type"] == "Elimina") {
+        //Eliminazione gruppo
+        if ($dbh->deleteGroup($_POST["nomeGruppo"])) {
+            $_SESSION["msg"] = "Gruppo " . $_POST["nomeGruppo"] . " creato";
+        } else {
+            $_SESSION["errore"] = "Errore eliminazione gruppo";
+        }
+    } else {
+        $_SESSION["errore"] = "Errore nell'operazione effettuata, operazione non riconosciuta";
     }
 } else if ($_POST["queryType"] == "inserisciingruppo") {
     //Inserimento in gruppo
@@ -96,5 +107,3 @@ if (!(isset($_POST["queryType"]))) {
 
 header("Location: ../admin.php");
 exit;
-
-?>
