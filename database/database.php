@@ -35,6 +35,13 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getPaymentMethods(){
+        $stmt = $this->db->prepare("SELECT * FROM metodipagamento");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
     /**
      * Returns all categories.
      */
@@ -194,7 +201,7 @@ class DatabaseHelper
     public function searchProductByName($name)
     {
         $text = "%" . $name . "%";
-        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? ORDER BY RAND()");
+        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE nome_prodotto LIKE ? AND stock > 0 ORDER BY RAND()");
         $stmt->bind_param('s', $text);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -552,8 +559,8 @@ class DatabaseHelper
             $stmt_query = $this->db->prepare($query);
             $stmt_notif = $this->db->prepare($notif);
 
-            $stmt_query->bind_param('si', $stato, $id_ordine);
-            $stmt_notif->bind_param('ss', $id_utente, "Lo stato dell'ordine " . $id_ordine . " è stato aggiornato: " . $stato);
+            $stmt_query->bind_param('si',$stato,$id_ordine);
+            $stmt_notif->bind_param('ss',$id_utente, "Lo stato dell'ordine " . $id_ordine . " è stato aggiornato: " . $stato);
 
             $stmt_query->execute();
             $stmt_notif->execute();

@@ -1,4 +1,6 @@
 <main class="main-order-recap">
+    <input type="hidden" id="loggedUser" value="<?= $email?>"/>
+    <input type="hidden" id="costoTotale" value="<?= $templateParams["cartTotalPrice"] ?>"/>
     <section class="order-recap">
         <?php if (isset($templateParams["cartProducts"])): ?>
             <section class="order-recap-header">
@@ -29,22 +31,38 @@
     </section>
     <?php if (isset($templateParams["cartProducts"])): ?>
         <section class="order-form-sec">
-            <h2>Indirizzo di spedizione</h2>
-            <form>
+            <section class="address-form-header">
+                <h2>Indirizzo di spedizione</h2>
+                <img id="address-check-btn" class="not-showing" src="upload/check.png" alt="Check symbol for address">
+            </section>
+            <form id="address-form">
                 <ul>
-                    <li>
+                    <li id="address-selection-li">
+                        <label for="address-selection">Indirizzo utilizzato</label>
+                        <select id="address-selection" name="adddres-selection">
+                            <option value="nuovo" selected>Usa un  nuovo indirizzo</option>
+                            <?php foreach ($templateParams["savedAddresses"] as $address): ?>
+                                <option value="<?= $address["id_indirizzo"] ?>"><?= $address['via'] ?>, <?= $address['citta'] ?> (<?= $address['provincia'] ?>)</option>
+                            <?php endforeach; ?>
+                        </select>
+                    </li>
+                    <li class="switchable-address-field">
                         <label for="addr-via">Via</label>
                         <input type="text" id="addr-via" name="addr-via" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
                         <label for="addr-citta">Città</label>
                         <input type="text" id="addr-citta" name="addr-citta" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
+                        <label for="addr-provincia">Provincia</label>
+                        <input type="text" id="addr-provincia" name="addr-provincia" required />
+                    </li>
+                    <li class="switchable-address-field">
                         <label for="addr-cap">Cap</label>
                         <input type="text" id="addr-cap" name="addr-cap" maxlength="5" pattern="[0-9]{5}" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
                         <label for="addr-nazione">Nazione</label>
                         <select class="form-select" autocomplete="nazione" id="addr-nazione" name="nazione">
                             <option value="IT">Italia</option>
@@ -53,16 +71,39 @@
                             <option value="VA">Cittá del vaticano</option>
                         </select>
                     </li>
-                    <li>
+                    <li class="checkbox-field switchable-address-field">
                         <label for="addr-save">Desideri salvare l'indirizzo?</label>
-                        <input type="checkbox"  id="addr-save" name="addr-save">
+                        <input type="checkbox" id="addr-save" name="addr-save">
+                    </li>
+                    <li>
+                        <label for="conferma-indirizzo" class="hidden">Conferma indirizzo</label>
+                        <input id="conferma-indirizzo" type="submit" class="green-button" value="Seleziona indirizzo" />
                     </li>
                 </ul>
-                <input type="button" value="Seleziona indirizzo"/>
             </form>
         </section>
         <section class="order-form-sec">
             <h2>Metodo di pagamento</h2>
-        </section>        
+            <form id="payment-form">
+                <ul>
+                    <li class="not-showing" id="pay-method-li">
+                        <label for="payment-method">Metodo di pagamento</label>
+                        <select class="form-select" id="payment-method" name="metodo di pagamento">
+                            <?php foreach ($templateParams["paymentsMethods"] as $method): ?>
+                                <option value="<?= $method['id_metodo'] ?>" selected><?= $method['tipo_metodo'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </li>
+                    <li class="not-showing switchable-field" id="pay-email-li">
+                        <label for="pay-email">Email</label>
+                        <input type="email" id="pay-email" name="pay-email" required autocomplete="email" />
+                    </li>
+                    <li class="not-showing">
+                        <label for="confirm-order" class="hidden">Ordina</label>
+                        <input id="confirm-order" type="submit" class="green-button" value="Ordina!" />
+                    </li>
+                </ul>
+            </form>
+        </section>
     <?php endif; ?>
 </main>

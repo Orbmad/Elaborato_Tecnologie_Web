@@ -5,7 +5,7 @@
                 <h2>
                     Il tuo carrello
                 </h2>
-                <input type="button" value="Procedi all'ordine (<?php echo $templateParams["cartTotalProducts"] ?>)" onclick="window.location.href='order.php'"/>
+                <input type="button" class="green-button" value="Procedi all'ordine (<?php echo $templateParams["cartTotalProducts"] ?>)" onclick="window.location.href='order.php'"/>
             </section class="cart-header">
             <ul>
                 <?php foreach ($templateParams["cartProducts"] as $cartProduct): ?>
