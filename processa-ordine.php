@@ -18,7 +18,9 @@ if(isset($dati)){
             $dati["datiIndirizzo"]["provincia"],
             $dati["datiIndirizzo"]["cap"],
             $dati["datiIndirizzo"]["nazione"],
-            $dati["totalPrice"]);
+            $dati["totalPrice"],
+            $dati["datiIndirizzo"]["save"]
+        );
     }
 }
 ?>
