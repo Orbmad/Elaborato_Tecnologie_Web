@@ -68,7 +68,7 @@ class DatabaseHelper
      */
     public function getProductById($product_id)
     {
-        $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ?");
+        $stmt = $this->db->prepare("SELECT * FROM Prodotti WHERE nome_prodotto = ? AND presente = 1");
         $stmt->bind_param('s', $product_id);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -225,7 +225,7 @@ class DatabaseHelper
 
     public function getBestProducts($n)
     {
-        $stmt = $this->db->prepare("SELECT * FROM prodotti ORDER BY voto LIMIT ?");
+        $stmt = $this->db->prepare("SELECT * FROM prodotti WHERE presente = 1 ORDER BY voto DESC LIMIT ?");
         $stmt->bind_param('i', $n);
         $stmt->execute();
         $result = $stmt->get_result();

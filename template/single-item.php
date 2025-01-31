@@ -12,7 +12,7 @@
                 <img src="upload/prodotti/<?php echo $prodotto["nome_prodotto"] ?>.jpg" alt="" />
                 <section>
                     <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
-                    <h3><?php echo $prodotto["prezzo"] ?>$
+                    <h3><?php echo $prodotto["prezzo"] ?>€
                     </h3>
 
                     <div class="star-value">

@@ -1702,7 +1702,7 @@ main ul.search-results-list {
 }
 
 main ul.search-results-list>li>a span.checked {
-    color: #082D0F;
+    color: #AC5411;
     opacity: 100%;
 }
 
@@ -2838,7 +2838,7 @@ main.address-page > section > ul > li > form > button:active {
         width: calc(58% - 80px);
         font-size: 22px;
 
-        height: 12%;
+        height: auto;
         margin: auto 38px;
         padding: 0px 10px;
     }
