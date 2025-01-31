@@ -1,5 +1,4 @@
 
-- Aggiungi salvataggio indirizzo
-- Controlla aggiornamento stock dopo ordine
+- sistema bollino card carrello
 
 - Verifica codice html mediante checker werehouse
