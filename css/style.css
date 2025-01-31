@@ -1660,8 +1660,6 @@ main ul.search-results-list>li:active {
     transform: scale(0.9);
 }
 
-
-
 main ul.search-results-list>li.hidden {
     display: none;
 }
@@ -1678,8 +1676,10 @@ main ul.search-results-list>li>a>img.cart-icon {
     padding: 4px;   
     z-index: 3;
     background-color: #AC5411;
-    left: 82%;
-    bottom: 100%;
+
+    left: 76px;
+    bottom: 256px;
+
     border-radius: 50%;
 }
 
@@ -2800,6 +2800,10 @@ main.main-order-recap section.order-item section.leave-review textarea{
         justify-content: space-evenly;
         flex-wrap: wrap;
         text-align: left;
+    }
+
+    main ul.search-results-list>li>a>img.cart-icon {
+        left: 156px;
     }
 
     /*FIne regole main desktop*/

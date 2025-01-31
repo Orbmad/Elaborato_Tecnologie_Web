@@ -1,6 +1,4 @@
 
-- prodotti presenti nel carrello devono essere visibili nella lista prodotti
-
-- crea notifiche admin dopo nuovo ordine
+- sistema bollino card carrello
 
 - Verifica codice html mediante checker werehouse
