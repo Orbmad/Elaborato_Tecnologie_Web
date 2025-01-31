@@ -168,57 +168,74 @@
                         <th>Categoria</th>
                         <td><a href="#"><?php echo $prodotto["id_sottocategoria"] ?></a></td>
                     </tr>
+                    <?php if(strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Nome volgare</th>
                         <td><?php echo $prodotto["nome_volgare"] ?></td>
                     </tr>
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Nome scientifico</th>
                         <td><?php echo $prodotto["nome_scientifico"] ?></td>
                     </tr>
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["famiglia"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Famiglia</th>
                         <td><?php echo $prodotto["famiglia"] ?></td>
                     </tr>
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["genere"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Genere</th>
                         <td><?php echo $prodotto["genere"] ?></td>
                     </tr>
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["specie"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Specie</th>
                         <td><?php echo $prodotto["specie"] ?></td>
                     </tr>
-
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["tipologia_foglia"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Tipologia foglia</th>
                         <td><?php echo $prodotto["tipologia_foglia"] ?></td>
                     </tr>
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["colore_foglia"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Colore foglia</th>
                         <td><?php echo $prodotto["colore_foglia"] ?></td>
                     </tr>
+                    <?php endif; ?>
                 </table>
             </section>
         </article>
 
         <section>
             <h2>L&apos;opinione dei planters!</h2>
-            <?php foreach ($templateParams["recensioni_prodotto"] as $rec): ?>
-                <article>
-                    <h3><?php echo $rec["nome"] ?></h3>
-                    <div class="star-value-user">
-                        <?php for ($i = 1; $i <= $rec["voto"]; $i++): ?>
-                            <span class="fa fa-star checked"></span>
-                        <?php endfor; ?>
-                        <?php for ($i = $rec["voto"] + 1; $i <= 5; $i++): ?>
-                            <span class="fa fa-star"></span>
-                        <?php endfor; ?>
-                    </div>
-                    <h3><?php echo $rec["voto"] ?>/5</h3>
-                    <h4><?php echo $rec["dataRec"] ?></h4>
-                    <p><?php echo $rec["commento"] ?></p>
-                </article>
-            <?php endforeach; ?>
+            <?php if(count($templateParams["recensioni_prodotto"]) == 0): ?>
+                <p>Non ci sono recensioni per questo prodotto</p>
+            <?php else: ?>
+                <?php foreach ($templateParams["recensioni_prodotto"] as $rec): ?>
+                    <article>
+                        <h3><?php echo $rec["nome"] ?></h3>
+                        <div class="star-value-user">
+                            <?php for ($i = 1; $i <= $rec["voto"]; $i++): ?>
+                                <span class="fa fa-star checked"></span>
+                            <?php endfor; ?>
+                            <?php for ($i = $rec["voto"] + 1; $i <= 5; $i++): ?>
+                                <span class="fa fa-star"></span>
+                            <?php endfor; ?>
+                        </div>
+                        <h3><?php echo $rec["voto"] ?>/5</h3>
+                        <h4><?php echo $rec["dataRec"] ?></h4>
+                        <p><?php echo $rec["commento"] ?></p>
+                    </article>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </section>
 
     <?php endif; ?>

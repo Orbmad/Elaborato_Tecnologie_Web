@@ -807,7 +807,7 @@ class DatabaseHelper
     public function getOrdersOfAUser($id_utente)
     {
         $stmt = $this->db->prepare("SELECT id_ordine, stato_ordine, DATE(data_ordine) as dataOrdine , totale, via, citta, provincia, nazione, cap FROM ordini, indirizzi
-                                    WHERE indirizzi.id_indirizzo = ordini.id_indirizzo AND indirizzi.id_utente = ? AND ordini.id_utente = ?");
+                                    WHERE indirizzi.id_indirizzo = ordini.id_indirizzo AND indirizzi.id_utente = ? AND ordini.id_utente = ? ORDER BY data_ordine DESC");
         $stmt->bind_param('ss', $id_utente, $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
