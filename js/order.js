@@ -145,8 +145,6 @@ document.getElementById("payment-form").addEventListener('submit', function (eve
         datiIndirizzo: datiIndirizzo
     }
 
-    console.log(dati);
-
     fetch("processa-ordine.php", {
         method: "POST",
         headers: {

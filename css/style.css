@@ -1746,7 +1746,7 @@ main.main-order-recap {
     width: 100%;
 }
 
-main.main-order-recap img{
+main.main-order-recap section.address-form-header img{
    width: 35px;
    height: 35px;
    margin-left: auto;
@@ -1795,11 +1795,13 @@ main.main-order-recap>section.order-recap>ul>li {
     flex-direction: row;
 }
 
+
 main.main-order-recap>section.order-recap>ul>li {
-    align-items: center;
     display: flex;
     flex-direction: row;
     padding: 5px 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 main.main-order-recap>section.order-recap>section.order-recap-header>p {

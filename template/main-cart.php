@@ -1,6 +1,7 @@
 <main class="main-cart">
     <section class="cart-products">
         <?php if (isset($templateParams["cartProducts"])): ?>
+            <?php if (count($templateParams["cartProducts"])>0): ?>
             <section class="cart-header">
                 <h2>
                     Il tuo carrello
@@ -55,6 +56,9 @@
                     <p>Totale provvisorio: <?php echo $templateParams["cartTotalPrice"] ?> €</p>
                 </li>
             </ul>
+            <?php else: ?>
+                <h2>Il tuo carrello è vuoto</h2>
+            <?php endif; ?>
         <?php else: ?>
             <section class="cart-header">
                 <h2>Effettua il login per accedere al carrello...</h2>
