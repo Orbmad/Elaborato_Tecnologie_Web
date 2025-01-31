@@ -1,4 +1,3 @@
-DROP DATABASE Plantatio;
 CREATE DATABASE IF NOT EXISTS Plantatio;
 USE Plantatio;
 

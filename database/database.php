@@ -548,7 +548,7 @@ class DatabaseHelper
      */
     public function updateOrderState($id_ordine, $stato, $id_utente)
     {
-        $query = "UPDATE Ordine
+        $query = "UPDATE Ordini
                 SET stato_ordine = ?
                 WHERE id_ordine = ?";
 
@@ -560,7 +560,8 @@ class DatabaseHelper
             $stmt_notif = $this->db->prepare($notif);
 
             $stmt_query->bind_param('si',$stato,$id_ordine);
-            $stmt_notif->bind_param('ss',$id_utente, "Lo stato dell'ordine " . $id_ordine . " è stato aggiornato: " . $stato);
+            $string = "Lo stato dell`ordine " . $id_ordine . " è stato aggiornato: " . $stato;
+            $stmt_notif->bind_param('ss', $id_utente, $string);
 
             $stmt_query->execute();
             $stmt_notif->execute();
@@ -580,7 +581,7 @@ class DatabaseHelper
                 FROM Ordini
                 WHERE id_ordine = ?";
 
-        $stmt = $this->db->prepare($id_ordine);
+        $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $id_ordine);
         $stmt->execute();
 
@@ -842,9 +843,12 @@ class DatabaseHelper
 
     public function getOrdersOfAUser($id_utente)
     {
-        $stmt = $this->db->prepare("SELECT id_ordine, stato_ordine, DATE(data_ordine) as dataOrdine , totale, via, citta, provincia, nazione, cap FROM ordini, indirizzi
-                                    WHERE indirizzi.id_indirizzo = ordini.id_indirizzo AND indirizzi.id_utente = ? AND ordini.id_utente = ? ORDER BY data_ordine DESC");
-        $stmt->bind_param('ss', $id_utente, $id_utente);
+        $query = "SELECT *, DATE(data_ordine) as dataOrdine 
+                FROM Ordini
+                WHERE id_utente = ?
+                ORDER BY data_ordine DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -921,16 +925,34 @@ class DatabaseHelper
     }
 
     /**
+     * Returns address data
+     */
+    public function getAddressData($id_indirizzo) {
+        $query = "SELECT *
+                FROM Indirizzi
+                WHERE id_indirizzo = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $id_indirizzo);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC)[0];
+    }
+
+    /**
      * Creates a new order with the products in the cart.
      */
     public function createOrderFromCart($user, $id_metodo, $id_indirizzo, $totale)
     {
         try {
+            //Dati indirizzo
+            $address = $this->getAddressData($id_indirizzo);
+
             // creazione ordine
-            $newOrder = "INSERT INTO Ordini (id_utente, id_metodo, id_indirizzo, totale)
-                    VALUES (?, ?, ?, ?)";
+            $newOrder = "INSERT INTO Ordini (id_utente, id_metodo, id_indirizzo, via, citta, provincia, cap, nazione, totale)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt_newOrder = $this->db->prepare($newOrder);
-            $stmt_newOrder->bind_param('siid', $user, $id_metodo, $id_indirizzo, $totale);
+            $stmt_newOrder->bind_param('siisssssd', $user, $id_metodo, $id_indirizzo, $address["via"], $address["citta"], $address["provincia"], $address["cap"], $address["nazione"], $totale);
             $stmt_newOrder->execute();
             $order_id = $stmt_newOrder->insert_id;
 
@@ -1011,7 +1033,7 @@ class DatabaseHelper
             $this->emptyCart($user);
 
             //Notifica Admin
-            $string = "L'utente " . $user . " ha effettuato un nuovo ordine. Codice ordine: " . $order_id;
+            $string = "L`utente " . $user . " ha effettuato un nuovo ordine. Codice ordine: " . $order_id;
             $this->newAdminNotification($string);
 
             return true;

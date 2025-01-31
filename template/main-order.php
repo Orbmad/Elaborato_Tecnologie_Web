@@ -31,7 +31,7 @@
                             <p class="name"><?php echo $item['nome_prodotto'] ?></p>
                             <p>Quantità: <?php echo $item['quantita'] ?></p>
                             <p>Prezzo unitario: <?php echo $item['prezzo_unitario'] ?></p>
-                                <button class="<?php if(strcmp($order['stato_ordine'], 'consegnato') == 0 && !hasUserLeftAReviewForProduct($dbh, $item['nome_prodotto'])){echo "show";} else{echo "hidden";} ?>" type='button'>Lascia recensione</button>
+                                <button class="<?php if(strcmp($order['stato_ordine'], 'Consegnato') == 0 && !hasUserLeftAReviewForProduct($dbh, $item['nome_prodotto'])){echo "show";} else{echo "hidden";} ?>" type='button'>Lascia recensione</button>
                         </section>
                         <section class='hidden leave-review'>
                             <span>Voto: </span><span class="fa fa-star 1"></span>

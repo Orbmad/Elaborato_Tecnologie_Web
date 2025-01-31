@@ -22,6 +22,6 @@
                 </li>
             <?php endforeach; ?>
         </ul>
-        
+
     </section>
 </main>
