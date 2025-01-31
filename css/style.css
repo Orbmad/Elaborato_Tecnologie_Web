@@ -1666,6 +1666,18 @@ main ul.search-results-list>li>a>img.product-image {
     height: 190px;
 }
 
+main ul.search-results-list>li>a>img.cart-icon {
+    /*cart icon*/
+    position: relative;
+    width: 22px;
+    padding: 4px;   
+    z-index: 3;
+    background-color: #AC5411;
+    left: 82%;
+    bottom: 100%;
+    border-radius: 50%;
+}
+
 main ul.search-results-list>li>a>h2 {
     font-size: small;
     color: #3F413E;

@@ -631,14 +631,44 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
+    /**
+     * Returns true if the user has a certain product in its cart
+     */
+    public function hasUserProductInCart($user, $id_prodotto) {
+        $query = "SELECT *
+                FROM Carrello
+                WHERE id_utente = ?
+                AND id_prodotto = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ss', $user, $id_prodotto);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return count($result->fetch_all(MYSQLI_ASSOC)) > 0;
+    }
+
     //Inizio Queries Ausilio notifiche
 
     /**
-     * Returns all users
+     * Returns all users except teh admins
      */
     public function getAllUsers()
     {
-        $query = "SELECT email FROM Utenti";
+        $query = "SELECT email FROM Utenti WHERE admin_flag = 0";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /**
+     * Returns all the admins
+     */
+    public function getAllAdmins() {
+        $query = "SELECT email FROM Utenti WHERE admin_flag = 0";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
 
@@ -665,9 +695,33 @@ class DatabaseHelper
         }
     }
 
+
+    /**
+     * Creates a notification for all the users
+     */
     public function broadcastNotification($testo)
     {
         $users = $this->getAllUsers();
+        $query = "INSERT INTO Notifiche (id_utente, messaggio)
+                VALUES (?, ?)";
+
+        try {
+            $stmt = $this->db->prepare($query);
+            foreach ($users as $user) {
+                $stmt->bind_param('ss', $user["email"], $testo);
+                $stmt->execute();
+            }
+            return false;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Creates a notification for all the admins
+     */
+    public function adminNotification($testo) {
+        $users = $this->getAllAdmins();
         $query = "INSERT INTO Notifiche (id_utente, messaggio)
                 VALUES (?, ?)";
 
