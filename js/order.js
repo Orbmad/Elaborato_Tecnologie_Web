@@ -121,7 +121,7 @@ document.getElementById("payment-form").addEventListener('submit', function (eve
     event.preventDefault();
     const addressType = document.getElementById("address-selection").value;
     let datiIndirizzo;
-    let datiPagamneto;
+    let datiPagamento;
     if (addressType == "nuovo") {
         datiIndirizzo = {
             via: document.getElementById("addr-via").value,
@@ -155,7 +155,7 @@ document.getElementById("payment-form").addEventListener('submit', function (eve
         datiPagamento: datiPagamento,
         datiIndirizzo: datiIndirizzo
     }
-
+    
     fetch("processa-ordine.php", {
         method: "POST",
         headers: {
@@ -163,8 +163,9 @@ document.getElementById("payment-form").addEventListener('submit', function (eve
         },
         body: JSON.stringify(dati)
     })
-        .then(() => {
-            window.location.href = "processa-ordine.php"; 
-        });
+        .then(response => response.text())
+        .then(text => {
+            console.log("Risposta dal server:", text);
+        })
 
 });

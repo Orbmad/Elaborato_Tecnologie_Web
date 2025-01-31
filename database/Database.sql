@@ -95,9 +95,14 @@ CREATE TABLE Appartenenze (
 -- Tabella ordini
 CREATE TABLE Ordini (
     id_ordine INT AUTO_INCREMENT PRIMARY KEY,
-    id_utente VARCHAR(50) NOT NULL,
+    id_utente VARCHAR(150) NOT NULL,
     id_metodo INT NOT NULL,
-    id_indirizzo INT NOT NULL,
+    id_indirizzo INT DEFAULT NULL,
+    via VARCHAR(255) DEFAULT NULL,
+    citta VARCHAR(100) DEFAULT NULL,
+    provincia VARCHAR(100) DEFAULT NULL,
+    cap VARCHAR(10) DEFAULT NULL,
+    nazione VARCHAR(100) DEFAULT NULL,
     stato_ordine VARCHAR(100) DEFAULT 'in attesa',
     data_ordine TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     totale DECIMAL(10, 2) NOT NULL,
