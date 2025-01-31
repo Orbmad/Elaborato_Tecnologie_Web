@@ -2,14 +2,15 @@
 $templateParams["titolo"] = "Plantatio";
 require_once 'bootstrap.php';
 $dati = json_decode(file_get_contents("php://input"), true);
-if(isset($dati)){
-    if(isset($dati["datiIndirizzo"]["idIndirizzo"])){
-            echo $dbh->createOrderFromCart(
+if (isset($dati)) {
+    if (isset($dati["datiIndirizzo"]["idIndirizzo"])) {
+        echo $dbh->createOrderFromCart(
             $dati["user"],
             $dati["metodoPagamento"],
             $dati["datiIndirizzo"]["idIndirizzo"],
-            $dati["totalPrice"]);
-    }else{
+            $dati["totalPrice"]
+        );
+    } else {
         echo $dbh->createOrderFromCart_addressNotSaved(
             $dati["user"],
             $dati["metodoPagamento"],
@@ -18,7 +19,13 @@ if(isset($dati)){
             $dati["datiIndirizzo"]["provincia"],
             $dati["datiIndirizzo"]["cap"],
             $dati["datiIndirizzo"]["nazione"],
-            $dati["totalPrice"]);
+            $dati["totalPrice"],
+            $dati["save"]
+        );
     }
+} else {
+    $templateParams["js"] = array("js/nav.js", "js/header.js");
+    $templateParams["mainContent"] = "template/main-processa-ordine.php";
+    require 'template/base.php';
 }
 ?>

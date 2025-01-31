@@ -152,9 +152,11 @@ document.getElementById("payment-form").addEventListener('submit', function (eve
         },
         body: JSON.stringify(dati)
     })
-        .then(response => response.text())
-        .then(text => {
-            console.log("Risposta dal server:", text);
+        .then(response => response.json())
+        .then(success => {
+            if(success){
+                window.location.href ="processa-ordine.php";
+            }
         })
 
 });
