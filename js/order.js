@@ -37,9 +37,10 @@ document.getElementById("address-check-btn").addEventListener('click', function 
 })
 
 document.getElementById("payment-method").addEventListener('change', hideInputs);
+document.getElementById("address-selection").addEventListener('change', hideAddressInputs);
 
 function hideInputs() {
-    let liElement = document.getElementById("pay-method-li"); 
+    let liElement = document.getElementById("pay-method-li");
     const methodSelected = document.getElementById("payment-method").value;
     document.querySelectorAll(".switchable-field").forEach(element => element.remove());
     if (methodSelected == 2) {
@@ -49,7 +50,7 @@ function hideInputs() {
                 <input type="email" id="pay-email" name="pay-email" required autocomplete="email" />
             </li>
         `;
-        liElement.insertAdjacentHTML("afterend",formText);
+        liElement.insertAdjacentHTML("afterend", formText);
     } else {
         const formText = `
             <li class="switchable-field">
@@ -68,27 +69,102 @@ function hideInputs() {
                     title="Il CVV deve essere di 3 o 4 cifre" />
             </li>
         `;
-        liElement.insertAdjacentHTML("afterend",formText);
+        liElement.insertAdjacentHTML("afterend", formText);
     }
-    // const methodSelected = document.getElementById("payment-method").value;
-    // document.querySelector("#payment-form li:first-of-type").classList.remove("not-showing");
-    // if (methodSelected == 2) {
-    //     document.querySelectorAll("#payment-form li:not(:first-of-type):not(:last-of-type)").forEach(function (li) {
-    //         li.classList.add("not-showing");
-    //     });
-    //     document.getElementById("pay-email-li").classList.remove("not-showing");
-    //     document.getElementById("pay-email-li").lastElementChild.setAttribute("required", "false");
-    //     document.getElementById("pay-numero").setAttribute("required", "true");
-    //     document.getElementById("pay-date").setAttribute("required", "true");
-    //     document.getElementById("pay-cvv").setAttribute("required", "true");
-    // } else {
-    //     document.querySelectorAll("#payment-form li:not(:first-of-type)").forEach(function (li) {
-    //         li.classList.remove("not-showing");
-    //     });
-    //     document.getElementById("pay-email-li").classList.add("not-showing");
-    //     document.getElementById("pay-email-li").setAttribute("required", "true");
-    //     document.getElementById("pay-numero").setAttribute("required", "false");
-    //     document.getElementById("pay-date").setAttribute("required", "false");
-    //     document.getElementById("pay-cvv").setAttribute("required", "false");
-    // }
 }
+
+function hideAddressInputs() {
+    let liElement = document.getElementById("address-selection-li");
+    const addressTypeSelected = document.getElementById("address-selection").value;
+    document.querySelectorAll(".switchable-address-field").forEach(element => element.remove());
+    if (addressTypeSelected != "nuovo") {
+        const formText = ``;
+        liElement.insertAdjacentHTML("afterend", formText);
+    } else {
+        const formText = `
+           <li class="switchable-address-field">
+                        <label for="addr-via">Via</label>
+                        <input type="text" id="addr-via" name="addr-via" required />
+                    </li>
+                    <li class="switchable-address-field">
+                        <label for="addr-citta">Città</label>
+                        <input type="text" id="addr-citta" name="addr-citta" required />
+                    </li>
+                    <li class="switchable-address-field">
+                        <label for="addr-provincia">Provincia</label>
+                        <input type="text" id="addr-provincia" name="addr-provincia" required />
+                    </li>
+                    <li class="switchable-address-field">
+                        <label for="addr-cap">Cap</label>
+                        <input type="text" id="addr-cap" name="addr-cap" maxlength="5" pattern="[0-9]{5}" required />
+                    </li>
+                    <li class="switchable-address-field">
+                        <label for="addr-nazione">Nazione</label>
+                        <select class="form-select" autocomplete="nazione" id="addr-nazione" name="nazione">
+                            <option value="IT">Italia</option>
+                            <option value="SM">San Marino</option>
+                            <option value="CH">Svizzera</option>
+                            <option value="VA">Cittá del vaticano</option>
+                        </select>
+                    </li>
+                    <li class="checkbox-field switchable-address-field">
+                        <label for="addr-save">Desideri salvare l'indirizzo?</label>
+                        <input type="checkbox" id="addr-save" name="addr-save">
+                    </li>
+        `;
+        liElement.insertAdjacentHTML("afterend", formText);
+    }
+
+}
+
+document.getElementById("payment-form").addEventListener('submit', function (event) {
+    event.preventDefault();
+    const addressType = document.getElementById("address-selection").value;
+    let datiIndirizzo;
+    let datiPagamneto;
+    if (addressType == "nuovo") {
+        datiIndirizzo = {
+            via: document.getElementById("addr-via").value,
+            citta: document.getElementById("addr-citta").value,
+            cap: document.getElementById("addr-cap").value,
+            provincia: document.getElementById("addr-provincia").value,
+            nazione: document.getElementById("addr-nazione").value,
+            save: document.getElementById("addr-save").checked
+        };
+    } else {
+        datiIndirizzo = {
+            idIndirizzo: addressType
+        };
+    }
+    const methodSelected = document.getElementById("payment-method").value;
+    if (methodSelected == 2) {
+        datiPagamento = {
+            email: document.getElementById("pay-email").value
+        };
+    } else {
+        datiPagamento = {
+            numero: document.getElementById("pay-numero").value,
+            scadenza: document.getElementById("pay-date").value,
+            cvv: document.getElementById("pay-cvv").value
+        };
+    }
+
+    const dati = {
+        user: document.getElementById("loggedUser").value,
+        totalPrice: document.getElementById("costoTotale").value,
+        datiPagamento: datiPagamento,
+        datiIndirizzo: datiIndirizzo
+    }
+
+    fetch("processa-ordine.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dati)
+    })
+        .then(() => {
+            window.location.href = "processa-ordine.php"; 
+        });
+
+});

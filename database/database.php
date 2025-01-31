@@ -533,8 +533,8 @@ class DatabaseHelper
             $stmt_query = $this->db->prepare($query);
             $stmt_notif = $this->db->prepare($notif);
 
-            $stmt_query->bind_param('si', $stato, $id_ordine);
-            $stmt_notif->bind_param('ss', $id_utente, "Lo stato dell'ordine " . $id_ordine . " è stato aggiornato: " . $stato);
+            $stmt_query->bind_param('si',$stato,$id_ordine);
+            $stmt_notif->bind_param('ss',$id_utente, "Lo stato dell'ordine " . $id_ordine . " è stato aggiornato: " . $stato);
 
             $stmt_query->execute();
             $stmt_notif->execute();

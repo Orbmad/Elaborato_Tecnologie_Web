@@ -123,3 +123,14 @@ function generateSuggestions(suggestions) {
     }
     return result;
 }
+
+function resetText(inputId){      
+    const inputField = document.getElementById(inputId);
+    
+    if (inputField) {
+        inputField.value = "";
+    } else {
+        console.error("Input field not found!");
+    }
+    showSuggestions();
+}

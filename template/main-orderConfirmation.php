@@ -1,4 +1,6 @@
 <main class="main-order-recap">
+    <input type="hidden" id="loggedUser" value="<?= $email?>"/>
+    <input type="hidden" id="costoTotale" value="<?= $templateParams["cartTotalPrice"] ?>"/>
     <section class="order-recap">
         <?php if (isset($templateParams["cartProducts"])): ?>
             <section class="order-recap-header">
@@ -35,23 +37,32 @@
             </section>
             <form id="address-form">
                 <ul>
-                    <li>
+                    <li id="address-selection-li">
+                        <label for="address-selection">Indirizzo utilizzato</label>
+                        <select id="address-selection" name="adddres-selection">
+                            <option value="nuovo" selected>Usa un  nuovo indirizzo</option>
+                            <?php foreach ($templateParams["savedAddresses"] as $address): ?>
+                                <option value="<?= $address["id_indirizzo"] ?>"><?= $address['via'] ?>, <?= $address['citta'] ?> (<?= $address['provincia'] ?>)</option>
+                            <?php endforeach; ?>
+                        </select>
+                    </li>
+                    <li class="switchable-address-field">
                         <label for="addr-via">Via</label>
                         <input type="text" id="addr-via" name="addr-via" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
                         <label for="addr-citta">Città</label>
                         <input type="text" id="addr-citta" name="addr-citta" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
                         <label for="addr-provincia">Provincia</label>
                         <input type="text" id="addr-provincia" name="addr-provincia" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
                         <label for="addr-cap">Cap</label>
                         <input type="text" id="addr-cap" name="addr-cap" maxlength="5" pattern="[0-9]{5}" required />
                     </li>
-                    <li>
+                    <li class="switchable-address-field">
                         <label for="addr-nazione">Nazione</label>
                         <select class="form-select" autocomplete="nazione" id="addr-nazione" name="nazione">
                             <option value="IT">Italia</option>
@@ -60,7 +71,7 @@
                             <option value="VA">Cittá del vaticano</option>
                         </select>
                     </li>
-                    <li class="checkbox-field">
+                    <li class="checkbox-field switchable-address-field">
                         <label for="addr-save">Desideri salvare l'indirizzo?</label>
                         <input type="checkbox" id="addr-save" name="addr-save">
                     </li>
@@ -79,7 +90,7 @@
                         <label for="payment-method">Metodo di pagamento</label>
                         <select class="form-select" id="payment-method" name="metodo di pagamento">
                             <?php foreach ($templateParams["paymentsMethods"] as $method): ?>
-                                <option value="<?= $method['id_metodo'] ?>" selected><?= $method['tipo_metodo']?></option>
+                                <option value="<?= $method['id_metodo'] ?>" selected><?= $method['tipo_metodo'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </li>
