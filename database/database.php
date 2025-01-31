@@ -92,7 +92,8 @@ class DatabaseHelper
     /**
      * Returns all user addresses
      */
-    public function getUserAddresses($user) {
+    public function getUserAddresses($user)
+    {
         $query = "SELECT *
                 FROM Indirizzi
                 WHERE id_utente = ?";
@@ -104,7 +105,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function deleteUserAddress($user, $id_indirizzo) {
+    public function deleteUserAddress($user, $id_indirizzo)
+    {
         $query = "DELETE FROM Indirizzi
                 WHERE id_utente = ?
                 AND id_indirizzo = ?";
@@ -485,7 +487,8 @@ class DatabaseHelper
     /**
      * Deletes a group
      */
-    public function deleteGroup($nome_gruppo) {
+    public function deleteGroup($nome_gruppo)
+    {
         $query1 = "DELETE FROM Appartenenze
                 WHERE id_gruppo = ?";
         $query2 = "DELETE FROM Gruppi
@@ -657,7 +660,8 @@ class DatabaseHelper
     /**
      * Returns true if the user has a certain product in its cart
      */
-    public function hasUserProductInCart($user, $id_prodotto) {
+    public function hasUserProductInCart($user, $id_prodotto)
+    {
         $query = "SELECT *
                 FROM Carrello
                 WHERE id_utente = ?
@@ -690,7 +694,8 @@ class DatabaseHelper
     /**
      * Returns all the admins
      */
-    public function getAllAdmins() {
+    public function getAllAdmins()
+    {
         $query = "SELECT email FROM Utenti WHERE admin_flag = 0";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
@@ -743,7 +748,8 @@ class DatabaseHelper
     /**
      * Creates a notification for all the admins
      */
-    public function adminNotification($testo) {
+    public function adminNotification($testo)
+    {
         $users = $this->getAllAdmins();
         $query = "INSERT INTO Notifiche (id_utente, messaggio)
                 VALUES (?, ?)";
@@ -854,5 +860,94 @@ class DatabaseHelper
         $result = $stmt->get_result();
         $cont = count($result->fetch_all(MYSQLI_ASSOC));
         return ($cont > 0);
+    }
+
+    //Queries ordini
+
+    /**
+     * Empties the cart of a user
+     */
+    public function emptyCart($user)
+    {
+        $query = "DELETE FROM Carrello
+                WHERE id_utente = ?";
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('s', $user);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Returns the cart of a user
+     */
+    public function fetchUserCart($user)
+    {
+        $query = "SELECT C.*, P.prezzo
+                FROM Carrello C
+                JOIN Prodotti P ON C.id_prodotto = P.nome_prodotto
+                WHERE id_utente = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('s', $user);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function removeFromStock($id_prodotto, $quantity) {
+        $query = "UPDATE Prodotti
+                SET stock = stock - ?
+                WHERE nome_prodotto = ?";
+        try {
+            $stmt = $this->db->prepare($query);
+            $stmt->bind_param('si', $id_prodotto, $quantity);
+            $stmt->execute();
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
+    }
+
+    /**
+     * Creates a new order with the products in the cart.
+     */
+    public function createOrderFromCart($user, $id_metodo, $id_indirizzo, $totale)
+    {
+        try {
+            // creazione ordine
+            $newOrder = "INSERT INTO Ordini (id_utente, id_metodo, id_indirizzo, totale)
+                    VALUES (?, ?, ?, ?)";
+            $stmt_newOrder = $this->db->prepare($newOrder);
+            $stmt_newOrder->bind_param('siid', $user, $id_metodo, $id_indirizzo, $totale);
+            $stmt_newOrder->execute();
+            $order_id = $stmt_newOrder->insert_id;
+
+            //creazione query dettaglio ordine
+            $newOrderDetail = "INSERT INTO DettagliOrdini (id_ordine, id_prodotto, quantita, prezzo_unitario)
+                    VALUES (?, ?, ?, ?)";
+            $stmt_newOrderDetail = $this->db->prepare($newOrderDetail);
+
+            //recupero informazioni dal carrello
+            $cart = $this->fetchUserCart($user);
+
+            //inserimento informazioni in dettagli ordine
+            foreach ($cart as $detail) {
+                $stmt_newOrderDetail->bind_param('isid', $order_id, $detail["id_prodotto"], $detail["quantita"], $detail["prezzo"]);
+                $this->removeFromStock($detail["id_prodotto"], $detail["quantita"]);
+                $stmt_newOrderDetail->execute();
+            }
+
+            //svuotamento carrello
+            $this->emptyCart($user);
+
+            return true;
+        } catch (PDOException) {
+            return false;
+        }
     }
 }
