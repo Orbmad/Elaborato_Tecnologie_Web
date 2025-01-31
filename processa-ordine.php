@@ -20,7 +20,7 @@ if (isset($dati)) {
             $dati["datiIndirizzo"]["cap"],
             $dati["datiIndirizzo"]["nazione"],
             $dati["totalPrice"],
-            $dati["save"]
+            $dati["datiIndirizzo"]["save"]
         );
     }
 } else {

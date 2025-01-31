@@ -963,9 +963,9 @@ class DatabaseHelper
      */
     public function saveAddress($id_utente, $via, $citta, $provincia, $cap, $nazione) {
         $query = "INSERT INTO Indirizzi (id_utente, via, citta, provincia, cap, nazione)
-                VALUES (?, ?, ?, ?, ?)";
+                VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss', $id_utente, $via, $citta, $provincia, $cap, $nazione);
+        $stmt->bind_param('ssssss', $id_utente, $via, $citta, $provincia, $cap, $nazione);
         if($stmt->execute()) {
             return true;
         } else {
@@ -981,7 +981,7 @@ class DatabaseHelper
         try {
             // creazione ordine
             $newOrder = "INSERT INTO Ordini (id_utente, id_metodo, via, citta, provincia, cap, nazione, totale)
-                    VALUES (?, ?, ?, ?)";
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt_newOrder = $this->db->prepare($newOrder);
             $stmt_newOrder->bind_param('sisssssd', $user, $id_metodo, $via, $citta, $provincia, $cap, $nazione, $totale);
             $stmt_newOrder->execute();
