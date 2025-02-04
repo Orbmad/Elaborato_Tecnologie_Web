@@ -252,10 +252,10 @@ VALUES
 ('giannimorandi@libero.it', 'Manine 6', 'Bologna', 'BO', '46023', 'Italia'),
 ('giannimorandi@libero.it', 'Manone 5', 'Rimini', 'RN', '47921', 'Italia');
 
- -- UPDATE DEI VOTI ARTICOLI --
- UPDATE Prodotti P
- SET voto = (
+-- UPDATE DEI VOTI ARTICOLI --
+UPDATE Prodotti P
+SET voto = (
     SELECT AVG(R.voto)
     FROM Recensioni R
     WHERE R.id_prodotto = P.nome_prodotto
- );
+);

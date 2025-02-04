@@ -1,52 +1,52 @@
-function addQuantity(maxValue){
+function addQuantity(maxValue) {
     const plus = document.querySelector("main.single-item > article > header > section > div.wrapper > span.plus");
     const num = document.querySelector("main.single-item > article > header > section > div.wrapper > span.number");
     let a = num.innerHTML;
-    if(a < maxValue){
+    if (a < maxValue) {
         a++;
         num.innerHTML = "";
-        if(a < 10){
-            num.innerHTML += "0";
-        }
-    num.innerHTML += a;
-    }
-}
-
-function reduceQuantity(){
-    const minus = document.querySelector("main.single-item > article > header > section > div.wrapper > span.minus");
-    const num = document.querySelector("main.single-item > article > header > section > div.wrapper > span.number");
-    let a = num.innerHTML;
-    if(a > 1){
-        a--;
-        num.innerHTML = "";
-        if(a < 10){
+        if (a < 10) {
             num.innerHTML += "0";
         }
         num.innerHTML += a;
     }
 }
 
-function getQuantity(){
+function reduceQuantity() {
+    const minus = document.querySelector("main.single-item > article > header > section > div.wrapper > span.minus");
+    const num = document.querySelector("main.single-item > article > header > section > div.wrapper > span.number");
+    let a = num.innerHTML;
+    if (a > 1) {
+        a--;
+        num.innerHTML = "";
+        if (a < 10) {
+            num.innerHTML += "0";
+        }
+        num.innerHTML += a;
+    }
+}
+
+function getQuantity() {
     const num = document.querySelector("main.single-item > article > header > section > div.wrapper > span.number");
     let a = num.innerHTML;
     return a;
 }
 
-function showErrorMessage(){
+function showErrorMessage() {
     $span = document.querySelector('span.hidden');
-    if($span != null){
+    if ($span != null) {
         console.log(22);
         $span.classList.remove('hidden');
         $span.classList.add('show');
     }
 }
 
-function addToCart(id_prodotto){
+function addToCart(id_prodotto) {
     console.log(this.getQuantity(), id_prodotto);
     console.log("ENTRATO!");
     let quan = getQuantity();
-    if(quan < 10){
-        quan = quan.substring(1,quan.length);
+    if (quan < 10) {
+        quan = quan.substring(1, quan.length);
     }
     //console.log(quan);
     const data = { productQuant: quan, productId: id_prodotto };
@@ -78,8 +78,12 @@ function updateProduct() {
     updateProductSection.classList.toggle("hidden");
 }
 
-document.getElementById("fileInput-product").addEventListener("change", function() {
-    let fileName = this.files.length > 0 ? this.files[0].name : "Nessun file selezionato";
-    document.querySelector(".file-name-product").textContent = fileName;
-    console.log("changed string");
-});
+const imgUpload = document.getElementById("fileInput-product");
+
+if (imgUpload) {
+    imgUpload.addEventListener("change", function () {
+        let fileName = this.files.length > 0 ? this.files[0].name : "Nessun file selezionato";
+        document.querySelector(".file-name-product").textContent = fileName;
+        console.log("changed string");
+    });
+}

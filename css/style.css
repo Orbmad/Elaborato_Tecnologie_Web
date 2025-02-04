@@ -2954,10 +2954,11 @@ main.main-order-recap section.order-item section.leave-review p.show{
 
     main.single-item>article>header>section>h2 {
         display: flex;
+        width: 100%;
         font-size: 44px;
         text-align: left;
         align-items: center;
-        padding: 0px;
+        padding: 0px 20px;
         margin: 0px;
         margin-bottom: 10px;
     }
