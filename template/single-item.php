@@ -9,7 +9,7 @@
     ?>
         <article>
             <header>
-                <img src="upload/prodotti/<?php echo $prodotto["nome_prodotto"] ?>.jpg" alt="" />
+                <img src="upload/prodotti/<?php echo getSrc($prodotto["nome_prodotto"]) ?>.jpg" alt="" />
                 <section>
                     <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
                     <h3><?php echo $prodotto["prezzo"] ?>€

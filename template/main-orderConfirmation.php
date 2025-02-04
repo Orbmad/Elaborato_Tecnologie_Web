@@ -10,8 +10,8 @@
             <ul>
                 <?php foreach ($templateParams["cartProducts"] as $cartProduct): ?>
                     <li>
-                        <img onclick="window.location.href='product.php?id=<?php echo $cartProduct['nome_prodotto'] ?>'"
-                            src="./upload/prodotti/<?php echo $cartProduct['nome_prodotto'] ?>.jpg"
+                        <img onclick="window.location.href='product.php?id=<?php echo getSrc($cartProduct['nome_prodotto']) ?>'"
+                            src="./upload/prodotti/<?php echo getSrc($cartProduct['nome_prodotto']) ?>.jpg"
                             alt="Immagine del prodotto" />
                         <h3>
                             <?php echo $cartProduct["nome_prodotto"] ?>

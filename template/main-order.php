@@ -25,8 +25,8 @@
                     <p>INDIRIZZO DI SPEDIZIONE: via <?php echo $order['via'].", ".$order['citta']." ".$order['cap']." (".$order['provincia']."), ".$order['nazione'] ?></p>
                     <?php $cont = 1 ?>
                     <?php foreach (getProductsOfAOrder($order['id_ordine'], $dbh) as $item): ?>
-                        <img onclick="window.location.href='product.php?id=<?php echo $item['nome_prodotto'] ?>'"
-                            src="./upload/prodotti/<?php echo $item['nome_prodotto'] ?>.jpg"
+                        <img onclick="window.location.href='product.php?id=<?php echo getSrc($item['nome_prodotto']) ?>'"
+                            src="./upload/prodotti/<?php echo getSrc($item['nome_prodotto']) ?>.jpg"
                             alt="Immagine del prodotto" /><section class='info-item-in-order'>
                             <p class="name"><?php echo $item['nome_prodotto'] ?></p>
                             <p>Quantità: <?php echo $item['quantita'] ?></p>

@@ -14,7 +14,7 @@ function createArticle($groupInfo)
 {
     $article = "
     <article>
-        <img src='upload/gruppi/" . $groupInfo["nomeGruppo"] . ".jpg' alt='Immagine dell'articolo'/>
+        <img src='upload/gruppi/" . getSrc($groupInfo["nomeGruppo"]) . ".jpg' alt='Immagine articolo'/>
         <section class='article-body'>
             <h2>" . $groupInfo["nomeGruppo"] . "</h2>
             <p>" . $groupInfo["descrizioneGruppo"] . "</p>
@@ -44,7 +44,7 @@ function generateProductBox($productInfo, $cartSign)
         $productBox = "
         <li>
             <a href=\"product.php?id=" . urlencode($productName) . "\">
-                <img src=\"upload/prodotti/" . $productName . ".jpg\" class='product-image' alt='product image' />
+                <img src=\"upload/prodotti/" . getSrc($productName) . ".jpg\" class='product-image' alt='product image' />
                 <h2>" . $productName . "</h2>
                 <p>" . $productPrice . " €</p>
                 <p>" . $stars . "</p>
@@ -56,7 +56,7 @@ function generateProductBox($productInfo, $cartSign)
         $productBox = "
         <li>
             <a href=\"product.php?id=" . urlencode($productName) . "\">
-                <img src=\"upload/prodotti/" . $productName . ".jpg\" class='product-image' alt='product image' />
+                <img src=\"upload/prodotti/" . getSrc($productName) . ".jpg\" class='product-image' alt='product image' />
                 <h2>" . $productName . "</h2>
                 <p>" . $productPrice . " €</p>
                 <p>" . $stars . "</p>
@@ -73,7 +73,7 @@ function generateCAtegoryBox($categoryInfo)
 {
     $categoryBox = "
         <li>
-            <img src=\"upload/categorie/" . $categoryInfo["nome_categoria"] . ".jpg\" alt='" . $categoryInfo['nome_categoria'] . " image' />
+            <img src=\"upload/categorie/" . getSrc($categoryInfo["nome_categoria"]) . ".jpg\" alt='" . $categoryInfo['nome_categoria'] . " image' />
             <section>
                 <form action='search.php' method='GET'>
                     <input type='text' name='categoriaSelezionata' value='" . $categoryInfo["nome_categoria"] . "' readonly />
@@ -237,4 +237,14 @@ function getProductsOfAOrder($order, $dbh)
 function hasUserLeftAReviewForProduct($dbh, $id_prodotto)
 {
     return $dbh->hasUserLeftAReviewForProduct($_SESSION['email'], $id_prodotto);
+}
+
+function getSrc($string){
+    $src_string = str_replace(' ', '_', $string);
+    return $src_string;
+}
+
+function getIdProduct($string){
+    $id_string = str_replace('_', ' ', $string);
+    return $id_string;
 }

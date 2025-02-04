@@ -37,4 +37,4 @@
             } ?>
         </ul>
     </section>
-    <main>
+</main>

@@ -25,7 +25,7 @@
                             } else {
                                 echo './login.php';
                             } ?>" onclick="open_submenu()">
-                    <img class="user_icon" src=".\upload\User-Icon.png" alt="user-icon" />
+                    <img class="user_icon" src="./upload/User-Icon.png" alt="user-icon" />
                     <img src="upload/Notif-circle.png" alt="notifiche" <?php if (!isUserLoggedIn()) {
                                                                             echo 'class = notVisible';
                                                                         } ?> />
@@ -55,7 +55,7 @@
                                 echo './cart.php';
                             } else {
                                 echo './login.php';
-                            } ?>"><img src=".\upload\Cart-Icon.png" alt="cart-icon" />
+                            } ?>"><img src="./upload/Cart-Icon.png" alt="cart-icon" />
                 </a>
             </li>
 
@@ -174,7 +174,7 @@
         <a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Freepik - Flaticon</a>-->
 
     </footer>
-    <!-Inserimento javascript->
+    <!--Inserimento javascript-->
         <?php
         if (isset($templateParams["js"])):
             foreach ($templateParams["js"] as $script):
