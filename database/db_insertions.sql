@@ -163,7 +163,11 @@ VALUES
 ('giannimorandi@libero.it', 'Gianni', 'Morandi', SHA2('Gianni', 256), 0),
 ('admin', 'admin', 'admin', SHA2('admin', 256), 1),
 ('michele.farneti23@gmail.com', 'Michele', 'Farneti', SHA2('1', 256), 0),
-('gino.pino@gmail.com', 'Gino', 'Pino', SHA2('1', 256), 0);
+('gino.pino@gmail.com', 'Gino', 'Pino', SHA2('1', 256), 0),
+('beatrice.ferrari@gmail.com', 'Beatrice', 'Ferrari', SHA2('BeaFerrari!23', 256), 0),
+('elisabetta.verdi@gmail.com', 'Elisabetta', 'Verdi', SHA2('ElizaVerdi21@', 256), 0),
+('xiaoju.chen@gmail.com', 'Xiaoju', 'Chen', SHA2('ChenXia345@', 256), 0),
+('gisuarnaldo.getti@gmail.com', 'Gisuarnaldo', 'Getti', SHA2('GisuGetti5@', 256), 0);
 
 INSERT INTO Carrello (id_utente,id_prodotto,quantita) 
 VALUES 
@@ -174,7 +178,25 @@ VALUES
 INSERT INTO Recensioni (id_utente, id_prodotto, voto, commento, data_recensione)
 VALUES
 ('mariorossi@gmail.com', 'Adiantum hispidulum', 4, 'Sono molto soddisfatto della pianta che ho acquistato. È stata imballata bene ed è arrivata intatta e, nonostante il riposo vegetativo, si vedeva che era in salute. Azienda seria e disponibile, mi è arrivata una piccola pianta in regalo che ho gradito molto. Grazie!', '2024-01-06'),
-('giannimorandi@libero.it', 'Adiantum hispidulum', 5, 'Devo dire che mi sono trovato molto bene come mia prima esperienza. Conservervati e confezionati in modo eccellente grazie', '2024-08-26');
+('giannimorandi@libero.it', 'Adiantum hispidulum', 5, 'Devo dire che mi sono trovato molto bene come mia prima esperienza. Conservervati e confezionati in modo eccellente grazie', '2024-08-26'),
+('elisabetta.verdi@gmail.com', 'Narciso Large Cupped Ice Follies', 5, 'Ho atteso diversi mesi prima di lasciare la recensione. Le piante sono arrivate belle e dopo qualche mese sono diventate ancora piu belle e piene di fiori. Ho notato cura dei dettagli e passione, dal colore dei vasi corrispondente al colore dei fiori, al terriccio di qualitá, l’imballo, l’attenta scelta del giorno di spedizione e anche molto gentili con le risposte. Molto bravi. Vi siete meritati questa recensione.' ,'2024-08-17'),
+('elisabetta.verdi@gmail.com', 'Camomilla (Semi)', 4, 'Le piante sono cresciute velocemente e sono molto robuste. Farò ancora sicuramente altri acquisti', '2024-10-02'),
+('elisabetta.verdi@gmail.com', 'Goji rosso', 5, 'Piante perfette, in buono stato', '2024-10-03'),
+('elisabetta.verdi@gmail.com', 'Erba cipollina', 5, 'Pianta perfetta in cucina', '2025-01-12'),
+('elisabetta.verdi@gmail.com', 'Lysichiton camtschatcensis', 5, 'Competenti e gentilissimi. Imballo di spedizione perfetto', '2025-01-12'),
+('elisabetta.verdi@gmail.com', 'Alocasia x amazonica “Polly”', 4, 'Piante molto belle, spedizione veloce, arrivate in perfette condizioni. Vivaio raccomandatissimo!', '2025-01-12'),
+('elisabetta.verdi@gmail.com', 'Beaucarnea recurvata', 5, 'Semplicemente soddisfatto,piante sane, personale specializzato e cordiale. Hanno risolto in maniera impeccabile un problema che si era venuto a creare con gentilezza e professionalità. Comprerò ancora da loro.', '2023-07-12'),
+('elisabetta.verdi@gmail.com', 'Poltrona Sdraio Spaghetti alluminio – Linea Fiam', 3, 'Ho ordinato 24 sedie di cui 17 difettose ( raschiate nei braccioli). Spero che non succeda più perchè mi sono sempre trovata molto bene con il sito', '2024-06-12'),
+('gisuarnaldo.getti@gmail.com', 'Abies nordmanniana', 5, 'Ottimo acquisto comprerò ancora', '2023-03-12'),
+('gisuarnaldo.getti@gmail.com', 'Codonanthe crassifolia', 4, 'La pianta che mi è arrivata è molto bella e in salute', '2024-01-12'),
+('gisuarnaldo.getti@gmail.com', 'Begonia “Pendula White”', 3, 'Ho ordinato 6 piante, arrivate presto ed abbastanza ben confezionate', '2023-01-12'),
+('gisuarnaldo.getti@gmail.com', 'Susino “California”', 5, 'Qualità impeccabile i frutti sono squisiti! Pianta molto consigliata','2024-01-12'),
+('gisuarnaldo.getti@gmail.com', 'Ipomea batatas', 5, 'Disponibilità del personale e buone piante', '2025-01-11'),
+('xiaoju.chen@gmail.com', 'Abies koreana', 5, 'Albero veramente molto bello.', '2025-01-12'),
+('xiaoju.chen@gmail.com', 'Athyrium niponicum var. pictum “Burgundy Lace”', 4, 'Ho dato 4 stelle perché,sul sito era scritto che la spedizione veniva fatta entro 24/48 ore ,invece sono arrivate dopo 12 giorni. Del resto servizio clienti ottimo e cordiale. Piante ben imballate', '2025-02-01'),
+('xiaoju.chen@gmail.com', 'Trichocereus macrogonus var. pachanoi', 5, 'Ho ordinato 4 piante, arrivate presto ed molto ben confezionate', '2023-01-12'),
+('xiaoju.chen@gmail.com', 'Cassetta Nicoli Eden con Sottocassetta', 5, 'Vaso molto resistente', '2024-01-12'),
+('xiaoju.chen@gmail.com', 'Susino “California”', 2, 'La pianta che mi è arrivata era appassita e non ha resistito al travaso. Ho chiesto il rimborso', '2025-01-12');
 
 
 -- insermento delle notifiche --

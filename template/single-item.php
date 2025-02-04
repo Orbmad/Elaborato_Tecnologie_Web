@@ -14,7 +14,6 @@
                     <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
                     <h3><?php echo $prodotto["prezzo"] ?>€
                     </h3>
-
                     <div class="star-value">
                         <?php for ($i = 1; $i <= $prodotto["voto"]; $i++): ?>
                             <span class="fa fa-star checked"></span>
