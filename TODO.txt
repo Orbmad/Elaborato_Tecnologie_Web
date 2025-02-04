@@ -1,4 +1,0 @@
-
-- sistema bollino card carrello
-
-- Verifica codice html mediante checker werehouse
