@@ -14,7 +14,7 @@
                         <img onclick="window.location.href='product.php?id=<?php echo getSrc($cartProduct['nome_prodotto']) ?>'"
                             src="./upload/prodotti/<?php echo getSrc($cartProduct['nome_prodotto']) ?>.jpg" alt="Immagine del prodotto" />
                         <section class="product-description">
-                            <h3 onclick="window.location.href='product.php?id=<?php echo $cartProduct['nome_prodotto'] ?>'">
+                            <h3 onclick="window.location.href='product.php?id=<?php echo getSrc($cartProduct['nome_prodotto']) ?>'">
                                 <?php echo $cartProduct["nome_prodotto"] ?>
                             </h3>
                             <p>
@@ -43,7 +43,7 @@
                                         id="<?php echo $cartProduct["nome_prodotto"] ?>"
                                         onclick="productAddClicked(this,<?php echo $cartProduct['quantita'] ?>)" />
                                 </section class="qt-selection">
-                                <a href="search.php?sottocategoriaSelezionata=<?php echo $cartProduct['id_sottocategoria']; ?>">Prodotti
+                                <a href="search.php?sottocategoriaSelezionata=<?php echo getSrc($cartProduct['id_sottocategoria']); ?>">Prodotti
                                     simili</a>
                             </section>
                         </section>

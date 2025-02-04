@@ -90,11 +90,11 @@
                     </button>
                     <ul class="subcategories <?php echo replaceSpacesWithHyphens($categoria["nome_categoria"]); ?>">
                         <li>
-                            <button class="subcategory-button" onclick="window.location.href='search.php?categoriaSelezionata=<?php echo $categoria['nome_categoria']; ?>'" type="button">Vedi tutto</button>
+                            <button class="subcategory-button" onclick="window.location.href='search.php?categoriaSelezionata=<?php echo getSrc($categoria['nome_categoria']); ?>'" type="button">Vedi tutto</button>
                         </li>
                         <?php foreach ($categoria["sottocategorie"] as $sottocategoria): ?>
                             <li>
-                                <button class="subcategory-button" onclick="window.location.href='search.php?sottocategoriaSelezionata=<?php echo $sottocategoria['nome_sottocategoria']; ?>'" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
+                                <button class="subcategory-button" onclick="window.location.href='search.php?sottocategoriaSelezionata=<?php echo getSrc($sottocategoria['nome_sottocategoria']); ?>'" type="button"><?php echo $sottocategoria["nome_sottocategoria"]; ?></button>
                             </li>
                         <?php endforeach; ?>
                     </ul>

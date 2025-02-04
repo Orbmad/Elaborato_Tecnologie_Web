@@ -244,7 +244,7 @@ function getSrc($string){
     return $src_string;
 }
 
-function getIdProduct($string){
+function getStringWithSpaces($string){
     $id_string = str_replace('_', ' ', $string);
     return $id_string;
 }

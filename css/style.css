@@ -1370,6 +1370,7 @@ main.single-item table>caption {
     font-weight: bold;
     text-align: left;
     margin-bottom: 5px;
+    margin-top: 5px;
 }
 
 main.single-item table,
@@ -2298,6 +2299,15 @@ main.main-order-recap section.order-item section.leave-review label{
 main.main-order-recap section.order-item section.leave-review textarea{
     resize: none;
 }
+
+main.main-order-recap section.order-item section.leave-review p.hidden{
+    visibility: hidden;
+}
+
+main.main-order-recap section.order-item section.leave-review p.show{
+    visibility: visible;
+    color: #AC5411;
+}
 /*Fine ordini mobile*/
 
 
@@ -2980,6 +2990,7 @@ main.main-order-recap section.order-item section.leave-review textarea{
     main.single-item>article>section>h3 {
         font-size: 35px;
         margin-top: 25px;
+        margin-bottom: 10px;
     }
 
     main.single-item>article>section>p {
@@ -3046,6 +3057,7 @@ main.main-order-recap section.order-item section.leave-review textarea{
     main.single-item table>caption {
         margin-bottom: 15px;
         font-size: 20px;
+        margin-top: 15px;
     }
 
     main.single-item table th {
@@ -3169,6 +3181,7 @@ main.main-order-recap section.order-item section.leave-review textarea{
     main.main-cart>section.cart-products>ul>li>section.product-description>p:nth-of-type(3) {
         font-size: smaller;
         display: flex;
+        margin-top: 10px;
     }
 
     main.main-cart>section.cart-products>ul>li>img {

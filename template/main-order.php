@@ -7,7 +7,7 @@
         <?php if(count($templateParams["orders"]) == 0): ?>
             <p>Non sono presenti ordini</p>
         <?php else: ?>
-            
+            <?php $cont = 1 ?>
             <?php foreach($templateParams["orders"] as $order): ?>
                 <section class="order-item">
                     <header>
@@ -23,7 +23,7 @@
                         </ul>
                     </header>
                     <p>INDIRIZZO DI SPEDIZIONE: via <?php echo $order['via'].", ".$order['citta']." ".$order['cap']." (".$order['provincia']."), ".$order['nazione'] ?></p>
-                    <?php $cont = 1 ?>
+                    
                     <?php foreach (getProductsOfAOrder($order['id_ordine'], $dbh) as $item): ?>
                         <img onclick="window.location.href='product.php?id=<?php echo getSrc($item['nome_prodotto']) ?>'"
                             src="./upload/prodotti/<?php echo getSrc($item['nome_prodotto']) ?>.jpg"
