@@ -657,7 +657,7 @@ class DatabaseHelper
      */
     public function getNotificationOfAUser($id_utente)
     {
-        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio, id_notifica FROM Notifiche WHERE id_utente = ?");
+        $stmt = $this->db->prepare("SELECT DATE(data_notifica) as dataRec, messaggio, id_notifica FROM Notifiche WHERE id_utente = ? ORDER BY data_notifica DESC");
         $stmt->bind_param('s', $id_utente);
         $stmt->execute();
         $result = $stmt->get_result();

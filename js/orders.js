@@ -85,9 +85,9 @@ buttons_submit[i].addEventListener("click", function(){
             }
             return response.text();
         })
-        .then(data => {
+        /*.then(data => {
             document.body.innerHTML = data;
-        })
+        })*/
         .catch(error => console.error('Errore:', error));
     } else {
         const error = document.querySelectorAll('section.leave-review p');

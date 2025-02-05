@@ -210,7 +210,7 @@ ul.suggestions {
 
 ul.suggestions>li {
     margin: 0px;
-    height: 40px;
+    height: 50px;
     background-color: #F0F2EF;
     border: 1px solid #082D0F;
     z-index: 3;
@@ -2228,7 +2228,6 @@ main.main-order-recap section.order-item section.info-item-in-order{
     width: 60%;
     padding: 20px 5% 0 5%;
     vertical-align: top;
-
 }
 
 main.main-order-recap section.order-item section.info-item-in-order p{
@@ -3340,7 +3339,8 @@ main.main-order-recap section.order-item section.leave-review p.show{
     }
 
     main.main-order-recap section.order-item section.leave-review.show{
-        display: block;
+        display: inline-block;
+        width: 100%;
         margin-top: 10px;
         text-align: left;
         padding-left: 10%;
