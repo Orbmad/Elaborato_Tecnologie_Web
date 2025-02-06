@@ -37,7 +37,7 @@
                             <?php else: ?> onclick="showErrorMessage()"
                             <?php endif; ?>>Aggiungi al carrello
                         </button>
-                        <span class="hidden">Operazione non disponibile, è necessario essere loggati</span>
+                        <span class="<?php if(isset($messaggio)){ echo 'show';} else{ echo 'hidden';}?>"><?php if(!isset($messaggio)){ echo 'Operazione non disponibile, è necessario essere loggati';} else{ echo $messaggio;}?></span>
 
                     <?php else: ?>
                         <span class="out_of_stock">La pianta non è al momento disponibile</span>
