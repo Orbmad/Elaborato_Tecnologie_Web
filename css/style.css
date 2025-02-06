@@ -3128,6 +3128,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
 
     main.single-item span.show {
         font-size: 20px;
+        margin-left: 5%;
     }
 
     /*Inizio regole admin prodotto*/

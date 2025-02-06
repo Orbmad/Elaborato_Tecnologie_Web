@@ -19,7 +19,10 @@ if (isset($data['productId'])) {
         $dbh->addToCart($productId, $quantity, $_SESSION['email']);
     }
     $idProd = $productId;
+    $messaggio = $data['messaggio'];
 }
+
+
 
 //Home Template
 $idprodotto = -1;
