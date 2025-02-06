@@ -35,8 +35,35 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function getPaymentMethods(){
+    public function getPaymentMethods()
+    {
         $stmt = $this->db->prepare("SELECT * FROM metodipagamento");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getFilteredProducts(
+        $categoriesChecked,
+        $groupsChecked,
+        $famigliaChecked,
+        $profumoChecked,
+        $colore_fogliaChecked,
+        $tipologia_fogliaChecked
+    ) {
+
+
+        $sql = "SELECT * FROM prodotti 
+        WHERE id_sottocategoria IN (" . implode(',', array_fill(0, count($categoriesChecked), '?')) . ")
+        AND famiglia IN (" . implode(',', array_fill(0, count($famigliaChecked), '?')) . ")
+        AND profumo IN (" . implode(',', array_fill(0, count($profumoChecked), '?')) . ")
+        AND colore_foglia IN (" . implode(',', array_fill(0, count($colore_fogliaChecked), '?')) . ") 
+        AND tipologia_foglia IN (" . implode(',', array_fill(0, count($tipologia_fogliaChecked), '?')) . ")";
+        $stmt = $this->db->prepare($sql);
+
+        $types = str_repeat('s', count($categoriesChecked) + count($famigliaChecked) + count($profumoChecked) + count($colore_fogliaChecked) + count($tipologia_fogliaChecked));
+        $params = array_merge($categoriesChecked, $famigliaChecked, $profumoChecked, $colore_fogliaChecked, $tipologia_fogliaChecked);
+        $stmt->bind_param($types, ...$params);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -559,7 +586,7 @@ class DatabaseHelper
             $stmt_query = $this->db->prepare($query);
             $stmt_notif = $this->db->prepare($notif);
 
-            $stmt_query->bind_param('si',$stato,$id_ordine);
+            $stmt_query->bind_param('si', $stato, $id_ordine);
             $string = "Lo stato dell`ordine " . $id_ordine . " è stato aggiornato: " . $stato;
             $stmt_notif->bind_param('ss', $id_utente, $string);
 
@@ -911,7 +938,8 @@ class DatabaseHelper
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function removeFromStock($id_prodotto, $quantity) {
+    public function removeFromStock($id_prodotto, $quantity)
+    {
         $query = "UPDATE Prodotti
                 SET stock = stock - ?
                 WHERE nome_prodotto = ?";
@@ -928,7 +956,8 @@ class DatabaseHelper
     /**
      * Returns address data
      */
-    public function getAddressData($id_indirizzo) {
+    public function getAddressData($id_indirizzo)
+    {
         $query = "SELECT *
                 FROM Indirizzi
                 WHERE id_indirizzo = ?";
@@ -988,12 +1017,13 @@ class DatabaseHelper
     /**
      * Saves the address
      */
-    public function saveAddress($id_utente, $via, $citta, $provincia, $cap, $nazione) {
+    public function saveAddress($id_utente, $via, $citta, $provincia, $cap, $nazione)
+    {
         $query = "INSERT INTO Indirizzi (id_utente, via, citta, provincia, cap, nazione)
                 VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('ssssss', $id_utente, $via, $citta, $provincia, $cap, $nazione);
-        if($stmt->execute()) {
+        if ($stmt->execute()) {
             return true;
         } else {
             return false;
@@ -1047,13 +1077,14 @@ class DatabaseHelper
         }
     }
 
-    public function isOrderPossible($user) {
+    public function isOrderPossible($user)
+    {
         $query = "SELECT nome_prodotto
                 FROM Prodotti P
                 JOIN Carrello C ON C.id_prodotto = P.nome_prodotto
                 WHERE P.stock < P.stock - C.quantita
                 AND C.id_utente = ?";
-        
+
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $user);
         $stmt->execute();

@@ -8,16 +8,7 @@
             $result["colore_foglia"] = str_replace(' ', '', $result["colore_foglia"]);
             $result["profumo"] = str_replace(' ', '', $result["profumo"]);
             ?>
-            <li class="<?php
-            echo $result["prezzo"] . ' ' .
-                $result["voto"] . ' sub-' .
-                $result["id_sottocategoria"] . ' ' .
-                $result["famiglia"] . ' ' .
-                $result["tipologia_foglia"] . ' ' .
-                $result["colore_foglia"] . ' ' .
-                $result["nomeGruppo"] . ' ' .
-                $result["profumo"];
-            ?>">
+            <li>
                 <a href="product.php?idP=<?php echo getSrc($result['nome_prodotto']) ?>">
                     <img src="./upload/prodotti/<?php echo getSrc($result['nome_prodotto']) ?>.jpg" class="product-image"
                         alt="product image" />
