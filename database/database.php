@@ -844,9 +844,9 @@ class DatabaseHelper
     public function getOrdersOfAUser($id_utente)
     {
         $query = "SELECT *, DATE(data_ordine) as dataOrdine 
-                FROM Ordini, Indirizzi
+                FROM Ordini/*, Indirizzi*/
                 WHERE Ordini.id_utente = ? 
-                AND Ordini.id_indirizzo = Indirizzi.id_indirizzo
+                /*AND Ordini.id_indirizzo = Indirizzi.id_indirizzo*/
                 ORDER BY data_ordine DESC";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('s', $id_utente);
@@ -974,6 +974,10 @@ class DatabaseHelper
 
             //svuotamento carrello
             $this->emptyCart($user);
+
+            //Notifica Admin
+            $string = "L`utente " . $user . " ha effettuato un nuovo ordine. Codice ordine: " . $order_id;
+            $this->newAdminNotification($string);
 
             return true;
         } catch (PDOException) {
