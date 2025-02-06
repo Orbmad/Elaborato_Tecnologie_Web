@@ -52,15 +52,15 @@ CREATE TABLE Prodotti (
     id_sottocategoria VARCHAR(100) NOT NULL,
     presente BOOLEAN DEFAULT 1,
     stock INT NOT NULL,
-    nome_volgare VARCHAR(50), -- Tassonomia Pianta-----------------------------
-    nome_scientifico VARCHAR(50),
-    famiglia VARCHAR(50),
-    genere VARCHAR(50),
-    specie VARCHAR(50),
-    dimensioni VARCHAR(30), -- Caratteristiche di vendita--------------------
-    profumo VARCHAR(30), -- Caratteri botanici----------------------------
-    tipologia_foglia VARCHAR(30),
-    colore_foglia VARCHAR(30), 
+    nome_volgare VARCHAR(50) DEFAULT 'non specificato', -- Tassonomia Pianta-----------------------------
+    nome_scientifico VARCHAR(50) DEFAULT 'non specificato',
+    famiglia VARCHAR(50) DEFAULT 'non specificato',
+    genere VARCHAR(50) DEFAULT 'non specificato',
+    specie VARCHAR(50) DEFAULT 'non specificato',
+    dimensioni VARCHAR(30) DEFAULT 'non specificato', -- Caratteristiche di vendita--------------------
+    profumo VARCHAR(30) DEFAULT 'non specificato', -- Caratteri botanici----------------------------
+    tipologia_foglia VARCHAR(30) DEFAULT 'non specificato',
+    colore_foglia VARCHAR(30) DEFAULT 'non specificato', 
     descrizione TEXT,
     voto INT NOT NULL
 );
