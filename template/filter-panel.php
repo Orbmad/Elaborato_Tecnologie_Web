@@ -10,6 +10,7 @@
             <li class="filter-range hidden">
                 <h2>Prezzo:</h2>
                 <section class="min-price">
+                    <h2 class='hidden'>Selezione prezzo minimo </h2>
                     <label for="min-price">Prezzo minimo</label>
                     <input type="range" id="min-price" name="min-price"
                         min="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>"
@@ -20,6 +21,7 @@
                         value="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>" readonly />
                 </section>
                 <section class="max-price">
+                    <h2 class='hidden'>Selezione prezzo minimo </h2>
                     <label for="max-price">Prezzo massimo</label>
                     <input type="range" id="max-price" name="max-price"
                         min="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>"
@@ -33,6 +35,7 @@
             <li class="filter-range hidden">
                 <h2>Valutazione minima:</h2>
                 <section class="min-rating">
+                    <h2 class='hidden'>Selezione prezzo minimo </h2>
                     <label for="min-rating">Rating minimo</label>
                     <input type="range" id="min-rating" name="min-rating" min="0" max="5" value="0">
                     <label for="min-rating-selected">Valutazione minima selezionata</label>
@@ -101,21 +104,21 @@
                             echo "<li>";
                             if (isset($templateParams["searchedGroup"]) && $filterAttribute === "nome_gruppo") {
                                 if ($templateParams["searchedGroup"] === $templateParams["attributesValues"][$filterAttribute][$i]) {
-                                    echo '<input type="checkbox" id="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .'" name="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" value="' . $filterAttribute . '" checked>';
+                                    echo '<input type="checkbox" id="' . $filterAttribute . "-" . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '" value="' . $filterAttribute . '" checked>';
                                 } else {
-                                    echo '<input type="checkbox" id="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .'" >';
+                                    echo '<input type="checkbox" id="' . $filterAttribute . "-" . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '" >';
                                 }
                             } else {
-                                echo '<input type="checkbox" id="' . $filterAttribute . "-". str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . $filterAttribute . "-". str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .  '" value="' . $filterAttribute . '" checked/>';
+                                echo '<input type="checkbox" id="' . $filterAttribute . "-" . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . $filterAttribute . "-" . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '" value="' . $filterAttribute . '" checked/>';
                             }
-                            echo '<label for="' . $filterAttribute . "-". str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .  '">'. $templateParams["attributesValues"][$filterAttribute][$i].  '</label>';
+                            echo '<label for="' . $filterAttribute . "-" . str_replace(' ', '_', $templateParams["attributesValues"][$filterAttribute][$i]) . '">' . $templateParams["attributesValues"][$filterAttribute][$i] . '</label>';
                             echo "</li>";
                         }
                         ?>
                         <?php
                         if ($filterAttribute !== "nome_gruppo") {
                             echo "<li>";
-                            echo '<input type="checkbox" id="' . $filterAttribute . '-non_specificato' . '" name="' . $filterAttribute . '-non_specificato' . '" value="'. $filterAttribute . '-non_specificato' . '" checked>';
+                            echo '<input type="checkbox" id="' . $filterAttribute . '-non_specificato' . '" name="' . $filterAttribute . '-non_specificato' . '" value="' . $filterAttribute . '-non_specificato' . '" checked>';
                             echo '<label for="' . $filterAttribute . '-non_specificato' . '">Non specificato</label>';
                             echo "</li>";
                         }
