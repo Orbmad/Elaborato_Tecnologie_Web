@@ -7,11 +7,11 @@ $templateParams["js"] = array("js/search.js", "js/nav.js", "js/header.js");
 
 $templateParams["asideContent"] = "template/filter-panel.php";
 if(isset($_GET['sottocategoriaSelezionata'])){
-    $templateParams["searchedSubCategory"] = str_replace(' ','',getStringWithSpaces($_GET['sottocategoriaSelezionata']));
-    $templateParams["searchedCategory"] = str_replace(' ','', $dbh->getCategoryFromSubcategory(getStringWithSpaces($_GET['sottocategoriaSelezionata']))[0]["id_categoria"]);
+    $templateParams["searchedSubCategory"] = $_GET['sottocategoriaSelezionata'];
+    $templateParams["searchedCategory"] = str_replace('_','', $dbh->getCategoryFromSubcategory(getStringWithSpaces($_GET['sottocategoriaSelezionata']))[0]["id_categoria"]);
     $templateParams["searchResults"] = $dbh->searchProductByName("");
 }else if (isset($_GET['categoriaSelezionata'])) {
-    $templateParams["searchedCategory"] = str_replace(' ','',getStringWithSpaces($_GET['categoriaSelezionata']));
+    $templateParams["searchedCategory"] =  $_GET['categoriaSelezionata'];
     $templateParams["searchResults"] = $dbh->searchProductByName("");
 }else if(isset($_GET['gruppoSelezionato'])){
     $templateParams["searchedGroup"] = $_GET['gruppoSelezionato'];

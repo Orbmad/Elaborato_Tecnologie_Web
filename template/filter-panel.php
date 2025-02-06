@@ -47,11 +47,12 @@
                 <ul>
                     <?php foreach ($templateParams["categorie"] as $category) {
                         $nomecategoriaLabel = $category["nome_categoria"];
-                        $nomecategoria = str_replace(' ', '', $category["nome_categoria"]);
+                        $nomecategoria = str_replace(' ', '_', $category["nome_categoria"]);
                         $sottocategorie = $category["sottocategorie"];
+
                         echo "<li>";
                         if (isset($templateParams["searchedCategory"])) {
-                            if ($templateParams["searchedCategory"] == $nomecategoria) {
+                            if (str_replace(" ", "_", $templateParams["searchedCategory"]) == $nomecategoria) {
                                 echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked/>';
                             } else {
                                 echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection"/>';
@@ -61,7 +62,7 @@
                         }
                         echo '<label for="' . $nomecategoria . '">' . $nomecategoriaLabel . '</label>';
                         if (isset($templateParams["searchedCategory"])) {
-                            if ($templateParams["searchedCategory"] == $nomecategoria) {
+                            if (str_replace(" ", "_", $templateParams["searchedCategory"]) == $nomecategoria) {
                                 echo "<ul class=' " . $nomecategoria . "-sub'>";
                             } else {
                                 echo "<ul class='hidden " . $nomecategoria . "-sub'>";
@@ -74,19 +75,19 @@
                             $nomesottocategoria = str_replace(' ', '_', $sottocategoria["nome_sottocategoria"]);
                             echo "<li>";
                             if (isset($templateParams["searchedCategory"])) {
-                                if ($templateParams["searchedCategory"] == $nomecategoria) {
+                                if (str_replace(" ", "_", $templateParams["searchedCategory"]) == $nomecategoria) {
                                     if (isset($templateParams["searchedSubCategory"]) && $templateParams["searchedSubCategory"] != $nomesottocategoria) {
-                                        echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '">';
+                                        echo '<input type="checkbox" id="' . str_replace(' ', '_', $nomesottocategoria) . '" name="sub-' . str_replace(' ', '_', $nomesottocategoria) . '" value="' . str_replace(' ', '_', $nomesottocategoria) . '">';
                                     } else {
-                                        echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '" checked>';
+                                        echo '<input type="checkbox" id="' . str_replace(' ', '_', $nomesottocategoria) . '" name="sub-' . str_replace(' ', '_', $nomesottocategoria) . '" value="' . str_replace(' ', '_', $nomesottocategoria) . '" checked>';
                                     }
                                 } else {
-                                    echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '">';
+                                    echo '<input type="checkbox" id="' . str_replace(' ', '_', $nomesottocategoria) . '" name="sub-' . str_replace(' ', '_', $nomesottocategoria) . '" value="' . str_replace(' ', '_', $nomesottocategoria) . '">';
                                 }
                             } else {
-                                echo '<input type="checkbox" id="' . $nomesottocategoria . '" name="sub-' . $nomesottocategoria . '" value="' . $nomesottocategoria . '" checked>';
+                                echo '<input type="checkbox" id="' . str_replace(' ', '_', $nomesottocategoria) . '" name="sub-' . str_replace(' ', '_', $nomesottocategoria) . '" value="' . str_replace(' ', '_', $nomesottocategoria) . '" checked>';
                             }
-                            echo '<label for="' . $nomesottocategoria . '">' . $nomesottocategoriaLabel . '</label>';
+                            echo '<label for="' . str_replace(' ', '_', $nomesottocategoria) . '">' . $nomesottocategoriaLabel . '</label>';
                             echo "</li>";
                         }
                         echo "</ul>";
