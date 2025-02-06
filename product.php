@@ -24,7 +24,7 @@ if (isset($data['productId'])) {
 //Home Template
 $idprodotto = -1;
 if(isset($_GET["idP"])){
-    $idprodotto = getStringWithSpaces($_GET["id"]);
+    $idprodotto = getStringWithSpaces($_GET["idP"]);
 } else {
     if(isset($idProd)){
         $idprodotto = $productId;
