@@ -13,23 +13,23 @@
                     <h2 class='hidden'>Selezione prezzo minimo </h2>
                     <label for="min-price">Prezzo minimo</label>
                     <input type="range" id="min-price" name="min-price"
-                        min="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>"
-                        max="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>"
-                        value="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>" step="0.1">
+                        min="<?php echo floatval($templateParams["priceRange"][0]["min"]) - 1?>"
+                        max="<?php echo floatval($templateParams["priceRange"][0]["max"]) + 1?>"
+                        value="<?php echo floatval($templateParams["priceRange"][0]["min"])  -1 ?>" step="0.1">
                     <label for="min-price-selected">Prezzo minimo selezionato</label>
                     <input type="text" id="min-price-selected"
-                        value="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>" readonly />
+                        value="<?php echo floatval($templateParams["priceRange"][0]["min"]) -1 ?>" readonly />
                 </section>
                 <section class="max-price">
                     <h2 class='hidden'>Selezione prezzo minimo </h2>
                     <label for="max-price">Prezzo massimo</label>
                     <input type="range" id="max-price" name="max-price"
-                        min="<?php echo floatval($templateParams["priceRange"][0]["min"]) ?>"
-                        max="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>"
-                        value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" step="0.1">
+                        min="<?php echo floatval($templateParams["priceRange"][0]["min"]) -1 ?>"
+                        max="<?php echo floatval($templateParams["priceRange"][0]["max"])  + 1?>"
+                        value="<?php echo floatval($templateParams["priceRange"][0]["max"])  + 1?>" step="0.1">
                     <label for="max-price-selected">Prezzo massimo selezionato</label>
                     <input type="text" id="max-price-selected"
-                        value="<?php echo floatval($templateParams["priceRange"][0]["max"]) ?>" readonly />
+                        value="<?php echo floatval($templateParams["priceRange"][0]["max"])  + 1 ?>" readonly />
                 </section>
             </li>
             <li class="filter-range hidden">
@@ -131,3 +131,9 @@
         </ul>
     </form>
 </aside>
+<?php
+$templateParams["categoriaSelezionata"]=null;
+$templateParams["sottocategoriaSelezionata"]=null;
+$templateParams["sottocategoriaGroup"]=null;
+$templateParams["sottocategoriaWord"]=null;
+?>
