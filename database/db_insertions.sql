@@ -243,7 +243,7 @@ INSERT INTO Prodotti (
         descrizione
     )
 VALUES
-('Supporti di coltivazione', 'Cupolino', 7.90, 10, '', '', '', '', '', '', '', '', '', "Cupolino GREEN BASICS GROW HOUSE di Elho, serra per Vassoio da coltura GREEN BASICS GROW TRAY di Elho. Garantisce il miglior clima di crescita per la pianta, grazie al controller di ventilazione nella parte superiore, che consente di regolare la temperatura e la fornitura d'aria, in modo che le piante e le erbe inizino a crescere in poco tempo. Resistente ai raggi UV, si adatta a temperature fino a -40 °C. Facile da pulire ed indistruttibile. Tutti i prodotti sono realizzati in plastica riciclata.");
+('Supporti di coltivazione', 'Cupolino', 7.90, 10, 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'non specificato', 'non specificato', "Cupolino GREEN BASICS GROW HOUSE di Elho, serra per Vassoio da coltura GREEN BASICS GROW TRAY di Elho. Garantisce il miglior clima di crescita per la pianta, grazie al controller di ventilazione nella parte superiore, che consente di regolare la temperatura e la fornitura d'aria, in modo che le piante e le erbe inizino a crescere in poco tempo. Resistente ai raggi UV, si adatta a temperature fino a -40 °C. Facile da pulire ed indistruttibile. Tutti i prodotti sono realizzati in plastica riciclata.");
 
 
 -- Inserimento indirizzi --
