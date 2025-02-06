@@ -131,3 +131,9 @@
         </ul>
     </form>
 </aside>
+<?php
+$templateParams["categoriaSelezionata"]=null;
+$templateParams["sottocategoriaSelezionata"]=null;
+$templateParams["sottocategoriaGroup"]=null;
+$templateParams["sottocategoriaWord"]=null;
+?>
