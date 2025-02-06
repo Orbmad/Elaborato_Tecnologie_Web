@@ -254,3 +254,12 @@ function getStringWithSpaces($string)
     $id_string = str_replace('_', ' ', $string);
     return $id_string;
 }
+
+function isOrderEnabled($cartProducts) {
+    foreach ($cartProducts as $product) {
+        if ($product["quantita"] > $product["stock"]) {
+            return false;
+        }
+    }
+    return true;
+}
