@@ -165,7 +165,7 @@
                 <table>
                     <tr>
                         <th>Categoria</th>
-                        <td><a href="search.php?sottocategoriaSelezionata=<?php echo $prodotto["id_sottocategoria"] ?>"><?php echo $prodotto["id_sottocategoria"] ?></a></td>
+                        <td><a href="search.php?sottocategoriaSelezionata=<?php echo getSrc($prodotto["id_sottocategoria"]) ?>"><?php echo $prodotto["id_sottocategoria"] ?></a></td>
                     </tr>
                     <?php if(strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
                     <tr>
