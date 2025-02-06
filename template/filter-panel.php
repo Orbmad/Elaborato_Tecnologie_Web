@@ -101,9 +101,9 @@
                             echo "<li>";
                             if (isset($templateParams["searchedGroup"]) && $filterAttribute === "nome_gruppo") {
                                 if ($templateParams["searchedGroup"] === $templateParams["attributesValues"][$filterAttribute][$i]) {
-                                    //echo '<input type="checkbox" id="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .'" name="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" value="' . $filterAttribute . '" checked>';
+                                    echo '<input type="checkbox" id="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .'" name="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" value="' . $filterAttribute . '" checked>';
                                 } else {
-                                    //echo '<input type="checkbox" id="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .'" >';
+                                    echo '<input type="checkbox" id="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .'" >';
                                 }
                             } else {
                                 echo '<input type="checkbox" id="' . $filterAttribute . "-". str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) . '" name="' . $filterAttribute . "-". str_replace(' ', '_',$templateParams["attributesValues"][$filterAttribute][$i]) .  '" value="' . $filterAttribute . '" checked/>';

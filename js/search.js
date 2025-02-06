@@ -5,6 +5,7 @@ const maxTextOutput = document.getElementById('max-price-selected');
 
 const minRatingInput = document.getElementById('min-rating');
 const minRatingOutput = document.getElementById('min-rating-selected');
+const searchedText = document.getElementById('fastSearch');
 
 minRangeInput.addEventListener('input', updateMinText);
 minRatingInput.addEventListener('input', updateRatingText);
@@ -135,12 +136,15 @@ function applyFilters() {
             famiglia:attributesChecked["famiglia"],
             profumo:attributesChecked["profumo"],
             tipologia_foglia:attributesChecked["tipologia_foglia"],
-            colore_foglia:attributesChecked["colore_foglia"]
+            colore_foglia:attributesChecked["colore_foglia"],
+            prezzomin: minRangeInput.value,
+            prezzomax: maxRangeInput.value,
+            ratingmin: minRatingInput.value,
+            text:searchedText.value
         }),
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);  // Mostra i dati nel console log, puoi manipolarli come vuoi
             document.getElementsByClassName("search-results-list")[0].innerHTML = data.productListHTML;
         })
         .catch(error => {
@@ -149,7 +153,6 @@ function applyFilters() {
 }
 
 window.addEventListener('load', function () {
-    // Chiama la funzione di reset una sola volta con un ritardo di 500 millisecondi
     setTimeout(function () {
         resetFilters();
     }, 1);

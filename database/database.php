@@ -49,20 +49,58 @@ class DatabaseHelper
         $famigliaChecked,
         $profumoChecked,
         $colore_fogliaChecked,
-        $tipologia_fogliaChecked
+        $tipologia_fogliaChecked,
+        $minprice,
+        $maxprice,
+        $minrating,
+        $text
     ) {
+        $text = "%" . $text . "%";
+        $categoriesChecked = !empty($categoriesChecked) ? $categoriesChecked : ["plantatio"];
+        $groupsChecked = !empty($groupsChecked) ? $groupsChecked : ["plantatio"];
+        $famigliaChecked = !empty($famigliaChecked) ? $famigliaChecked : ["plantatio"];
+        $profumoChecked = !empty($profumoChecked) ? $profumoChecked : ["plantatio"];
+        $colore_fogliaChecked = !empty($colore_fogliaChecked) ? $colore_fogliaChecked : ["plantatio"];
+        $tipologia_fogliaChecked = !empty($tipologia_fogliaChecked) ? $tipologia_fogliaChecked : ["plantatio"];
 
+        $includeNullGroup = in_array("Nessuno", $groupsChecked);
+        if ($includeNullGroup) {
+            $groupsChecked = array_diff($groupsChecked, ["Nessuno"]);
+            $sql = "SELECT DISTINCT prodotti.* FROM prodotti 
+            LEFT JOIN appartenenze ON prodotti.nome_prodotto = appartenenze.id_prodotto
+            WHERE id_sottocategoria IN (" . implode(',', array_fill(0, count($categoriesChecked), '?')) . ")
+            AND famiglia IN (" . implode(',', array_fill(0, count($famigliaChecked), '?')) . ")
+            AND profumo IN (" . implode(',', array_fill(0, count($profumoChecked), '?')) . ")
+            AND colore_foglia IN (" . implode(',', array_fill(0, count($colore_fogliaChecked), '?')) . ") 
+            AND (id_gruppo IN (" . implode(',', array_fill(0, count($groupsChecked), '?')) . ") 
+            OR ISNULL(id_gruppo))
+            AND tipologia_foglia IN (" . implode(',', array_fill(0, count($tipologia_fogliaChecked), '?')) . ")
+            AND prezzo BETWEEN ? AND ?
+            AND voto >= ?
+            AND presente = 1
+            AND nome_prodotto LIKE ?
+            ";
+        } else {
+            $sql = "SELECT DISTINCT prodotti.* FROM prodotti 
+            LEFT JOIN appartenenze ON prodotti.nome_prodotto = appartenenze.id_prodotto
+            WHERE id_sottocategoria IN (" . implode(',', array_fill(0, count($categoriesChecked), '?')) . ")
+            AND famiglia IN (" . implode(',', array_fill(0, count($famigliaChecked), '?')) . ")
+            AND profumo IN (" . implode(',', array_fill(0, count($profumoChecked), '?')) . ")
+            AND colore_foglia IN (" . implode(',', array_fill(0, count($colore_fogliaChecked), '?')) . ") 
+            AND id_gruppo IN (" . implode(',', array_fill(0, count($groupsChecked), '?')) . ") 
+            AND tipologia_foglia IN (" . implode(',', array_fill(0, count($tipologia_fogliaChecked), '?')) . ")
+            AND prezzo BETWEEN ? AND ?
+            AND voto >= ?
+            AND presente = 1
+            AND nome_prodotto LIKE ?
+            ";
 
-        $sql = "SELECT * FROM prodotti 
-        WHERE id_sottocategoria IN (" . implode(',', array_fill(0, count($categoriesChecked), '?')) . ")
-        AND famiglia IN (" . implode(',', array_fill(0, count($famigliaChecked), '?')) . ")
-        AND profumo IN (" . implode(',', array_fill(0, count($profumoChecked), '?')) . ")
-        AND colore_foglia IN (" . implode(',', array_fill(0, count($colore_fogliaChecked), '?')) . ") 
-        AND tipologia_foglia IN (" . implode(',', array_fill(0, count($tipologia_fogliaChecked), '?')) . ")";
+        }
+
         $stmt = $this->db->prepare($sql);
 
-        $types = str_repeat('s', count($categoriesChecked) + count($famigliaChecked) + count($profumoChecked) + count($colore_fogliaChecked) + count($tipologia_fogliaChecked));
-        $params = array_merge($categoriesChecked, $famigliaChecked, $profumoChecked, $colore_fogliaChecked, $tipologia_fogliaChecked);
+        $types = str_repeat('s', count($categoriesChecked) + count($famigliaChecked) + count($profumoChecked) + count($colore_fogliaChecked) + count($groupsChecked) + count($tipologia_fogliaChecked)) . "iiis";
+        $params = array_merge($categoriesChecked, $famigliaChecked, $profumoChecked, $colore_fogliaChecked, $groupsChecked, $tipologia_fogliaChecked, [$minprice], [$maxprice], [$minrating], [$text]);
         $stmt->bind_param($types, ...$params);
         $stmt->execute();
         $result = $stmt->get_result();
