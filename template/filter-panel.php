@@ -49,12 +49,12 @@
                         echo "<li>";
                         if (isset($templateParams["searchedCategory"])) {
                             if ($templateParams["searchedCategory"] == $nomecategoria) {
-                                echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked>';
+                                echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked/>';
                             } else {
-                                echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection">';
+                                echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection"/>';
                             }
                         } else {
-                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked>';
+                            echo '<input type="checkbox" id="' . $nomecategoria . '" name="' . $nomecategoria . '" value="' . $nomecategoria . '" class="category-selection" checked/>';
                         }
                         echo '<label for="' . $nomecategoria . '">' . $nomecategoriaLabel . '</label>';
                         if (isset($templateParams["searchedCategory"])) {
@@ -101,17 +101,26 @@
                             echo "<li>";
                             if (isset($templateParams["searchedGroup"]) && $filterAttribute === "nome_gruppo") {
                                 if ($templateParams["searchedGroup"] === $templateParams["attributesValues"][$filterAttribute][$i]) {
-                                    echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
+                                    echo '<input type="checkbox" id="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
                                 } else {
-                                    echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" >';
+                                    echo '<input type="checkbox" id="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" >';
                                 }
-                            }else{
-                                echo '<input type="checkbox" id="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
+                            } else {
+                                echo '<input type="checkbox" id="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '" name="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '" value="' . $filterAttribute . '" checked>';
                             }
-                            echo '<label for="' . $templateParams["attributesValues"][$filterAttribute][$i] . '">' . $templateParams["attributesValues"][$filterAttribute][$i] . '</label>';
+                            echo '<label for="' . $filterAttribute . $templateParams["attributesValues"][$filterAttribute][$i] . '">' . $templateParams["attributesValues"][$filterAttribute][$i] . '</label>';
                             echo "</li>";
                         }
                         ?>
+                        <?php
+                        if ($filterAttribute !== "nome_gruppo") {
+                            echo "<li>";
+                            echo '<input type="checkbox" id="' . $filterAttribute . 'non_specificato' . '" name="' . $filterAttribute . 'non_specificato' . '" value="'. $filterAttribute . 'non_specificato' . '" checked>';
+                            echo '<label for="' . $filterAttribute . 'non_specificato' . '">Non specificato</label>';
+                            echo "</li>";
+                        }
+                        ?>
+
                     </ul>
                 </li>
             <?php endforeach; ?>

@@ -166,11 +166,11 @@ class DatabaseHelper
      */
     public function getProductsAttributesValues()
     {
-        $attributes = array("famiglia", "genere", "specie", "dimensioni", "profumo", "tipologia_foglia", "colore_foglia");
+        $attributes = array("famiglia", "profumo", "tipologia_foglia", "colore_foglia");
         $results = [];
 
         foreach ($attributes as $attribute) {
-            $stmt = $this->db->prepare("SELECT DISTINCT `$attribute` as attributo FROM Prodotti");
+            $stmt = $this->db->prepare("SELECT DISTINCT `$attribute` as attributo FROM Prodotti WHERE `$attribute` != 'non specificato'");
             $stmt->execute();
             $result = $stmt->get_result();
             $values = $result->fetch_all(MYSQLI_ASSOC);
