@@ -72,6 +72,7 @@
         <form action="search.php" method="GET">
             <label for="fastSearch">Ricerca rapida</label>
             <section class="search-text">
+                <h2 class='hidden'>>Barra di ricerca </h2>
                 <input type="text" id="fastSearch" name="fastSearch" placeholder="Cerca la tua pianta..."
                     oninput="showSuggestions()"
                     value="<?php if (isset($templateParams["searchedWord"])) {
@@ -80,7 +81,7 @@
                 <ul class="suggestions not-showing"></ul>
             </section>
             <img class="searchbar-icon cancel-button" src="upload/cancel-icon.png" alt="Reset search button"
-                onclick="resetText('fastsearch')" />
+                onclick="resetText('fastSearch')" />
             <label for="search-plant">Ricerca il testo</label>
             <input id="search-plant" class="searchbar-icon search-button" type="image" src="upload/search-icon.png" alt="Submit search" />
         </form>

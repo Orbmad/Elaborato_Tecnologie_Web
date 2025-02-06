@@ -14,11 +14,13 @@ function createArticle($groupInfo)
 {
     $article = "
     <article>
+        <h2 class='hidden'>Gruppo di prodotti </h2>
         <img src='upload/gruppi/" . getSrc($groupInfo["nomeGruppo"]) . ".jpg' alt='Immagine articolo'/>
         <section class='article-body'>
             <h2>" . $groupInfo["nomeGruppo"] . "</h2>
             <p>" . $groupInfo["descrizioneGruppo"] . "</p>
             <section class='button-sec'>
+                <h2 class='hidden'>Sezione bottoni</h2>
                 <input type='button' value='SCOPRI ARTICOLI' onclick=\"window.location.href='./search.php?gruppoSelezionato=" . urlencode($groupInfo['nomeGruppo']) . "'\"/>
             </section>
         </section>
@@ -75,6 +77,7 @@ function generateCAtegoryBox($categoryInfo)
         <li>
             <img src=\"upload/categorie/" . getSrc($categoryInfo["nome_categoria"]) . ".jpg\" alt='" . $categoryInfo['nome_categoria'] . " image' />
             <section>
+                <h2 class='hidden'>Titolo Categoria</h2>
                 <form action='search.php' method='GET'>
                     <label for='box-" .  str_replace(' ', '', $categoryInfo["nome_categoria"]). "'>" . $categoryInfo["nome_categoria"] . "</Label>
                     <input type='text' id='box-" .  str_replace(' ', '', $categoryInfo["nome_categoria"]) . "' name='categoriaSelezionata' value='" . $categoryInfo["nome_categoria"] . "' readonly />
