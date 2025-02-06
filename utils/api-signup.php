@@ -29,7 +29,10 @@
             $string .= "&ph_cognome=" . $_POST["cognome"];
             $string .= "&ph_email=" . $_POST["signEmail"];
         } else {
+            //Correct signup
             $dbh->newUser($_POST["signEmail"], $_POST["nome"], $_POST["cognome"], $_POST["signPassword"]);
+            $welcomeString = "Benvenuto/a " . $_POST["nome"] . ", ora fai parte dei planters!! Divertiti ad esplorare il nostro catalogo!";
+            $dbh->newNotification($_POST["signEmail"], $welcomeString);
             unset($_SESSION["erroresignup"]);
             $_SESSION["errorelogin"] = "Registrazione andata a buon fine!";
         }
