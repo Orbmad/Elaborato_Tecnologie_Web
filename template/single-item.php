@@ -209,6 +209,12 @@
                         <td><?php echo $prodotto["colore_foglia"] ?></td>
                     </tr>
                     <?php endif; ?>
+                    <?php if(strcmp($prodotto["profumo"], 'non specificato') != 0): ?>
+                    <tr>
+                        <th>Profumo</th>
+                        <td><?php echo $prodotto["profumo"] ?></td>
+                    </tr>
+                    <?php endif; ?>
                 </table>
             </section>
         </article>

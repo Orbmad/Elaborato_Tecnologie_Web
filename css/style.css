@@ -1404,7 +1404,7 @@ main.single-item>article>section>table {
 }
 
 main.single-item>section {
-    padding: 0 10%;
+    padding: 0 36px;
 }
 
 main.single-item>section>h2 {
@@ -1421,12 +1421,12 @@ main.single-item>section>article {
 main.single-item>section>article>h3 {
     font-size: 14px;
     display: inline-block;
-    width: 25%;
+    width: 30%;
 }
 
 main.single-item>section>article div.star-value-user {
     display: inline-block;
-    width: 30%;
+    width: 25%;
     text-align: left;
 }
 
@@ -3084,7 +3084,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
     }
 
     main.single-item>section {
-        padding: 0 5%;
+        padding: 0 60px;
     }
 
     main.single-item>section>h2 {
