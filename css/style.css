@@ -1263,7 +1263,7 @@ main.single-item>article>header>img.cart-icon {
     position: relative;
     width: 22px;
     padding: 4px;
-    z-index: 3;
+    z-index: 2;
     background-color: #AC5411;
 
     left: 86%;
@@ -1697,7 +1697,7 @@ main ul.search-results-list>li>a>img.cart-icon {
     position: relative;
     width: 22px;
     padding: 4px;
-    z-index: 3;
+    z-index: 2;
     background-color: #AC5411;
 
     left: 76px;
