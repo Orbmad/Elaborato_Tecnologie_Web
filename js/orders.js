@@ -47,6 +47,8 @@ section_review.classList.add('show');
 /*const stars = document.getElementsByClassName('section.leave-review fa fa-star');
 console.log(stars.length);*/
 //console.log(star.length);
+const name_items = document.querySelectorAll('section.order-item p.name');
+
 const buttons_submit = document.querySelectorAll('section.leave-review button');
 for(let i = 0; i < buttons_submit.length; i++){
 buttons_submit[i].addEventListener("click", function(){
@@ -63,7 +65,18 @@ buttons_submit[i].addEventListener("click", function(){
     if(review_value > 0){
         sections_review[i].classList.remove('show');
         sections_review[i].classList.add('hidden');
-    
+    //se c'è lo stesso articolo in altri ordini allora si toglie la 
+    //possibilità di lasciare una recensione
+
+    for(let j = 0; j < name_items.length; j++){
+        if(name_items[j].innerText == name_items[i].innerText){
+            if(buttons[j].style.display != "none"){
+                buttons[j].style.display = "none";
+            }
+        }
+    }
+
+
     //prelevamento id prodotto
     const products_id = document.querySelectorAll('section.order-item p.name');
     let id_prodotto = products_id[i].innerText;
@@ -94,6 +107,7 @@ buttons_submit[i].addEventListener("click", function(){
         console.log(error);
         error[i].classList.remove('hidden');
         error[i].classList.add('show');
+        //console.log(name_items[i].innerText);
     }
     })
 }
