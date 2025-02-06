@@ -1078,8 +1078,8 @@ aside>form>ul>li.filter-checkbox label {
     color: #082D0F;
 }
 
-aside>form>ul>li.filter-checkbox h2{
-   text-transform: capitalize;
+aside>form>ul>li.filter-checkbox h2 {
+    text-transform: capitalize;
 }
 
 aside>form>ul>li.filter-checkbox input[type="checkbox"] {
@@ -1256,6 +1256,20 @@ main.single-item>article>header {
 main.single-item>article>header>img {
     width: 100%;
     height: 100%;
+}
+
+main.single-item>article>header>img.cart-icon {
+    /*cart icon*/
+    position: relative;
+    width: 22px;
+    padding: 4px;
+    z-index: 3;
+    background-color: #AC5411;
+
+    left: 86%;
+    top: 42px;
+
+    border-radius: 50%;
 }
 
 main.single-item>article>header>section {
@@ -1682,7 +1696,7 @@ main ul.search-results-list>li>a>img.cart-icon {
     /*cart icon*/
     position: relative;
     width: 22px;
-    padding: 4px;   
+    padding: 4px;
     z-index: 3;
     background-color: #AC5411;
 
@@ -1755,14 +1769,14 @@ main.main-order-recap {
     width: 100%;
 }
 
-main.main-order-recap section.address-form-header img{
-   width: 35px;
-   height: 35px;
-   margin-left: auto;
-   cursor: pointer;
+main.main-order-recap section.address-form-header img {
+    width: 35px;
+    height: 35px;
+    margin-left: auto;
+    cursor: pointer;
 }
 
-section.address-form-header{
+section.address-form-header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1855,7 +1869,7 @@ body>main.main-order-recap>section.order-form-sec>form>ul>li label {
     margin-bottom: 2px;
 }
 
-body>main.main-order-recap>section.order-form-sec>form>ul>li label.hidden{
+body>main.main-order-recap>section.order-form-sec>form>ul>li label.hidden {
     display: none;
 }
 
@@ -1877,8 +1891,8 @@ body>main.main-order-recap>section.order-form-sec>form>ul>li>select {
     box-sizing: border-box;
 }
 
-.not-showing{
-    display: none !important; 
+.not-showing {
+    display: none !important;
 }
 
 body>main.main-order-recap>section.order-form-sec>form>ul>li.checkbox-field {
@@ -2130,7 +2144,7 @@ main.address-page {
     padding: 26px 10px;
 }
 
-main.address-page > section {
+main.address-page>section {
     display: flex;
     flex-direction: column;
     background-color: #fff;
@@ -2140,14 +2154,14 @@ main.address-page > section {
     width: 86%;
 }
 
-main.address-page > section > h1 {
+main.address-page>section>h1 {
     font-size: 28px;
     color: #082D0F;
     padding: 4px 12px;
     margin-top: 8px;
 }
 
-main.address-page > section > ul {
+main.address-page>section>ul {
     display: flex;
     flex-direction: column;
     width: calc(100% - 20px);
@@ -2156,7 +2170,7 @@ main.address-page > section > ul {
     align-items: center;
 }
 
-main.address-page > section > ul > li {
+main.address-page>section>ul>li {
     width: calc(100% - 24px);
     padding: 12px;
     border: 1px solid #AC5411;
@@ -2165,16 +2179,16 @@ main.address-page > section > ul > li {
     margin-bottom: 10px;
 }
 
-main.address-page > section > ul > li > p {
+main.address-page>section>ul>li>p {
     margin-bottom: 4px;
 }
 
-main.address-page > section > ul > li > form {
+main.address-page>section>ul>li>form {
     display: flex;
     justify-content: right;
 }
 
-main.address-page > section > ul > li > form > button {
+main.address-page>section>ul>li>form>button {
     background-color: #AC5411;
     color: #F0F2EF;
     border-style: none;
@@ -2183,11 +2197,11 @@ main.address-page > section > ul > li > form > button {
     border-radius: 8px;
 }
 
-main.address-page > section > ul > li > form > button:hover {
+main.address-page>section>ul>li>form>button:hover {
     scale: 1.05;
 }
 
-main.address-page > section > ul > li > form > button:active {
+main.address-page>section>ul>li>form>button:active {
     scale: 0.95;
 }
 
@@ -2197,7 +2211,7 @@ main.address-page > section > ul > li > form > button:active {
 
 /*Inizio ordini mobile*/
 
-main.main-order-recap section.order-item{
+main.main-order-recap section.order-item {
     width: 90%;
     margin-top: 0px;
     margin-bottom: 30px;
@@ -2206,20 +2220,20 @@ main.main-order-recap section.order-item{
     box-shadow: 5px 5px 3px #3F413E;
 }
 
-main.main-order-recap section.order-item ul li p{
+main.main-order-recap section.order-item ul li p {
     font-size: 14px;
 }
 
-main.main-order-recap section.order-item header{
+main.main-order-recap section.order-item header {
     margin-top: 10px;
 }
 
-main.main-order-recap section.order-item > p{
+main.main-order-recap section.order-item>p {
     font-size: 14px;
     margin-top: 10px;
 }
 
-main.main-order-recap section.order-item header h2{
+main.main-order-recap section.order-item header h2 {
     margin-top: 10px;
 }
 
@@ -2229,39 +2243,38 @@ main.main-order-recap section.order-item ul {
     width: 30%;
 }
 
-main.main-order-recap section.order-item ul li{
+main.main-order-recap section.order-item ul li {
     margin-bottom: 5px;
 }
 
-main.main-order-recap section.order-item img{
+main.main-order-recap section.order-item img {
     width: 30%;
     display: inline-block;
     margin-top: 10px;
 }
 
-main.main-order-recap section.order-item section.info-item-in-order{
+main.main-order-recap section.order-item section.info-item-in-order {
     display: inline-block;
     width: 60%;
     padding: 20px 5% 0 5%;
     vertical-align: top;
 }
 
-main.main-order-recap section.order-item section.info-item-in-order p{
+main.main-order-recap section.order-item section.info-item-in-order p {
     margin-top: 3px;
     font-size: 14px;
 }
 
-main.main-order-recap section.order-item section.info-item-in-order p:first-child{
+main.main-order-recap section.order-item section.info-item-in-order p:first-child {
     font-size: 19px;
 }
 
-main.main-order-recap section.order-item section.info-item-in-order button.hidden{
+main.main-order-recap section.order-item section.info-item-in-order button.hidden {
     visibility: hidden;
 }
 
-main.main-order-recap section.order-item section.info-item-in-order button, 
-main.main-order-recap section.order-item section.leave-review button
-{
+main.main-order-recap section.order-item section.info-item-in-order button,
+main.main-order-recap section.order-item section.leave-review button {
     font-size: 16px;
     margin-top: 14px;
     cursor: pointer;
@@ -2272,9 +2285,8 @@ main.main-order-recap section.order-item section.leave-review button
     text-align: center;
 }
 
-main.main-order-recap section.order-item section.info-item-in-order button:hover, 
-main.main-order-recap section.order-item section.leave-review button:hover
-{
+main.main-order-recap section.order-item section.info-item-in-order button:hover,
+main.main-order-recap section.order-item section.leave-review button:hover {
     transform: scale(1.05);
     background-color: #F0F2EF;
     color: #082D0F;
@@ -2282,47 +2294,48 @@ main.main-order-recap section.order-item section.leave-review button:hover
     border: #082D0F solid 3px;
 }
 
-main.main-order-recap section.order-item section.leave-review.hidden{
+main.main-order-recap section.order-item section.leave-review.hidden {
     /*visibility: hidden; tiene spazio occupato*/
     display: none;
 }
 
-main.main-order-recap section.order-item section.leave-review.show{
+main.main-order-recap section.order-item section.leave-review.show {
     /*visibility: visible;*/
     display: block;
     margin-top: 10px;
 }
 
-main.main-order-recap section.order-item section.leave-review span.fa-star{
+main.main-order-recap section.order-item section.leave-review span.fa-star {
     cursor: pointer;
 }
 
-main.main-order-recap section.order-item section.leave-review span.checked{
+main.main-order-recap section.order-item section.leave-review span.checked {
     color: #AC5411;
 }
 
-main.main-order-recap section.order-item section.leave-review button{
+main.main-order-recap section.order-item section.leave-review button {
     display: block;
 }
 
-main.main-order-recap section.order-item section.leave-review label{
+main.main-order-recap section.order-item section.leave-review label {
     display: inline-block;
     margin: 5px 0;
     width: 100%;
 }
 
-main.main-order-recap section.order-item section.leave-review textarea{
+main.main-order-recap section.order-item section.leave-review textarea {
     resize: none;
 }
 
-main.main-order-recap section.order-item section.leave-review p.hidden{
+main.main-order-recap section.order-item section.leave-review p.hidden {
     visibility: hidden;
 }
 
-main.main-order-recap section.order-item section.leave-review p.show{
+main.main-order-recap section.order-item section.leave-review p.show {
     visibility: visible;
     color: #AC5411;
 }
+
 /*Fine ordini mobile*/
 
 
@@ -2960,6 +2973,11 @@ main.main-order-recap section.order-item section.leave-review p.show{
         height: 36%;
     }
 
+    main.single-item>article>header>img.cart-icon {
+        left: 34%;
+        top: 10px;
+    }
+
     main.single-item>article>header>section {
         display: flex;
         width: calc(68% - 80px);
@@ -3290,43 +3308,44 @@ main.main-order-recap section.order-item section.leave-review p.show{
 
     /*Inizio pagina indirizzi desktop*/
 
-    main.address-page > section {
+    main.address-page>section {
         width: 72%;
     }
 
-    main.address-page > section > ul {
+    main.address-page>section>ul {
         flex-direction: unset;
     }
 
-    main.address-page > section > ul > li {
+    main.address-page>section>ul>li {
         width: calc(50% - 30px);
         padding: 12px;
         margin: 8px;
     }
 
-     /*Inizio ordini desktop*/
+    /*Inizio ordini desktop*/
 
-     main.main-order-recap section.order-item{
+    main.main-order-recap section.order-item {
         width: 70%;
     }
 
-    main.main-order-recap section.order-item{
+    main.main-order-recap section.order-item {
         text-align: center;
     }
 
-    main.main-order-recap section.order-item ul li p{
+    main.main-order-recap section.order-item ul li p {
         font-size: 18px;
     }
+
     main.main-order-recap section.order-item ul {
         width: 20%;
     }
 
-    main.main-order-recap section.order-item header{
+    main.main-order-recap section.order-item header {
         margin-bottom: 10px;
         text-align: center;
     }
 
-    main.main-order-recap section.order-item > p{
+    main.main-order-recap section.order-item>p {
         text-align: left;
         padding-left: 10%;
         font-size: 18px;
@@ -3334,17 +3353,17 @@ main.main-order-recap section.order-item section.leave-review p.show{
         margin-bottom: 10px;
     }
 
-    main.main-order-recap section.order-item ul li{
+    main.main-order-recap section.order-item ul li {
         margin-bottom: 5px;
     }
 
-    main.main-order-recap section.order-item img{
+    main.main-order-recap section.order-item img {
         width: 15%;
         margin-top: 10px;
         cursor: pointer;
     }
 
-    main.main-order-recap section.order-item section.info-item-in-order{
+    main.main-order-recap section.order-item section.info-item-in-order {
         display: inline-block;
         width: 60%;
         padding: 10px 5% 0 5%;
@@ -3352,21 +3371,20 @@ main.main-order-recap section.order-item section.leave-review p.show{
         text-align: left;
     }
 
-    main.main-order-recap section.order-item section.info-item-in-order p{
+    main.main-order-recap section.order-item section.info-item-in-order p {
         font-size: 16px;
     }
 
-    main.main-order-recap section.order-item section.info-item-in-order p:first-child{
+    main.main-order-recap section.order-item section.info-item-in-order p:first-child {
         font-size: 21px;
     }
 
-    main.main-order-recap section.order-item section.info-item-in-order button, 
-    main.main-order-recap section.order-item section.leave-review button
-    {
+    main.main-order-recap section.order-item section.info-item-in-order button,
+    main.main-order-recap section.order-item section.leave-review button {
         font-size: 18px;
     }
 
-    main.main-order-recap section.order-item section.leave-review.show{
+    main.main-order-recap section.order-item section.leave-review.show {
         display: inline-block;
         width: 100%;
         margin-top: 10px;
@@ -3374,31 +3392,32 @@ main.main-order-recap section.order-item section.leave-review p.show{
         padding-left: 10%;
     }
 
-    main.main-order-recap section.order-item section.leave-review span:first-child{
+    main.main-order-recap section.order-item section.leave-review span:first-child {
         font-size: 18px;
     }
 
-    main.main-order-recap section.order-item section.leave-review span.fa{
+    main.main-order-recap section.order-item section.leave-review span.fa {
         font-size: 18px;
     }
 
-    main.main-order-recap section.order-item section.leave-review label{
+    main.main-order-recap section.order-item section.leave-review label {
         font-size: 18px;
     }
 
-    main.main-order-recap section.order-item section.leave-review textarea{
+    main.main-order-recap section.order-item section.leave-review textarea {
         width: 60%;
         height: 10em;
     }
 
-    main.main-order-recap section.order-item section.leave-review button{
+    main.main-order-recap section.order-item section.leave-review button {
         float: right;
         margin-left: 0%;
         margin-right: 40%;
     }
+
     /*Fine ordini desktop*/
 }
 
-h2.hidden{
+h2.hidden {
     display: none;
 }
