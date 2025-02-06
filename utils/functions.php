@@ -43,7 +43,7 @@ function generateProductBox($productInfo, $cartSign)
     if ($cartSign) {
         $productBox = "
         <li>
-            <a href=\"product.php?id=" . urlencode($productName) . "\">
+            <a href=\"product.php?idP=" . urlencode($productName) . "\">
                 <img src=\"upload/prodotti/" . getSrc($productName) . ".jpg\" class='product-image' alt='product image' />
                 <h2>" . $productName . "</h2>
                 <p>" . $productPrice . " €</p>
@@ -76,7 +76,8 @@ function generateCAtegoryBox($categoryInfo)
             <img src=\"upload/categorie/" . getSrc($categoryInfo["nome_categoria"]) . ".jpg\" alt='" . $categoryInfo['nome_categoria'] . " image' />
             <section>
                 <form action='search.php' method='GET'>
-                    <input type='text' name='categoriaSelezionata' value='" . $categoryInfo["nome_categoria"] . "' readonly />
+                    <label for='box-" .  str_replace(' ', '', $categoryInfo["nome_categoria"]). "'>" . $categoryInfo["nome_categoria"] . "</Label>
+                    <input type='text' id='box-" .  str_replace(' ', '', $categoryInfo["nome_categoria"]) . "' name='categoriaSelezionata' value='" . $categoryInfo["nome_categoria"] . "' readonly />
                     <input type='submit' value='SCOPRI' />
                 </form>
             </section>
@@ -239,12 +240,14 @@ function hasUserLeftAReviewForProduct($dbh, $id_prodotto)
     return $dbh->hasUserLeftAReviewForProduct($_SESSION['email'], $id_prodotto);
 }
 
-function getSrc($string){
+function getSrc($string)
+{
     $src_string = str_replace(' ', '_', $string);
     return $src_string;
 }
 
-function getStringWithSpaces($string){
+function getStringWithSpaces($string)
+{
     $id_string = str_replace('_', ' ', $string);
     return $id_string;
 }
