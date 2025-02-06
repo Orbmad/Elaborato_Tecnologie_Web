@@ -57,7 +57,7 @@ function generateProductBox($productInfo, $cartSign)
     } else {
         $productBox = "
         <li>
-            <a href=\"product.php?id=" . urlencode($productName) . "\">
+            <a href=\"product.php?idP=" . urlencode($productName) . "\">
                 <img src=\"upload/prodotti/" . getSrc($productName) . ".jpg\" class='product-image' alt='product image' />
                 <h2>" . $productName . "</h2>
                 <p>" . $productPrice . " €</p>
