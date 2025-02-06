@@ -3382,3 +3382,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
     }
     /*Fine ordini desktop*/
 }
+
+h2.hidden{
+    display: none;
+}

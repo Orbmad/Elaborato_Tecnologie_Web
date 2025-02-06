@@ -114,7 +114,7 @@ function generateSuggestions(suggestions) {
     for(let i=0; i < suggestions.length; i++){
         let suggestion = `
         <li class="product-suggested">
-            <a href="product.php?id=${suggestions[i]["nome_prodotto"].replaceAll(' ', '_')}">
+            <a href="product.php?idP=${suggestions[i]["nome_prodotto"].replaceAll(' ', '_')}">
                 <img src="upload/prodotti/${suggestions[i]["nome_prodotto"].replaceAll(' ', '_')}.jpg" alt="${suggestions[i]["nome_prodotto"]} image"><p>${suggestions[i]["nome_prodotto"]}</p>
             </a>
         </li>
