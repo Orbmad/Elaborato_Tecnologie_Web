@@ -1,7 +1,7 @@
 <main class="login-form">
     <section class="login <?php if(isset($_SESSION["erroresignup"])) { echo "hidden"; }?>">
         <form action="./utils/api-login.php" method="POST">
-            <h1>Login</h1>
+            <h2>Login</h2>
             <?php if(isset($_SESSION["errorelogin"])): ?>
                 <p><?php echo $_SESSION["errorelogin"]; ?></p>
             <?php endif; ?>
@@ -28,7 +28,7 @@
     <section class="signup <?php if(!isset($_SESSION["erroresignup"])) { echo "hidden"; }?>">
         <form action="./utils/api-signup.php" method="POST">
 
-            <h1>Sign up</h1>
+            <h2>Sign up</h2>
 
             <?php if(isset($_SESSION["erroresignup"])): ?>
                 <p><?php echo $_SESSION["erroresignup"]; ?></p>

@@ -67,8 +67,8 @@ footer section.credits ul {
     list-style: none;
 }
 
-footer>section.credits h1,
-footer>section.contacts h1 {
+footer>section.credits h2,
+footer>section.contacts h2 {
     font-family: 'Josefin Sans', sans-serif;
     font-size: 22px;
     color: #F0F2EF;
@@ -383,13 +383,15 @@ body>header {
 body>header>a {
     display: flex;
     width: auto;
+    align-items: baseline;
     text-decoration: none;
     justify-content: baseline;
 }
 
 body>header>a>h1 {
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
+    padding-top: 6px;
     color: #AC5411;
     font-weight: bold;
     font-size: 40px;
@@ -1136,7 +1138,7 @@ main.login-form label {
     margin-left: 6px;
 }
 
-main.login-form h1 {
+main.login-form h2 {
     color: #F0F2EF;
     font-family: 'Josefin Sans', sans-serif;
     margin-bottom: 26px;
