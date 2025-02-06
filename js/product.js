@@ -33,11 +33,13 @@ function getQuantity() {
 }
 
 function showErrorMessage() {
-    $span = document.querySelector('span.hidden');
-    if ($span != null) {
+    const span = document.querySelector('span.hidden');
+    if (span != null) {
         console.log(22);
-        $span.classList.remove('hidden');
-        $span.classList.add('show');
+        if(span.classList.contains('hidden')){
+            span.classList.remove('hidden');
+            span.classList.add('show');
+        }
     }
 }
 
@@ -48,8 +50,7 @@ function addToCart(id_prodotto) {
     if (quan < 10) {
         quan = quan.substring(1, quan.length);
     }
-    //console.log(quan);
-    const data = { productQuant: quan, productId: id_prodotto };
+    const data = { productQuant: quan, productId: id_prodotto, messaggio: "L'oggetto è stato aggiunto al carrello"};
     fetch('product.php', {
         method: 'POST',
         headers: {

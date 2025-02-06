@@ -5,6 +5,7 @@ const maxTextOutput = document.getElementById('max-price-selected');
 
 const minRatingInput = document.getElementById('min-rating');
 const minRatingOutput = document.getElementById('min-rating-selected');
+const searchedText = document.getElementById('fastSearch');
 
 minRangeInput.addEventListener('input', updateMinText);
 minRatingInput.addEventListener('input', updateRatingText);
@@ -21,7 +22,7 @@ function updateMaxText() {
     if (parseFloat(maxRangeInput.value) < parseFloat(minRangeInput.value)) {
         maxRangeInput.value = minRangeInput.value;
     }
-   maxTextOutput.value = maxRangeInput.value;
+    maxTextOutput.value = maxRangeInput.value;
 }
 
 function updateRatingText() {
@@ -32,31 +33,31 @@ updateMinText();
 updateMaxText();
 
 const moreFiltersButton = document.getElementById('more-filters-btn');
-moreFiltersButton.addEventListener('click', function() {
+moreFiltersButton.addEventListener('click', function () {
     const hideableSections = document.querySelectorAll("aside > form > ul > li, #apply-filters-btn, #reset-filters-btn");
-    hideableSections.forEach(function(section) {
+    hideableSections.forEach(function (section) {
         section.classList.toggle('hidden');
     });
-    if(moreFiltersButton.value=="Nascondi filtri"){
-        moreFiltersButton.setAttribute("value","Mostra filtri");
-    }else{
-        moreFiltersButton.setAttribute("value","Nascondi filtri");
+    if (moreFiltersButton.value == "Nascondi filtri") {
+        moreFiltersButton.setAttribute("value", "Mostra filtri");
+    } else {
+        moreFiltersButton.setAttribute("value", "Nascondi filtri");
     }
 })
 
-const categoryOptions = document.querySelectorAll('.category-selection');  
-categoryOptions.forEach(function(categoryOption) {
-    categoryOption.addEventListener('click', function() {
+const categoryOptions = document.querySelectorAll('.category-selection');
+categoryOptions.forEach(function (categoryOption) {
+    categoryOption.addEventListener('click', function () {
         const categorySelected = categoryOption.id;
         const subClass = "." + categorySelected + "-sub";
-        const subCategoriesList=document.querySelector(subClass);
+        const subCategoriesList = document.querySelector(subClass);
         subCategoriesList.classList.toggle("hidden");
         if (subCategoriesList.classList.contains("hidden")) {
-            document.querySelectorAll(`${subClass} > li > input`).forEach(function(checkbox) {
+            document.querySelectorAll(`${subClass} > li > input`).forEach(function (checkbox) {
                 checkbox.checked = false;
             });
         } else {
-            document.querySelectorAll(`${subClass} > li > input`).forEach(function(checkbox) {
+            document.querySelectorAll(`${subClass} > li > input`).forEach(function (checkbox) {
                 checkbox.checked = true;
             });
         }
@@ -64,20 +65,20 @@ categoryOptions.forEach(function(categoryOption) {
 });
 
 const filtersForm = document.getElementById("filtered-search");
-filtersForm.addEventListener('reset',function(){
+filtersForm.addEventListener('reset', function () {
     setTimeout(resetFilters, 0);
 });
 
-function resetFilters(){
+function resetFilters() {
     const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > input[type='checkbox']");
-    checkCategories.forEach(function(checkBox){
-        if(!checkBox.checked){
+    checkCategories.forEach(function (checkBox) {
+        if (!checkBox.checked) {
             const parent = checkBox.closest("li");
             const subFiltersUl = parent.querySelector("ul");
             if (subFiltersUl) {
                 subFiltersUl.classList.add("hidden");
             }
-        }else{
+        } else {
             const parent = checkBox.closest("li");
             const subFiltersUl = parent.querySelector("ul");
             if (subFiltersUl) {
@@ -89,50 +90,69 @@ function resetFilters(){
 }
 
 const applyButton = document.getElementById("apply-filters-btn");
-applyButton.addEventListener('click',applyFilters);
+applyButton.addEventListener('click', applyFilters);
 
-function applyFilters(){
-    const shownProducts = document.querySelectorAll("main > ul.search-results-list > li");
+function applyFilters() {
     const checkCategories = document.querySelectorAll("aside > form > ul > li:nth-child(3).filter-checkbox > ul > li > ul > li > input[type='checkbox']");
     const checkBoxes = document.querySelectorAll("aside > form > ul > li:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:last-child).filter-checkbox > ul > li > input[type='checkbox']");
     const checkGroups = document.querySelectorAll("aside > form > ul > li:last-child.filter-checkbox > ul > li > input[type='checkbox']");
-    shownProducts.forEach(function(product) {
-        let isHidden = false;
-        let belongsToCheckedGroup = false;
-        checkBoxes.forEach(function(checkBox) {
-            if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
-                isHidden = true;
-            }
-        });
 
-        checkCategories.forEach(function(checkBox) {
-            if (!checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
-                isHidden = true;
-            }
-        });
-
-        if(parseFloat(product.classList[0])<parseFloat(minRangeInput.value) || parseFloat(product.classList[0])>parseFloat(maxRangeInput.value) || parseInt(product.classList[1])<parseInt(minRatingInput.value)){
-            isHidden = true;
+    let categoriesChecked = [];
+    let groupsChecked = [];
+    let attributesChecked = [];
+    checkCategories.forEach(function (checkBox) {
+        if (checkBox.checked) {
+            categoriesChecked.push(checkBox.name.replace(/^[^-]*-/, '').replace(/_/g, ' '));
         }
+    });
 
-        checkGroups.forEach(function(checkBox) {
-            if (checkBox.checked && product.classList.contains(checkBox.name.replace(/\s+/g, ''))) {
-                belongsToCheckedGroup = true;
-            }       
-        });
-        
-
-        if (!isHidden && belongsToCheckedGroup) {
-            product.classList.remove('hidden');
-        } else {
-            product.classList.add('hidden');
+    checkGroups.forEach(function (checkBox) {
+        if (checkBox.checked) {
+            groupsChecked.push(checkBox.name.replace(/^[^-]*-/, '').replace(/_/g, ' '));
         }
-        
-    });   
+    });
+
+    checkBoxes.forEach(function (checkBox) {
+        if (checkBox.checked) {
+            let key = checkBox.name.replace(/-.*$/, '');
+            let value = checkBox.name.replace(/^[^-]*-/, '').replace(/_/g, ' ');
+
+            if (!attributesChecked[key]) {
+                attributesChecked[key] = [];
+            }
+
+            attributesChecked[key].push(value);
+        }
+    });
+
+    fetch('utils/api-search-results.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            categoriesChecked: categoriesChecked,
+            groupsChecked: groupsChecked,
+            famiglia:attributesChecked["famiglia"],
+            profumo:attributesChecked["profumo"],
+            tipologia_foglia:attributesChecked["tipologia_foglia"],
+            colore_foglia:attributesChecked["colore_foglia"],
+            prezzomin: minRangeInput.value,
+            prezzomax: maxRangeInput.value,
+            ratingmin: minRatingInput.value,
+            text:searchedText.value
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementsByClassName("search-results-list")[0].innerHTML = data.productListHTML;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 }
 
 window.addEventListener('load', function () {
-    // Chiama la funzione di reset una sola volta con un ritardo di 500 millisecondi
     setTimeout(function () {
         resetFilters();
     }, 1);

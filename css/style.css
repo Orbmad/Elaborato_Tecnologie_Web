@@ -210,7 +210,7 @@ ul.suggestions {
 
 ul.suggestions>li {
     margin: 0px;
-    height: 50px;
+    height: 40px;
     background-color: #F0F2EF;
     border: 1px solid #082D0F;
     z-index: 3;
@@ -1076,6 +1076,10 @@ aside>form>ul>li.filter-checkbox label {
     visibility: visible;
     display: inline-block;
     color: #082D0F;
+}
+
+aside>form>ul>li.filter-checkbox h2{
+   text-transform: capitalize;
 }
 
 aside>form>ul>li.filter-checkbox input[type="checkbox"] {
@@ -3136,6 +3140,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
 
     main.single-item span.show {
         font-size: 20px;
+        margin-left: 5%;
     }
 
     /*Inizio regole admin prodotto*/
