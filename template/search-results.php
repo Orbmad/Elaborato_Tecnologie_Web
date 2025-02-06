@@ -24,7 +24,7 @@
                 $result["nomeGruppo"] . ' ' .
                 $result["profumo"];
             ?>">
-                <a href="product.php?id=<?php echo getSrc($result['nome_prodotto']) ?>">
+                <a href="product.php?idP=<?php echo getSrc($result['nome_prodotto']) ?>">
                     <img src="./upload/prodotti/<?php echo getSrc($result['nome_prodotto']) ?>.jpg" class="product-image"
                         alt="product image" />
                     <h2><?php echo $result["nome_prodotto"] ?></h2>

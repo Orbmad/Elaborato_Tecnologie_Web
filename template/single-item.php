@@ -12,7 +12,7 @@
                 <img src="upload/prodotti/<?php echo getSrc($prodotto["nome_prodotto"]) ?>.jpg" alt="" />
                 <section>
                     <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
-                    <h3><?php echo $prodotto["prezzo"] ?>€
+                    <h3 class='price'><?php echo $prodotto["prezzo"] ?>€
                     </h3>
                     <div class="star-value">
                         <?php for ($i = 1; $i <= $prodotto["voto"]; $i++): ?>
@@ -23,7 +23,7 @@
                         <?php endfor; ?>
                     </div>
 
-                    <!--h3><?/*php echo $prodotto["voto"] */ ?>/5</h3-->
+                    <h3><?php echo $prodotto["voto"] ?>/5</h3>
 
                     <?php if ($prodotto['stock'] > 0): ?>
                         <div class="wrapper">
@@ -165,7 +165,7 @@
                 <table>
                     <tr>
                         <th>Categoria</th>
-                        <td><a href="#"><?php echo $prodotto["id_sottocategoria"] ?></a></td>
+                        <td><a href="search.php?sottocategoriaSelezionata=<?php echo getSrc($prodotto["id_sottocategoria"]) ?>"><?php echo $prodotto["id_sottocategoria"] ?></a></td>
                     </tr>
                     <?php if(strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
                     <tr>
@@ -173,7 +173,7 @@
                         <td><?php echo $prodotto["nome_volgare"] ?></td>
                     </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
+                    <?php if(strcmp($prodotto["nome_scientifico"], 'non specificato') != 0): ?>
                     <tr>
                         <th>Nome scientifico</th>
                         <td><?php echo $prodotto["nome_scientifico"] ?></td>
@@ -207,6 +207,12 @@
                     <tr>
                         <th>Colore foglia</th>
                         <td><?php echo $prodotto["colore_foglia"] ?></td>
+                    </tr>
+                    <?php endif; ?>
+                    <?php if(strcmp($prodotto["profumo"], 'non specificato') != 0): ?>
+                    <tr>
+                        <th>Profumo</th>
+                        <td><?php echo $prodotto["profumo"] ?></td>
                     </tr>
                     <?php endif; ?>
                 </table>
