@@ -9,6 +9,9 @@
     ?>
         <article>
             <header>
+                <?php if (isset($_SESSION["email"]) && $dbh->hasUserProductInCart($_SESSION["email"], $prodotto["nome_prodotto"])): ?>
+                    <img src='./upload/Card-Cart-Icon.png' class='cart-icon' alt='articolo presente nel carrello' />
+                <?php endif; ?>
                 <img src="upload/prodotti/<?php echo getSrc($prodotto["nome_prodotto"]) ?>.jpg" alt="" />
                 <section>
                     <h2><?php echo $prodotto["nome_prodotto"] ?></h2>
@@ -37,7 +40,15 @@
                             <?php else: ?> onclick="showErrorMessage()"
                             <?php endif; ?>>Aggiungi al carrello
                         </button>
-                        <span class="<?php if(isset($messaggio)){ echo 'show';} else{ echo 'hidden';}?>"><?php if(!isset($messaggio)){ echo 'Operazione non disponibile, è necessario essere loggati';} else{ echo $messaggio;}?></span>
+                        <span class="<?php if (isset($messaggio)) {
+                                            echo 'show';
+                                        } else {
+                                            echo 'hidden';
+                                        } ?>"><?php if (!isset($messaggio)) {
+                                                    echo 'Operazione non disponibile, è necessario essere loggati';
+                                                } else {
+                                                    echo $messaggio;
+                                                } ?></span>
 
                     <?php else: ?>
                         <span class="out_of_stock">La pianta non è al momento disponibile</span>
@@ -63,7 +74,7 @@
                         <input type="hidden" name="id" value="<?php echo $prodotto["nome_prodotto"] ?>" />
                         <ul>
                             <li>
-                                <button type="button" onclick=updateProduct() >Modifica prodotto</button>
+                                <button type="button" onclick=updateProduct()>Modifica prodotto</button>
                             </li>
                             <li>
                                 <button type="submit" name="elimina" value="<?php echo $prodotto["nome_prodotto"] ?>">Cancella prodotto</button>
@@ -83,7 +94,7 @@
                                 </li>
                                 <li>
                                     <label for="prezzo">Prezzo:</label>
-                                    <input type="number" id="prezzo" name="prezzo" value="<?php echo $prodotto["prezzo"] ?>" required/>
+                                    <input type="number" id="prezzo" name="prezzo" value="<?php echo $prodotto["prezzo"] ?>" required />
                                 </li>
                                 <li>
                                     <label for="nome_sottocategoria">Sottocategoria:</label>
@@ -167,53 +178,53 @@
                         <th>Categoria</th>
                         <td><a href="search.php?sottocategoriaSelezionata=<?php echo getSrc($prodotto["id_sottocategoria"]) ?>"><?php echo $prodotto["id_sottocategoria"] ?></a></td>
                     </tr>
-                    <?php if(strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Nome volgare</th>
-                        <td><?php echo $prodotto["nome_volgare"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["nome_volgare"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Nome volgare</th>
+                            <td><?php echo $prodotto["nome_volgare"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["nome_scientifico"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Nome scientifico</th>
-                        <td><?php echo $prodotto["nome_scientifico"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["nome_scientifico"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Nome scientifico</th>
+                            <td><?php echo $prodotto["nome_scientifico"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["famiglia"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Famiglia</th>
-                        <td><?php echo $prodotto["famiglia"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["famiglia"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Famiglia</th>
+                            <td><?php echo $prodotto["famiglia"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["genere"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Genere</th>
-                        <td><?php echo $prodotto["genere"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["genere"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Genere</th>
+                            <td><?php echo $prodotto["genere"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["specie"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Specie</th>
-                        <td><?php echo $prodotto["specie"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["specie"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Specie</th>
+                            <td><?php echo $prodotto["specie"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["tipologia_foglia"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Tipologia foglia</th>
-                        <td><?php echo $prodotto["tipologia_foglia"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["tipologia_foglia"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Tipologia foglia</th>
+                            <td><?php echo $prodotto["tipologia_foglia"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["colore_foglia"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Colore foglia</th>
-                        <td><?php echo $prodotto["colore_foglia"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["colore_foglia"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Colore foglia</th>
+                            <td><?php echo $prodotto["colore_foglia"] ?></td>
+                        </tr>
                     <?php endif; ?>
-                    <?php if(strcmp($prodotto["profumo"], 'non specificato') != 0): ?>
-                    <tr>
-                        <th>Profumo</th>
-                        <td><?php echo $prodotto["profumo"] ?></td>
-                    </tr>
+                    <?php if (strcmp($prodotto["profumo"], 'non specificato') != 0): ?>
+                        <tr>
+                            <th>Profumo</th>
+                            <td><?php echo $prodotto["profumo"] ?></td>
+                        </tr>
                     <?php endif; ?>
                 </table>
             </section>
@@ -221,7 +232,7 @@
 
         <section>
             <h2>L&apos;opinione dei planters!</h2>
-            <?php if(count($templateParams["recensioni_prodotto"]) == 0): ?>
+            <?php if (count($templateParams["recensioni_prodotto"]) == 0): ?>
                 <p>Non ci sono recensioni per questo prodotto</p>
             <?php else: ?>
                 <?php foreach ($templateParams["recensioni_prodotto"] as $rec): ?>
