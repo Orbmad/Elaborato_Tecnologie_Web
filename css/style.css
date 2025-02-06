@@ -2981,6 +2981,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
     main.single-item>article>header>section>h3.price {
         /*width: 30%;*/
         /*padding-right: 20px;*/
+        font-size: 34px;
         width: 20%;
         justify-content: center;
     }
@@ -2991,7 +2992,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
         align-items: center;
         justify-content: center;
         padding: 0px;
-        font-size: 34px;
+        font-size: 28px;
         margin-top: 6px;
     }
 
@@ -3001,7 +3002,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
         justify-content: right;
         align-items: center;
         /*width: calc(34%);- 30px*/
-        width: 44%;
+        width: 54%;
         padding: 0px;
         /*padding-right: 30px;*/
     }
@@ -3029,7 +3030,7 @@ main.main-order-recap section.order-item section.leave-review p.show{
         padding-right: 20px;
 
         /*width: calc(50% - 20px);*/
-        width: calc(28% - 20px);
+        width: calc(32% - 20px);
         margin-right: 10px;
     }
 
@@ -3043,17 +3044,17 @@ main.main-order-recap section.order-item section.leave-review p.show{
         align-items: center;
 
         font-size: 20px;
-        width: calc(50% - 42px);
+        width: calc(56% - 42px);
         font-size: 22px;
 
-        height: auto;
+        height: 56px;
         min-height: 40px;
         margin: auto 20px;
         padding: 0px 10px;
     }
 
     main.single-item>article>header>section>div.wrapper>span {
-        width: 14%;
+        width: 22%;
         font-size: 20px;
     }
 
