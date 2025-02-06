@@ -50,7 +50,6 @@ function addToCart(id_prodotto) {
     if (quan < 10) {
         quan = quan.substring(1, quan.length);
     }
-    //console.log(quan);
     const data = { productQuant: quan, productId: id_prodotto, messaggio: "L'oggetto è stato aggiunto al carrello"};
     fetch('product.php', {
         method: 'POST',
